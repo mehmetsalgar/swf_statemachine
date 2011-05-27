@@ -8,6 +8,8 @@ import org.salgar.statemachine.domain.Event;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchCO;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
+import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
 import org.salgar.swf_statemachine.techdemo.listener.AbstractAsynchroneListener;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
@@ -26,8 +28,20 @@ public class CustomerSearchRunningAction implements Action, Serializable {
 				.getCustomerListener();
 		customerListener.setStateMachine(stateMachine);
 
-		CustomerManager customerManager = customerSearchStartEventPayload
-				.getCustomerManager();
+		Event findCustomerSmEvent = new Event();
+		findCustomerSmEvent
+				.setEventType(FindCustomerSM_EventEnumerationImpl.onStartSearch);
+		findCustomerSmEvent.setPayload(customerSearchCO.getCustomerNumber());
+
+		AbstractStateMachine findCustomerStateMachine = (AbstractStateMachine) stateMachine
+				.findObjects(StateMachineEnumerationImpl.FindCustomerSM
+						.getStateMachineName());
+		findCustomerStateMachine.resetStateMachine();
+		findCustomerStateMachine.dispatch(findCustomerSmEvent);
+		
+		CustomerManager customerManager = (CustomerManager) stateMachine
+				.findObjects("customerManager");
+		
 		customerManager.findCustomer(customerSearchCO.getCustomerNumber(),
 				customerListener);
 

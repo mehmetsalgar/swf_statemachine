@@ -25,6 +25,9 @@
 				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch.xml,
 				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch-guards.xml,
 				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch-controlobjects.xml,
+				classpath:/META-INF/findcustomer/applicationContext-statemachine-findcustomer.xml,
+				classpath:/META-INF/findcustomer/applicationContext-statemachine-findcustomer-guards.xml,
+				classpath:/META-INF/findcustomer/applicationContext-statemachine-findcustomer-controlobjects.xml,
 				/WEB-INF/config/applicationContext-manager.xml</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>

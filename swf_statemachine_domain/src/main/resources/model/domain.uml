@@ -90,6 +90,17 @@
                 <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
               </ownedParameter>
             </ownedOperation>
+            <ownedOperation xmi:id="_Jg27cohFEeCAqeEFueg1Bw" name="findObjects" visibility="public" isAbstract="true">
+              <eAnnotations xmi:id="_E8rHIIhcEeCAqeEFueg1Bw" source="http://www.topcased.org/documentation">
+                <details xmi:id="_E8rHIYhcEeCAqeEFueg1Bw" key="documentation" value="This method is abstract implemented to give the chance implementing class to decide what is the object repository. In our case it is Spring Application Context but for another State Machine implementatio it can be Hashmap."/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_OJZz4IhFEeCAqeEFueg1Bw" name="return" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_XFgMMIhFEeCAqeEFueg1Bw" name="objectName">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedParameter>
+            </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Dependency" xmi:id="_abPTcB5OEeCcEfMaO8vqcQ" name="Dependency1" supplier="_Md5nYBjTEeCsVpV9YS54ZQ" client="_DmEZABzOEeCcEfMaO8vqcQ"/>
           <packagedElement xmi:type="uml:Association" xmi:id="_8jspsB5SEeCyGcoG_XXpug" name="A_&lt;abstractStateMachine>_&lt;state>" memberEnd="_8jspsR5SEeCyGcoG_XXpug _8jsptB5SEeCyGcoG_XXpug" navigableOwnedEnd="_8jsptB5SEeCyGcoG_XXpug">

@@ -9,12 +9,19 @@ import org.salgar.statemachine.domain.ControlObject;
 import org.salgar.statemachine.domain.Event;
 import org.salgar.statemachine.domain.State;
 import org.salgar.statemachine.domain.StateMachine;
+import org.salgar.statemachine.domain.StateMachineEnumeration;
 import org.salgar.statemachine.domain.Transition;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
-public class StateMachineImpl extends AbstractStateMachine {
+public class StateMachineImpl extends AbstractStateMachine implements
+		ApplicationContextAware {
 	private static final long serialVersionUID = 6254025866540535100L;
 	private final static org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(StateMachineImpl.class);
+
+	protected ApplicationContext applicationContext;
 
 	@SuppressWarnings("rawtypes")
 	public StateMachineImpl() {
@@ -330,5 +337,19 @@ public class StateMachineImpl extends AbstractStateMachine {
 		ControlObject controlObject = (ControlObject) this.getControlObjects()
 				.get(this.getName().getStateMachineName() + "ControlObject");
 		return controlObject;
+	}
+
+	@Override
+	public StateMachine findObjects(
+			String objectName) {
+		StateMachine stateMachine = (StateMachine) applicationContext
+				.getBean(objectName);
+		
+		return stateMachine;
+	}
+
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.applicationContext = applicationContext;
 	}
 }

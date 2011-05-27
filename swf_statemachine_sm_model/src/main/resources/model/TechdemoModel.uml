@@ -195,6 +195,40 @@
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_qTnh4IEpEeC0au1QwVWf1Q" name="CUSTOMER_FOUND"/>
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_PaRzsIeGEeCgzO61Ewoybw" name="CUSTOMER_AUTHENTICATED_CLICKED"/>
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_hsbRMIeNEeCgzO61Ewoybw" name="CUSTOMER_JOINED_CLICKED"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_DE4EkIhHEeCAqeEFueg1Bw" name="slaves">
+              <packagedElement xmi:type="uml:Package" xmi:id="_Fz9hAIhHEeCAqeEFueg1Bw" name="findcustomer">
+                <packagedElement xmi:type="uml:StateMachine" xmi:id="_MVf7YIhHEeCAqeEFueg1Bw" name="FindCustomerSM">
+                  <region xmi:id="_MVf7YYhHEeCAqeEFueg1Bw" name="Region">
+                    <subvertex xmi:type="uml:Pseudostate" xmi:id="_T-wLw4hHEeCAqeEFueg1Bw" name="Start"/>
+                    <subvertex xmi:type="uml:State" xmi:id="_VBqaQohHEeCAqeEFueg1Bw" name="NOT_RUNNING"/>
+                    <subvertex xmi:type="uml:State" xmi:id="_dFTgkohHEeCAqeEFueg1Bw" name="SEARCH_RUNNING"/>
+                    <subvertex xmi:type="uml:State" xmi:id="_qjs_YohHEeCAqeEFueg1Bw" name="CUSTOMER_FOUND"/>
+                    <subvertex xmi:type="uml:State" xmi:id="_0w-EoohHEeCAqeEFueg1Bw" name="CUSTOMER_NOT_FOUND"/>
+                    <subvertex xmi:type="uml:State" xmi:id="_COy7sohIEeCAqeEFueg1Bw" name="ERROR"/>
+                    <subvertex xmi:type="uml:State" xmi:id="_KgQbkohIEeCAqeEFueg1Bw" name="TIMEOUT"/>
+                    <transition xmi:id="_X3U_1ohHEeCAqeEFueg1Bw" name="Initial Transition" kind="local" source="_T-wLw4hHEeCAqeEFueg1Bw" target="_VBqaQohHEeCAqeEFueg1Bw"/>
+                    <transition xmi:id="_gJbY5YhHEeCAqeEFueg1Bw" name="SearchRunningTransition" kind="local" source="_VBqaQohHEeCAqeEFueg1Bw" target="_dFTgkohHEeCAqeEFueg1Bw">
+                      <trigger xmi:id="_jyCeUIhHEeCAqeEFueg1Bw" name="onStartSearch" event="_kvhH0H1SEeCgupXlFDV_aQ"/>
+                    </transition>
+                    <transition xmi:id="_tUivVYhHEeCAqeEFueg1Bw" name="CustomerFoundTransition" kind="local" source="_dFTgkohHEeCAqeEFueg1Bw" target="_qjs_YohHEeCAqeEFueg1Bw">
+                      <trigger xmi:id="_wPW6oIhHEeCAqeEFueg1Bw" name="onCustomerFound" event="_qTnh4IEpEeC0au1QwVWf1Q"/>
+                    </transition>
+                    <transition xmi:id="_36h2lYhHEeCAqeEFueg1Bw" name="CustomerNotFoundTransition" kind="local" source="_dFTgkohHEeCAqeEFueg1Bw" target="_0w-EoohHEeCAqeEFueg1Bw">
+                      <trigger xmi:id="_7pVqoIhHEeCAqeEFueg1Bw" name="onCustomerNotFound" event="__uzEIIhHEeCAqeEFueg1Bw"/>
+                    </transition>
+                    <transition xmi:id="_DctgVYhIEeCAqeEFueg1Bw" name="ErrorTransition" kind="local" source="_dFTgkohHEeCAqeEFueg1Bw" target="_COy7sohIEeCAqeEFueg1Bw">
+                      <trigger xmi:id="_HG56IIhIEeCAqeEFueg1Bw" name="onError" event="_JtwAkIhIEeCAqeEFueg1Bw"/>
+                    </transition>
+                    <transition xmi:id="_NVQ51YhIEeCAqeEFueg1Bw" name="TimeoutTransition" kind="local" source="_dFTgkohHEeCAqeEFueg1Bw" target="_KgQbkohIEeCAqeEFueg1Bw">
+                      <trigger xmi:id="_PhdEkIhIEeCAqeEFueg1Bw" name="onTimeout" event="_RnHwkIhIEeCAqeEFueg1Bw"/>
+                    </transition>
+                  </region>
+                </packagedElement>
+                <packagedElement xmi:type="uml:SignalEvent" xmi:id="__uzEIIhHEeCAqeEFueg1Bw" name="CUSTOMER_NOT_FOUND"/>
+                <packagedElement xmi:type="uml:SignalEvent" xmi:id="_JtwAkIhIEeCAqeEFueg1Bw" name="ERROR"/>
+                <packagedElement xmi:type="uml:SignalEvent" xmi:id="_RnHwkIhIEeCAqeEFueg1Bw" name="TIMEOUT"/>
+              </packagedElement>
+            </packagedElement>
           </packagedElement>
         </packagedElement>
       </packagedElement>
@@ -226,4 +260,5 @@
   <swf_statemachine:SwfTransition xmi:id="_LoGQoIeIEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAuthenticationRemovedAction" base_Transition="_HYB0hIeGEeCgzO61Ewoybw"/>
   <swf_statemachine:SwfTransition xmi:id="_gPgkEIeJEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticationRemovedAction" base_Transition="_ZocQ1IeGEeCgzO61Ewoybw"/>
   <swf_statemachine:SwfTransition xmi:id="_xLp_UIeNEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_LP-kNYeLEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfStateMachine xmi:id="_QP24IIhHEeCAqeEFueg1Bw" Scope="prototype" base_StateMachine="_MVf7YIhHEeCAqeEFueg1Bw"/>
 </xmi:XMI>

@@ -40,7 +40,6 @@ public class CustomerSearchInputLayoutBB {
 
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = new CustomerSearchStartEventPayload();
 		customerSearchStartEventPayload.setCustomerNumber(customerNumber);
-		customerSearchStartEventPayload.setCustomerManager(customerManager);
 
 		CustomerListener customerListener = new CustomerListener();
 		customerListener.setStateMachine(stateMachine);

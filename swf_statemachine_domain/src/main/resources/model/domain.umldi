@@ -85,7 +85,7 @@
         </diagrams>
         <subdiagrams xmi:id="_LblOwBjTEeCsVpV9YS54ZQ">
           <model href="domain.uml#_KfO7QhjTEeCsVpV9YS54ZQ"/>
-          <diagrams xmi:id="_LblOwRjTEeCsVpV9YS54ZQ" position="0,0" size="100,100" name="domain" zoom="0.75" viewport="41,132">
+          <diagrams xmi:id="_LblOwRjTEeCsVpV9YS54ZQ" position="0,0" size="100,100" name="domain" zoom="0.75" viewport="393,132">
             <property xmi:id="_Lb4wwBjTEeCsVpV9YS54ZQ" key="pageFormatName" value="A0"/>
             <property xmi:id="_Lb4wwRjTEeCsVpV9YS54ZQ" key="diagramWidth" value="3364"/>
             <property xmi:id="_Lb4wwhjTEeCsVpV9YS54ZQ" key="diagramHeight" value="4756"/>
@@ -177,7 +177,7 @@
                 </contained>
               </contained>
             </contained>
-            <contained xsi:type="di:GraphNode" xmi:id="_YFeycB5NEeCcEfMaO8vqcQ" position="740,521" size="423,-1">
+            <contained xsi:type="di:GraphNode" xmi:id="_YFeycB5NEeCcEfMaO8vqcQ" position="692,521" size="527,-1">
               <anchorage xmi:id="_d3f0YB5NEeCcEfMaO8vqcQ" graphEdge="_pzNYcB5NEeCcEfMaO8vqcQ _8ji4sR5SEeCyGcoG_XXpug _JBHMoB5TEeCyGcoG_XXpug _Po2OIR_eEeC0UO6puhKrhA _PmIwQDLVEeC0rvpjHV-vcA"/>
               <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YFeycR5NEeCcEfMaO8vqcQ" presentation="default">
                 <element href="domain.uml#_YFxtYB5NEeCcEfMaO8vqcQ"/>
@@ -211,6 +211,11 @@
                 <contained xsi:type="di:GraphNode" xmi:id="_xdmJADLMEeC0rvpjHV-vcA" position="0,0" size="-1,-1">
                   <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xdmJATLMEeC0rvpjHV-vcA" presentation="default">
                     <element href="domain.uml#_xdmJAjLMEeC0rvpjHV-vcA"/>
+                  </semanticModel>
+                </contained>
+                <contained xsi:type="di:GraphNode" xmi:id="_Jg27cIhFEeCAqeEFueg1Bw" position="0,0" size="-1,-1">
+                  <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Jg27cYhFEeCAqeEFueg1Bw" presentation="default">
+                    <element href="domain.uml#_Jg27cohFEeCAqeEFueg1Bw"/>
                   </semanticModel>
                 </contained>
               </contained>
@@ -253,8 +258,8 @@
               <contained xsi:type="di:EdgeObjectUV" xmi:id="_JBHMpx5TEeCyGcoG_XXpug" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
               <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JBHMqB5TEeCyGcoG_XXpug" visible="false" id="middleNameEdgeObject" offset="104,48"/>
               <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JBHMqR5TEeCyGcoG_XXpug" id="stereotypeEdgeObject" offset="0,-10"/>
-              <waypoints>[250, 2, 251, 152]</waypoints>
-              <waypoints>[250, -150, 251, 0]</waypoints>
+              <waypoints>[328, 0, 326, 168]</waypoints>
+              <waypoints>[328, -168, 326, 0]</waypoints>
             </contained>
             <contained xsi:type="di:GraphNode" xmi:id="_LS_WYB5YEeCyGcoG_XXpug" position="58,215" size="337,-1">
               <anchorage xmi:id="_xsMtEDLJEeC0rvpjHV-vcA" graphEdge="_xsMtETLJEeC0rvpjHV-vcA _uHPXkDLUEeC0rvpjHV-vcA"/>

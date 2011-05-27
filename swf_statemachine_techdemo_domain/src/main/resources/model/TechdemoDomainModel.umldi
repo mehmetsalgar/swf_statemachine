@@ -201,11 +201,6 @@
               <element href="TechdemoDomainModel.uml#_rfcjMoEmEeC0au1QwVWf1Q"/>
             </semanticModel>
           </contained>
-          <contained xsi:type="di:GraphNode" xmi:id="_xT-GkIEmEeC0au1QwVWf1Q" position="0,0" size="-1,-1">
-            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xT-GkYEmEeC0au1QwVWf1Q" presentation="default">
-              <element href="TechdemoDomainModel.uml#_xT-GkoEmEeC0au1QwVWf1Q"/>
-            </semanticModel>
-          </contained>
           <contained xsi:type="di:GraphNode" xmi:id="_ch8MoIEnEeC0au1QwVWf1Q" position="0,0" size="-1,-1">
             <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ch8MoYEnEeC0au1QwVWf1Q" presentation="default">
               <element href="TechdemoDomainModel.uml#_ch8MooEnEeC0au1QwVWf1Q"/>

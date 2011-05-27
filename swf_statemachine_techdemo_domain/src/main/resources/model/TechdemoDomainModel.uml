@@ -47,7 +47,6 @@
               <ownedAttribute xmi:id="_rfcjMoEmEeC0au1QwVWf1Q" name="customerNumber">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedAttribute>
-              <ownedAttribute xmi:id="_xT-GkoEmEeC0au1QwVWf1Q" name="customerManager" type="_a8ReYH--EeCK4vYmII23UA"/>
               <ownedAttribute xmi:id="_ch8MooEnEeC0au1QwVWf1Q" name="customerListener" type="_mUYTMH_LEeC3BvKE9rGHVg"/>
             </packagedElement>
           </packagedElement>
