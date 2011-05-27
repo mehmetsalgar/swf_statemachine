@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">							
+				
+		<!-- Control Object - State Machine: STATEMACHINE_1 -->
+		
+			
+				<bean class="org.salgar.swf_statemachine.reference_model.controlobject.STATEMACHINE_1ControlObject" name="STATEMACHINE_1ControlObject" scope="session"/> 
+			
+		
+
+		<!-- Control Object - State Machine: STATEMACHINE_2 -->
+		
+			
+				<bean class="org.salgar.swf_statemachine.reference_model.controlobject.sub_STATEMACHINE_2ControlObject" name="sub_STATEMACHINE_2ControlObject" scope="prototype"/>
+			
+		
+
+		</beans>

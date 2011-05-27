@@ -1,0 +1,275 @@
+«IMPORT uml»
+
+«EXTENSION utility»
+
+«DEFINE Spring FOR uml::Model»
+	«EXPAND Root(this) FOREACH (List[uml::Package])ownedElement»
+	«EXPAND SteorotypeGuardsActions(this) FOREACH (List[uml::Package])ownedElement»
+	«EXPAND ControlObjects(this) FOREACH (List[uml::Package])ownedElement»		
+«ENDDEFINE»
+
+«DEFINE Root(uml::Model model) FOR uml::Package»
+	«IF ownedType.typeSelect(uml::StateMachine).isEmpty==false»
+		«FILE "META-INF/" + name + "/applicationContext-statemachine-"+name+".xml"»
+		<?xml version="1.0" encoding="UTF-8"?>
+		<beans xmlns="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+			xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">							
+			«EXPAND StateMachines(model) FOREACH ownedType.typeSelect(uml::StateMachine)»
+								
+			<bean name="defaultGuard" class="org.salgar.swf_statemachine.impl.guard.DefaultGuardImpl" />
+			<bean name="defaultAction" class="org.salgar.swf_statemachine.impl.action.DefaultAction" />
+		</beans>
+		«EXPAND Root(model) FOREACH nestedPackage»
+		«ENDFILE»	
+	«ELSE»
+		«EXPAND Root(model) FOREACH nestedPackage»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root(uml::Model model) FOR uml::PackageImport»
+«ENDDEFINE»
+
+«DEFINE Root(uml::Model model) FOR uml::ProfileApplication»
+«ENDDEFINE»
+
+«DEFINE StateMachines(uml::Model model) FOR uml::StateMachine»
+	«IF this.getAppliedStereotype("swf_statemachine::SwfStateMachine")!= null»
+		«IF !this.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"submachine")»
+			<!-- «name.toFirstUpper()» State Machine -->
+			<bean id="«name»" class="org.salgar.swf_statemachine.impl.StateMachineImpl" lazy-init="true"
+			«IF this.getAppliedStereotype("swf_statemachine::SwfStateMachine")!=null»
+				scope="«this.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"Scope").name»"
+			«ENDIF» 	
+			>
+			«LET name AS localName»	
+				«EXPAND StateMachinesCommon(model, this, localName)»
+			«ENDLET»
+		«ENDIF»
+	
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE SubStateMachines(uml::Model model, uml::StateMachine sm, uml::StateMachine ssm) FOR uml::StateMachine»	
+	<!-- sub_«ssm.name.toFirstUpper()» State Machine -->
+	<bean id="sub_«ssm.name»" class="org.salgar.swf_statemachine.impl.StateMachineImpl" lazy-init="true"
+	«IF ssm.getAppliedStereotype("swf_statemachine::SwfStateMachine")!=null»
+		scope="«ssm.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"Scope").name»"
+	«ENDIF» 	
+	>
+	«LET "sub_" + ssm.name AS localName»
+		«EXPAND StateMachinesCommon(model, ssm, localName)»		
+	«ENDLET»
+«ENDDEFINE»
+
+«DEFINE StateMachinesCommon(uml::Model model, uml::StateMachine sm, String localName) FOR uml::StateMachine»			
+		<!--aop:scoped-proxy proxy-target-class="false" /-->
+		<property name="name">
+			<bean
+				class="org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl"
+				factory-method="valueOf">
+				<constructor-arg>
+					<value>«sm.name»</value>
+				</constructor-arg>
+			</bean>
+		</property>	
+		<property name="controlObjects">
+			<map>
+				<entry key="«localName»ControlObject" value-ref="«localName»ControlObject" />
+			</map>
+		</property>
+		<property name="startState" ref="«localName».«findIntialState(sm.allOwnedElements().typeSelect(uml::Pseudostate)).name»" />
+		<property name="existingStates">
+      		<list>
+      			«FOREACH sm.allOwnedElements().typeSelect(uml::State) AS state»		       
+	        		<ref bean="«localName».«state.name»"/>
+	        	«ENDFOREACH»
+	      </list>
+	    </property>		
+	</bean>
+	
+	<!-- STATES - «localName» -->
+	«FOREACH sm.allOwnedElements().typeSelect(uml::State) AS state»
+		<bean name="«localName».«state.name»" class="org.salgar.statemachine.domain.State">
+			<property name="name">
+				<bean
+					class="org.salgar.swf_statemachine.enumeration.state.«name»_StateEnumerationImpl"
+					factory-method="valueOf">
+					<constructor-arg>
+						<value>«state.name»</value>
+					</constructor-arg>
+				</bean>
+			</property>
+			<property name="outgoingTransitions">
+				<list>
+					«FOREACH state.getOutgoings() AS transition»
+						<!-- «transition.name» -->
+						<ref bean="«localName».transition_«state.name»_«transition.target.name»" />
+					«ENDFOREACH»
+				</list>
+			</property>
+			<property name="incomingTransitions">
+				<list>
+					«FOREACH state.getIncomings() AS transition»
+						«EXPAND IncomingTransition(transition, localName) FOR transition.source»											
+					«ENDFOREACH»					
+				</list>
+		</property>
+		«IF state.submachine != null»
+			<property name="subMachine" ref="sub_«state.submachine.name»" />
+		«ENDIF»
+		</bean>
+		
+		«IF state.submachine != null»
+			«EXPAND SubStateMachines(model, this, state.submachine)»
+		«ENDIF»							
+	«ENDFOREACH»
+	
+	<!-- TRANSITIONS -->
+	«FOREACH sm.allOwnedElements().typeSelect(uml::Transition) AS transition»
+		«EXPAND TvppTransition(transition, this, localName) FOR transition.source»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE IncomingTransition(uml::Transition transition, String LocalName) FOR uml::Pseudostate»
+«ENDDEFINE»
+
+«DEFINE IncomingTransition(uml::Transition transition, String localName) FOR uml::State»
+	<!-- «transition.name» -->
+	<ref bean="«localName».transition_«transition.source.name»_«transition.target.name»" />	
+«ENDDEFINE»
+
+«DEFINE TvppTransition(uml::Transition transition, uml::StateMachine statemachine, String localName) FOR uml::Pseudostate»
+«ENDDEFINE»
+	
+«DEFINE TvppTransition(uml::Transition transition, uml::StateMachine sm, String localName) FOR uml::State»
+		<!-- TRANSITION - «transition.name» -->
+		<bean name="«localName».transition_«transition.source.name»_«transition.target.name»"
+			class="org.salgar.swf_statemachine.impl.transition.TransitionImpl">
+			<property name="name"
+				value="«localName».«transition.name»" />
+			<property name="sourceState" ref="«localName».«transition.source.name»" />
+			<property name="targetState" ref="«localName».«transition.target.name»" />
+			<property name="eventType">
+				<bean
+					class="org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()».«sm.name»_EventEnumerationImpl"
+					factory-method="valueOf">
+					<constructor-arg>
+						<value>«transition.trigger.first().name»</value>
+					</constructor-arg>
+				</bean>
+			</property>
+			«IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+				«IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"GuardImplementation") != null»
+					<property name="guard" ref="«sm.name».«transition.source.name».«transition.target.name»«transition.name».guard" />
+				«ELSE»
+					<property name="guard" ref="defaultGuard" />
+				«ENDIF»
+			«ELSE»
+				<property name="guard" ref="defaultGuard" />
+			«ENDIF»
+			«IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+				«IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"ActionImplementation") != null»
+					<property name="action" ref="«sm.name».«transition.source.name».«transition.target.name».«transition.name».action" />
+				«ELSE»
+					<property name="action" ref="defaultAction" />
+				«ENDIF»
+			«ELSE»
+				<property name="action" ref="defaultAction" />
+			«ENDIF»					
+		</bean>
+«ENDDEFINE»
+
+«DEFINE SteorotypeGuardsActions(uml::Model model)FOR uml::Package»
+	«IF ownedType.typeSelect(uml::StateMachine).isEmpty==false»
+		«FILE "META-INF/" + name + "/applicationContext-statemachine-" + name + "-guards.xml"»
+		<?xml version="1.0" encoding="UTF-8"?>
+		<beans xmlns="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+			xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">							
+			«EXPAND Guards(model) FOREACH ownedType.typeSelect(uml::StateMachine)»			
+			«EXPAND Actions(model) FOREACH ownedType.typeSelect(uml::StateMachine)»
+		</beans>
+		«EXPAND SteorotypeGuardsActions(model) FOREACH nestedPackage»
+		«ENDFILE»	
+	«ELSE»
+		«EXPAND SteorotypeGuardsActions(model) FOREACH nestedPackage»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE SteorotypeGuardsActions(uml::Model model)FOR uml::PackageImport»
+«ENDDEFINE»
+
+«DEFINE SteorotypeGuardsActions(uml::Model model)FOR uml::ProfileApplication»
+«ENDDEFINE»
+
+«DEFINE Guards(uml::Model model) FOR uml::StateMachine»
+	<!-- Guards - «name»-->
+	«FOREACH allOwnedElements().typeSelect(uml::Transition) AS transition»
+		«IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+			«IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"GuardImplementation") != null»
+				<bean name="«name».«transition.source.name».«transition.target.name»«transition.name».guard" class="«transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"GuardImplementation")»" />
+			«ENDIF»
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE Actions(uml::Model model) FOR uml::StateMachine»
+	<!-- Actions - «name» -->
+	«FOREACH allOwnedElements().typeSelect(uml::Transition) AS transition»
+		«IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+			«IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"ActionImplementation") != null»				
+				<bean name="«name».«transition.source.name».«transition.target.name».«transition.name».action" class="«transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"ActionImplementation")»" />
+			«ENDIF»
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE ControlObjects(uml::Model model)FOR uml::Package»
+	«IF ownedType.typeSelect(uml::StateMachine).isEmpty==false»
+		«FILE "META-INF/" + name + "/applicationContext-statemachine-" + name + "-controlobjects.xml"»
+		<?xml version="1.0" encoding="UTF-8"?>
+		<beans xmlns="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+			xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">							
+				«EXPAND StateMachinesControlObjects(model, name) FOREACH ownedType.typeSelect(uml::StateMachine)»
+		</beans>
+		«EXPAND ControlObjects(model) FOREACH nestedPackage»
+		«ENDFILE»	
+	«ELSE»
+		«EXPAND ControlObjects(model) FOREACH nestedPackage»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE ControlObjects(uml::Model model)FOR uml::PackageImport»
+«ENDDEFINE»
+
+«DEFINE ControlObjects(uml::Model model)FOR uml::ProfileApplication»
+«ENDDEFINE»
+
+«DEFINE StateMachinesControlObjects(uml::Model model, String packagename) FOR uml::StateMachine»
+		<!-- Control Object - State Machine: «name» -->
+		«IF this.getAppliedStereotype("swf_statemachine::SwfStateMachine")!= null»
+			«IF !this.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"submachine")»
+				<bean name="«name»ControlObject" class="org.salgar.swf_statemachine.«packagename».controlobject.«name»ControlObject"	scope="session"	/> 
+			«ELSE»
+				<bean name="sub_«name»ControlObject" class="org.salgar.swf_statemachine.«packagename».controlobject.sub_«name»ControlObject"
+					«IF this.getAppliedStereotype("swf_statemachine::SwfStateMachine")!=null»
+						scope="«this.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"Scope").name»"
+					«ENDIF»
+				/>
+			«ENDIF»
+		«ENDIF»
+«ENDDEFINE»

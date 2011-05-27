@@ -1,0 +1,145 @@
+import org::fornax::cartridges::uml2::javabasic;
+import org::eclipse::uml2::uml;
+
+extension org::fornax::cartridges::uml2::javabasic::m2t::Misc;
+extension org::fornax::cartridges::uml2::javabasic::m2t::Helper;
+extension org::fornax::cartridges::uml2::javabasic::m2t::Properties;
+
+String DTJavaName (uml::Type t) :
+	DTName(t, "Java");
+
+String DTName (uml::Type t, String spec) :
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getDataTypeName(org.eclipse.uml2.uml.Type, java.lang.String);
+
+String ReturnType(uml::Parameter p):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getReturnType(org.eclipse.uml2.uml.Parameter);
+
+String getObjectWrapper(uml::Type t, String value):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getWrapperClassForPromitivyTypes(org.eclipse.uml2.uml.Type, java.lang.String);
+
+boolean equalsParameterDirection(uml::Parameter parameter, String kind):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.equalsParameterDirection(org.eclipse.uml2.uml.Parameter, java.lang.String);
+
+/**
+* @return The type as String for the given parameter. Here are collective
+* types supported.
+*/
+String getReturnType(uml::Parameter parameter):
+	parameter.isVoid()?
+		"void":
+		(isCollectiveType(parameter)?
+			getCollectiveType(parameter.type, isSet(parameter), false):
+			parameter.fqName());
+
+String getReturnValue(uml::Parameter parameter):
+	isVoid(parameter)?
+	"":
+	"return "+DefaultValue(parameter.type)+";";
+
+boolean isVoid(uml::Parameter parameter):
+	parameter == null || 
+	(parameter.type != null && parameter.type.name == "void");
+
+/**
+* @return The type of a parameter.
+*/
+String getParameterType(uml::Parameter parameter):
+	isCollectiveType(parameter)?
+		getCollectiveType(parameter.type, isSet(parameter), false):
+		parameter.fqName();	
+
+/**
+* @return The type of a property.
+*/
+String getPropertyType(uml::Property property):
+	isCollectiveType(property)?
+		getCollectiveType(property.type, isSet(property), false):
+		property.fqName();
+	
+String getPropertyTypeImpl(uml::Property property):
+	isCollectiveType(property)?
+		"new "+getCollectiveType(property.type, isSet(property), true)+"()":
+		NormalizedDefaultValue(property);
+	
+
+boolean isCollectiveType(uml::Parameter parameter):
+	parameter.upper == -1;
+	
+boolean isCollectiveType(uml::Property property):
+	property.upper == -1;
+	
+String getCollectiveType(uml::Type type, boolean set, boolean forImpl):
+	set? 
+		getFixedCollectiveType(type, 
+			(forImpl)? "java.util.HashSet": "java.util.Set"): 
+		getFixedCollectiveType(type, 
+			forImpl? "java.util.ArrayList": "java.util.List");
+		
+		
+String getFixedCollectiveType(uml::Type type, String collectiveType):
+	getJavaVersion() > 2? collectiveType+"<"+type.fqName()+">": 
+		collectiveType;
+		
+boolean isSet(uml::MultiplicityElement element):
+	getListSetProperty() == "order"?
+		(element.isOrdered? false: true):
+		(element.isUnique? true: false);
+		
+String getCollectionType(uml::Property property):
+	isCollectiveType(property)?
+		(isSet(property)? "Set":"List"):
+		"";
+	
+/**
+* Returns the name of the VisibilityKind of the given uml::Property
+*/
+String VisibilityName(uml::Property p):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getVisibilityName(org.eclipse.uml2.uml.Property);
+
+/**
+* Returns the name of the VisibilityKind of the given uml::Operation
+*/
+String VisibilityName(uml::Operation p):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getVisibilityName(org.eclipse.uml2.uml.Operation);
+
+
+/**
+*	Returns the default value for the given <code>uml::Type</code>
+*	@param type The <code>uml::Type</code> the default value to return
+*/
+String DefaultValue(uml::Type type):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getDefaultValue(org.eclipse.uml2.uml.Type);
+
+/**
+*	Returns the default value for the given <code>uml::Property</code>. This is different to
+*	<code>DefaultValue(uml::Type type)</code>. In this extension the modelled default value will be
+*	evaluated.
+*	@param type The <code>uml::Property</code> the default value to return
+*/
+String DefaultValue(uml::Property property):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getDefaultValue(org.eclipse.uml2.uml.Property);
+
+/**
+*	Returns the normalized default value for the given <code>uml::Property</code>. 
+* 	Normalized means that values starting with <code>${</code> and ends with 
+*	<code>}</code> will be cleared.
+*	@param type The <code>uml::Property</code> the default value to return
+*/
+String NormalizedDefaultValue(uml::Property property):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getNormalizedDefaultValue(org.eclipse.uml2.uml.Property);
+
+Object TaggedValue(uml::Element element, String stereoTypeName, String name, String type):
+	JAVA org.fornax.cartridges.uml2.javabasic.DataTypeHelper.getTaggedValue(org.eclipse.uml2.uml.Element,
+		java.lang.String, java.lang.String, java.lang.String);
+
+boolean typeOf(uml::Type type1, xpand2::Type type2):
+	type2.isInstance(type1);
+
+//This extension return a standart primitive uml type with the given name.
+cached uml::Type getType (uml::Model model, String name) :
+	standardPrimitives(model).select(e|e.name==name).first();
+
+//Return a list with all primitive types saved in the model m.
+cached List[uml::PrimitiveType] standardPrimitives (uml::Model m) :
+	m.allOwnedElements().typeSelect(uml::PackageImport).importedPackage.allOwnedElements().typeSelect(uml::PrimitiveType);
+

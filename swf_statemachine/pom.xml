@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.salgar.swf_statemachine</groupId>
+	<artifactId>swf_statemachine</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>Spring WebFlow - State Machine</name>
+	<packaging>pom</packaging>
+	<build>
+		<plugins>
+			<plugin>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <configuration>
+			       <source>1.5</source>
+			       <target>1.5</target>
+			       <!-- ensure that the compile uses 
+				    the same encoding as the file
+				    encoding of the *.java 
+				--> 
+			       <compilerArguments>
+				       <encoding>utf8</encoding>
+			       </compilerArguments> 
+			    </configuration>			            
+         		</plugin>
+         		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+      			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>fornax.repository</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/m2/repository</url>
+		</repository>
+		<repository>
+			<id>fornax.repository snapshot</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/m2/snapshots</url>
+		</repository>
+	</repositories>
+	
+	<dependencyManagement>
+	</dependencyManagement>
+
+	<dependencies>
+	</dependencies>
+	<modules>
+		<module>../swf_statemachine_fornax_extension</module>		
+		<module>../swf_statemachine_domain</module>
+		<module>../swf_statemachine_xpand</module>
+		<module>../swf_statemachine_impl</module>
+		<module>../swf_statemachine_techdemo_domain</module>
+		<module>../swf_statemachine_sm_model</module>			
+		<module>../swf_statemachine_sm_model_impl</module>
+		<module>../swf_statemachine_techdemo</module>
+	</modules>
+	<properties>
+		<xsd.version>2.4.1</xsd.version>
+		<m2t>0.7.2</m2t>
+	</properties>
+</project>	

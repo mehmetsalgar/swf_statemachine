@@ -1,0 +1,101 @@
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+«EXTENSION templates::extensions::SwfStatemachineExtensions»
+
+«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Association::attribute FOR uml::Classifier»
+	«FOREACH AllAssociations().typeSelect(uml::Association) AS ass»
+		«LET ass.visibility AS assocationVisiblity»	
+			«FOREACH ass.ownedEnd.select(e|e.type.name!=name) AS a»
+				«IF getVisiblityName(assocationVisiblity) != 'public'»
+					«EXPAND field(assocationVisiblity) FOR a»
+				«ELSE»
+					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::field FOR a»
+				«ENDIF»
+			«ENDFOREACH»
+		«ENDLET»		
+	«ENDFOREACH»		
+«ENDAROUND»
+
+
+«DEFINE field(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
+	«IF isNavigable()»
+	 	«IF getUpper() == -1»
+	 		«assocationVisiblity» «getPropertyType()» «name» = «getPropertyTypeImpl()»;
+	 	«ELSE»
+	 		«assocationVisiblity» «type.fqName()» «name» = null;
+	 	«ENDIF»
+	 «ENDIF»
+«ENDDEFINE»
+
+
+«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Association::accessors FOR uml::Classifier»
+	«FOREACH AllAssociations().typeSelect(uml::Association) AS ass»
+		«LET ass.visibility AS assocationVisiblity»
+			«FOREACH ass.ownedEnd.select(e|e.type.name!=name) AS a»
+				«EXPAND accessors(assocationVisiblity) FOR a»
+			«ENDFOREACH»
+		«ENDLET»		
+	«ENDFOREACH»
+«ENDAROUND»
+
+«DEFINE accessors(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
+	«IF isNavigable()»
+		«IF getUpper() == -1»
+			«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionGetter»
+			
+			«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionSetter»
+			
+			«IF getGenerateAdditionalCollectionMethods()»
+				«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionAdder»
+				
+				«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionRemoveFrom»
+				
+				«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionRemoveAll»
+			«ENDIF»
+		«ELSEIF getUpper() == 1»
+			«EXPAND associationGetter(assocationVisiblity)»
+ 		
+ 			«EXPAND associationSetter(assocationVisiblity)»
+		«ENDIF»
+	«ENDIF»	
+«ENDDEFINE»
+
+«DEFINE associationGetter(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationAssociationGetter(this) FOR association»
+	«assocationVisiblity» «type.fqName()» «toGetter()»(){
+		return «name»;
+	}
+«ENDDEFINE»
+
+«DEFINE associationSetter(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationAssociationSetter(this) FOR association»
+	«assocationVisiblity» void «toSetter()»(«type.fqName()» «name»){
+		this.«name» = «name»;
+	}
+«ENDDEFINE»
+
+«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToString FOR uml::Class»
+	«IF getUseOverriddenEqualsHashcodeToString()» 		
+		«EXPAND toString_Method»
+	«ENDIF»
+«ENDAROUND»
+
+«DEFINE toString_Method FOR uml::Class»
+	/* (non-Javadoc) 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	«IF getJavaVersion() >= 5»@Override«ENDIF»
+	public String toString() {
+		return org.apache.commons.lang.builder.ToStringBuilder.reflectionToString(this);
+	}
+«ENDDEFINE»
+
+«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetter FOR uml::Property»
+	«IF isNavigable()»
+		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getter»
+		«IF !isReadOnly»
+			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::setter»
+		«ENDIF»
+	«ENDIF»
+«ENDAROUND»

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atmosphere-handlers>
+	<atmosphere-handler context-root="/primefaces_comet/*"
+		class- name="org.primefaces.comet.PrimeFacesCometHandler" />
+</atmosphere-handlers>

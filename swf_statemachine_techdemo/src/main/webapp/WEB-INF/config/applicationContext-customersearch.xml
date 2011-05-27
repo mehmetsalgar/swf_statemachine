@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-lazy-init="false">
+
+	<bean id="customerSearchInputBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchInputLayoutBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+		<property name="customerManager" ref="customerManager" />
+	</bean>
+	<bean id="customerSearchFoundBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchFoundBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+	</bean>
+	<bean id="customerSearchRunningBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchRunningBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+	</bean>
+	<bean id="customerSearchAuthenticationBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchAuthenticationBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+	</bean>
+	<bean id="customerSearchJoinBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchJoinBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+	</bean>
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_no1IMH_MEeC3BvKE9rGHVg" name="Domain">
+  <eAnnotations xmi:id="_Xo8HkH_NEeC3BvKE9rGHVg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_qJB-oH_NEeC3BvKE9rGHVg" name="Domain" nsURI="http:///schemas/Domain/_qHY_4H_NEeC3BvKE9rGHVg/1" nsPrefix="Domain">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_qJLvoH_NEeC3BvKE9rGHVg" name="orgsalgarstatemachinedomainStateMachine" instanceClassName="orgsalgarstatemachinedomainStateMachine">
+        <eAnnotations xmi:id="_qJLvoX_NEeC3BvKE9rGHVg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_TC0RAH_NEeC3BvKE9rGHVg"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_Xo8HkX_NEeC3BvKE9rGHVg" name="Domain" nsURI="http:///schemas/Domain/_XaVD0H_NEeC3BvKE9rGHVg/0" nsPrefix="Domain">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_Xo8Hkn_NEeC3BvKE9rGHVg" name="orgsalgarstatemachinedomainStateMachine" instanceClassName="orgsalgarstatemachinedomainStateMachine">
+        <eAnnotations xmi:id="_Xo8Hk3_NEeC3BvKE9rGHVg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_TC0RAH_NEeC3BvKE9rGHVg"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_TC0RAH_NEeC3BvKE9rGHVg" name="org.salgar.statemachine.domain.StateMachine"/>
+</uml:Profile>

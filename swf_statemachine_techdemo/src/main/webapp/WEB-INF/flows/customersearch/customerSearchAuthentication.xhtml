@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<p:outputPanel id="customerSearchAuthentication-empty-panel">
+		<p:outputPanel id="customerSearchAuthentication-panel" ajaxRendered="true"
+			layout="block" style="border:1px solid" rendered="#{customerSearchAuthenticationBB.customerSearchAuthenticationPanelRendered}">
+			<h:form id="customerAuthenticationForm" >
+				<h:panelGrid columns="1">
+					<h:outputText value="If you authenticate the customer please click below!" />
+					<h:selectBooleanCheckbox id="customerSearchAutheticationCheckBox" title="Authenticated" value="#{customerSearchAuthenticationBB.customerAuthenticated}" onchange="customerAuthenticated();" />					 								
+					<p:remoteCommand name="customerAuthenticated" action="onCustomerAuthenticated" update="customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel" />
+				</h:panelGrid>	    			    	
+			</h:form>
+	    </p:outputPanel>
+    </p:outputPanel>
+</ui:composition>

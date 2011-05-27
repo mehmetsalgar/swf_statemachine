@@ -1,0 +1,31 @@
+«DEFINE Root FOR uml::Model»
+	«EXPAND Root FOREACH (List[uml::Package])ownedElement»
+«ENDDEFINE»
+
+* Creates all packages
+*/
+«DEFINE Root FOR uml::Package»
+	«EXPAND Root FOREACH ownedType.typeSelect(uml::Interface).select(e|e.getAppliedStereotypes().isEmpty)»
+	«EXPAND Root FOREACH ownedType.typeSelect(uml::Class).select(e|e.getAppliedStereotypes().isEmpty)»
+	«EXPAND Root FOREACH nestedPackage»
+«ENDDEFINE»
+
+/**
+* Creates all interfaces
+*/
+«DEFINE Root FOR uml::Interface»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Interface::interface»
+«ENDDEFINE»
+
+/**
+* Creates all classes
+*/
+«DEFINE Root FOR uml::Class»
+	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Class::class»
+«ENDDEFINE»
+
+«DEFINE Root FOR Object»
+«ENDDEFINE»
+
+«DEFINE Root FOR PackageImport»
+«ENDDEFINE»

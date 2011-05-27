@@ -1,0 +1,134 @@
+«IMPORT uml»
+
+«EXTENSION utility»
+
+«DEFINE Root FOR uml::Model»
+	«FILE "org/salgar/swf_statemachine/enumeration/StateMachineEnumerationImpl.java"»
+		package org.salgar.swf_statemachine.enumeration;
+		
+		import org.salgar.statemachine.domain.StateMachineEnumeration;
+		
+		public enum StateMachineEnumerationImpl implements
+		StateMachineEnumeration {
+		«FOREACH allOwnedElements().typeSelect(uml::StateMachine) AS stateMachine SEPARATOR ','»
+			«stateMachine.name»("«stateMachine.name»")	
+			«EXPAND StateEnumeration(stateMachine)»	
+			«EXPAND EventEnumeration(stateMachine)»			
+		«ENDFOREACH»;
+		
+		private String name;
+
+		StateMachineEnumerationImpl(String name) {
+			this.name = name;
+		}
+	
+		public String getStateMachineName() {
+			return this.name;
+		}
+	
+		@Override
+		public String toString() {
+			return this.name;
+		}
+	 }		
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE StateEnumeration(uml::StateMachine sm) FOR uml::Model»
+	«FILE "org/salgar/swf_statemachine/enumeration/state/" + sm.name + "_StateEnumerationImpl.java"»
+		package org.salgar.swf_statemachine.enumeration.state;
+		
+		import org.salgar.statemachine.domain.StateEnumeration;
+		import org.salgar.statemachine.domain.StateMachineEnumeration;
+		import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
+				
+		public enum «sm.name»_StateEnumerationImpl implements StateEnumeration {
+		«FOREACH sm.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
+			«state.name»("«state.name.toLowerCase()»", StateMachineEnumerationImpl.«sm.name»)
+			«IF state.submachine != null»
+				,«EXPAND SubStateMachineStateEnumeration(sm, state.submachine)»
+			«ENDIF»			
+		«ENDFOREACH»;		
+	
+		private String stateName;
+		private StateMachineEnumeration stateMachineEnumeration;
+	
+		«sm.name»_StateEnumerationImpl(String stateName,
+				StateMachineEnumeration stateMachineEnumeration) {
+			this.stateName = stateName;
+			this.stateMachineEnumeration = stateMachineEnumeration;
+		}
+	
+		public String getStateName() {
+			return this.stateName;
+		}
+	
+		public StateMachineEnumeration getStateMachineName() {
+			return this.stateMachineEnumeration;
+		}
+	
+		@Override
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			sb.append("stateName: ");
+			sb.append(this.stateName);
+			sb.append(" stateMachine: ");
+			sb.append(this.stateMachineEnumeration.getStateMachineName());
+	
+			return sb.toString();
+		}
+	}
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE SubStateMachineStateEnumeration(uml::StateMachine sm, uml::StateMachine sub_sm) FOR uml::Model»
+	«FOREACH sub_sm.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
+			«state.name»("«state.name.toLowerCase()»", StateMachineEnumerationImpl.«sm.name»)
+			«IF state.submachine != null»
+				«EXPAND SubStateMachineStateEnumeration(sm, state.submachine)»
+			«ENDIF»
+		«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE EventEnumeration(uml::StateMachine sm) FOR uml::Model»
+	«FILE "org/salgar/swf_statemachine/enumeration/event/" + sm.name.toLowerCase() + "/" + sm.name +"_EventEnumerationImpl.java"»
+		package org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()»;
+
+		import org.salgar.statemachine.domain.EventEnumeration;
+		import org.salgar.statemachine.domain.StateMachineEnumeration;
+		import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
+		
+		public enum «sm.name»_EventEnumerationImpl implements EventEnumeration {
+			«FOREACH giveTransitionWithTrigger(sm.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','»
+				«trigger.name»("«trigger.name.toLowerCase()»", StateMachineEnumerationImpl.«sm.name»)
+			«ENDFOREACH»;
+			
+			private String eventName;
+			private StateMachineEnumeration stateMachineEnumeration;
+		
+			«sm.name»_EventEnumerationImpl(String eventName,
+					StateMachineEnumeration stateMachineEnumeration) {
+				this.eventName = eventName;
+				this.stateMachineEnumeration = stateMachineEnumeration;
+			}
+		
+			public StateMachineEnumeration getStatemachineName() {
+				return this.stateMachineEnumeration;
+			}
+		
+			public String getEventName() {
+				return this.eventName;
+			}
+		
+			@Override
+			public String toString() {
+				StringBuilder sb = new StringBuilder();
+				sb.append("eventName: ");
+				sb.append(this.eventName);
+				sb.append(" stateMachine: ");
+				sb.append(this.stateMachineEnumeration.getStateMachineName());
+				return sb.toString();
+			}
+		}
+	«ENDFILE»
+«ENDDEFINE»

@@ -1,0 +1,210 @@
+extension org::fornax::cartridges::uml2::javabasic::m2t::Misc;
+extension org::fornax::cartridges::uml2::javabasic::m2t::DataType;
+extension org::fornax::cartridges::uml2::javabasic::m2t::Properties;
+
+Void log (Object o) : 
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.log(java.lang.Object);
+
+Void log (Object o, String logMsg) : 
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.log(java.lang.Object, java.lang.String);
+
+/**
+* @returns The text formatted for Javadocs
+*/
+String formatJavaDoc(String text):
+	text.replaceAll("\\n", "\n* ").replaceAll("\\t", "");
+
+ 
+String formatComment2JavaDoc(uml::Element element, String prefix): 
+	formatComment2JavaDoc(element,prefix, getAnnotationSourceKey()); 
+
+String formatComment2JavaDoc(uml::Element element, String prefix, String propertyFileName):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.formatComment(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String);
+
+String formatParameterComment2JavaDoc(uml::Parameter parameter, String prefix, String annotation):
+	formatParameterComment2JavaDoc(parameter, prefix, annotation, getAnnotationSourceKey());
+
+String formatParameterComment2JavaDoc(uml::Parameter parameter, String prefix, String annotation, String propertyFileName):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.formatParameterComment(
+		org.eclipse.uml2.uml.Parameter,
+		java.lang.String,
+		java.lang.String,
+		java.lang.String);
+
+
+String getFQNPackageName(uml::Type type):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getFQNPackageName(org.eclipse.uml2.uml.Type);
+
+String getFQNPackagePath(uml::Type type):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getFQNPackagePath(org.eclipse.uml2.uml.Type);
+
+String fqName(Void v) :
+	"void";
+
+String fqName (uml::Type type, String prefix) :
+	type == null ? "void" : (
+		!{"boolean",  "byte", "char", "double", "float", "int", "long", "short", "void"}
+			.select(e|e.contains(prefix + type.name)).isEmpty ? prefix + type.name :
+			switch (prefix + type.name) {
+				case "Boolean"		: "java.lang.Boolean"
+				case "Byte"			: "java.lang.Byte"
+				case "Character"	: "java.lang.Character"
+				case "Collection" 	: "java.util.Collection"
+				case "Date" 		: "java.util.Date"
+				case "Decimal" 		: "java.math.BigDecimal"
+				case "Double" 		: "java.lang.Double"
+				case "Float" 		: "java.lang.Float"
+				case "Int" 			: "java.lang.Integer"
+				case "Integer" 		: "java.lang.Integer"
+				case "List" 		: "java.util.List"
+				case "Long" 		: "java.lang.Long"
+				case "Set"			: "java.util.Set"
+				case "Short"		: "java.lang.Short"
+				case "String" 		: "java.lang.String"
+				default: fqNameForComplexType(type, prefix)
+			}
+	)
+;
+
+String fqNameForComplexType(uml::Type type, String prefix):
+	type.getFQNPackageName() != "" ?
+		type.getFQNPackageName() + "." + prefix + type.name:
+		prefix + type.name;
+
+String fqName (uml::Type type) :
+	fqName(type, "");
+
+String fqName (uml::Parameter p) :
+	p == null ? "" : fqName(p.type);
+ 
+String fqName (uml::Property p) :
+	p == null ? "" : fqName(p.type); 
+	
+String uniqueName(uml::Type type):
+	type.uniqueName("");
+	
+String uniqueName(uml::Type type, String suffix):
+	type.getFQNPackageName().replaceAll("\\.", "_")
+		+"_"+type.name+((!isEmpty(suffix))?"_"+suffix:"");
+
+String uniqueName(uml::Operation operation, uml::Type ownerType):
+	operation.uniqueName(ownerType, "");
+	
+String uniqueName(uml::Operation operation, uml::Type ownerType, String suffix):
+	ownerType.uniqueName()+"_"+operation.name+((!isEmpty(suffix))?"_"+suffix:"")+"_"+
+		operation.ownedParameter.reject(e|!e.isVoid()).type.fqName();
+	
+	
+String xmiId (uml::Element object) : 
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getXmiId(org.eclipse.emf.ecore.EObject);
+
+List AllAttributes(uml::Classifier classifier):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getAllAttributes(org.eclipse.uml2.uml.Classifier);
+
+List AllOperations(uml::Classifier classifier):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getAllOperations(org.eclipse.uml2.uml.Classifier);
+
+List AllAssociations(uml::Classifier classifier):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getAllAssociations(org.eclipse.uml2.uml.Classifier);
+
+List AllDependencies(uml::NamedElement element):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.getAllDependencies(org.eclipse.uml2.uml.NamedElement);
+	
+boolean isUnnamed(uml::NamedElement elem) : 
+	isEmpty(elem.name);
+	
+Boolean isNameUnique (List[uml::NamedElement] elements) :
+	elements.forAll(p|!elements.exists(x|x.name==p.name && x!=p));
+
+/**
+* Returns wheather the given operation is allready implemented in one of the generalizations of the
+* corresponding class.
+*/	
+Boolean isImplementedInSuperClass(uml::Operation op) :
+	let opName = op.name :
+	if op.class.generalization.size > 0 then
+		op.class.generalization.get(0).general.AllOperations().exists(e|((uml::Operation)e).name == opName)
+	else 
+		false;
+		
+cached Set[uml::Operation] getAllOperationsThatRaisesExceptions(uml::Model model):
+	model.eAllContents.typeSelect(uml::Operation).select(e|e.raisedException.size > 0).toSet();
+
+cached Set[uml::Classifier] getAllExceptionsWithGeneralization(Set[uml::Classifier] exceptions):
+	exceptions.select(e|!((uml::Classifier)e).generalization.isEmpty);
+
+cached Set[uml::Type] getAllExceptions(uml::Model model):
+	let allRaisedExceptions = getAllOperationsThatRaisesExceptions(model).raisedException.toSet():
+	let allRaisedExceptionsWithGeneralization = getAllExceptionsWithGeneralization(allRaisedExceptions):
+	let returnValue = allRaisedExceptions.removeAll(allRaisedExceptionsWithGeneralization).addAll(allRaisedExceptionsWithGeneralization.getLastInGeneralizationHierarchy()):
+	returnValue;
+
+Boolean isException(uml::Type type):
+	getAllExceptions(type.getModel()).contains(type);
+		
+/**
+* Will return true in any case!
+*/
+Boolean isExceptionChecked(uml::Type exception):
+	true;
+
+/**
+* Returns the last classifier that represents the superparent for the given classifier.
+* Returns the given classifier itself if no generalization is present.
+*/	
+uml::Classifier getLastInGeneralizationHierarchy(uml::Classifier classifier):
+	if classifier.generalization.isEmpty then
+		classifier
+	else
+		getLastInGeneralizationHierarchy(classifier.generalization.first().general);
+
+/**
+* Returns weather or not a class should be treated as an entity and so on a interface, an
+* abstract class and the implemting class will be generated instead of a single plain class.
+*
+* For this purpose a property, from the properties-file of the controlling workflow, named
+* javabasic.entities will be readed. If this property is not present, any call to this method
+* will result in false as return value. 
+*
+* *WARNING*
+* Don't use it heavaly! It will be replaced or dropt in one of the next future releases.   
+*/	
+Boolean isEntity(uml::Class class):
+	getConfiguredEntities().contains(getFQNPackageName(class) + "." + class.name);
+
+cached List[String] getListOfConfiguredEntities():
+	getListFromString(getConfiguredEntities(), ",");
+	
+List getListFromString(String theString, String delimiter):
+	JAVA org.fornax.cartridges.uml2.javabasic.Helper.convertStringToList(java.lang.String, java.lang.String);
+	
+cached Set[uml::Operation] getAllOperationsThatRaisesExceptions(uml::Model model):
+	model.eAllContents.typeSelect(uml::Operation).select(e|e.raisedException.size > 0).toSet();
+
+cached Set[uml::Classifier] getAllExceptionsWithGeneralization(Set[uml::Classifier] exceptions):
+	exceptions.select(e|!((uml::Classifier)e).generalization.isEmpty);
+
+cached Set[uml::Type] getAllExceptions(uml::Model model):
+	let allRaisedExceptions = getAllOperationsThatRaisesExceptions(model).raisedException.toSet():
+	let allRaisedExceptionsWithGeneralization = getAllExceptionsWithGeneralization(allRaisedExceptions):
+	let returnValue = allRaisedExceptions.removeAll(allRaisedExceptionsWithGeneralization).addAll(allRaisedExceptionsWithGeneralization.getLastInGeneralizationHierarchy()):
+	returnValue;
+
+Boolean isException(uml::Type type):
+	getAllExceptions(type.getModel()).contains(type);
+
+/**
+* Will return true in any case!
+*/
+Boolean isExceptionChecked(uml::Type exception):
+	true;
+
+/**
+* Returns the last classifier that represents the superparent for the given classifier.
+* Returns the given classifier itself if no generalization is present.
+*/	
+uml::Classifier getLastInGeneralizationHierarchy(uml::Classifier classifier):
+	if classifier.generalization.isEmpty then
+		classifier
+	else
+		getLastInGeneralizationHierarchy(classifier.generalization.first().general);

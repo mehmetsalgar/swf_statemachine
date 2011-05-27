@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="org">
+    <packagedElement xmi:type="uml:Package" xmi:id="_JNuOcH-9EeCK4vYmII23UA" name="salgar">
+      <packagedElement xmi:type="uml:Package" xmi:id="_UK9_IH-9EeCK4vYmII23UA" name="swf_statemachine">
+        <packagedElement xmi:type="uml:Package" xmi:id="_WnV68H-9EeCK4vYmII23UA" name="techdemo">
+          <packagedElement xmi:type="uml:Package" xmi:id="_Z0BSUH-9EeCK4vYmII23UA" name="domain">
+            <packagedElement xmi:type="uml:Class" xmi:id="_kwXrKH-9EeCK4vYmII23UA" name="Customer">
+              <ownedAttribute xmi:id="_l_E58n-9EeCK4vYmII23UA" name="customerNumber">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="__FzGwn-9EeCK4vYmII23UA" name="firstName">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_CfSyIn--EeCK4vYmII23UA" name="lastName">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_e7-qoH-9EeCK4vYmII23UA" name="listener">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_MU1T6H--EeCK4vYmII23UA" name="AsynchroneListener">
+              <ownedOperation xmi:id="_OxNPsn--EeCK4vYmII23UA" name="doResult" isAbstract="true">
+                <ownedParameter xmi:id="_TStsAH--EeCK4vYmII23UA" name="payload">
+                  <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_mUYTMH_LEeC3BvKE9rGHVg" name="AbstractAsynchroneListener" clientDependency="_paDDo3_LEeC3BvKE9rGHVg" isAbstract="true">
+              <ownedAttribute xmi:id="_11iCAn_NEeC3BvKE9rGHVg" name="stateMachine">
+                <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
+              </ownedAttribute>
+              <interfaceRealization xmi:id="_paDDo3_LEeC3BvKE9rGHVg" name="InterfaceRealization1" supplier="_MU1T6H--EeCK4vYmII23UA" client="_mUYTMH_LEeC3BvKE9rGHVg" contract="_MU1T6H--EeCK4vYmII23UA"/>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_iP9j4H-9EeCK4vYmII23UA" name="manager">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_a8ReYH--EeCK4vYmII23UA" name="CustomerManager">
+              <ownedOperation xmi:id="_cf_68H--EeCK4vYmII23UA" name="findCustomer">
+                <ownedParameter xmi:id="_eaPaEH--EeCK4vYmII23UA" name="customerNumber">
+                  <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_zKoe0X_JEeC3BvKE9rGHVg" name="asynchronousListener" type="_MU1T6H--EeCK4vYmII23UA"/>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_htcdoYEmEeC0au1QwVWf1Q" name="event">
+            <packagedElement xmi:type="uml:Class" xmi:id="_nGQVYIEmEeC0au1QwVWf1Q" name="CustomerSearchStartEventPayload">
+              <ownedAttribute xmi:id="_rfcjMoEmEeC0au1QwVWf1Q" name="customerNumber">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_xT-GkoEmEeC0au1QwVWf1Q" name="customerManager" type="_a8ReYH--EeCK4vYmII23UA"/>
+              <ownedAttribute xmi:id="_ch8MooEnEeC0au1QwVWf1Q" name="customerListener" type="_mUYTMH_LEeC3BvKE9rGHVg"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <profileApplication xmi:id="_7bms8H-9EeCK4vYmII23UA">
+    <eAnnotations xmi:id="_7bms8X-9EeCK4vYmII23UA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="Java.profile.uml#_0MLQ8CPrEeC6cqnheF0QVw"/>
+    </eAnnotations>
+    <appliedProfile href="Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
+  </profileApplication>
+  <profileApplication xmi:id="_0jGJwH_NEeC3BvKE9rGHVg">
+    <eAnnotations xmi:id="_0jGJwX_NEeC3BvKE9rGHVg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="domain.profile.uml#_qJB-oH_NEeC3BvKE9rGHVg"/>
+    </eAnnotations>
+    <appliedProfile href="domain.profile.uml#_no1IMH_MEeC3BvKE9rGHVg"/>
+  </profileApplication>
+</uml:Model>

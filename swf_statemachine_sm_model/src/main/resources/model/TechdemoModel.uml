@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:swf_statemachine="http:///schemas/swf_statemachine/_St5bIHcgEeC3vsFXsgpuAw/9" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/swf_statemachine/_St5bIHcgEeC3vsFXsgpuAw/9 ../swf_statemachine.profile.uml#_St5bIXcgEeC3vsFXsgpuAw">
+  <uml:Model xmi:id="idModel" name="TechdemoModelModel">
+    <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="org">
+      <packagedElement xmi:type="uml:Package" xmi:id="_j9y1EFSDEeCXppvRWRtxXw" name="salgar">
+        <packagedElement xmi:type="uml:Package" xmi:id="_m7MaUFSDEeCXppvRWRtxXw" name="swf_statemachine">
+          <packagedElement xmi:type="uml:Package" xmi:id="_pyohgFSDEeCXppvRWRtxXw" name="techdemo"/>
+          <packagedElement xmi:type="uml:StateMachine" xmi:id="idStateMachine" name="TechdemoModel">
+            <region xmi:id="idRegion" name="MainRegion">
+              <subvertex xmi:type="uml:State" xmi:id="__2w1IlSFEeCXppvRWRtxXw" name="WAITING_TEXTENTRY"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_DdSP41SGEeCXppvRWRtxXw" name="Start"/>
+              <subvertex xmi:type="uml:State" xmi:id="_nvYI8FSGEeCXppvRWRtxXw" name="WAITING_REVERSE_TEXTENTRY"/>
+              <subvertex xmi:type="uml:State" xmi:id="_STzCEFSPEeCXppvRWRtxXw" name="WAITING_TEXTENTRY_WITH_EXISTINGTEXT"/>
+              <transition xmi:id="_GblNBlSGEeCXppvRWRtxXw" name="Transition1" kind="local" source="_DdSP41SGEeCXppvRWRtxXw" target="__2w1IlSFEeCXppvRWRtxXw"/>
+              <transition xmi:id="_TkOStVSQEeCXppvRWRtxXw" name="Transition2" kind="local" source="__2w1IlSFEeCXppvRWRtxXw" target="_nvYI8FSGEeCXppvRWRtxXw">
+                <trigger xmi:id="_igTQcFSQEeCXppvRWRtxXw" name="onAddTextEntryClick" event="_tdHjUFSQEeCXppvRWRtxXw"/>
+              </transition>
+              <transition xmi:id="_waqShVSQEeCXppvRWRtxXw" name="Transition3" kind="local" source="_nvYI8FSGEeCXppvRWRtxXw" target="_STzCEFSPEeCXppvRWRtxXw">
+                <trigger xmi:id="_yKIFAFSQEeCXppvRWRtxXw" name="onNewTextClick" event="_2KuzsFSQEeCXppvRWRtxXw"/>
+              </transition>
+              <transition xmi:id="_UffytFSREeCXppvRWRtxXw" name="Transition4" kind="local" source="_nvYI8FSGEeCXppvRWRtxXw" target="__2w1IlSFEeCXppvRWRtxXw" guard="_NmG8MFSVEeCXppvRWRtxXw">
+                <ownedRule xmi:id="_NmG8MFSVEeCXppvRWRtxXw" name="isThereAnyMoreTextEntries"/>
+                <trigger xmi:id="_9vUCoFSUEeCXppvRWRtxXw" name="onDeleteTextEntryClick" event="_KR6AgFSVEeCXppvRWRtxXw"/>
+              </transition>
+              <transition xmi:id="_XK_y1FSVEeCXppvRWRtxXw" name="Transition5" kind="local" source="_nvYI8FSGEeCXppvRWRtxXw" target="_STzCEFSPEeCXppvRWRtxXw">
+                <trigger xmi:id="_auRsUFSVEeCXppvRWRtxXw" name="onReverseTextEntryClick" event="_gjkEsFSVEeCXppvRWRtxXw"/>
+              </transition>
+              <transition xmi:id="_QCV4pFSWEeCXppvRWRtxXw" name="Transition6" kind="local" source="_STzCEFSPEeCXppvRWRtxXw" target="__2w1IlSFEeCXppvRWRtxXw" guard="_YZy2UFSXEeCXppvRWRtxXw">
+                <ownedRule xmi:id="_YZy2UFSXEeCXppvRWRtxXw" name="isMoreTextEntryAvailable"/>
+                <trigger xmi:id="_ZX7vAFSWEeCXppvRWRtxXw" name="onDeleteTextEntry" event="_KR6AgFSVEeCXppvRWRtxXw"/>
+              </transition>
+              <transition xmi:id="_d_2f5FSXEeCXppvRWRtxXw" name="Transition7" kind="local" source="_nvYI8FSGEeCXppvRWRtxXw" target="__2w1IlSFEeCXppvRWRtxXw">
+                <trigger xmi:id="_hDyyAFSXEeCXppvRWRtxXw" name="onDeleteTextEntryClick" event="_KR6AgFSVEeCXppvRWRtxXw"/>
+              </transition>
+              <transition xmi:id="_ZuTG5VViEeCpeJKLb-e8hg" name="Transition8" kind="local" source="_STzCEFSPEeCXppvRWRtxXw" target="_nvYI8FSGEeCXppvRWRtxXw">
+                <trigger xmi:id="_bDFvkFViEeCpeJKLb-e8hg" name="onAddTextEntryClick" event="_tdHjUFSQEeCXppvRWRtxXw"/>
+              </transition>
+            </region>
+          </packagedElement>
+          <packagedElement xmi:type="uml:SignalEvent" xmi:id="_tdHjUFSQEeCXppvRWRtxXw" name="AddTextEntryClickEvent"/>
+          <packagedElement xmi:type="uml:SignalEvent" xmi:id="_2KuzsFSQEeCXppvRWRtxXw" name="NewTextClickEvent"/>
+          <packagedElement xmi:type="uml:SignalEvent" xmi:id="_KR6AgFSVEeCXppvRWRtxXw" name="DeleteTextEntryClickEvent"/>
+          <packagedElement xmi:type="uml:SignalEvent" xmi:id="_gjkEsFSVEeCXppvRWRtxXw" name="ReverseTextEntryClickEvent"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="_rEe4YXcIEeChHqmjAgGwRw" name="customersearch">
+            <packagedElement xmi:type="uml:Package" xmi:id="_1_WqgHcIEeChHqmjAgGwRw" name="guistate">
+              <packagedElement xmi:type="uml:Class" xmi:id="_qWJWQHcJEeChHqmjAgGwRw" name="CustomerSearchGuiState">
+                <ownedAttribute xmi:id="_vaG_YHcJEeChHqmjAgGwRw" name="renderCustomerSearchInput">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_KHMtEncKEeChHqmjAgGwRw" name="renderCustomerSearchRunning">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_Pjrj4ncKEeChHqmjAgGwRw" name="renderCustomerSearchFound">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_Y-obYncKEeChHqmjAgGwRw" name="renderCustomerSearchAuthentication">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_g4JVUncKEeChHqmjAgGwRw" name="renderCustomerSearchJoin">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+                </ownedAttribute>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_9XIJUHcIEeChHqmjAgGwRw" name="controlobject">
+              <packagedElement xmi:type="uml:Class" xmi:id="_8TaQQHcNEeChHqmjAgGwRw" name="AbstractCustomerSearchControlObject" clientDependency="_tugWtH0_EeCgupXlFDV_aQ _ucZ-gH0_EeCgupXlFDV_aQ _vF1WAH0_EeCgupXlFDV_aQ _vmLC9H0_EeCgupXlFDV_aQ _wKreMH0_EeCgupXlFDV_aQ _wvxvVH0_EeCgupXlFDV_aQ" isAbstract="true">
+                <ownedAttribute xmi:id="_VGY9gncVEeChHqmjAgGwRw" name="customerNumberInternal" visibility="package" isReadOnly="true">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mXMeEHyTEeCgupXlFDV_aQ" value="1"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_oHOTMn-yEeCK4vYmII23UA" name="customerSearchInputRenderPanels " visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_qLNTIoExEeC0au1QwVWf1Q" name="customerInternal" visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="../techdemo-domain.profile.uml#_uPcxYIFBEeC0au1QwVWf1Q"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_DlPgoobcEeCgzO61Ewoybw" name="customerAuthenticatedInternal" visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_eP6-0odxEeCgzO61Ewoybw" name="customerJoinedInternal" visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                </ownedAttribute>
+                <interfaceRealization xmi:id="_tugWtH0_EeCgupXlFDV_aQ" name="InterfaceRealization1" supplier="_NpckMHyOEeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NpckMHyOEeCgupXlFDV_aQ"/>
+                <interfaceRealization xmi:id="_ucZ-gH0_EeCgupXlFDV_aQ" name="InterfaceRealization2" supplier="_YJtf4H08EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_YJtf4H08EeCgupXlFDV_aQ"/>
+                <interfaceRealization xmi:id="_vF1WAH0_EeCgupXlFDV_aQ" name="InterfaceRealization3" supplier="_hJ3m4H0-EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_hJ3m4H0-EeCgupXlFDV_aQ"/>
+                <interfaceRealization xmi:id="_vmLC9H0_EeCgupXlFDV_aQ" name="InterfaceRealization4" supplier="_p5H2AH0-EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_p5H2AH0-EeCgupXlFDV_aQ"/>
+                <interfaceRealization xmi:id="_wKreMH0_EeCgupXlFDV_aQ" name="InterfaceRealization5" supplier="_9guHuH0-EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_9guHuH0-EeCgupXlFDV_aQ"/>
+                <interfaceRealization xmi:id="_wvxvVH0_EeCgupXlFDV_aQ" name="InterfaceRealization6" supplier="_NjlHUH0_EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NjlHUH0_EeCgupXlFDV_aQ"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_eMLhgHcOEeChHqmjAgGwRw" name="A_&lt;abstractCustomerSearchControlObject>_&lt;customerSearchGuiState>" visibility="protected" memberEnd="_eMLhgXcOEeChHqmjAgGwRw _eMLhhHcOEeChHqmjAgGwRw" navigableOwnedEnd="_eMLhhHcOEeChHqmjAgGwRw">
+                <ownedEnd xmi:id="_eMLhgXcOEeChHqmjAgGwRw" name="abstractCustomerSearchControlObject" type="_8TaQQHcNEeChHqmjAgGwRw" association="_eMLhgHcOEeChHqmjAgGwRw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eMLhgncOEeChHqmjAgGwRw" value="1"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eMLhg3cOEeChHqmjAgGwRw" value="1"/>
+                </ownedEnd>
+                <ownedEnd xmi:id="_eMLhhHcOEeChHqmjAgGwRw" name="actualGuiState" type="_qWJWQHcJEeChHqmjAgGwRw" association="_eMLhgHcOEeChHqmjAgGwRw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eMLhhXcOEeChHqmjAgGwRw" value="1"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eMLhhncOEeChHqmjAgGwRw" value="1"/>
+                </ownedEnd>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_NpckMHyOEeCgupXlFDV_aQ" name="CustomerSearchCO">
+                <ownedOperation xmi:id="_Bk2CgnyREeCgupXlFDV_aQ" name="getCustomerNumber" isAbstract="true">
+                  <ownedParameter xmi:id="_ETL4EHyREeCgupXlFDV_aQ" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_YJtf4H08EeCgupXlFDV_aQ" name="CustomerSearchInputCO">
+                <ownedOperation xmi:id="_ecpdkH08EeCgupXlFDV_aQ" name="getRenderCustomerSearchInput" isAbstract="true">
+                  <ownedParameter xmi:id="_lhDUcH08EeCgupXlFDV_aQ" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:id="_faJ1Yn-yEeCK4vYmII23UA" name="getCustomerSearchRenderPanels" isAbstract="true">
+                  <ownedParameter xmi:id="_i6pgoH-yEeCK4vYmII23UA" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_hJ3m4H0-EeCgupXlFDV_aQ" name="CustomerSearchRunningCO">
+                <ownedOperation xmi:id="_llJfYn0-EeCgupXlFDV_aQ" name="getRenderCustomerSearchRunning" isAbstract="true">
+                  <ownedParameter xmi:id="_n6wr4H0-EeCgupXlFDV_aQ" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_p5H2AH0-EeCgupXlFDV_aQ" name="CustomerSearchFoundCO">
+                <ownedOperation xmi:id="_3VFr4n0-EeCgupXlFDV_aQ" name="getRenderCustomerSearchFound" isAbstract="true">
+                  <ownedParameter xmi:id="_6gyL0H0-EeCgupXlFDV_aQ" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:id="_tlxs0oFCEeC0au1QwVWf1Q" name="getCustomer" isAbstract="true">
+                  <ownedParameter xmi:id="_vutvQIFCEeC0au1QwVWf1Q" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="../techdemo-domain.profile.uml#_uPcxYIFBEeC0au1QwVWf1Q"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_9guHuH0-EeCgupXlFDV_aQ" name="CustomerSearchAuthenticationCO">
+                <ownedOperation xmi:id="_CxCx0n0_EeCgupXlFDV_aQ" name="getRenderCustomerSearchAuthentication" isAbstract="true">
+                  <ownedParameter xmi:id="_Fg4cMH0_EeCgupXlFDV_aQ" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:id="_ia5GgobZEeCgzO61Ewoybw" name="getCustomerAuthenticated" isAbstract="true">
+                  <ownedParameter xmi:id="_lW8n8IbZEeCgzO61Ewoybw" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_NjlHUH0_EeCgupXlFDV_aQ" name="CustomerSearchJoinCO">
+                <ownedOperation xmi:id="_SBO-Yn0_EeCgupXlFDV_aQ" name="getRenderCustomerJoin" isAbstract="true">
+                  <ownedParameter xmi:id="_TtkkYH0_EeCgupXlFDV_aQ" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:id="_XjEFQodxEeCgzO61Ewoybw" name="getCustomerJoined" isAbstract="true">
+                  <ownedParameter xmi:id="_ZShQsIdxEeCgzO61Ewoybw" name="return" direction="return">
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:StateMachine" xmi:id="_vsIb0H1REeCgupXlFDV_aQ" name="CustomerSearchSM">
+              <region xmi:id="_vsIb0X1REeCgupXlFDV_aQ" name="Region">
+                <subvertex xmi:type="uml:Pseudostate" xmi:id="_2m3ZUH1REeCgupXlFDV_aQ" name="start"/>
+                <subvertex xmi:type="uml:State" xmi:id="_41VcAn1REeCgupXlFDV_aQ" name="WAITING_CUSTOMERSEARCH_START"/>
+                <subvertex xmi:type="uml:State" xmi:id="_NNY6Qn1SEeCgupXlFDV_aQ" name="CUSTOMERSEARCH_RUNNING"/>
+                <subvertex xmi:type="uml:State" xmi:id="_gvoDIoEpEeC0au1QwVWf1Q" name="CUSTOMER_FOUND"/>
+                <subvertex xmi:type="uml:State" xmi:id="_X3DXgobdEeCgzO61Ewoybw" name="CUSTOMER_AUTHENTICATED"/>
+                <subvertex xmi:type="uml:State" xmi:id="_qRRQ0odxEeCgzO61Ewoybw" name="CUSTOMER_JOINED"/>
+                <transition xmi:id="_CqMBRn1SEeCgupXlFDV_aQ" name="InitialTransition" kind="local" source="_2m3ZUH1REeCgupXlFDV_aQ" target="_41VcAn1REeCgupXlFDV_aQ"/>
+                <transition xmi:id="_WYYDJX1SEeCgupXlFDV_aQ" name="SearchRunningTransition" kind="local" source="_41VcAn1REeCgupXlFDV_aQ" target="_NNY6Qn1SEeCgupXlFDV_aQ">
+                  <trigger xmi:id="_cOjzYH1SEeCgupXlFDV_aQ" name="onStartSearch" event="_kvhH0H1SEeCgupXlFDV_aQ"/>
+                </transition>
+                <transition xmi:id="_lJ_8tYEpEeC0au1QwVWf1Q" name="CustomerFoundTransition" source="_NNY6Qn1SEeCgupXlFDV_aQ" target="_gvoDIoEpEeC0au1QwVWf1Q">
+                  <trigger xmi:id="_l_gBUIEpEeC0au1QwVWf1Q" name="onCustomerFound" event="_qTnh4IEpEeC0au1QwVWf1Q"/>
+                </transition>
+                <transition xmi:id="_cQF0VYbdEeCgzO61Ewoybw" name="CustomerAuthenticatedTransition" source="_gvoDIoEpEeC0au1QwVWf1Q" target="_X3DXgobdEeCgzO61Ewoybw">
+                  <trigger xmi:id="_dXwnAIbdEeCgzO61Ewoybw" name="onCustomerAuthenticatedClicked" event="_PaRzsIeGEeCgzO61Ewoybw"/>
+                </transition>
+                <transition xmi:id="_s4dVhYdxEeCgzO61Ewoybw" name="CustomerJoinedTransition" source="_X3DXgobdEeCgzO61Ewoybw" target="_qRRQ0odxEeCgzO61Ewoybw">
+                  <trigger xmi:id="_3BaigIdxEeCgzO61Ewoybw" name="onCustomerJoinedClicked" event="_hsbRMIeNEeCgzO61Ewoybw"/>
+                </transition>
+                <transition xmi:id="_HYB0hIeGEeCgzO61Ewoybw" name="CustomerAuthenticationRemovedTransition" source="_qRRQ0odxEeCgzO61Ewoybw" target="_gvoDIoEpEeC0au1QwVWf1Q">
+                  <trigger xmi:id="_J2urkIeGEeCgzO61Ewoybw" name="onCustomerAuthenticatedClicked" event="_PaRzsIeGEeCgzO61Ewoybw"/>
+                </transition>
+                <transition xmi:id="_ZocQ1IeGEeCgzO61Ewoybw" name="CustomerAuthenticationRemovedTransition" source="_X3DXgobdEeCgzO61Ewoybw" target="_gvoDIoEpEeC0au1QwVWf1Q">
+                  <trigger xmi:id="_fFbd8IeGEeCgzO61Ewoybw" name="onCustomerAuthenticatedClicked" event="_PaRzsIeGEeCgzO61Ewoybw"/>
+                </transition>
+                <transition xmi:id="_LP-kNYeLEeCgzO61Ewoybw" name="CustomerJoinRemovedTransition" kind="local" source="_qRRQ0odxEeCgzO61Ewoybw" target="_X3DXgobdEeCgzO61Ewoybw">
+                  <trigger xmi:id="_TW_HkIeLEeCgzO61Ewoybw" name="onCustomerJoinedClicked" event="_hsbRMIeNEeCgzO61Ewoybw"/>
+                </transition>
+              </region>
+            </packagedElement>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_kvhH0H1SEeCgupXlFDV_aQ" name="START_SEARCH"/>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_qTnh4IEpEeC0au1QwVWf1Q" name="CUSTOMER_FOUND"/>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_PaRzsIeGEeCgzO61Ewoybw" name="CUSTOMER_AUTHENTICATED_CLICKED"/>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_hsbRMIeNEeCgzO61Ewoybw" name="CUSTOMER_JOINED_CLICKED"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_DlFD4HcKEeChHqmjAgGwRw">
+      <eAnnotations xmi:id="_DlFD4XcKEeChHqmjAgGwRw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_0MLQ8CPrEeC6cqnheF0QVw"/>
+      </eAnnotations>
+      <appliedProfile href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QEvscH1TEeCgupXlFDV_aQ">
+      <eAnnotations xmi:id="_QFfTUH1TEeCgupXlFDV_aQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../swf_statemachine.profile.uml#_St5bIXcgEeC3vsFXsgpuAw"/>
+      </eAnnotations>
+      <appliedProfile href="../swf_statemachine.profile.uml#_xmxqwTs-EeCJKOn_XK7noQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_Hr2TQIFCEeC0au1QwVWf1Q">
+      <eAnnotations xmi:id="_HsAEQIFCEeC0au1QwVWf1Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../techdemo-domain.profile.uml#_5f7AEYFBEeC0au1QwVWf1Q"/>
+      </eAnnotations>
+      <appliedProfile href="../techdemo-domain.profile.uml#_ob0l4IFBEeC0au1QwVWf1Q"/>
+    </profileApplication>
+  </uml:Model>
+  <swf_statemachine:SwfStateMachine xmi:id="_RabtAH1TEeCgupXlFDV_aQ" Scope="session" base_StateMachine="_vsIb0H1REeCgupXlFDV_aQ"/>
+  <swf_statemachine:SwfTransition xmi:id="_jXs-UH1oEeCE0faYy3-Yyw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerSearchRunningAction" base_Transition="_WYYDJX1SEeCgupXlFDV_aQ"/>
+  <swf_statemachine:SwfTransition xmi:id="_QyFHsIExEeC0au1QwVWf1Q" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerFoundAction" base_Transition="_lJ_8tYEpEeC0au1QwVWf1Q"/>
+  <swf_statemachine:SwfTransition xmi:id="_MODdMIdjEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticatedAction" base_Transition="_cQF0VYbdEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="__wzUgIdxEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAction" base_Transition="_s4dVhYdxEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_LoGQoIeIEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAuthenticationRemovedAction" base_Transition="_HYB0hIeGEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_gPgkEIeJEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticationRemovedAction" base_Transition="_ZocQ1IeGEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_xLp_UIeNEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_LP-kNYeLEeCgzO61Ewoybw"/>
+</xmi:XMI>

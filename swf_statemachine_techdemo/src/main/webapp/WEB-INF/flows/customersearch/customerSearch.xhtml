@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<f:view contentType="text/html" encoding="UTF-8">
+		<h:head>
+			<title>Customer Search - Spring WebFlow - Primefaces - State Machine Demo</title>
+			<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+			<script type="text/javascript">				
+				function handlePublish(pushed) {
+					PrimeFaces.ajax.AjaxRequest('/swf_statemachine_techdemo-1.0-SNAPSHOT/spring/customersearch?jsessionId=#{externalContext.nativeRequest.session.id}&amp;execution=#{flowExecutionContext.key}',{formId:'customerSearchCustomerDetail_form',async:true,global:true,source:'customerSearchCustomerDetail_form:customerSearchViewCustomerDetail',process:'@all',update:'customerSearchRunning-panel_empty_layout customerSearchFound-empty-panel customerSearchAuthentication-empty-panel'});return false;							
+				}
+			</script>
+		</h:head>
+		<body>
+			<ui:include src="customerSearchInput.xhtml" />
+			<ui:include src="customerSearchRunning.xhtml" />
+			<ui:include src="customerSearchFound.xhtml" />
+			<ui:include src="customerSearchAuthentication.xhtml" />
+			<ui:include src="customerSearchJoin.xhtml" />
+			<h:form id="customerSearchCustomerDetail_form">
+				<p:push id="cometPush" onpublish="handlePublish" channel="customer_search_result" />							
+				<p:commandButton id="customerSearchViewCustomerDetail" value="Continue"
+		    				ajax="true" update="customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel">
+		    	</p:commandButton>
+		    </h:form>
+		</body>
+	</f:view>
+</html>

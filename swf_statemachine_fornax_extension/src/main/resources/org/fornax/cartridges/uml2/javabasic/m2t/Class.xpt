@@ -1,0 +1,229 @@
+«REM»
+   Copyright 2006 The Fornax Project Team
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+ 	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+	-------
+	@author Thorsten Kamann <thorsten.kamann@googlemail.com>
+	@author Andre© Neumann <andre.v.neumann@gmx.de>
+«ENDREM»
+
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
+«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::SerialVersionUID»
+  
+/**
+*	Creates a java class with full support for generalization and realization
+*/
+«DEFINE class FOR uml::Class»
+	«IF isEntity(this)»
+		«EXPAND Entity::entityInterface»
+		«EXPAND Entity::entityAbstractClass»
+		«EXPAND Entity::entityBasicClass»
+	«ELSEIF isException()»
+		«EXPAND Exception::exception(false)»
+	«ELSE»
+		«IF getClassesOperationImplementationStrategy() == "pr"»
+			«FILE getFQNPackagePath()+"/"+name+".java" outletSrcProtectedDir»
+				«EXPAND classContent FOR this»
+			«ENDFILE»
+		«ELSE»
+			«FILE getFQNPackagePath()+"/"+name+".java"»
+				«EXPAND classContent FOR this»
+			«ENDFILE»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE class FOR uml::StateMachine»
+«ENDDEFINE»
+
+«DEFINE classContent FOR uml::Class»
+	«getTypeHeader()»
+	
+	«EXPAND package FOR this»
+	
+	«IF getClassesOperationImplementationStrategy() == "pr"»
+		«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@imports: Imports"»
+		«ENDPROTECT»
+	«ENDIF»	
+	
+	«EXPAND Documentation::documentation»
+	public «IF isAbstract»abstract«ENDIF» class «name»
+		«EXPAND Generalization::generalization»
+		«EXPAND Realization::realization»{
+		«EXPAND SerialVersionUID::serialVersionUIDField»
+		«EXPAND Attribute::attribute»
+		«EXPAND Association::attribute»
+		«IF getClassesOperationImplementationStrategy() == "pr"»
+			«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@attributes: Place additional attributes here"»
+			«ENDPROTECT»
+		«ENDIF»			
+		«EXPAND Attribute::staticAttribute»
+
+		«EXPAND Attribute::getterSetter»
+		«IF getClassesOperationImplementationStrategy() == "pr"»
+			«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@getterSetter: Place Getter and Setter for the additional attributes here"»
+			«ENDPROTECT»
+		«ENDIF»	
+		«IF getClassesOperationImplementationStrategy() == "pr"»
+			«FOREACH AllOperations().typeSelect(uml::Operation).select(o|!o.isAbstract).reject(e|e.isImplementedInSuperClass()) AS op»
+				«EXPAND Operation::operationSimpleHead FOR op»
+				«EXPAND Operation::operationSignature(false) FOR op»
+				«EXPAND Operation::operationBodyStart FOR op»
+				«PROTECT CSTART '/*' CEND '*/' ID op.uniqueName(this)»
+					//TODO implement
+					«EXPAND Operation::operationBody FOR op»
+					//END
+				«ENDPROTECT»
+				«EXPAND Operation::operationBodyEnd(false) FOR op»
+			«ENDFOREACH»
+			
+			«IF !generalization.isEmpty»
+				«FOREACH ((uml::Generalization) generalization.get(0)).general.getOperations() AS op»
+					«EXPAND Operation::superOperationHead FOR op»
+					«EXPAND Operation::superOperationSignature FOR op»
+					«EXPAND Operation::superOperationBodyStart FOR op»
+					«PROTECT CSTART '/*' CEND '*/' ID op.uniqueName(this)»
+						//TODO implement
+						«EXPAND Operation::superOperationBody FOR op»
+						//END
+					«ENDPROTECT»
+					«EXPAND Operation::superOperationBodyEnd FOR op»
+				«ENDFOREACH»
+			«ENDIF»
+			
+			
+			«IF getClassesOperationImplementationStrategy() == "pr"»
+				«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@operations: Add addtional operations here"»
+				«ENDPROTECT»
+			«ENDIF»	
+		«ELSE»
+			«EXPAND Operation::operation»	
+			«EXPAND Generalization::operation»
+		«ENDIF»			
+		«EXPAND Association::accessors»
+		«IF getClassesOperationImplementationStrategy() == "pr"»
+			«PROTECT CSTART '/*' CEND '*/' ID this.uniqueName()+"@associations: Add additional operations for associations here"»
+			«ENDPROTECT»
+		«ENDIF»
+		
+		«EXPAND overwriteHashcodeEqualsToString»	
+	}
+		
+	«getTypeFooter()»
+«ENDDEFINE»
+
+«DEFINE package FOR uml::Class»
+       package «getFQNPackageName()»;
+«ENDDEFINE»
+
+
+«DEFINE overwriteHashcodeEqualsToString FOR uml::Class»
+	«IF getUseOverriddenEqualsHashcodeToString()» 
+		«EXPAND equals_Method»
+		«EXPAND hashcode_Method»
+		«EXPAND toString_Method»
+	«ENDIF»
+«ENDDEFINE»
+
+«REM»
+This equals (like the hashcode) implementation uses the concept of 'value equality'.
+That means that two objects are the eaqual, if all properties have the
+same values. We don't include collections.
+«ENDREM»
+«DEFINE equals_Method FOR uml::Class»
+/* (non-Javadoc) 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+«IF getJavaVersion() >= 5»@Override«ENDIF»
+public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (this == obj)
+			return true;
+		if (!(obj instanceof «name»))
+			return false;
+		«IF this.getAppliedStereotypes().name.endsWith("Entity").contains(true)»
+		final «abstractClassName(name)» other = («abstractClassName(name)») obj;
+		«ELSE»
+		final «name» other = («name») obj;
+		«ENDIF»
+		«FOREACH AllAttributes().reject(e|((uml::Property)e).isMultivalued() || ((uml::Property)e).isStatic) AS attr»«REM»Do nothing for collections«ENDREM»
+		«IF (uml::PrimitiveType.isInstance(((uml::Property)attr).type))»
+			if («((uml::Property)attr).name» != other.«((uml::Property)attr).name»)
+				return false;
+				«ELSE»
+			if («((uml::Property)attr).name» == null) {
+				if (other.«((uml::Property)attr).name» != null)
+					return false;
+			} else if (!«((uml::Property)attr).name».equals(other.«((uml::Property)attr).name»))
+				return false;
+				«ENDIF»
+		«ENDFOREACH»
+		return true;
+}
+«ENDDEFINE»
+
+«REM»
+This hashcode (like the equals) implementation uses the concept of 'value equality'.
+That means that two objects are the eaqual, if all properties have the
+same values. We don't include collections.
+«ENDREM»
+«DEFINE hashcode_Method FOR uml::Class»
+/* (non-Javadoc) 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+«IF getJavaVersion() >= 5»@Override«ENDIF»
+public int hashCode() {
+		final int PRIME = 7;
+		int result = 1;
+		long temp;
+		«FOREACH AllAttributes().reject(e|((uml::Property)e).isMultivalued() || ((uml::Property)e).isStatic) AS attr»«REM»Do nothing for collections«ENDREM»
+		«IF ((uml::Property)attr).type.name=="double"»
+		temp = Double.doubleToLongBits(«((uml::Property)attr).name»);
+		result = PRIME * ( result + (int) (temp ^ (temp >>> 32)));
+		«ELSEIF ((uml::Property)attr).type.name=="long"»
+		result = PRIME * ( result + (int) («((uml::Property)attr).name» ^ («((uml::Property)attr).name» >>> 32)));
+		«ELSEIF ((uml::Property)attr).type.name=="float"»
+		result = PRIME * ( result + Float.floatToIntBits(«((uml::Property)attr).name»));
+		«ELSEIF ((uml::Property)attr).type.name=="boolean"»
+		if («((uml::Property)attr).name») result *= PRIME;
+		«ELSEIF (uml::PrimitiveType.isInstance(((uml::Property)attr).type)) && ((uml::Property)attr).type.name!="String" && ((uml::Property)attr).type.name!="Boolean"» 
+			result = PRIME * ( result + «((uml::Property)attr).name»);
+		«ELSE»
+			result = PRIME * ( result + ((«((uml::Property)attr).name» == null) ? 0 : «((uml::Property)attr).name».hashCode()));
+		«ENDIF»
+				
+		«ENDFOREACH»
+		return result;
+	}
+«ENDDEFINE»
+
+«DEFINE toString_Method FOR uml::Class»
+/* (non-Javadoc) 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+«IF getJavaVersion() >= 5»@Override«ENDIF»
+public String toString() {
+		return super.toString()
+				«FOREACH AllAttributes().reject(e|((uml::Property)e).isStatic) AS attr»
+				«IF (uml::PrimitiveType.isInstance(((uml::Property)attr).type))»
+				.concat("[«((uml::Property)attr).name» " + this.«((uml::Property)attr).name»+"]")
+				«ELSE»
+				.concat("[«((uml::Property)attr).name» " + this.«((uml::Property)attr).name».toString()+"]")
+				«ENDIF»
+				«ENDFOREACH»;
+	}
+«ENDDEFINE»

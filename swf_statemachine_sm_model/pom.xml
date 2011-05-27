@@ -1,0 +1,292 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.salgar.swf_statemachine</groupId>
+	<artifactId>swf_statemachine_sm_model</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Spring WebFlow - State Machine - Statemachine Model</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+					<!-- ensure that the compile uses the same encoding as the file encoding 
+						of the *.java -->
+					<compilerArguments>
+						<encoding>utf8</encoding>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.fornax.toolsupport</groupId>
+				<artifactId>fornax-oaw-m2-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>statemachine</id>
+						<goals>
+							<goal>run-workflow</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<workflowEngine>mwe</workflowEngine>
+							<workflowDescriptor>workflow.mwe</workflowDescriptor>							
+						</configuration>						
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/generated/java</source>
+								<source>src/generated/resources/META-INF</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>fornax.repository</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/m2/repository</url>
+		</repository>
+		<repository>
+			<id>fornax.repository snapshot</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/m2/snapshots</url>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>uml</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>uml-resources</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>resources</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.mapping</groupId>
+				<artifactId>ecore2xml </artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>common</artifactId>
+				<version>1.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>common</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>ecore</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.ecore</groupId>
+				<artifactId>xmi</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.ecore</groupId>
+				<artifactId>xmi</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.5</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<m2t.version>0.7.2</m2t.version>
+		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
+		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>
+	</properties>
+
+	<dependencies>
+		<!-- SWF STATEMACHINE -->
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_impl</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_fornax_extension</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_xpand</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_techdemo_domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>2.5.6</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- MWE -->
+		<dependency>
+			<groupId>org.eclipse.m2t.xpand</groupId>
+			<artifactId>m2t-xpand-xtend-util-stdlib</artifactId>
+			<version>${m2t.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.m2t.xpand</groupId>
+			<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
+			<version>${m2t.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.m2t.xpand</groupId>
+			<artifactId>m2t-xpand-xpand</artifactId>
+			<version>${m2t.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.mwe</groupId>
+			<artifactId>emf-mwe-utils</artifactId>
+			<version>${m2t.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.uml2</groupId>
+			<artifactId>uml</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.mapping</groupId>
+			<artifactId>ecore2xml</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.uml2</groupId>
+			<artifactId>common</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>common</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.uml2</groupId>
+			<artifactId>uml-resources</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- FORNAX -->
+		<dependency>
+			<groupId>org.fornax.cartridges</groupId>
+			<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
+			<version>${fornax.javabasic.cartridge.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.fornax.utilities</groupId>
+			<artifactId>fornax-utilities-formatter-xml</artifactId>
+			<version>${fornax.spring.core.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5.6</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.9</version>
+			<classifier>jdk15</classifier>
+			<scope>test</scope>
+		</dependency>		
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.9</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>referenceStateMachine</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.fornax.toolsupport</groupId>
+						<artifactId>fornax-oaw-m2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>statemachine</id>
+								<goals>
+									<goal>run-workflow</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<workflowEngine>mwe</workflowEngine>
+									<workflowDescriptor>workflowReferenceStateMachine.mwe</workflowDescriptor>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+</project>

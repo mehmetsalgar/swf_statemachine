@@ -1,0 +1,32 @@
+import uml;
+
+boolean isEmpty(String item):
+	(item == null || item == "");
+	
+/*
+ *	*** Usefull UML- Extensions	***
+ */
+ 
+ /* The visibility of objects:
+  * 'public', 'private', 'protected, ...
+  * are represented as an enumeration VisibilityKind. 
+  * Use this extension to access the VisibilityKind literals. 
+  */
+ VisibilityKind getVisibilityKind(String name):JAVA org.eclipse.uml2.uml.VisibilityKind.getByName(java.lang.String);
+ 
+ /* This extension return an uml::PrimitiveType type with the given name,
+  * if such a type exists 
+  * and return null, if no such type exist in the given model.
+  */
+cached uml::Type getType (uml::Model model, String name) :
+	standardPrimitives(model).select(e|e.name==name).first();
+	
+//Return a list with all primitive types saved in the model m.
+cached List[uml::PrimitiveType] standardPrimitives (uml::Model m) :
+	let packageImport = (List[uml::PackageImport])m.allOwnedElements().select(pi|uml::PackageImport.isInstance(pi)) : 
+	packageImport.importedPackage.allOwnedElements().select(pt|uml::PrimitiveType.isInstance(pt));
+	
+/*Apply the Stereotype with the name 'name' to the element 'e' */
+Void applyStereotypeToElement (Element e, String name) :
+	e.applyStereotype(e.getApplicableStereotypes().select(s|s.name==name).first());
+	

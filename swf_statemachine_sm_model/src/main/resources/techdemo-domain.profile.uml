@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_ob0l4IFBEeC0au1QwVWf1Q" name="Techdemo">
+  <eAnnotations xmi:id="_5f7AEIFBEeC0au1QwVWf1Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_5f7AEYFBEeC0au1QwVWf1Q" name="Techdemo" nsURI="http:///schemas/Techdemo/_4FBvYIFBEeC0au1QwVWf1Q/0" nsPrefix="Techdemo">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_5f7AEoFBEeC0au1QwVWf1Q" name="orgsalgarswf_statemachinetechdemodomainCustomer" instanceClassName="orgsalgarswf_statemachinetechdemodomainCustomer">
+        <eAnnotations xmi:id="_5f7AE4FBEeC0au1QwVWf1Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uPcxYIFBEeC0au1QwVWf1Q"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_uPcxYIFBEeC0au1QwVWf1Q" name="org.salgar.swf_statemachine.techdemo.domain.Customer"/>
+</uml:Profile>

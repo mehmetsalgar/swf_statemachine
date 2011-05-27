@@ -1,0 +1,37 @@
+import uml;
+import aow;
+
+List uniqueEventNames(List triggers) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.eventEnumerations(java.util.List);
+
+String createTransitionName(Transition transition) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.createTransitionName(org.eclipse.uml2.uml.Transition);
+
+List findOutgoingTransitions(List transitions, String state) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.findOutgoingTransitions(java.util.List, java.lang.String);
+
+String findSourceState(Transition transition) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.findSourceState(org.eclipse.uml2.uml.Transition);
+
+String findTargetState(Transition transition) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.findTargetState(org.eclipse.uml2.uml.Transition);
+
+String givePackageName(Package ackage) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.givePackageName(org.eclipse.uml2.uml.Package);
+
+State findIntialState(List[Pseudostate] pseudoStates) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.findIntialState(java.util.List);
+
+List[State] uniqueStateNames(List[State] states) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.uniqueStateNames(java.util.List);
+
+String filterUnwantedCharacters(String textToFilter) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.filterUnwantedCharacters(java.lang.String);
+
+String getFileName(String packageName) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.getFileName(java.lang.String);
+
+String getPackageName(String packageName) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.getPackageName(java.lang.String);
+
+String getClassName(String packageName) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.getClassName(java.lang.String);
+
+List[Trigger] giveTriggers(Transition transition) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.giveTriggers( org.eclipse.uml2.uml.Transition);
+
+List[Trigger] giveTransitionWithTrigger(List[Transition] transitions) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.giveTransitionWithTrigger(java.util.List);
+
+getter(Property this) : 
+	"get"+name.toFirstUpper();
+
+setter(Property this) :
+	"set"+name.toFirstUpper();
+	

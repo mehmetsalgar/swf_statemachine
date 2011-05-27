@@ -1,0 +1,3 @@
+String getSerialVersionUID(uml::Class class):
+	JAVA org.fornax.cartridges.uml2.javabasic.SerialVersionUID.computeSerialVersionUID(org.eclipse.uml2.uml.Class);
+

@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.salgar.swf_statemachine</groupId>
+	<artifactId>swf_statemachine_fornax_extension</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Spring WebFlow - State Machine - Fornax Extensions</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+					<!-- ensure that the compile uses the same encoding as the file encoding 
+						of the *.java -->
+					<compilerArguments>
+						<encoding>utf8</encoding>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>uml</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>uml-resources</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>resources</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.mapping</groupId>
+				<artifactId>ecore2xml </artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>common</artifactId>
+				<version>1.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>common</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>ecore</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.ecore</groupId>
+				<artifactId>xmi</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.ecore</groupId>
+				<artifactId>xmi</artifactId>
+				<version>2.5.0</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.5</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.m2t.xpand</groupId>
+			<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
+			<version>0.7.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.m2t.xpand</groupId>
+			<artifactId>m2t-xpand-xpand</artifactId>
+			<version>0.7.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- FORNAX -->
+		<dependency>
+			<groupId>org.fornax.cartridges</groupId>
+			<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
+			<version>${fornax.javabasic.cartridge.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

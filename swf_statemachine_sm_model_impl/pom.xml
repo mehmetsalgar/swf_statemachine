@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.salgar.swf_statemachine</groupId>
+	<artifactId>swf_statemachine_sm_model_impl</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Spring WebFlow - State Machine - Statemachine Model Implementation</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+					<!-- ensure that the compile uses the same encoding as the file encoding 
+						of the *.java -->
+					<compilerArguments>
+						<encoding>utf8</encoding>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>fornax.repository</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/m2/repository</url>
+		</repository>
+		<repository>
+			<id>fornax.repository snapshot</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/m2/snapshots</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- SWF STATEMACHINE -->
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.salgar.swf_statemachine</groupId>
+			<artifactId>swf_statemachine_sm_model</artifactId>
+			<version>${project.version}</version>
+		</dependency>		
+
+		<!-- SPRING -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>2.5.6</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5.6</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.9</version>
+			<classifier>jdk15</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.9</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

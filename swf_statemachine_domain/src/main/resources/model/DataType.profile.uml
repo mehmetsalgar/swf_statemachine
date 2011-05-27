@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_11_6_8a30271_1172787200942_196320_119" name="DataType" metamodelReference="_0metamodelReferenceDataType">
+  <eAnnotations xmi:id="_jkuoLdjnEdymL7eBKpvR4w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_jkuoLtjnEdymL7eBKpvR4w" name="DataType" nsURI="http:///schemas/DataType/_jBZQ8NjnEdymL7eBKpvR4w/0" nsPrefix="DataType">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_jkuoL9jnEdymL7eBKpvR4w" name="Collection" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_jkuoMNjnEdymL7eBKpvR4w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_11_6_8a30271_1172787305051_688723_121"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_jkuoMdjnEdymL7eBKpvR4w" name="List" instanceClassName="java.lang.String">
+        <eAnnotations xmi:id="_jkuoMtjnEdymL7eBKpvR4w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_12_1_8a30271_1181067459203_465777_99"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_0metamodelReferenceDataType">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_0primitiveTypesDataType">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_0javaPrimitiveTypesDataType">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_11_6_8a30271_1172787305051_688723_121" name="Collection"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_12_1_8a30271_1181067459203_465777_99" name="List"/>
+</uml:Profile>

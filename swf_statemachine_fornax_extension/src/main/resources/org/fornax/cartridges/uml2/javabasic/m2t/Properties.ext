@@ -1,0 +1,88 @@
+extension org::fornax::cartridges::uml2::javabasic::m2t::Misc;
+
+/**
+* @returns the strategy to use if an operation is modelled at an interface
+*/
+cached String getInterfaceOperationImplementationStrategy() :
+	(isEmpty(InterfaceOperationImplementationStrategy()))? "none": InterfaceOperationImplementationStrategy();
+
+cached String getClassesOperationImplementationStrategy():
+	(isEmpty(ClassesOperationImplementationStrategy()) || 
+		ClassesOperationImplementationStrategy() != "protected-regions")? 
+		"none": "pr";
+
+
+cached String getTypeHeader() :
+	(isEmpty(TypeHeaderText()))? "": TypeHeaderText();
+	
+cached String getTypeFooter():
+	(isEmpty(TypeFooterText()))? "": TypeFooterText();	
+
+cached int getJavaVersion():
+	 (JavaVersion() == null)? 2: JavaVersion();
+	 
+cached String getAnnotationSourceKey():
+	(isEmpty(AnnotationSourceKey()))? 
+		"http://www.topcased.org/documentation[documentation]": 
+		AnnotationSourceKey();	
+		
+cached boolean getListSetProperty():
+	isEmpty(ListSetProperty())?
+		"order":
+		ListSetProperty();
+		
+cached boolean getGenerateAdditionalCollectionMethods():
+	isEmpty(GenerateAdditionalCollectionMethods()) || 
+		GenerateAdditionalCollectionMethods().toLowerCase() == "false"? 
+		false: true;
+ 	
+cached boolean getUseOverriddenEqualsHashcodeToString():
+	isEmpty(UseOverriddenEqualsHashcodeToString()) ||
+	UseOverriddenEqualsHashcodeToString().toLowerCase() == "false"? 
+	false: true;
+	
+cached boolean generateSerialVersionUIDField():
+	isEmpty(readGenerateSerialVersionUID()) || readGenerateSerialVersionUID().toLowerCase() == "true" ? true:false;
+		
+cached String getConfiguredEntities():
+	isEmpty(readConfiguredEntities()) ? "":readConfiguredEntities();
+	
+private String InterfaceOperationImplementationStrategy() :
+	GLOBALVAR interface_operation_implementation_strategy;
+	
+private String ClassesOperationImplementationStrategy():
+	GLOBALVAR classes_operation_implementation_strategy;
+	
+private String TypeHeaderText():
+	GLOBALVAR type_header_text;
+	
+private String TypeFooterText():
+	GLOBALVAR type_footer_text;
+	
+private int JavaVersion():
+	GLOBALVAR java_version;
+	
+private String AnnotationSourceKey():
+	GLOBALVAR annotation_source_key;
+
+private String ListSetProperty():
+	GLOBALVAR list_set_property;
+	
+private String GenerateAdditionalCollectionMethods():
+	GLOBALVAR generate_additional_collection_methods;
+	
+private String UseOverriddenEqualsHashcodeToString():
+	GLOBALVAR use_overridden_equals_hashcode_toString;
+
+/**
+* @since 2.1.0
+*/
+private String readConfiguredEntities():
+	GLOBALVAR javabasic_entities;
+	
+/**
+* @since 2.1.0
+*/
+private String readGenerateSerialVersionUID():
+	GLOBALVAR javabasic_generateSerialVersionUID;
+	

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<p:outputPanel id="customerSearchFound-empty-panel">
+		<p:outputPanel id="customerSearchFound-panel" ajaxRendered="true"
+			layout="block" style="border:1px solid" rendered="#{customerSearchFoundBB.customerSearchFoundPanelRendered}">
+			<h:panelGrid columns="2">
+				<h:outputText value="Firstname" />
+				<h:outputText value="Lastname" />
+				<h:outputText value="#{customerSearchFoundBB.customer.firstName}" />
+				<h:outputText value="#{customerSearchFoundBB.customer.lastName}" />
+			</h:panelGrid>	    			    	
+		</p:outputPanel>
+	</p:outputPanel>
+</ui:composition>

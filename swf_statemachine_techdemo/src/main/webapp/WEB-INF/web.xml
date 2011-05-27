@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/j2ee/web-app_3.0.xsd">
+	<context-param>
+		<param-name>com.sun.faces.expressionFactory</param-name>
+		<param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<!-- context-param> <param-name>com.sun.faces.expressionFactory</param-name> 
+		<param-value>org.jboss.el.ExpressionFactoryImpl</param-value> </context-param -->
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<!-- /WEB-INF/config/applicationContext.xml -->
+	<servlet>
+		<servlet-name>spring_mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/webmvc-config.xml,
+				/WEB-INF/config/webflow-config.xml,
+				/WEB-INF/config/applicationContext-customersearch.xml,
+				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch.xml,
+				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch-guards.xml,
+				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch-controlobjects.xml,
+				/WEB-INF/config/applicationContext-manager.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>SpringResourceServlet</servlet-name>
+		<servlet-class>org.springframework.js.resource.ResourceServlet
+		</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>PrimefacesResourceServlet</servlet-name>
+		<servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>FacesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>CometServlet</servlet-name>
+		<servlet-class>org.salgar.comet.CometServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+		<!-- init-param>
+			<param-name>org.atmosphere.useNative</param-name>
+			<param-value>true</param-value>
+		</init-param-->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrimefacesResourceServlet</servlet-name>
+		<url-pattern>/primefaces_resource/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SpringResourceServlet</servlet-name>
+		<url-pattern>/resources/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>spring_mvc</servlet-name>
+		<url-pattern>/spring/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CometServlet</servlet-name>
+		<url-pattern>/primefaces_comet/*</url-pattern>
+	</servlet-mapping>
+</web-app>

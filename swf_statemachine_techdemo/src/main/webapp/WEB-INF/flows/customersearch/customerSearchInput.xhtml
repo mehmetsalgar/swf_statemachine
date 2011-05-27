@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<h:form id="customerSearch-form">
+		<p:outputPanel id="customerSearchInputLayout" ajaxRendered="true"
+			layout="block" style="border:1px solid" rendered="#{customerSearchInputBB.customerSearchInputLayoutRendered}">
+			<h:outputText value="Customer Number: " />
+			<h:inputText id="customerNumber"
+				value="#{customerSearchInputBB.customerNumber}" style="width:600px">
+				<f:validateLength minimum="9" />
+			</h:inputText>
+		
+			<p:commandButton id="customerSearchStart" value="Search"
+				action="onStartCustomerSearch" ajax="true" update="customerSearch-form,customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel">
+			</p:commandButton>
+		</p:outputPanel>
+	</h:form>
+</ui:composition>
