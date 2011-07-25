@@ -14,7 +14,7 @@ public class CustomerAuthenticatedAction implements Action, Serializable {
 	public void processAction(Event event, AbstractStateMachine stateMachine) {
 		CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) stateMachine
 				.getControlObject();
-		CustomerSearchSMControlObjectAccessor.getInstance()
+		CustomerSearchSMControlObjectAccessor
 				.processCustomerAuthenticatedAction(controlObject,
 						(Boolean) event.getPayload());
 	}

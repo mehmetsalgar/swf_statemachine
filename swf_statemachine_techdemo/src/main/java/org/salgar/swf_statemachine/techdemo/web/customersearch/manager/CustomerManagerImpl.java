@@ -5,6 +5,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
+import org.salgar.statemachine.domain.Event;
+import org.salgar.statemachine.domain.StateMachine;
+import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.listener.AsynchroneListener;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
@@ -14,17 +17,17 @@ public class CustomerManagerImpl implements CustomerManager {
 			.getLogger(CustomerManagerImpl.class);
 
 	public void findCustomer(final String customerNumber,
-			final AsynchroneListener asynchronousListener) {
+			final StateMachine stateMachine) {
 
 		ExecutorService executorService = Executors.newScheduledThreadPool(5);
 
 		executorService.submit(new Runnable() {
 			public void run() {
 				Random rnd = new Random();
-				long interval = (int) (rnd.nextDouble() * 30L);
+				long interval = (int) (rnd.nextDouble() * 5L);
 
 				try {
-					Thread.sleep(10 * 1000L);
+					Thread.sleep((5 + interval) * 1000L);
 				} catch (InterruptedException e) {
 					log.error(e.getMessage(), e);
 				}
@@ -33,8 +36,13 @@ public class CustomerManagerImpl implements CustomerManager {
 				customer.setCustomerNumber(customerNumber);
 				customer.setFirstName("Dirk");
 				customer.setLastName("Pitt");
-
-				asynchronousListener.doResult(customer);
+				
+				
+				Event customerFoundEvent = new Event();
+				customerFoundEvent.setEventType(FindCustomerSM_EventEnumerationImpl.onCustomerFound);
+				customerFoundEvent.setPayload(customer);
+				
+				stateMachine.handleEvent(customerFoundEvent);
 			}
 		});
 

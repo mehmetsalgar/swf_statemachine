@@ -39,6 +39,9 @@
               </eAnnotations>
               <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
             </ownedAttribute>
+            <ownedAttribute xmi:id="_W8mjkrOiEeC1SLrv8PgQ-A" name="source" visibility="private">
+              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
+            </ownedAttribute>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_mvqrCBjTEeCsVpV9YS54ZQ" name="State">
             <ownedAttribute xmi:id="_FnIucBjUEeCsVpV9YS54ZQ" name="subMachine" visibility="private" type="_DWb_YDUpEeCqYIzB5LsIFQ"/>

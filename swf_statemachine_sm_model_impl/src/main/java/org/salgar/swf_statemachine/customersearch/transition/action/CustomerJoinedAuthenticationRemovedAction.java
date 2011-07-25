@@ -16,7 +16,7 @@ public class CustomerJoinedAuthenticationRemovedAction implements Action,
 	public void processAction(Event event, AbstractStateMachine stateMachine) {
 		CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) stateMachine
 				.getControlObject();
-		CustomerSearchSMControlObjectAccessor.getInstance()
+		CustomerSearchSMControlObjectAccessor
 				.processCustomerJoinedAuthenticationRemovedAction(controlObject);
 	}
 

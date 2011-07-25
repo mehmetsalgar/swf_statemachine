@@ -17,7 +17,7 @@ public class CustomerAuthenticationRemovedAction implements Action,
 		CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) stateMachine
 				.getControlObject();
 
-		CustomerSearchSMControlObjectAccessor.getInstance()
+		CustomerSearchSMControlObjectAccessor
 				.processCustomerAuthenticationRemovedAction(controlObject);
 	}
 

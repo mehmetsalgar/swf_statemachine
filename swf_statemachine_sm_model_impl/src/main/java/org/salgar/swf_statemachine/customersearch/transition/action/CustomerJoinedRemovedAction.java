@@ -15,7 +15,7 @@ public class CustomerJoinedRemovedAction implements Action, Serializable {
 		CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) stateMachine
 				.getControlObject();
 
-		CustomerSearchSMControlObjectAccessor.getInstance()
+		CustomerSearchSMControlObjectAccessor
 				.processCustomerJoinedRemovedAction(controlObject);
 	}
 }

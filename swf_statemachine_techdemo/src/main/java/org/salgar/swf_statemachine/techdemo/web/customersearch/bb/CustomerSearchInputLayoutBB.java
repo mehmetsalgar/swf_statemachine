@@ -7,7 +7,6 @@ import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchIn
 import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
-import org.salgar.swf_statemachine.techdemo.web.customersearch.listener.CustomerListener;
 
 public class CustomerSearchInputLayoutBB {
 	private static final Logger log = Logger
@@ -41,9 +40,9 @@ public class CustomerSearchInputLayoutBB {
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = new CustomerSearchStartEventPayload();
 		customerSearchStartEventPayload.setCustomerNumber(customerNumber);
 
-		CustomerListener customerListener = new CustomerListener();
-		customerListener.setStateMachine(stateMachine);
-		customerSearchStartEventPayload.setCustomerListener(customerListener);
+		//CustomerListener customerListener = new CustomerListener();
+		//customerListener.setStateMachine(stateMachine);
+		//customerSearchStartEventPayload.setCustomerListener(customerListener);
 
 		event.setPayload(customerSearchStartEventPayload);
 

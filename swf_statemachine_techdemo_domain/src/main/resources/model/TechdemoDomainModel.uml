@@ -38,7 +38,9 @@
                 <ownedParameter xmi:id="_eaPaEH--EeCK4vYmII23UA" name="customerNumber">
                   <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedParameter>
-                <ownedParameter xmi:id="_zKoe0X_JEeC3BvKE9rGHVg" name="asynchronousListener" type="_MU1T6H--EeCK4vYmII23UA"/>
+                <ownedParameter xmi:id="_tP414bOWEeC1SLrv8PgQ-A" name="stateMachine">
+                  <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
+                </ownedParameter>
               </ownedOperation>
             </packagedElement>
           </packagedElement>

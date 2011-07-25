@@ -11,8 +11,6 @@ import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSM
 import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
 import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
-import org.salgar.swf_statemachine.techdemo.listener.AbstractAsynchroneListener;
-import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
 
 public class CustomerSearchRunningAction implements Action, Serializable {
 	private static final long serialVersionUID = -181796739393959337L;
@@ -24,28 +22,19 @@ public class CustomerSearchRunningAction implements Action, Serializable {
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = (CustomerSearchStartEventPayload) event
 				.getPayload();
 
-		AbstractAsynchroneListener customerListener = customerSearchStartEventPayload
-				.getCustomerListener();
-		customerListener.setStateMachine(stateMachine);
-
 		Event findCustomerSmEvent = new Event();
 		findCustomerSmEvent
 				.setEventType(FindCustomerSM_EventEnumerationImpl.onStartSearch);
 		findCustomerSmEvent.setPayload(customerSearchCO.getCustomerNumber());
+		findCustomerSmEvent.setSource(stateMachine);
 
 		AbstractStateMachine findCustomerStateMachine = (AbstractStateMachine) stateMachine
 				.findObjects(StateMachineEnumerationImpl.FindCustomerSM
 						.getStateMachineName());
 		findCustomerStateMachine.resetStateMachine();
 		findCustomerStateMachine.dispatch(findCustomerSmEvent);
-		
-		CustomerManager customerManager = (CustomerManager) stateMachine
-				.findObjects("customerManager");
-		
-		customerManager.findCustomer(customerSearchCO.getCustomerNumber(),
-				customerListener);
 
-		CustomerSearchSMControlObjectAccessor.getInstance()
+		CustomerSearchSMControlObjectAccessor
 				.processCustomerSearchRunningAction(
 						(CustomerSearchSMControlObject) customerSearchCO,
 						customerSearchStartEventPayload.getCustomerNumber());

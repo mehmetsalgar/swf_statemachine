@@ -340,12 +340,12 @@ public class StateMachineImpl extends AbstractStateMachine implements
 	}
 
 	@Override
-	public StateMachine findObjects(
+	public Object findObjects(
 			String objectName) {
-		StateMachine stateMachine = (StateMachine) applicationContext
+		Object obj = applicationContext
 				.getBean(objectName);
 		
-		return stateMachine;
+		return obj;
 	}
 
 	public void setApplicationContext(ApplicationContext applicationContext)

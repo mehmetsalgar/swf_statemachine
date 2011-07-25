@@ -85,7 +85,7 @@
         </diagrams>
         <subdiagrams xmi:id="_LblOwBjTEeCsVpV9YS54ZQ">
           <model href="domain.uml#_KfO7QhjTEeCsVpV9YS54ZQ"/>
-          <diagrams xmi:id="_LblOwRjTEeCsVpV9YS54ZQ" position="0,0" size="100,100" name="domain" zoom="0.75" viewport="393,132">
+          <diagrams xmi:id="_LblOwRjTEeCsVpV9YS54ZQ" position="0,0" size="100,100" name="domain" zoom="0.75" viewport="0,0">
             <property xmi:id="_Lb4wwBjTEeCsVpV9YS54ZQ" key="pageFormatName" value="A0"/>
             <property xmi:id="_Lb4wwRjTEeCsVpV9YS54ZQ" key="diagramWidth" value="3364"/>
             <property xmi:id="_Lb4wwhjTEeCsVpV9YS54ZQ" key="diagramHeight" value="4756"/>
@@ -111,6 +111,11 @@
                 <contained xsi:type="di:GraphNode" xmi:id="_xHZosB5WEeCyGcoG_XXpug" position="0,0" size="-1,-1">
                   <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xHZosR5WEeCyGcoG_XXpug" presentation="default">
                     <element href="domain.uml#_xHZosh5WEeCyGcoG_XXpug"/>
+                  </semanticModel>
+                </contained>
+                <contained xsi:type="di:GraphNode" xmi:id="_W8mjkLOiEeC1SLrv8PgQ-A" position="0,0" size="-1,-1">
+                  <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_W8mjkbOiEeC1SLrv8PgQ-A" presentation="default">
+                    <element href="domain.uml#_W8mjkrOiEeC1SLrv8PgQ-A"/>
                   </semanticModel>
                 </contained>
               </contained>
