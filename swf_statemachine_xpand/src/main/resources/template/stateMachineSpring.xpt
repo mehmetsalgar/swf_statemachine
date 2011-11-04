@@ -73,6 +73,9 @@
 				class="org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl"
 				factory-method="valueOf">
 				<constructor-arg>
+					<value>org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl</value>
+				</constructor-arg>
+				<constructor-arg>
 					<value>«sm.name»</value>
 				</constructor-arg>
 			</bean>
@@ -100,6 +103,9 @@
 					class="org.salgar.swf_statemachine.enumeration.state.«name»_StateEnumerationImpl"
 					factory-method="valueOf">
 					<constructor-arg>
+						<value>org.salgar.swf_statemachine.enumeration.state.«name»_StateEnumerationImpl</value>
+					</constructor-arg>
+					<constructor-arg>					
 						<value>«state.name»</value>
 					</constructor-arg>
 				</bean>
@@ -158,6 +164,9 @@
 				<bean
 					class="org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()».«sm.name»_EventEnumerationImpl"
 					factory-method="valueOf">
+					<constructor-arg>
+						<value>org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()».«sm.name»_EventEnumerationImpl</value>
+					</constructor-arg>
 					<constructor-arg>
 						<value>«transition.trigger.first().name»</value>
 					</constructor-arg>
@@ -263,13 +272,11 @@
 		<!-- Control Object - State Machine: «name» -->
 		«IF this.getAppliedStereotype("swf_statemachine::SwfStateMachine")!= null»
 			«IF !this.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"submachine")»
-				<bean name="«name»ControlObject" class="org.salgar.swf_statemachine.«packagename».controlobject.«name»ControlObject"	scope="session"	/> 
+				<bean name="«name»ControlObject" class="org.salgar.swf_statemachine.«packagename».controlobject.«name»ControlObject"
+					scope="prototype" /> 
 			«ELSE»
 				<bean name="sub_«name»ControlObject" class="org.salgar.swf_statemachine.«packagename».controlobject.sub_«name»ControlObject"
-					«IF this.getAppliedStereotype("swf_statemachine::SwfStateMachine")!=null»
-						scope="«this.getValue(this.getAppliedStereotype("swf_statemachine::SwfStateMachine"),"Scope").name»"
-					«ENDIF»
-				/>
+					scope="prototype" /> 
 			«ENDIF»
 		«ENDIF»
 «ENDDEFINE»

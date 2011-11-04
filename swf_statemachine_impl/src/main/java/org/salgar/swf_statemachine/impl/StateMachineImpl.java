@@ -9,7 +9,6 @@ import org.salgar.statemachine.domain.ControlObject;
 import org.salgar.statemachine.domain.Event;
 import org.salgar.statemachine.domain.State;
 import org.salgar.statemachine.domain.StateMachine;
-import org.salgar.statemachine.domain.StateMachineEnumeration;
 import org.salgar.statemachine.domain.Transition;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -37,46 +36,56 @@ public class StateMachineImpl extends AbstractStateMachine implements
 		}
 
 		if (log.isDebugEnabled()) {
-			log.debug("We received the Event: "
+			log.debug("State Machine: " + this.getName().getStateMachineName()
+					+ " received the Event: "
 					+ event.getEventType().getEventName());
 		}
 
 		boolean working = false;
 		synchronized (eventQueue) {
 			if (log.isDebugEnabled()) {
-				log.debug("Adding the Event to Statemachine Queue!");
+				log.debug("Adding the Event to Statemachine: "
+						+ this.getName().getStateMachineName() + " Queue!");
 			}
 			eventQueue.add(event);
 			if (log.isDebugEnabled()) {
-				log.debug("Event is Statemachine Queue added!");
+				log.debug("Event is Statemachine: "
+						+ this.getName().getStateMachineName()
+						+ " Queue added!");
 			}
 			if (inTransition == true) {
 				if (log.isDebugEnabled()) {
-					log.debug("Statemachine is in transition we are living the event in the Queue and exiting!");
+					log.debug("Statemachine: "
+							+ this.getName().getStateMachineName()
+							+ " is in transition we are living the event in the Queue and exiting!");
 				}
 				return;
 			}
 			inTransition = true;
 			working = true;
 			if (log.isDebugEnabled()) {
-				log.debug("Statemachine is switched to in Transition Mode!");
+				log.debug("Statemachine: "
+						+ this.getName().getStateMachineName()
+						+ " is switched to in Transition Mode!");
 			}
 		}
 
 		while (working) {
 			try {
 				if (log.isDebugEnabled()) {
-					log.debug("Processing Events!");
+					log.debug("Statemachine: "
+							+ this.getName().getStateMachineName()
+							+ " processing Events!");
 				}
 				handleEventRecursive();
 			} catch (Throwable t) {
+				log.error(t.getMessage(), t);
 				if (eventQueue.isEmpty() == false) {
 					// If an exception happened while the Event Queue is not
 					// empty Statemachine
 					// in finally method will further process the event and the
 					// exception
-					// message would be lost, so we are logging it here
-					log.error(t.getMessage(), t);
+					// message would be lost, so we are logging it here					
 				} else {
 					if (t instanceof RuntimeException) {
 						throw (RuntimeException) t;
@@ -90,7 +99,9 @@ public class StateMachineImpl extends AbstractStateMachine implements
 						inTransition = false;
 						working = false;
 						if (log.isDebugEnabled()) {
-							log.debug("Statemachine Event Queue is empty, we are going out from Transition Mode!");
+							log.debug("Statemachine: "
+									+ this.getName().getStateMachineName()
+									+ " Event Queue is empty, we are going out from Transition Mode!");
 						}
 					}
 				}
@@ -102,14 +113,18 @@ public class StateMachineImpl extends AbstractStateMachine implements
 		Event eventInQueue = null;
 		while ((eventInQueue = (Event) eventQueue.poll()) != null) {
 			if (log.isDebugEnabled()) {
-				log.debug("We have Events in Statemachine Queue, we are processing them!");
+				log.debug("We have Events in Statemachine: "
+						+ this.getName().getStateMachineName()
+						+ " Queue, we are processing them!");
 			}
 			boolean eventHandled = handleEventInternal(eventInQueue);
 
 			if (eventHandled == false) {
 				throw new IllegalStateException(
 						getName()
-								+ ": We are not finding any transtion for this event type in this state! State: "
+								+ ": We are not finding any transtion for this event type in this state in State Machine: "
+								+ this.getName().getStateMachineName()
+								+ "! State: "
 								+ getActualState().getName()
 								+ " Event Type: "
 								+ eventInQueue.getEventType().getEventName()
@@ -143,7 +158,8 @@ public class StateMachineImpl extends AbstractStateMachine implements
 		for (Transition transition : getActualState().getOutgoingTransitions()) {
 			if (event.getEventType().equals(transition.getEventType())) {
 				if (log.isDebugEnabled()) {
-					log.debug("For the State Machine: " + getName()
+					log.debug("For the State Machine: "
+							+ this.getName().getStateMachineName()
 							+ " We found the transition: "
 							+ transition.getName() + " for event: "
 							+ transition.getEventType().getEventName());
@@ -182,7 +198,8 @@ public class StateMachineImpl extends AbstractStateMachine implements
 								+ transition.getGuard().getClass().toString()
 								+ " for the transition: "
 								+ transition.getName()
-								+ " not letting us to execute the transition!");
+								+ " not letting us to execute the transition for State Machine: "
+								+ this.getName().getStateMachineName() + " !");
 					}
 				}
 			}
@@ -340,11 +357,9 @@ public class StateMachineImpl extends AbstractStateMachine implements
 	}
 
 	@Override
-	public Object findObjects(
-			String objectName) {
-		Object obj = applicationContext
-				.getBean(objectName);
-		
+	public Object findObjects(String objectName) {
+		Object obj = applicationContext.getBean(objectName);
+
 		return obj;
 	}
 
