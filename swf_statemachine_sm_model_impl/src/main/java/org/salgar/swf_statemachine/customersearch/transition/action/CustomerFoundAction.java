@@ -9,6 +9,8 @@ import org.salgar.statemachine.domain.Action;
 import org.salgar.statemachine.domain.Event;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
+import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 
 public class CustomerFoundAction implements Action, Serializable {
@@ -18,13 +20,25 @@ public class CustomerFoundAction implements Action, Serializable {
 		CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) stateMachine
 				.getControlObject();
 
+		AbstractStateMachine findOrdersSM = (AbstractStateMachine) stateMachine
+				.findObjects(StateMachineEnumerationImpl.FindOrdersSM.name());
+
 		CustomerSearchSMControlObjectAccessor.processCustomerFoundAction(
-				controlObject, (Customer) event.getPayload());
+				controlObject, (Customer) event.getPayload(), findOrdersSM);
+
+		Event findOrdersSMStartEvent = new Event();
+		findOrdersSMStartEvent
+				.setEventType(FindOrdersSM_EventEnumerationImpl.onOrderSearchRunning);
+		findOrdersSMStartEvent.setPayload(controlObject.getCustomer()
+				.getCustomerNumber());
+		findOrdersSMStartEvent.setSource(stateMachine);
+
+		findOrdersSM.resetStateMachine();
+		findOrdersSM.dispatch(findOrdersSMStartEvent);
 
 		Broadcaster broadcaster = CometServiceLocator.getInstance()
 				.getBroadcaster();
 
 		broadcaster.broadcast("customer found");
-
 	}
 }

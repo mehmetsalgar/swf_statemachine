@@ -36,4 +36,14 @@
 		scope="request">
 		<property name="stateMachine" ref="CustomerSearchSM" />
 	</bean>
+	<bean id="customerSearchOrderBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchOrderBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+	</bean>
+	<bean id="customerSearchBB"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchBB"
+		scope="request">
+		<property name="stateMachine" ref="CustomerSearchSM" />
+	</bean>
 </beans>

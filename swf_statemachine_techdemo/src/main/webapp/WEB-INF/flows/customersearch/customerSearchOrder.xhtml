@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<p:outputPanel id="customerSearchOrderLoading-empty-panel">
+		<p:outputPanel id="customerSearchOrderLoading-panel" ajaxRendered="true"
+			layout="block" style="border:1px solid" rendered="#{customerSearchOrderBB.customerSearchOrderLoadingPanelRendered}">
+			<p1>Please wait that the orders would load!!!!</p1>
+		</p:outputPanel>
+	</p:outputPanel>			
+	
+	<p:outputPanel id="customerSearchOrder-empty-panel">
+		<p:outputPanel id="customerSearchOrder-panel" ajaxRendered="true"
+			layout="block" style="border:1px solid" rendered="#{customerSearchOrderBB.customerSearchOrderPanelRendered}">
+			<h:form id="ordersForm">
+			<p:dataTable id="ordersTable" var="order" value="#{customerSearchOrderBB.orders}">
+				<p:column>
+					<f:facet name="header">
+						Order Id:
+					</f:facet>
+					<h:outputText value="#{order.id}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Order Date:
+					</f:facet>
+					<h:outputText value="#{order.date}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						Order Description:
+					</f:facet>
+					<h:outputText value="#{order.description}"/>
+				</p:column>
+			</p:dataTable>
+			</h:form> 			    	
+		</p:outputPanel>
+	</p:outputPanel>
+</ui:composition>

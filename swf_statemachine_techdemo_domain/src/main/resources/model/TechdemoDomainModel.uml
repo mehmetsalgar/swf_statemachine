@@ -16,6 +16,17 @@
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedAttribute>
             </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_oAMS0L6XEeCrausYBI7eyw" name="Order">
+              <ownedAttribute xmi:id="_pwGKMr6XEeCrausYBI7eyw" name="id">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_w4iMgr6XEeCrausYBI7eyw" name="date">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_-gIqoL6XEeCrausYBI7eyw"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_OKkjMr6YEeCrausYBI7eyw" name="description">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
+            </packagedElement>
           </packagedElement>
           <packagedElement xmi:type="uml:Package" xmi:id="_e7-qoH-9EeCK4vYmII23UA" name="listener">
             <packagedElement xmi:type="uml:Interface" xmi:id="_MU1T6H--EeCK4vYmII23UA" name="AsynchroneListener">
@@ -35,10 +46,23 @@
           <packagedElement xmi:type="uml:Package" xmi:id="_iP9j4H-9EeCK4vYmII23UA" name="manager">
             <packagedElement xmi:type="uml:Interface" xmi:id="_a8ReYH--EeCK4vYmII23UA" name="CustomerManager">
               <ownedOperation xmi:id="_cf_68H--EeCK4vYmII23UA" name="findCustomer">
+                <eAnnotations xmi:id="_NgmqsMMuEeCYBJYY66CQSA" source="http://www.topcased.org/documentation">
+                  <details xmi:id="_NgmqscMuEeCYBJYY66CQSA" key="documentation" value="This method searches the customer that we are trying to authenticate. The method accepts as input customer number and a reference to the slave statemachine so it can signal the outcome of the operation."/>
+                </eAnnotations>
                 <ownedParameter xmi:id="_eaPaEH--EeCK4vYmII23UA" name="customerNumber">
                   <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedParameter>
                 <ownedParameter xmi:id="_tP414bOWEeC1SLrv8PgQ-A" name="stateMachine">
+                  <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_G_IXMMMtEeCYBJYY66CQSA" name="OrderManager">
+              <ownedOperation xmi:id="_qQiPUMMtEeCYBJYY66CQSA" name="findOrders">
+                <ownedParameter xmi:id="_ve-DEMMtEeCYBJYY66CQSA" name="customerNumber">
+                  <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_PeZNEMMuEeCYBJYY66CQSA" name="stateMachine">
                   <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
                 </ownedParameter>
               </ownedOperation>

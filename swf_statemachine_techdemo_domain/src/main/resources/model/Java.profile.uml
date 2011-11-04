@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_ZbDS0RpeEeCBg6wrhx5k5Q" name="Java">
   <eAnnotations xmi:id="__Vc7kBpgEeCBg6wrhx5k5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_CoyiEL6YEeCrausYBI7eyw" name="Java" nsURI="http:///schemas/Java/_CY2BkL6YEeCrausYBI7eyw/6" nsPrefix="Java">
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiEb6YEeCrausYBI7eyw" name="javautilList" instanceClassName="javautilList">
+        <eAnnotations xmi:id="_CoyiEr6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_rVudwBpgEeCBg6wrhx5k5Q"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiE76YEeCrausYBI7eyw" name="javalangObject" instanceClassName="javalangObject">
+        <eAnnotations xmi:id="_CoyiFL6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7qUN0B5WEeCyGcoG_XXpug"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiFb6YEeCrausYBI7eyw" name="javalangString" instanceClassName="javalangString">
+        <eAnnotations xmi:id="_CoyiFr6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_h64JQB5YEeCyGcoG_XXpug"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiF76YEeCrausYBI7eyw" name="javautilconcurrentConcurrentLinkedQueue" instanceClassName="javautilconcurrentConcurrentLinkedQueue">
+        <eAnnotations xmi:id="_CoyiGL6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_dy8qcB_gEeC0UO6puhKrhA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiGb6YEeCrausYBI7eyw" name="javautilMap" instanceClassName="javautilMap">
+        <eAnnotations xmi:id="_CoyiGr6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_NFfZMB_hEeC0UO6puhKrhA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiG76YEeCrausYBI7eyw" name="javalangBoolean" instanceClassName="javalangBoolean">
+        <eAnnotations xmi:id="_CoyiHL6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_u5BVQCPrEeC6cqnheF0QVw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EDataType" xmi:id="_CoyiHb6YEeCrausYBI7eyw" name="javautilDate" instanceClassName="javautilDate">
+        <eAnnotations xmi:id="_CoyiHr6YEeCrausYBI7eyw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-gIqoL6XEeCrausYBI7eyw"/>
+      </eClassifiers>
+    </contents>
     <contents xmi:type="ecore:EPackage" xmi:id="_0MLQ8CPrEeC6cqnheF0QVw" name="Java" nsURI="http:///schemas/Java/_x3AwYCPrEeC6cqnheF0QVw/5" nsPrefix="Java">
       <eClassifiers xmi:type="ecore:EDataType" xmi:id="_0MLQ8SPrEeC6cqnheF0QVw" name="javautilList" instanceClassName="javautilList">
         <eAnnotations xmi:id="_0MLQ8iPrEeC6cqnheF0QVw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_rVudwBpgEeCBg6wrhx5k5Q"/>
@@ -83,4 +106,5 @@
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_dy8qcB_gEeC0UO6puhKrhA" name="java.util.concurrent.ConcurrentLinkedQueue"/>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_NFfZMB_hEeC0UO6puhKrhA" name="java.util.Map"/>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_u5BVQCPrEeC6cqnheF0QVw" name="java.lang.Boolean"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_-gIqoL6XEeCrausYBI7eyw" name="java.util.Date"/>
 </uml:Profile>

@@ -1,5 +1,7 @@
 package org.salgar.swf_statemachine.customersearch.controlobject;
 
+import java.util.List;
+
 import org.salgar.statemachine.domain.ControlObject;
 import org.salgar.swf_statemachine.customersearch.guistate.CustomerSearchGuiState;
 import org.salgar.swf_statemachine.customersearch.controlobject.AbstractCustomerSearchControlObject;
@@ -70,5 +72,21 @@ public class CustomerSearchSMControlObject extends
 	@Override
 	public Boolean getCustomerJoined() {
 		return this.customerJoinedInternal;
+	}
+
+	@Override
+	public Boolean getRenderCustomerOrders() {
+		return actualGuiState.getRenderCustomerSearchOrder();
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getCustomerOrders() {
+		return this.customerOrdersInternal;
+	}
+
+	@Override
+	public Boolean getRenderCustomerOrderLoading() {
+		return actualGuiState.getRenderCustomerSearchOrderLoading();
 	}
 }

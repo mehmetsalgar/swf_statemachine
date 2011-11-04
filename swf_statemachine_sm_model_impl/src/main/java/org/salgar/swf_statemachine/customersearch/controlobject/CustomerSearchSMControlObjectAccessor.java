@@ -1,6 +1,10 @@
 package org.salgar.swf_statemachine.customersearch.controlobject;
 
+import java.util.List;
+
+import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
+import org.salgar.swf_statemachine.techdemo.domain.Order;
 
 public class CustomerSearchSMControlObjectAccessor {
 
@@ -12,17 +16,25 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchFound = false;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = false;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel,handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerFoundAction(
-			CustomerSearchSMControlObject controlObject, Customer customer) {
+			CustomerSearchSMControlObject controlObject, Customer customer,
+			StateMachine slaveFindOrdersSM) {
 
 		controlObject.customerInternal = customer;
+		controlObject.findOrdersSlaveSM = slaveFindOrdersSM;
 		controlObject.getActualGuiState().renderCustomerSearchInput = false;
 		controlObject.getActualGuiState().renderCustomerSearchRunning = false;
 		controlObject.getActualGuiState().renderCustomerSearchFound = true;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerAuthenticatedAction(
@@ -35,6 +47,9 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchFound = true;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerJoinedAction(
@@ -46,18 +61,23 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchFound = true;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerJoinedAuthenticationRemovedAction(
 			CustomerSearchSMControlObject controlObject) {
 		controlObject.customerAuthenticatedInternal = false;
 		controlObject.customerJoinedInternal = false;
-
 		controlObject.getActualGuiState().renderCustomerSearchInput = false;
 		controlObject.getActualGuiState().renderCustomerSearchRunning = false;
 		controlObject.getActualGuiState().renderCustomerSearchFound = true;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerAuthenticationRemovedAction(
@@ -69,6 +89,9 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchFound = true;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerJoinedRemovedAction(
@@ -80,5 +103,40 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchFound = true;
 		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
 		controlObject.getActualGuiState().renderCustomerSearchJoin = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
+	}
+
+	public static void processOrdersLoadingAction(
+			CustomerSearchSMControlObject controlObject) {
+		controlObject.getActualGuiState().renderCustomerSearchInput = false;
+		controlObject.getActualGuiState().renderCustomerSearchRunning = false;
+		controlObject.getActualGuiState().renderCustomerSearchFound = true;
+		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
+		controlObject.getActualGuiState().renderCustomerSearchJoin = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = true;
+		controlObject.customerJoinedInternal = true;
+		controlObject.customerSearchInputRenderPanels = "customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel,handlePuplishRemoteCommand";
+	}
+
+	public static void processOrdersLoadedAction(
+			CustomerSearchSMControlObject controlObject, List<Order> orders) {
+		controlObject.getActualGuiState().renderCustomerSearchInput = false;
+		controlObject.getActualGuiState().renderCustomerSearchRunning = false;
+		controlObject.getActualGuiState().renderCustomerSearchFound = true;
+		controlObject.getActualGuiState().renderCustomerSearchAuthentication = true;
+		controlObject.getActualGuiState().renderCustomerSearchJoin = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrder = true;
+		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerSearchInputRenderPanels = "handlePuplishRemoteCommand";
+
+		controlObject.customerOrdersInternal = orders;
+	}
+
+	public static StateMachine deliverFindOrdersSlaveSM(
+			CustomerSearchSMControlObject controlObject) {
+		return controlObject.findOrdersSlaveSM;
 	}
 }

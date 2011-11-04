@@ -6,4 +6,8 @@
 	<bean id="customerManager"
 		class="org.salgar.swf_statemachine.techdemo.web.customersearch.manager.CustomerManagerImpl"
 		scope="singleton" />
+
+	<bean id="orderManager"
+		class="org.salgar.swf_statemachine.techdemo.web.customersearch.manager.OrderManagerImpl"
+		scope="singleton" />
 </beans>
