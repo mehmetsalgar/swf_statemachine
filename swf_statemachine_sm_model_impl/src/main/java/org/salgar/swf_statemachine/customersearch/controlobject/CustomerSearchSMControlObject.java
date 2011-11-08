@@ -18,7 +18,7 @@ public class CustomerSearchSMControlObject extends
 		this.customerNumberInternal = "";
 		this.customerAuthenticatedInternal = Boolean.FALSE;
 		this.customerJoinedInternal = Boolean.FALSE;
-		this.customerSearchInputRenderPanels = "customerSearch-form,customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel";
+		this.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearch-form,customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel,handlePuplishRemoteCommand";
 	}
 
 	CustomerSearchGuiState getCustomerSearchGuiState() {
