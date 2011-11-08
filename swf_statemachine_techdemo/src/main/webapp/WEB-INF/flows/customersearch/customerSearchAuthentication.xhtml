@@ -12,7 +12,7 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="If you authenticate the customer please click below!" />
 					<h:selectBooleanCheckbox id="customerSearchAutheticationCheckBox" title="Authenticated" value="#{customerSearchAuthenticationBB.customerAuthenticated}" onchange="customerAuthenticated();" />					 								
-					<p:remoteCommand name="customerAuthenticated" action="onCustomerAuthenticated" update="customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel" />
+					<p:remoteCommand name="customerAuthenticated" action="onCustomerAuthenticated" update="customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel,customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel" />
 				</h:panelGrid>	    			    	
 			</h:form>
 	    </p:outputPanel>

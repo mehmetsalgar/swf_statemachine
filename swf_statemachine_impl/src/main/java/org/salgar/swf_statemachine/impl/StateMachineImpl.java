@@ -1,5 +1,6 @@
 package org.salgar.swf_statemachine.impl;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -15,7 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 public class StateMachineImpl extends AbstractStateMachine implements
-		ApplicationContextAware {
+		ApplicationContextAware, Serializable {
 	private static final long serialVersionUID = 6254025866540535100L;
 	private final static org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(StateMachineImpl.class);

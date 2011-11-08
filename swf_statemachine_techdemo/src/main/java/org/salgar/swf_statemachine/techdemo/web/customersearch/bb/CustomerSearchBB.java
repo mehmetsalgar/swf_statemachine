@@ -27,8 +27,8 @@ public class CustomerSearchBB {
 
 		StringBuilder panelString = new StringBuilder();
 		for (int i = 0, n = javaScriptPanels.length; i < n; i++) {
-			panelString.append(javaScriptPanels[0]);
-			if (i > 0) {
+			panelString.append(javaScriptPanels[i]);
+			if (i < n -1) {
 				panelString.append(" ");
 			}
 		}

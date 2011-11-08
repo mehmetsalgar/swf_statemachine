@@ -226,6 +226,12 @@
                 <transition xmi:id="_GosklMQnEeCYBJYY66CQSA" name="OrdersLoadedTransition" kind="local" source="_9kBRUMQhEeCYBJYY66CQSA" target="_qRRQ0odxEeCgzO61Ewoybw">
                   <trigger xmi:id="_SILfoMQnEeCYBJYY66CQSA" name="onOrdersLoaded" event="_WCZ5gMQnEeCYBJYY66CQSA"/>
                 </transition>
+                <transition xmi:id="_oy7RlAnpEeGFo5IcQ1m4zA" name="CUSTOMER_JOINED_CLICKED" kind="local" source="_9kBRUMQhEeCYBJYY66CQSA" target="_X3DXgobdEeCgzO61Ewoybw">
+                  <trigger xmi:id="_-Ph9EAnpEeGFo5IcQ1m4zA" name="onCustomerJoinedClicked" event="_hsbRMIeNEeCgzO61Ewoybw"/>
+                </transition>
+                <transition xmi:id="_Rl8_NAnqEeGFo5IcQ1m4zA" name="CUSTOMER_AUTHENTICATED_CLICKED" kind="local" source="_9kBRUMQhEeCYBJYY66CQSA" target="_gvoDIoEpEeC0au1QwVWf1Q">
+                  <trigger xmi:id="_RsCU4AnxEeGFo5IcQ1m4zA" name="onCustomerAuthenticatedClicked" event="_PaRzsIeGEeCgzO61Ewoybw"/>
+                </transition>
               </region>
             </packagedElement>
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_kvhH0H1SEeCgupXlFDV_aQ" name="START_SEARCH"/>
@@ -346,4 +352,6 @@
   <swf_statemachine:SwfTransition xmi:id="_Yn6K4MQhEeCYBJYY66CQSA" ActionImplementation="org.salgar.swf_statemachine.findorders.transition.action.FindOrdersFoundAction" base_Transition="__NN6RcNREeCYBJYY66CQSA"/>
   <swf_statemachine:SwfTransition xmi:id="_ZABEsMQoEeCYBJYY66CQSA" GuardImplementation="org.salgar.swf_statemachine.customersearch.transition.guard.OrdersLoadingGuard" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadingAction" base_Transition="__Y59FcQmEeCYBJYY66CQSA"/>
   <swf_statemachine:SwfTransition xmi:id="_pQnI4MQpEeCYBJYY66CQSA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadedAction" base_Transition="_GosklMQnEeCYBJYY66CQSA"/>
+  <swf_statemachine:SwfTransition xmi:id="_NJyV4AnqEeGFo5IcQ1m4zA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_oy7RlAnpEeGFo5IcQ1m4zA"/>
+  <swf_statemachine:SwfTransition xmi:id="_eAemMAnqEeGFo5IcQ1m4zA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadingCustomerAuthenticationRemovedAction" base_Transition="_Rl8_NAnqEeGFo5IcQ1m4zA"/>
 </xmi:XMI>

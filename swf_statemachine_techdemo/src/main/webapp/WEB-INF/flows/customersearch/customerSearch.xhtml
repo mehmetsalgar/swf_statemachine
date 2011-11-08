@@ -10,22 +10,25 @@
 		<h:head>
 			<title>Customer Search - Spring WebFlow - Primefaces - State Machine Demo</title>
 			<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-			<script type="text/javascript">                         
+			<!--script type="text/javascript">                         
                    function handlePublish(pushed) {
                            PrimeFaces.ajax.AjaxRequest('/swf_statemachine_techdemo-1.0-SNAPSHOT/spring/customersearch?jsessionId=#{externalContext.nativeRequest.session.id}&amp;execution=#{flowExecutionContext.key}',{formId:'customerSearchCustomerDetail_form',async:true,global:true,source:'customerSearchCustomerDetail_form:customerSearchViewCustomerDetail',process:'@all',update:'customerSearchRunning-panel_empty_layout customerSearchFound-empty-panel customerSearchAuthentication-empty-panel customerSearchOrderLoading-empty-panel customerSearchOrder-empty-panel'});return false;
                    }
-           </script>			
+           </script-->			
 		</h:head>
 		<body>
-			<!--p:outputPanel ajaxRendered="true" id="handlePuplishRemoteCommand">
-				<script type="text/javascript" language="Javascript"> // <![CDATA[				
-					function handlePublish(pushed) {
-						alert('#{customerSearchBB.customerSearchRenderPanels}');
-						PrimeFaces.ajax.AjaxRequest('/swf_statemachine_techdemo-1.0-SNAPSHOT/spring/customersearch?jsessionId=#{externalContext.nativeRequest.session.id}&amp;execution=#{flowExecutionContext.key}',{formId:'customerSearchCustomerDetail_form',async:true,global:true,source:'customerSearchCustomerDetail_form:customerSearchViewCustomerDetail',process:'@all',update:'#{customerSearchBB.customerSearchRenderPanels}'});return false;												
+			<script>
+				function handlePublish(pushed) {
+					handlePublishInternal();
+				}
+			</script>
+			<p:outputPanel ajaxRendered="true" id="handlePuplishRemoteCommand">				
+				<script id="sc1" type="text/javascript" language="Javascript">			
+					function handlePublishInternal() {
+						PrimeFaces.ajax.AjaxRequest('/swf_statemachine_techdemo-1.0-SNAPSHOT/spring/customersearch?jsessionId=#{externalContext.nativeRequest.session.id}&amp;execution=#{flowExecutionContext.key}',{formId:'customerSearchCustomerDetail_form',async:true,global:true,source:'customerSearchCustomerDetail_form:customerSearchViewCustomerDetail',process:'@all',update:'#{customerSearchBB.customerSearchJavaScriptRenderPanels}'});return false;												
 					};
-					//]]>
 				</script>
-			</p:outputPanel-->
+			</p:outputPanel>
 			<ui:include src="customerSearchInput.xhtml" />
 			<ui:include src="customerSearchRunning.xhtml" />
 			<ui:include src="customerSearchFound.xhtml" />

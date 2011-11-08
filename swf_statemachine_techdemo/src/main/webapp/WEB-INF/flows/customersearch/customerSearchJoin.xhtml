@@ -12,7 +12,7 @@
 				<h:panelGrid columns="1">
 					<h:outputText value="Are we allowed to join the customer!" />									 												 								
 					<h:selectBooleanCheckbox id="customerSearchJoinCheckBox" title="Joined" value="#{customerSearchJoinBB.customerJoined}" onchange="customerJoined();"/>
-					<p:remoteCommand name="customerJoined" action="onCustomerJoined" update="customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel,customerSearchOrderLoading-empty-panel" />													
+					<p:remoteCommand name="customerJoined" action="onCustomerJoined" update="customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel,customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel" />													
 				</h:panelGrid>
 			</h:form>	    			    	
 		</p:outputPanel>
