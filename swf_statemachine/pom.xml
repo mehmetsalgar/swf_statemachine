@@ -273,7 +273,7 @@
 		<m2t.version>0.7.2</m2t.version>
 		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
 		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>
-		<spring.version>2.5.6</spring.version>
+		<spring.version>3.0.4.RELEASE</spring.version>
 		<log4j.version>1.2.9</log4j.version>
 		<testng.version>5.9</testng.version>
 		<atmosphere.version>0.5</atmosphere.version>
