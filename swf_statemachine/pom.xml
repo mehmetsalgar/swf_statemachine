@@ -33,7 +33,19 @@
       			</plugin>
 		</plugins>
 	</build>
-
+	
+	<modules>
+		<module>../comet</module>
+		<module>../swf_statemachine_fornax_extension</module>		
+		<module>../swf_statemachine_domain</module>
+		<module>../swf_statemachine_xpand</module>
+		<module>../swf_statemachine_impl</module>
+		<module>../swf_statemachine_techdemo_domain</module>
+		<module>../swf_statemachine_sm_model</module>			
+		<module>../swf_statemachine_sm_model_impl</module>
+		<module>../swf_statemachine_techdemo</module>
+	</modules>	
+	
 	<repositories>
 		<repository>
 			<id>fornax.repository</id>
@@ -45,25 +57,232 @@
 			<name>Fornax Repository</name>
 			<url>http://www.fornax-platform.org/m2/snapshots</url>
 		</repository>
+		<repository>
+			<id>jboss</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+    			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>Springsource Bundles Release</id>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>Springsource Bundles External</id>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+		<repository>
+			<id>Springsource Libraries Release</id>
+			<url>http://repository.springsource.com/maven/libraries/release</url>
+		</repository>
+		<repository>
+			<id>Springsource Libraries External</id>
+			<url>http://repository.springsource.com/maven/libraries/external</url>
+		</repository>
 	</repositories>
 	
 	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>uml</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>uml-resources</artifactId>
+				<version>${eclipse.uml2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>resources</artifactId>
+				<version>${eclipse.uml2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.mapping</groupId>
+				<artifactId>ecore2xml </artifactId>
+				<version>${eclipse.emf.mapping.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uml2</groupId>
+				<artifactId>common</artifactId>
+				<version>${eclipse.uml2.common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>common</artifactId>
+				<version>${eclipse.emf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>ecore</artifactId>
+				<version>${eclipse.emf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.ecore</groupId>
+				<artifactId>xmi</artifactId>
+				<version>${eclipse.emf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.m2t.xpand</groupId>
+				<artifactId>m2t-xpand-xtend-util-stdlib</artifactId>
+				<version>${m2t.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.m2t.xpand</groupId>
+				<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
+				<version>${m2t.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.m2t.xpand</groupId>
+				<artifactId>m2t-xpand-xpand</artifactId>
+				<version>${m2t.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.mwe</groupId>
+				<artifactId>emf-mwe-utils</artifactId>
+				<version>${m2t.version}</version>
+			</dependency>
+
+			<!-- FORNAX -->
+			<dependency>
+				<groupId>org.fornax.cartridges</groupId>
+				<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
+				<version>${fornax.javabasic.cartridge.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.fornax.utilities</groupId>
+				<artifactId>fornax-utilities-formatter-xml</artifactId>
+				<version>${fornax.spring.core.version}</version>
+			</dependency>
+			
+			<!-- SPRING -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>			
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<!-- SPRING WEBFLOW -->
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>org.springframework.faces</artifactId>
+				<version>${spring-webflow.version}</version>
+			</dependency>
+			
+			<!-- PRIMEFACES -->
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>${primefaces.version}</version>
+			</dependency>
+			
+			<!-- JSF -->
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>${faces.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-impl</artifactId>
+				<version>${faces.version}</version>
+			</dependency>
+			
+			<!-- JSP -->
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp.version}</version>
+			</dependency>
+			
+			<!-- JSTL -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			
+			<!-- SERVLET -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet.version}</version>
+			</dependency>
+			
+				
+			<!-- Atmosphere -->
+			<dependency>
+				<groupId>org.atmosphere</groupId>
+				<artifactId>atmosphere-runtime</artifactId>
+				<version>${atmosphere.version}</version>
+			</dependency>
+			
+			<!-- EL -->
+			<dependency>
+				<groupId>javax.el</groupId>
+				<artifactId>el-api</artifactId>
+				<version>${el.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.web</groupId>
+				<artifactId>el-impl</artifactId>
+				<version>${el.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			
+			<!-- TEST -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+				<classifier>jdk15</classifier>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
 	</dependencies>
-	<modules>
-		<module>../swf_statemachine_fornax_extension</module>		
-		<module>../swf_statemachine_domain</module>
-		<module>../swf_statemachine_xpand</module>
-		<module>../swf_statemachine_impl</module>
-		<module>../swf_statemachine_techdemo_domain</module>
-		<module>../swf_statemachine_sm_model</module>			
-		<module>../swf_statemachine_sm_model_impl</module>
-		<module>../swf_statemachine_techdemo</module>
-	</modules>
+	
 	<properties>
 		<xsd.version>2.4.1</xsd.version>
-		<m2t>0.7.2</m2t>
+		<eclipse.uml2.version>3.0.0</eclipse.uml2.version>
+		<eclipse.emf.mapping.version>2.5.0</eclipse.emf.mapping.version>
+		<eclipse.uml2.common.version>1.5.0</eclipse.uml2.common.version>
+		<eclipse.emf.version>2.5.0</eclipse.emf.version>
+		<commons-lang.version>2.5</commons-lang.version>
+		<m2t.version>0.7.2</m2t.version>
+		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
+		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>
+		<spring.version>2.5.6</spring.version>
+		<log4j.version>1.2.9</log4j.version>
+		<testng.version>5.9</testng.version>
+		<atmosphere.version>0.5</atmosphere.version>
+		<primefaces.version>2.2.1</primefaces.version>
+		<spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
+		<el.version>2.2</el.version>
+		<servlet.version>2.5</servlet.version>
+		<faces.version>2.0.3</faces.version>
+		<jsp.version>2.1</jsp.version>
+		<jstl.version>1.1.2</jstl.version>
 	</properties>
 </project>	

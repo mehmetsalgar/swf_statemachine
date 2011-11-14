@@ -1,7 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.salgar.swf_statemachine</groupId>
+		<artifactId>swf_statemachine</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../swf_statemachine/pom.xml</relativePath>
+  	</parent>
+  	
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>org.salgar.swf_statemachine</groupId>
 	<artifactId>swf_statemachine_fornax_extension</artifactId>
 	<version>1.0-SNAPSHOT</version>
@@ -25,61 +31,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.eclipse.uml2</groupId>
-				<artifactId>uml</artifactId>
-				<version>3.0.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uml2</groupId>
-				<artifactId>uml-resources</artifactId>
-				<version>3.0.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uml2</groupId>
-				<artifactId>resources</artifactId>
-				<version>3.0.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.emf.mapping</groupId>
-				<artifactId>ecore2xml </artifactId>
-				<version>2.5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uml2</groupId>
-				<artifactId>common</artifactId>
-				<version>1.5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.emf</groupId>
-				<artifactId>common</artifactId>
-				<version>2.5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.emf</groupId>
-				<artifactId>ecore</artifactId>
-				<version>2.5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.emf.ecore</groupId>
-				<artifactId>xmi</artifactId>
-				<version>2.5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.emf.ecore</groupId>
-				<artifactId>xmi</artifactId>
-				<version>2.5.0</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.5</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

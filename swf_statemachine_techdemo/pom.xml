@@ -1,7 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.salgar.swf_statemachine</groupId>
+		<artifactId>swf_statemachine</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../swf_statemachine/pom.xml</relativePath>
+  	</parent>
+	
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>org.salgar.swf_statemachine</groupId>
 	<artifactId>swf_statemachine_techdemo</artifactId>
 	<version>1.0-SNAPSHOT</version>
@@ -26,6 +32,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
 				<executions>
 					<execution>
 						<goals>
@@ -41,34 +48,6 @@
 			</testResource>
 		</testResources>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>jboss</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>primefaces</id>
-			<url>http://repository.prime.com.tr/</url>
-		</repository>
-		<repository>
-			<id>Springsource Bundles Release</id>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-		</repository>
-		<repository>
-			<id>Springsource Bundles External</id>
-			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
-		<repository>
-			<id>Springsource Libraries Release</id>
-			<url>http://repository.springsource.com/maven/libraries/release</url>
-		</repository>
-		<repository>
-			<id>Springsource Libraries External</id>
-			<url>http://repository.springsource.com/maven/libraries/external</url>
-		</repository>
-	</repositories>
-
 
 	<dependencies>
 		<!-- SWF STATEMACHINE -->
@@ -98,11 +77,10 @@
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-runtime</artifactId>
-			<version>${atmosphere.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.salgar</groupId>
+			<groupId>org.salgar.swf_statemachine</groupId>
 			<artifactId>comet</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -111,7 +89,6 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>${primefaces.version}</version>
 		</dependency>
 
 		<!-- SPRING -->
@@ -120,65 +97,63 @@
 		<dependency>
 			<groupId>org.springframework.webflow</groupId>
 			<artifactId>org.springframework.faces</artifactId>
-			<version>${spring-webflow.version}</version>
 		</dependency>
 		<!-- dependency> <groupId>org.jboss.el</groupId> <artifactId>com.springsource.org.jboss.el</artifactId> 
 			<version>2.0.0.GA</version> </dependency -->
 		<!-- dependency> <groupId>org.jboss.el</groupId> <artifactId>jboss-el</artifactId> 
 			<version>2.0.2.CR1</version> <exclusions> <exclusion> <groupId>javax.el</groupId> 
 			<artifactId>el-api</artifactId> </exclusion> </exclusions> </dependency -->
+			
+		<!-- EL -->
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>el-api</artifactId>
-			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
-			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
-
-
+		
+		<!-- SERVLET -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>${faces.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>${faces.version}</version>
 		</dependency>
+		
+		<!-- JSP -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>${commons-lang.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.9</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -186,41 +161,23 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>2.5.6</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>5.9</version>
 			<classifier>jdk15</classifier>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jsf.version>1.2_12</jsf.version>
 		<cargo.container>jboss42x</cargo.container>
 		<cargo.host>localhost</cargo.host>
 		<cargo.port>8080</cargo.port>
 		<cargo.wait>true</cargo.wait>
 		<installDir>${java.io.tmpdir}/cargo-installs</installDir>
 
-		<!-- dependencies -->
-		<!-- dependencies -->
-		<servlet.version>2.5</servlet.version>
-		<jstl.version>1.2</jstl.version>
-		<standard.version>1.1.2</standard.version>
-		<spring.version>3.0.4.RELEASE</spring.version>
-		<portlet-api.version>1.0</portlet-api.version>
-		<facelets.version>1.1.15</facelets.version>
-		<log4j.version>1.2.14</log4j.version>
-		<faces.version>2.0.3</faces.version>
-		<commons-lang.version>2.5</commons-lang.version>
-		<junit.version>4.8.1</junit.version>
-		<atmosphere.version>0.5</atmosphere.version>
-		<!-- primefaces.version>2.2.RC1-SNAPSHOT</primefaces.version> <spring-webflow.version>2.2.0.M1</spring-webflow.version -->
-		<primefaces.version>2.2.1</primefaces.version>
-		<spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
+		<!--spring.version>3.0.4.RELEASE</spring.version-->
 	</properties>
 </project>
