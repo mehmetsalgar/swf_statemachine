@@ -22,6 +22,11 @@ public class CustomerSearchRunningAction implements Action, Serializable {
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = (CustomerSearchStartEventPayload) event
 				.getPayload();
 
+		CustomerSearchSMControlObjectAccessor
+				.processCustomerSearchRunningAction(
+						(CustomerSearchSMControlObject) customerSearchCO,
+						customerSearchStartEventPayload.getCustomerNumber());
+
 		Event findCustomerSmEvent = new Event();
 		findCustomerSmEvent
 				.setEventType(FindCustomerSM_EventEnumerationImpl.onStartSearch);
@@ -33,10 +38,10 @@ public class CustomerSearchRunningAction implements Action, Serializable {
 						.getStateMachineName());
 		findCustomerStateMachine.resetStateMachine();
 		findCustomerStateMachine.dispatch(findCustomerSmEvent);
+		
+		//We have to one specific Slave Maschine that is referenced from this Master State MAchine
+		//for this reason we have to keep a reference to it.
+		((CustomerSearchSMControlObject) customerSearchCO).setFindCustomerSlaveSM(findCustomerStateMachine);
 
-		CustomerSearchSMControlObjectAccessor
-				.processCustomerSearchRunningAction(
-						(CustomerSearchSMControlObject) customerSearchCO,
-						customerSearchStartEventPayload.getCustomerNumber());
 	}
 }

@@ -33,4 +33,9 @@ public class SimpleMapScope implements Scope {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Object resolveContextualObject(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

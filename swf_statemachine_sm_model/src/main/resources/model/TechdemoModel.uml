@@ -91,6 +91,9 @@
                 <ownedAttribute xmi:id="_mS7tAsS8EeCYBJYY66CQSA" name="findOrdersSlaveSM" visibility="package">
                   <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
                 </ownedAttribute>
+                <ownedAttribute xmi:id="_laFS4h-WEeOAm6oIIyMDNw" name="findCustomerSlaveSM" visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
+                </ownedAttribute>
                 <interfaceRealization xmi:id="_tugWtH0_EeCgupXlFDV_aQ" name="InterfaceRealization1" supplier="_NpckMHyOEeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NpckMHyOEeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_ucZ-gH0_EeCgupXlFDV_aQ" name="InterfaceRealization2" supplier="_YJtf4H08EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_YJtf4H08EeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_vF1WAH0_EeCgupXlFDV_aQ" name="InterfaceRealization3" supplier="_hJ3m4H0-EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_hJ3m4H0-EeCgupXlFDV_aQ"/>
@@ -189,7 +192,7 @@
                 </ownedOperation>
               </packagedElement>
             </packagedElement>
-            <packagedElement xmi:type="uml:StateMachine" xmi:id="_vsIb0H1REeCgupXlFDV_aQ" name="CustomerSearchSM">
+            <packagedElement xmi:type="uml:StateMachine" xmi:id="_vsIb0H1REeCgupXlFDV_aQ" name="CustomerSearchSM" submachineState="_BWlu8k3XEeOE05lJ4YwKXQ">
               <region xmi:id="_vsIb0X1REeCgupXlFDV_aQ" name="Region">
                 <subvertex xmi:type="uml:Pseudostate" xmi:id="_2m3ZUH1REeCgupXlFDV_aQ" name="start"/>
                 <subvertex xmi:type="uml:State" xmi:id="_41VcAn1REeCgupXlFDV_aQ" name="WAITING_CUSTOMERSEARCH_START"/>
@@ -301,6 +304,28 @@
                 </ownedAttribute>
               </packagedElement>
             </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_rvqCwE3WEeOE05lJ4YwKXQ" name="techdemo">
+            <packagedElement xmi:type="uml:StateMachine" xmi:id="_zhMFYE3WEeOE05lJ4YwKXQ" name="TechDemoSM">
+              <region xmi:id="_zhMFYU3WEeOE05lJ4YwKXQ" name="Region">
+                <subvertex xmi:type="uml:Pseudostate" xmi:id="_2tVRQ03WEeOE05lJ4YwKXQ" name="Start"/>
+                <subvertex xmi:type="uml:State" xmi:id="_BWlu8k3XEeOE05lJ4YwKXQ" name="CUSTOMERSEARCH_PROCESSING" submachine="_vsIb0H1REeCgupXlFDV_aQ"/>
+                <subvertex xmi:type="uml:FinalState" xmi:id="_QrgDck3XEeOE05lJ4YwKXQ" name="FinalState1"/>
+                <subvertex xmi:type="uml:State" xmi:id="_VLrqEk3XEeOE05lJ4YwKXQ" name="TIMEOUT"/>
+                <subvertex xmi:type="uml:State" xmi:id="_ZtpZYE3XEeOE05lJ4YwKXQ" name="SERVICE_NOT_AVAILABLE"/>
+                <transition xmi:id="_NC5lFk3XEeOE05lJ4YwKXQ" name="Transition1" kind="local" source="_2tVRQ03WEeOE05lJ4YwKXQ" target="_BWlu8k3XEeOE05lJ4YwKXQ"/>
+                <transition xmi:id="_R96GhU3XEeOE05lJ4YwKXQ" name="Transition2" kind="local" source="_BWlu8k3XEeOE05lJ4YwKXQ" target="_QrgDck3XEeOE05lJ4YwKXQ"/>
+                <transition xmi:id="_eBUOBU3XEeOE05lJ4YwKXQ" name="Transition3" kind="local" source="_BWlu8k3XEeOE05lJ4YwKXQ" target="_ZtpZYE3XEeOE05lJ4YwKXQ">
+                  <trigger xmi:id="_gGrYAE3XEeOE05lJ4YwKXQ" name="onServiceNotAvailableError" event="_2wqcoE3XEeOE05lJ4YwKXQ"/>
+                </transition>
+                <transition xmi:id="_yMdRpU3XEeOE05lJ4YwKXQ" name="Transition4" kind="local" source="_BWlu8k3XEeOE05lJ4YwKXQ" target="_VLrqEk3XEeOE05lJ4YwKXQ">
+                  <trigger xmi:id="_5s2g8E3XEeOE05lJ4YwKXQ" name="onTimeoutError" event="_RnHwkIhIEeCAqeEFueg1Bw"/>
+                </transition>
+              </region>
+            </packagedElement>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_jtMLsE3XEeOE05lJ4YwKXQ" name="Event"/>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_va_PkE3XEeOE05lJ4YwKXQ" name="TIMEOUT_ERROR"/>
+            <packagedElement xmi:type="uml:SignalEvent" xmi:id="_2wqcoE3XEeOE05lJ4YwKXQ" name="SERVICE_NOT_AVAILABLE_ERROR"/>
           </packagedElement>
         </packagedElement>
       </packagedElement>

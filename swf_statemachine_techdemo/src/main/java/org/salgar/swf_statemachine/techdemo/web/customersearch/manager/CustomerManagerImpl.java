@@ -9,7 +9,6 @@ import org.salgar.statemachine.domain.Event;
 import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
-import org.salgar.swf_statemachine.techdemo.listener.AsynchroneListener;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
 
 public class CustomerManagerImpl implements CustomerManager {

@@ -33,12 +33,11 @@
 				classpath:/META-INF/findorders/applicationContext-statemachine-findorders-controlobjects.xml
 				/WEB-INF/config/applicationContext-manager.xml</param-value>
 		</init-param>
-		<load-on-startup>2</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>SpringResourceServlet</servlet-name>
-		<servlet-class>org.springframework.js.resource.ResourceServlet
-		</servlet-class>
+		<servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet>
