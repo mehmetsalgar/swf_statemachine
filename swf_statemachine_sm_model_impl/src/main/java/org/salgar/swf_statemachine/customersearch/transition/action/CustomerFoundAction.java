@@ -2,7 +2,6 @@ package org.salgar.swf_statemachine.customersearch.transition.action;
 
 import java.io.Serializable;
 
-import org.atmosphere.cpr.Broadcaster;
 import org.salgar.comet.CometServiceLocator;
 import org.salgar.statemachine.domain.AbstractStateMachine;
 import org.salgar.statemachine.domain.Action;
@@ -36,9 +35,6 @@ public class CustomerFoundAction implements Action, Serializable {
 		findOrdersSM.resetStateMachine();
 		findOrdersSM.dispatch(findOrdersSMStartEvent);
 
-		Broadcaster broadcaster = CometServiceLocator.getInstance()
-				.getBroadcaster();
-
-		broadcaster.broadcast("customer found");
+		CometServiceLocator.getInstance().pushMessage("customer found");
 	}
 }

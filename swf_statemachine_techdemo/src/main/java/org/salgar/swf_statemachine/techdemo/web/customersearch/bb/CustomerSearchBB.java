@@ -29,7 +29,7 @@ public class CustomerSearchBB {
 		for (int i = 0, n = javaScriptPanels.length; i < n; i++) {
 			panelString.append(javaScriptPanels[i]);
 			if (i < n -1) {
-				panelString.append(" ");
+				panelString.append(",:");
 			}
 		}
 

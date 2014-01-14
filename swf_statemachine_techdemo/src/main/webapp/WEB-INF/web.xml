@@ -50,14 +50,8 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-		<servlet-name>CometServlet</servlet-name>
-		<servlet-class>org.salgar.comet.CometServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-		<async-supported>true</async-supported>
-		<!-- init-param>
-			<param-name>org.atmosphere.useNative</param-name>
-			<param-value>true</param-value>
-		</init-param-->
+		<servlet-name>Push Servlet</servlet-name>
+		<servlet-class>org.primefaces.push.PushServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PrimefacesResourceServlet</servlet-name>
@@ -76,7 +70,7 @@
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>CometServlet</servlet-name>
-		<url-pattern>/primefaces_comet/*</url-pattern>
+		<servlet-name>Push Servlet</servlet-name>
+		<url-pattern>/primepush/*</url-pattern>
 	</servlet-mapping>
 </web-app>

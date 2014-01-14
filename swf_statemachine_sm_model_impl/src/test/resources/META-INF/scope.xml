@@ -6,6 +6,9 @@
 	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
 		<property name="scopes">
 			<map>
+				<entry key="flow">
+					<bean class="org.salgar.swf_statemachine.spring.SimpleMapScope" />
+				</entry>
 				<entry key="session">
 					<bean class="org.salgar.swf_statemachine.spring.SimpleMapScope" />
 				</entry>

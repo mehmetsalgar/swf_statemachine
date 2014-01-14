@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:swf_statemachine="http:///schemas/swf_statemachine/_St5bIHcgEeC3vsFXsgpuAw/9" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/swf_statemachine/_St5bIHcgEeC3vsFXsgpuAw/9 ../swf_statemachine.profile.uml#_St5bIXcgEeC3vsFXsgpuAw">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:swf_statemachine="http:///schemas/swf_statemachine/_cG_94H0gEeOMqfaGqAAiYA/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/swf_statemachine/_cG_94H0gEeOMqfaGqAAiYA/1 ../swf_statemachine.profile.uml#_cG_94X0gEeOMqfaGqAAiYA">
   <uml:Model xmi:id="idModel" name="TechdemoModelModel">
     <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="org">
       <packagedElement xmi:type="uml:Package" xmi:id="_j9y1EFSDEeCXppvRWRtxXw" name="salgar">
@@ -336,12 +336,6 @@
       </eAnnotations>
       <appliedProfile href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
     </profileApplication>
-    <profileApplication xmi:id="_QEvscH1TEeCgupXlFDV_aQ">
-      <eAnnotations xmi:id="_QFfTUH1TEeCgupXlFDV_aQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="../swf_statemachine.profile.uml#_St5bIXcgEeC3vsFXsgpuAw"/>
-      </eAnnotations>
-      <appliedProfile href="../swf_statemachine.profile.uml#_xmxqwTs-EeCJKOn_XK7noQ"/>
-    </profileApplication>
     <profileApplication xmi:id="_Hr2TQIFCEeC0au1QwVWf1Q">
       <eAnnotations xmi:id="_HsAEQIFCEeC0au1QwVWf1Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="../techdemo-domain.profile.uml#_5f7AEYFBEeC0au1QwVWf1Q"/>
@@ -360,23 +354,12 @@
       </eAnnotations>
       <appliedProfile href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
     </profileApplication>
+    <profileApplication xmi:id="_R5c54H0iEeOMqfaGqAAiYA">
+      <eAnnotations xmi:id="_R5c54X0iEeOMqfaGqAAiYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../swf_statemachine.profile.uml#_cG_94X0gEeOMqfaGqAAiYA"/>
+      </eAnnotations>
+      <appliedProfile href="../swf_statemachine.profile.uml#_xmxqwTs-EeCJKOn_XK7noQ"/>
+    </profileApplication>
   </uml:Model>
-  <swf_statemachine:SwfStateMachine xmi:id="_RabtAH1TEeCgupXlFDV_aQ" Scope="session" base_StateMachine="_vsIb0H1REeCgupXlFDV_aQ"/>
-  <swf_statemachine:SwfTransition xmi:id="_jXs-UH1oEeCE0faYy3-Yyw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerSearchRunningAction" base_Transition="_WYYDJX1SEeCgupXlFDV_aQ"/>
-  <swf_statemachine:SwfTransition xmi:id="_QyFHsIExEeC0au1QwVWf1Q" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerFoundAction" base_Transition="_lJ_8tYEpEeC0au1QwVWf1Q"/>
-  <swf_statemachine:SwfTransition xmi:id="_MODdMIdjEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticatedAction" base_Transition="_cQF0VYbdEeCgzO61Ewoybw"/>
-  <swf_statemachine:SwfTransition xmi:id="__wzUgIdxEeCgzO61Ewoybw" GuardImplementation="org.salgar.swf_statemachine.customersearch.transition.guard.CustomerJoinedOrdersLoadedGuard" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAction" base_Transition="_s4dVhYdxEeCgzO61Ewoybw"/>
-  <swf_statemachine:SwfTransition xmi:id="_LoGQoIeIEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAuthenticationRemovedAction" base_Transition="_HYB0hIeGEeCgzO61Ewoybw"/>
-  <swf_statemachine:SwfTransition xmi:id="_gPgkEIeJEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticationRemovedAction" base_Transition="_ZocQ1IeGEeCgzO61Ewoybw"/>
-  <swf_statemachine:SwfTransition xmi:id="_xLp_UIeNEeCgzO61Ewoybw" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_LP-kNYeLEeCgzO61Ewoybw"/>
-  <swf_statemachine:SwfStateMachine xmi:id="_QP24IIhHEeCAqeEFueg1Bw" Scope="prototype" base_StateMachine="_MVf7YIhHEeCAqeEFueg1Bw"/>
-  <swf_statemachine:SwfTransition xmi:id="_TYJRcLFJEeCTwtJ2Y09MGg" ActionImplementation="org.salgar.swf_statemachine.findcustomer.transition.action.FindCustomerStartAction" base_Transition="_gJbY5YhHEeCAqeEFueg1Bw"/>
-  <swf_statemachine:SwfTransition xmi:id="_hMXHsLOYEeC1SLrv8PgQ-A" ActionImplementation="org.salgar.swf_statemachine.findcustomer.transition.action.FindCustomerCustomerFoundAction" base_Transition="_tUivVYhHEeCAqeEFueg1Bw"/>
-  <swf_statemachine:SwfStateMachine xmi:id="_WMcTMMQPEeCYBJYY66CQSA" Scope="prototype" base_StateMachine="_U6THMMNREeCYBJYY66CQSA"/>
-  <swf_statemachine:SwfTransition xmi:id="_Q1MgsMQaEeCYBJYY66CQSA" ActionImplementation="org.salgar.swf_statemachine.findorders.transition.action.FindOrdersStartAction" base_Transition="_oiyJtcNREeCYBJYY66CQSA"/>
-  <swf_statemachine:SwfTransition xmi:id="_Yn6K4MQhEeCYBJYY66CQSA" ActionImplementation="org.salgar.swf_statemachine.findorders.transition.action.FindOrdersFoundAction" base_Transition="__NN6RcNREeCYBJYY66CQSA"/>
-  <swf_statemachine:SwfTransition xmi:id="_ZABEsMQoEeCYBJYY66CQSA" GuardImplementation="org.salgar.swf_statemachine.customersearch.transition.guard.OrdersLoadingGuard" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadingAction" base_Transition="__Y59FcQmEeCYBJYY66CQSA"/>
-  <swf_statemachine:SwfTransition xmi:id="_pQnI4MQpEeCYBJYY66CQSA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadedAction" base_Transition="_GosklMQnEeCYBJYY66CQSA"/>
-  <swf_statemachine:SwfTransition xmi:id="_NJyV4AnqEeGFo5IcQ1m4zA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_oy7RlAnpEeGFo5IcQ1m4zA"/>
-  <swf_statemachine:SwfTransition xmi:id="_eAemMAnqEeGFo5IcQ1m4zA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadingCustomerAuthenticationRemovedAction" base_Transition="_Rl8_NAnqEeGFo5IcQ1m4zA"/>
+  <swf_statemachine:SwfStateMachine xmi:id="_WeGw0H0iEeOMqfaGqAAiYA" Scope="flow" base_StateMachine="_vsIb0H1REeCgupXlFDV_aQ"/>
 </xmi:XMI>

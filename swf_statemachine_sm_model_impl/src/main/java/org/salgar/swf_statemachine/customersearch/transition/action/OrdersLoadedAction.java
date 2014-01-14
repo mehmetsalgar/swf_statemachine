@@ -2,7 +2,6 @@ package org.salgar.swf_statemachine.customersearch.transition.action;
 
 import java.util.List;
 
-import org.atmosphere.cpr.Broadcaster;
 import org.salgar.comet.CometServiceLocator;
 import org.salgar.statemachine.domain.AbstractStateMachine;
 import org.salgar.statemachine.domain.Action;
@@ -20,10 +19,7 @@ public class OrdersLoadedAction implements Action {
 		CustomerSearchSMControlObjectAccessor.processOrdersLoadedAction(
 				controlObject, (List<Order>) event.getPayload());
 
-		Broadcaster broadcaster = CometServiceLocator.getInstance()
-				.getBroadcaster();
-
-		broadcaster.broadcast("orders found");
+		CometServiceLocator.getInstance().pushMessage("orders found");
 	}
 
 }

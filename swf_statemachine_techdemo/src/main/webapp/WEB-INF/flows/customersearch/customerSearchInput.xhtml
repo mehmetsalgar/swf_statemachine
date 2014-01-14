@@ -3,7 +3,7 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.prime.com.tr/ui">
+	xmlns:p="http://primefaces.org/ui">
 	
 	<h:form id="customerSearch-form">
 		<p:outputPanel id="customerSearchInputLayout" ajaxRendered="true"
@@ -15,7 +15,7 @@
 			</h:inputText>
 		
 			<p:commandButton id="customerSearchStart" value="Search"
-				action="onStartCustomerSearch" ajax="true" update="customerSearch-form,customerSearchRunning-panel_empty_layout,handlePuplishRemoteCommand">
+				action="onStartCustomerSearch" ajax="true" update="customerSearch-form,:customerSearchRunning-panel_empty_layout,:handlePuplishRemoteCommand">
 			</p:commandButton>
 		</p:outputPanel>
 	</h:form>

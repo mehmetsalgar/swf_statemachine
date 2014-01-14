@@ -1,6 +1,7 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
 import org.apache.log4j.Logger;
+import org.salgar.comet.CometServiceLocator;
 import org.salgar.statemachine.domain.Event;
 import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchInputCO;
@@ -34,6 +35,7 @@ public class CustomerSearchInputLayoutBB {
 
 	public void searchCustomer() {
 		log.info("We are searching customer!");
+		CometServiceLocator.getInstance();
 		Event event = new Event();
 		event.setEventType(CustomerSearchSM_EventEnumerationImpl.onStartSearch);
 

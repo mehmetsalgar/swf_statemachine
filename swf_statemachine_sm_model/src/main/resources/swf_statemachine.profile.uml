@@ -1,190 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_xmxqwTs-EeCJKOn_XK7noQ" name="swf_statemachine" metaclassReference="_S52YgDtAEeCJKOn_XK7noQ _93QlIDtjEeCm4vaOZmQi8w">
   <eAnnotations xmi:id="_yeaLcTtAEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_St5bIXcgEeC3vsFXsgpuAw" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_St5bIHcgEeC3vsFXsgpuAw/9" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_St5bIncgEeC3vsFXsgpuAw" name="SwfStateMachine">
-        <eAnnotations xmi:id="_St5bI3cgEeC3vsFXsgpuAw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_St5bJHcgEeC3vsFXsgpuAw" name="Scope" ordered="false" eType="_St5bKncgEeC3vsFXsgpuAw" defaultValueLiteral=""/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_St5bJncgEeC3vsFXsgpuAw" name="submachine" ordered="false" defaultValueLiteral="False">
+    <contents xmi:type="ecore:EPackage" xmi:id="_cG_94X0gEeOMqfaGqAAiYA" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_cG_94H0gEeOMqfaGqAAiYA/1" nsPrefix="swf_statemachine">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cG_94n0gEeOMqfaGqAAiYA" name="SwfStateMachine">
+        <eAnnotations xmi:id="_cG_9430gEeOMqfaGqAAiYA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_cG_95H0gEeOMqfaGqAAiYA" name="Scope" ordered="false" eType="_cG_96n0gEeOMqfaGqAAiYA" defaultValueLiteral=""/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_cG_95n0gEeOMqfaGqAAiYA" name="submachine" ordered="false" defaultValueLiteral="False">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_St5bKHcgEeC3vsFXsgpuAw" name="base_StateMachine" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cG_96H0gEeOMqfaGqAAiYA" name="base_StateMachine" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_St5bKncgEeC3vsFXsgpuAw" name="ScopeKind">
-        <eAnnotations xmi:id="_St5bK3cgEeC3vsFXsgpuAw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_St5bLHcgEeC3vsFXsgpuAw" name="session"/>
-        <eLiterals xmi:id="_St5bLXcgEeC3vsFXsgpuAw" name="prototype" value="1"/>
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_cG_96n0gEeOMqfaGqAAiYA" name="ScopeKind">
+        <eAnnotations xmi:id="_cG_9630gEeOMqfaGqAAiYA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
+        <eLiterals xmi:id="_cG_97H0gEeOMqfaGqAAiYA" name="session"/>
+        <eLiterals xmi:id="_cG_97X0gEeOMqfaGqAAiYA" name="prototype" value="1"/>
+        <eLiterals xmi:id="_cG_97n0gEeOMqfaGqAAiYA" name="flow" value="2"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_St5bLncgEeC3vsFXsgpuAw" name="SwfTransition">
-        <eAnnotations xmi:id="_St5bL3cgEeC3vsFXsgpuAw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_09cr0DtjEeCm4vaOZmQi8w"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_St5bMHcgEeC3vsFXsgpuAw" name="GuardImplementation" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cG_9730gEeOMqfaGqAAiYA" name="SwfTransition">
+        <eAnnotations xmi:id="_cG_98H0gEeOMqfaGqAAiYA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_09cr0DtjEeCm4vaOZmQi8w"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_cG_98X0gEeOMqfaGqAAiYA" name="GuardImplementation" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_St5bMncgEeC3vsFXsgpuAw" name="ActionImplementation" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_cG_9830gEeOMqfaGqAAiYA" name="ActionImplementation" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_St5bNHcgEeC3vsFXsgpuAw" name="base_Transition" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cG_99X0gEeOMqfaGqAAiYA" name="base_Transition" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Transition"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_2XQSgXcbEeC3vsFXsgpuAw" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_2XQSgHcbEeC3vsFXsgpuAw/8" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_2XQSgncbEeC3vsFXsgpuAw" name="SwfStateMachine">
-        <eAnnotations xmi:id="_2XQSg3cbEeC3vsFXsgpuAw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2XQShHcbEeC3vsFXsgpuAw" name="Scope" ordered="false" eType="_2XQSincbEeC3vsFXsgpuAw" defaultValueLiteral=""/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_2XQShncbEeC3vsFXsgpuAw" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_2XQSiHcbEeC3vsFXsgpuAw" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_2XQSincbEeC3vsFXsgpuAw" name="ScopeKind">
-        <eAnnotations xmi:id="_2XQSi3cbEeC3vsFXsgpuAw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_2XQSjHcbEeC3vsFXsgpuAw" name="session"/>
-        <eLiterals xmi:id="_2XQSjXcbEeC3vsFXsgpuAw" name="prototype" value="1"/>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_2XQSjncbEeC3vsFXsgpuAw" name="SwfTransition">
-        <eAnnotations xmi:id="_2XQSj3cbEeC3vsFXsgpuAw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_09cr0DtjEeCm4vaOZmQi8w"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_2XQSkHcbEeC3vsFXsgpuAw" name="GuardImplementation" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_2XQSkncbEeC3vsFXsgpuAw" name="ActionImplementation" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_2XQSlHcbEeC3vsFXsgpuAw" name="base_Transition" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Transition"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_2XQSlncbEeC3vsFXsgpuAw" name="TestImplementation" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_gtLbITtkEeCm4vaOZmQi8w" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_gtLbIDtkEeCm4vaOZmQi8w/7" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_gtLbIjtkEeCm4vaOZmQi8w" name="SwfStateMachine">
-        <eAnnotations xmi:id="_gtLbIztkEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_gtLbJDtkEeCm4vaOZmQi8w" name="Scope" ordered="false" eType="_gtLbKjtkEeCm4vaOZmQi8w" defaultValueLiteral=""/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_gtLbJjtkEeCm4vaOZmQi8w" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_gtLbKDtkEeCm4vaOZmQi8w" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_gtLbKjtkEeCm4vaOZmQi8w" name="ScopeKind">
-        <eAnnotations xmi:id="_gtLbKztkEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_gtLbLDtkEeCm4vaOZmQi8w" name="session"/>
-        <eLiterals xmi:id="_gtLbLTtkEeCm4vaOZmQi8w" name="prototype" value="1"/>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_gtLbLjtkEeCm4vaOZmQi8w" name="SwfTransition">
-        <eAnnotations xmi:id="_gtLbLztkEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_09cr0DtjEeCm4vaOZmQi8w"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_gtLbMDtkEeCm4vaOZmQi8w" name="GuardImplementation" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_gtLbMjtkEeCm4vaOZmQi8w" name="ActionImplementation" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_gtLbNDtkEeCm4vaOZmQi8w" name="base_Transition" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Transition"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_7SJ_YTtIEeCm4vaOZmQi8w" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_7SJ_YDtIEeCm4vaOZmQi8w/6" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_7SJ_YjtIEeCm4vaOZmQi8w" name="SwfStateMachine">
-        <eAnnotations xmi:id="_7SJ_YztIEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_7SJ_ZDtIEeCm4vaOZmQi8w" name="Scope" ordered="false" eType="_7SJ_ajtIEeCm4vaOZmQi8w" defaultValueLiteral=""/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_7SJ_ZjtIEeCm4vaOZmQi8w" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_7SJ_aDtIEeCm4vaOZmQi8w" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_7SJ_ajtIEeCm4vaOZmQi8w" name="ScopeKind">
-        <eAnnotations xmi:id="_7SJ_aztIEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_7SJ_bDtIEeCm4vaOZmQi8w" name="session"/>
-        <eLiterals xmi:id="_7SJ_bTtIEeCm4vaOZmQi8w" name="prototype" value="1"/>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_vjsfEDtGEeCm4vaOZmQi8w" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_vjiuEDtGEeCm4vaOZmQi8w/5" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vjsfETtGEeCm4vaOZmQi8w" name="SwfStateMachine">
-        <eAnnotations xmi:id="_vjsfEjtGEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vjsfEztGEeCm4vaOZmQi8w" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vjsfFTtGEeCm4vaOZmQi8w" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_vjsfFztGEeCm4vaOZmQi8w" name="ScopeKind">
-        <eAnnotations xmi:id="_vjsfGDtGEeCm4vaOZmQi8w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_vjsfGTtGEeCm4vaOZmQi8w" name="session"/>
-        <eLiterals xmi:id="_vjsfGjtGEeCm4vaOZmQi8w" name="prototype" value="1"/>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_Z2JfcTtEEeCJKOn_XK7noQ" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_Z2JfcDtEEeCJKOn_XK7noQ/4" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Z2JfcjtEEeCJKOn_XK7noQ" name="SwfStateMachine">
-        <eAnnotations xmi:id="_Z2JfcztEEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Z2JfdDtEEeCJKOn_XK7noQ" name="scope" ordered="false" lowerBound="1" eType="_Z2JfeztEEeCJKOn_XK7noQ" changeable="false" volatile="true" defaultValueLiteral="">
-          <eAnnotations xmi:id="_Z2JfdTtEEeCJKOn_XK7noQ" source="union"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Z2JfdztEEeCJKOn_XK7noQ" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Z2JfeTtEEeCJKOn_XK7noQ" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_Z2JfeztEEeCJKOn_XK7noQ" name="ScopeKind">
-        <eAnnotations xmi:id="_Z2JffDtEEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_Z2JffTtEEeCJKOn_XK7noQ" name="session"/>
-        <eLiterals xmi:id="_Z2JffjtEEeCJKOn_XK7noQ" name="prototype" value="1"/>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_3LHDwTtDEeCJKOn_XK7noQ" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_3LHDwDtDEeCJKOn_XK7noQ/3" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_3LHDwjtDEeCJKOn_XK7noQ" name="SwfStateMachine">
-        <eAnnotations xmi:id="_3LHDwztDEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_3LHDxDtDEeCJKOn_XK7noQ" name="scope" ordered="false" defaultValueLiteral="session">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_3LHDxjtDEeCJKOn_XK7noQ" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3LHDyDtDEeCJKOn_XK7noQ" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_3LHDyjtDEeCJKOn_XK7noQ" name="scope1" ordered="false" lowerBound="1" eType="_3LHDzDtDEeCJKOn_XK7noQ"/>
-      </eClassifiers>
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_3LHDzDtDEeCJKOn_XK7noQ" name="ScopeKind">
-        <eAnnotations xmi:id="_3LHDzTtDEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g_D4UDtDEeCJKOn_XK7noQ"/>
-        <eLiterals xmi:id="_3LHDzjtDEeCJKOn_XK7noQ" name="session"/>
-        <eLiterals xmi:id="_3LHDzztDEeCJKOn_XK7noQ" name="prototype" value="1"/>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_-uP6gTtCEeCJKOn_XK7noQ" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_-uP6gDtCEeCJKOn_XK7noQ/2" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_-uP6gjtCEeCJKOn_XK7noQ" name="SwfStateMachine">
-        <eAnnotations xmi:id="_-uP6gztCEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-uP6hDtCEeCJKOn_XK7noQ" name="scope" ordered="false" defaultValueLiteral="session">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_-uP6hjtCEeCJKOn_XK7noQ" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_-uP6iDtCEeCJKOn_XK7noQ" name="base_StateMachine" ordered="false" lowerBound="1">
-          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//StateMachine"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-    </contents>
-    <contents xmi:type="ecore:EPackage" xmi:id="_g2XhQTtBEeCJKOn_XK7noQ" name="swf_statemachine" nsURI="http:///schemas/swf_statemachine/_g2XhQDtBEeCJKOn_XK7noQ/1" nsPrefix="swf_statemachine">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_g2XhQjtBEeCJKOn_XK7noQ" name="SwfStateMachine" abstract="true">
-        <eAnnotations xmi:id="_g2XhQztBEeCJKOn_XK7noQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_5_gQQDs-EeCJKOn_XK7noQ"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_g2XhRDtBEeCJKOn_XK7noQ" name="scope" ordered="false" defaultValueLiteral="session">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_g2XhRjtBEeCJKOn_XK7noQ" name="submachine" ordered="false" defaultValueLiteral="False">
-          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
@@ -219,6 +62,7 @@
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_g_D4UDtDEeCJKOn_XK7noQ" name="ScopeKind">
     <ownedLiteral xmi:id="_mGIf0DtDEeCJKOn_XK7noQ" name="session"/>
     <ownedLiteral xmi:id="_pVZ4MDtDEeCJKOn_XK7noQ" name="prototype"/>
+    <ownedLiteral xmi:id="_lj7aEH0aEeOh1M0ZydBAJg" name="flow"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_09cr0DtjEeCm4vaOZmQi8w" name="SwfTransition">
     <redefinedClassifier xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Transition"/>

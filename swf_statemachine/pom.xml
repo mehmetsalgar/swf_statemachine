@@ -34,8 +34,7 @@
 		</plugins>
 	</build>
 	
-	<modules>
-		<module>../comet</module>
+	<modules>		
 		<module>../swf_statemachine_fornax_extension</module>		
 		<module>../swf_statemachine_domain</module>
 		<module>../swf_statemachine_xpand</module>
@@ -43,6 +42,7 @@
 		<module>../swf_statemachine_techdemo_domain</module>
 		<module>../swf_statemachine_sm_model</module>			
 		<module>../swf_statemachine_sm_model_impl</module>
+		<module>../comet</module>
 		<module>../swf_statemachine_techdemo</module>
 	</modules>	
 	
@@ -276,8 +276,8 @@
 		<spring.version>3.0.4.RELEASE</spring.version>
 		<log4j.version>1.2.9</log4j.version>
 		<testng.version>5.9</testng.version>
-		<atmosphere.version>0.5</atmosphere.version>
-		<primefaces.version>2.2.1</primefaces.version>
+		<atmosphere.version>2.0.1</atmosphere.version>
+		<primefaces.version>4.0</primefaces.version>
 		<spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
 		<el.version>2.2</el.version>
 		<servlet.version>2.5</servlet.version>

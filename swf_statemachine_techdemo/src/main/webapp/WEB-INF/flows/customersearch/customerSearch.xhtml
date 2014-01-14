@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:p="http://primefaces.prime.com.tr/ui">
+	xmlns:p="http://primefaces.org/ui">
 	
 	<f:view contentType="text/html" encoding="UTF-8">
 		<h:head>
@@ -19,7 +19,7 @@
 		<body>
 			<script>
 				function handlePublish(pushed) {
-					handlePublishInternal();
+					alert('test');
 				}
 			</script>
 			<p:outputPanel ajaxRendered="true" id="handlePuplishRemoteCommand">				
@@ -36,9 +36,11 @@
 			<ui:include src="customerSearchJoin.xhtml" />
 			<ui:include src="customerSearchOrder.xhtml" />
 			<h:form id="customerSearchCustomerDetail_form">
-				<p:push id="cometPush" onpublish="handlePublish" channel="customer_search_result" />							
+				<p:socket id="cometPush" channel="/customer_search_result" >
+					<p:ajax event="message" update="#{customerSearchBB.customerSearchJavaScriptRenderPanels}" />
+				</p:socket>							
 				<p:commandButton id="customerSearchViewCustomerDetail" value="Continue"
-		    				ajax="true" update="customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel">
+		    				ajax="true" update=":customerSearchRunning-panel_empty_layout,:customerSearchFound-empty-panel,:customerSearchAuthentication-empty-panel">
 		    	</p:commandButton>
 		    </h:form>
 		</body>
