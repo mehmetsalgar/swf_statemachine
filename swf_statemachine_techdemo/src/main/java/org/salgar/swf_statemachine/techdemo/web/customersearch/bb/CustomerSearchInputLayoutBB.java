@@ -1,5 +1,7 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
+import javax.faces.context.FacesContext;
+
 import org.apache.log4j.Logger;
 import org.salgar.comet.CometServiceLocator;
 import org.salgar.statemachine.domain.Event;
@@ -7,7 +9,7 @@ import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchInputCO;
 import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
-import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
+import org.springframework.webflow.execution.FlowExecutionContext;
 
 public class CustomerSearchInputLayoutBB {
 	private static final Logger log = Logger
@@ -19,7 +21,6 @@ public class CustomerSearchInputLayoutBB {
 	 */
 
 	private StateMachine stateMachine;
-	private CustomerManager customerManager;
 
 	public boolean isCustomerSearchInputLayoutRendered() {
 		CustomerSearchInputCO customerSearchInputCO = (CustomerSearchInputCO) stateMachine
@@ -41,6 +42,10 @@ public class CustomerSearchInputLayoutBB {
 
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = new CustomerSearchStartEventPayload();
 		customerSearchStartEventPayload.setCustomerNumber(customerNumber);
+		FlowExecutionContext fec = (FlowExecutionContext) FacesContext.getCurrentInstance().getELContext()
+		.getELResolver().getValue(FacesContext.getCurrentInstance().getELContext(), null, "flowExecutionContext");
+		String flowId = (String) fec.getKey().toString();
+		customerSearchStartEventPayload.setFlowId(flowId);
 
 		//CustomerListener customerListener = new CustomerListener();
 		//customerListener.setStateMachine(stateMachine);
@@ -61,9 +66,5 @@ public class CustomerSearchInputLayoutBB {
 
 	public void setStateMachine(StateMachine stateMachine) {
 		this.stateMachine = stateMachine;
-	}
-
-	public void setCustomerManager(CustomerManager customerManager) {
-		this.customerManager = customerManager;
 	}
 }

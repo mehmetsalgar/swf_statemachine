@@ -1,5 +1,7 @@
 package org.salgar.swf_statemachine.findorders.transition.action;
 
+import java.io.Serializable;
+
 import org.salgar.statemachine.domain.AbstractStateMachine;
 import org.salgar.statemachine.domain.Action;
 import org.salgar.statemachine.domain.Event;
@@ -8,8 +10,9 @@ import org.salgar.swf_statemachine.findorders.controlobject.FindOrdersSMControlO
 import org.salgar.swf_statemachine.findorders.controlobject.FindOrdersSMControlObjectAccessor;
 import org.salgar.swf_statemachine.techdemo.manager.OrderManager;
 
-public class FindOrdersStartAction implements Action {
-
+public class FindOrdersStartAction implements Action, Serializable {
+	private static final long serialVersionUID = -43532345793959337L;
+	
 	public void processAction(Event event, AbstractStateMachine stateMachine) {
 		FindOrdersSMControlObject controlObject = (FindOrdersSMControlObject) stateMachine
 				.getControlObject();

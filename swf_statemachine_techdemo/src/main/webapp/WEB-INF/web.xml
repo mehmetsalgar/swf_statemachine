@@ -19,7 +19,8 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/webmvc-config.xml,
+			<param-value>/WEB-INF/config/applicationContext.xml,
+				/WEB-INF/config/webmvc-config.xml,
 				/WEB-INF/config/webflow-config.xml,
 				/WEB-INF/config/applicationContext-customersearch.xml,
 				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch.xml,

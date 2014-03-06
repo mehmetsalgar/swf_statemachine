@@ -3,14 +3,17 @@ package org.salgar.swf_statemachine.customersearch.controlobject;
 import java.util.List;
 
 import org.salgar.statemachine.domain.StateMachine;
+import org.salgar.swf_statemachine.findorders.controlobject.FindOrdersSMControlObjectAccessor;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
 
 public class CustomerSearchSMControlObjectAccessor {
 
 	public static void processCustomerSearchRunningAction(
-			CustomerSearchSMControlObject controlObject, String customerNumber) {
+			CustomerSearchSMControlObject controlObject, String customerNumber,
+			String flowId) {
 		controlObject.customerNumberInternal = customerNumber;
+		controlObject.setFlowId(flowId);
 		controlObject.getActualGuiState().renderCustomerSearchInput = false;
 		controlObject.getActualGuiState().renderCustomerSearchRunning = true;
 		controlObject.getActualGuiState().renderCustomerSearchFound = false;
@@ -63,6 +66,8 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchJoin = true;
 		controlObject.getActualGuiState().renderCustomerSearchOrder = true;
 		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.customerOrdersInternal = FindOrdersSMControlObjectAccessor
+				.getOrders(controlObject.findOrdersSlaveSM.getControlObject());
 		controlObject.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel,handlePuplishRemoteCommand";
 	}
 
@@ -93,7 +98,7 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
 		controlObject.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel,handlePuplishRemoteCommand";
 	}
-	
+
 	public static void processOrdersLoadingCustomerAuthenticationRemovedAction(
 			CustomerSearchSMControlObject controlObject) {
 		controlObject.customerAuthenticatedInternal = false;

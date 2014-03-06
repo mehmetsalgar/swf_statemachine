@@ -17,6 +17,7 @@
 		<flow:flow-execution-listeners>
 			<flow:listener ref="facesContextListener" />
 		</flow:flow-execution-listeners>
+		<flow:flow-execution-repository max-execution-snapshots="0" />
 	</flow:flow-executor>
 
 	<!-- The registry of executable flow definitions -->

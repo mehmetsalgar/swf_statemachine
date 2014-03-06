@@ -1,13 +1,16 @@
 package org.salgar.swf_statemachine.findcustomer.transition.action;
 
+import java.io.Serializable;
+
 import org.salgar.statemachine.domain.AbstractStateMachine;
 import org.salgar.statemachine.domain.Action;
 import org.salgar.statemachine.domain.Event;
 import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.findcustomer.controlobject.FindCustomerSMControlObject;
 
-public class FindCustomerCustomerFoundAction implements Action {
-
+public class FindCustomerCustomerFoundAction implements Action, Serializable {
+	private static final long serialVersionUID = -4564523925343959337L;
+	
 	public void processAction(Event event, AbstractStateMachine stateMachine) {
 		Event customerFoundEvent = new Event();
 		customerFoundEvent

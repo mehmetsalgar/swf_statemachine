@@ -94,6 +94,9 @@
                 <ownedAttribute xmi:id="_laFS4h-WEeOAm6oIIyMDNw" name="findCustomerSlaveSM" visibility="package">
                   <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
                 </ownedAttribute>
+                <ownedAttribute xmi:id="_YEutEpmBEeObn8V4NOgFTA" name="flowId" visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                </ownedAttribute>
                 <interfaceRealization xmi:id="_tugWtH0_EeCgupXlFDV_aQ" name="InterfaceRealization1" supplier="_NpckMHyOEeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NpckMHyOEeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_ucZ-gH0_EeCgupXlFDV_aQ" name="InterfaceRealization2" supplier="_YJtf4H08EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_YJtf4H08EeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_vF1WAH0_EeCgupXlFDV_aQ" name="InterfaceRealization3" supplier="_hJ3m4H0-EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_hJ3m4H0-EeCgupXlFDV_aQ"/>
@@ -362,4 +365,21 @@
     </profileApplication>
   </uml:Model>
   <swf_statemachine:SwfStateMachine xmi:id="_WeGw0H0iEeOMqfaGqAAiYA" Scope="flow" base_StateMachine="_vsIb0H1REeCgupXlFDV_aQ"/>
+  <swf_statemachine:SwfTransition xmi:id="_KMLA8H0pEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerSearchRunningAction" base_Transition="_WYYDJX1SEeCgupXlFDV_aQ"/>
+  <swf_statemachine:SwfTransition xmi:id="_QDFJ8H0pEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerFoundAction" base_Transition="_lJ_8tYEpEeC0au1QwVWf1Q"/>
+  <swf_statemachine:SwfTransition xmi:id="_VMYmEH0pEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticatedAction" base_Transition="_cQF0VYbdEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_axZt0H0pEeOMqfaGqAAiYA" GuardImplementation="org.salgar.swf_statemachine.customersearch.transition.guard.CustomerJoinedOrdersLoadedGuard" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAction" base_Transition="_s4dVhYdxEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_gjY6kH0pEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerAuthenticationRemovedAction" base_Transition="_ZocQ1IeGEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_pjcl0H0pEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedAuthenticationRemovedAction" base_Transition="_HYB0hIeGEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfTransition xmi:id="_tnK58H0pEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_LP-kNYeLEeCgzO61Ewoybw"/>
+  <swf_statemachine:SwfStateMachine xmi:id="_K0AnkH0qEeOMqfaGqAAiYA" Scope="prototype" base_StateMachine="_MVf7YIhHEeCAqeEFueg1Bw"/>
+  <swf_statemachine:SwfTransition xmi:id="_S0vj0H0qEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.findcustomer.transition.action.FindCustomerStartAction" base_Transition="_gJbY5YhHEeCAqeEFueg1Bw"/>
+  <swf_statemachine:SwfTransition xmi:id="_bSrZcH0qEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.findcustomer.transition.action.FindCustomerCustomerFoundAction" base_Transition="_tUivVYhHEeCAqeEFueg1Bw"/>
+  <swf_statemachine:SwfStateMachine xmi:id="_fRhNkH0qEeOMqfaGqAAiYA" Scope="prototype" base_StateMachine="_U6THMMNREeCYBJYY66CQSA"/>
+  <swf_statemachine:SwfTransition xmi:id="_kW_5oH0qEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.findorders.transition.action.FindOrdersStartAction" base_Transition="_oiyJtcNREeCYBJYY66CQSA"/>
+  <swf_statemachine:SwfTransition xmi:id="_n0KkEH0qEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.findorders.transition.action.FindOrdersFoundAction" base_Transition="__NN6RcNREeCYBJYY66CQSA"/>
+  <swf_statemachine:SwfTransition xmi:id="_u8M9wH0qEeOMqfaGqAAiYA" GuardImplementation="org.salgar.swf_statemachine.customersearch.transition.guard.OrdersLoadingGuard" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadingAction" base_Transition="__Y59FcQmEeCYBJYY66CQSA"/>
+  <swf_statemachine:SwfTransition xmi:id="_2QUEkH0qEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadedAction" base_Transition="_GosklMQnEeCYBJYY66CQSA"/>
+  <swf_statemachine:SwfTransition xmi:id="_Bums0H0rEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.CustomerJoinedRemovedAction" base_Transition="_oy7RlAnpEeGFo5IcQ1m4zA"/>
+  <swf_statemachine:SwfTransition xmi:id="_ThlmQH0rEeOMqfaGqAAiYA" ActionImplementation="org.salgar.swf_statemachine.customersearch.transition.action.OrdersLoadingCustomerAuthenticationRemovedAction" base_Transition="_Rl8_NAnqEeGFo5IcQ1m4zA"/>
 </xmi:XMI>

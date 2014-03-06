@@ -74,6 +74,9 @@
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedAttribute>
               <ownedAttribute xmi:id="_ch8MooEnEeC0au1QwVWf1Q" name="customerListener" type="_mUYTMH_LEeC3BvKE9rGHVg"/>
+              <ownedAttribute xmi:id="_hqXW4poLEeObn8V4NOgFTA" name="flowId">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
             </packagedElement>
           </packagedElement>
         </packagedElement>

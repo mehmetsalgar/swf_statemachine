@@ -11,17 +11,14 @@ import org.salgar.statemachine.domain.Event;
 import org.salgar.statemachine.domain.State;
 import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.statemachine.domain.Transition;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.salgar.swf_statemachine.impl.context.ApplicationContextContainer;
 
 public class StateMachineImpl extends AbstractStateMachine implements
-		ApplicationContextAware, Serializable {
+		Serializable {
 	private static final long serialVersionUID = 6254025866540535100L;
 	private final static org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(StateMachineImpl.class);
-
-	protected ApplicationContext applicationContext;
+	//private ApplicationContext applicationContext;
 
 	@SuppressWarnings("rawtypes")
 	public StateMachineImpl() {
@@ -359,13 +356,14 @@ public class StateMachineImpl extends AbstractStateMachine implements
 
 	@Override
 	public Object findObjects(String objectName) {
-		Object obj = applicationContext.getBean(objectName);
-
+		Object obj = ApplicationContextContainer.getInstance().getApplicationContext().getBean(objectName);
+		//Object obj = this.applicationContext.getBean(objectName);
 		return obj;
 	}
 
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
-		this.applicationContext = applicationContext;
-	}
+//	public void setApplicationContext(ApplicationContext applicationContext)
+//			throws BeansException {
+//		this.applicationContext = applicationContext;
+//		
+//	}
 }

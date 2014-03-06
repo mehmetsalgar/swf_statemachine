@@ -43,6 +43,7 @@
 		<module>../swf_statemachine_sm_model</module>			
 		<module>../swf_statemachine_sm_model_impl</module>
 		<module>../comet</module>
+		<!--module>../swf_statemachine_webflow_customisation</module-->
 		<module>../swf_statemachine_techdemo</module>
 	</modules>	
 	
@@ -173,10 +174,15 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>			
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-
+			
 			<!-- SPRING WEBFLOW -->
 			<dependency>
 				<groupId>org.springframework.webflow</groupId>

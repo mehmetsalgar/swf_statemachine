@@ -14,9 +14,10 @@ public class CustomerJoinedAction implements Action, Serializable {
 	public void processAction(Event event, AbstractStateMachine stateMachine) {
 		CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) stateMachine
 				.getControlObject();
+		
 		CustomerSearchSMControlObjectAccessor.processCustomerJoinedAction(
 				controlObject, (Boolean) event.getPayload());
-
+		
 	}
 
 }

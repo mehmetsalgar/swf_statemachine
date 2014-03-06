@@ -19,6 +19,11 @@ public class CustomerSearchSMControlObject extends
 		this.customerAuthenticatedInternal = Boolean.FALSE;
 		this.customerJoinedInternal = Boolean.FALSE;
 		this.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearch-form,customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel,handlePuplishRemoteCommand";
+		this.customerInternal = null;
+		this.customerOrdersInternal = null;
+		this.findOrdersSlaveSM = null;
+		this.findCustomerSlaveSM = null;
+		this.flowId = null;
 	}
 
 	CustomerSearchGuiState getCustomerSearchGuiState() {

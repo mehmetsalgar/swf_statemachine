@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_kXKPUHcJEeChHqmjAgGwRw" activeDiagram="_vtLksH1REeCgupXlFDV_aQ">
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_kXKPUHcJEeChHqmjAgGwRw" activeDiagram="_29bqEXcNEeChHqmjAgGwRw">
   <model href="TechdemoModel.uml#idModel"/>
   <subdiagrams xmi:id="_eEZu4FR6EeCXppvRWRtxXw" activeDiagram="_eEZu4VR6EeCXppvRWRtxXw">
     <model href="TechdemoModel.uml#idStateMachine"/>
@@ -190,7 +190,7 @@
   </subdiagrams>
   <subdiagrams xmi:id="_29bqEHcNEeChHqmjAgGwRw">
     <model href="TechdemoModel.uml#_9XIJUHcIEeChHqmjAgGwRw"/>
-    <diagrams xmi:id="_29bqEXcNEeChHqmjAgGwRw" position="0,0" size="200,200" name="Control Object" viewport="80,80">
+    <diagrams xmi:id="_29bqEXcNEeChHqmjAgGwRw" position="0,0" size="200,200" name="Control Object" viewport="449,224">
       <property xmi:id="_29lbEHcNEeChHqmjAgGwRw" key="pageFormatName" value="A3"/>
       <property xmi:id="_29lbEXcNEeChHqmjAgGwRw" key="diagramWidth" value="1188"/>
       <property xmi:id="_29lbEncNEeChHqmjAgGwRw" key="diagramHeight" value="1680"/>
@@ -251,6 +251,11 @@
           <contained xsi:type="di:GraphNode" xmi:id="_laFS4B-WEeOAm6oIIyMDNw" position="0,0" size="-1,-1">
             <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_laFS4R-WEeOAm6oIIyMDNw" presentation="default">
               <element href="TechdemoModel.uml#_laFS4h-WEeOAm6oIIyMDNw"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_YEutEJmBEeObn8V4NOgFTA" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YEutEZmBEeObn8V4NOgFTA" presentation="default">
+              <element href="TechdemoModel.uml#_YEutEpmBEeObn8V4NOgFTA"/>
             </semanticModel>
           </contained>
         </contained>
@@ -554,7 +559,7 @@
   </subdiagrams>
   <subdiagrams xmi:id="_vsIb0n1REeCgupXlFDV_aQ">
     <model href="TechdemoModel.uml#_vsIb0H1REeCgupXlFDV_aQ"/>
-    <diagrams xmi:id="_vtLksH1REeCgupXlFDV_aQ" position="0,0" size="100,100" name="Customer Search" viewport="0,0">
+    <diagrams xmi:id="_vtLksH1REeCgupXlFDV_aQ" position="0,0" size="100,100" name="Customer Search" viewport="80,80">
       <property xmi:id="_vuE8kn1REeCgupXlFDV_aQ" key="pageFormatName" value="A3"/>
       <property xmi:id="_vuE8k31REeCgupXlFDV_aQ" key="diagramWidth" value="1188"/>
       <property xmi:id="_vuE8lH1REeCgupXlFDV_aQ" key="diagramHeight" value="1680"/>
@@ -716,7 +721,7 @@
   </subdiagrams>
   <subdiagrams xmi:id="_MVf7YohHEeCAqeEFueg1Bw">
     <model href="TechdemoModel.uml#_MVf7YIhHEeCAqeEFueg1Bw"/>
-    <diagrams xmi:id="_MVf7Y4hHEeCAqeEFueg1Bw" position="0,0" size="100,100" name="findcustomer" viewport="36,153">
+    <diagrams xmi:id="_MVf7Y4hHEeCAqeEFueg1Bw" position="0,0" size="100,100" name="findcustomer" viewport="36,77">
       <property xmi:id="_MVzdYIhHEeCAqeEFueg1Bw" key="pageFormatName" value="A4"/>
       <property xmi:id="_MVzdYYhHEeCAqeEFueg1Bw" key="diagramWidth" value="840"/>
       <property xmi:id="_MVzdYohHEeCAqeEFueg1Bw" key="diagramHeight" value="1188"/>

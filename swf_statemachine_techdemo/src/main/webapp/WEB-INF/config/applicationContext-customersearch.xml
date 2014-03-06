@@ -14,7 +14,6 @@
 		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchInputLayoutBB"
 		scope="request">
 		<property name="stateMachine" ref="CustomerSearchSM" />
-		<property name="customerManager" ref="customerManager" />
 	</bean>
 	<bean id="customerSearchFoundBB"
 		class="org.salgar.swf_statemachine.techdemo.web.customersearch.bb.CustomerSearchFoundBB"

@@ -35,6 +35,6 @@ public class CustomerFoundAction implements Action, Serializable {
 		findOrdersSM.resetStateMachine();
 		findOrdersSM.dispatch(findOrdersSMStartEvent);
 
-		CometServiceLocator.getInstance().pushMessage("customer found");
+		CometServiceLocator.getInstance().pushMessage("customer found", controlObject.getFlowId());
 	}
 }
