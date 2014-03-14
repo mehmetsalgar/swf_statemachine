@@ -95,7 +95,7 @@
                   <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
                 </ownedAttribute>
                 <ownedAttribute xmi:id="_YEutEpmBEeObn8V4NOgFTA" name="flowId" visibility="package">
-                  <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedAttribute>
                 <interfaceRealization xmi:id="_tugWtH0_EeCgupXlFDV_aQ" name="InterfaceRealization1" supplier="_NpckMHyOEeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NpckMHyOEeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_ucZ-gH0_EeCgupXlFDV_aQ" name="InterfaceRealization2" supplier="_YJtf4H08EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_YJtf4H08EeCgupXlFDV_aQ"/>
@@ -118,14 +118,14 @@
               <packagedElement xmi:type="uml:Interface" xmi:id="_NpckMHyOEeCgupXlFDV_aQ" name="CustomerSearchCO">
                 <ownedOperation xmi:id="_Bk2CgnyREeCgupXlFDV_aQ" name="getCustomerNumber" isAbstract="true">
                   <ownedParameter xmi:id="_ETL4EHyREeCgupXlFDV_aQ" name="return" direction="return">
-                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                   </ownedParameter>
                 </ownedOperation>
               </packagedElement>
               <packagedElement xmi:type="uml:Interface" xmi:id="_YJtf4H08EeCgupXlFDV_aQ" name="CustomerSearchInputCO">
                 <ownedOperation xmi:id="_ecpdkH08EeCgupXlFDV_aQ" name="getRenderCustomerSearchInput" isAbstract="true">
                   <ownedParameter xmi:id="_lhDUcH08EeCgupXlFDV_aQ" name="return" direction="return">
-                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                   </ownedParameter>
                 </ownedOperation>
                 <ownedOperation xmi:id="_faJ1Yn-yEeCK4vYmII23UA" name="getCustomerSearchRenderPanels" isAbstract="true">
@@ -137,14 +137,14 @@
               <packagedElement xmi:type="uml:Interface" xmi:id="_hJ3m4H0-EeCgupXlFDV_aQ" name="CustomerSearchRunningCO">
                 <ownedOperation xmi:id="_llJfYn0-EeCgupXlFDV_aQ" name="getRenderCustomerSearchRunning" isAbstract="true">
                   <ownedParameter xmi:id="_n6wr4H0-EeCgupXlFDV_aQ" name="return" direction="return">
-                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                   </ownedParameter>
                 </ownedOperation>
               </packagedElement>
               <packagedElement xmi:type="uml:Interface" xmi:id="_p5H2AH0-EeCgupXlFDV_aQ" name="CustomerSearchFoundCO">
                 <ownedOperation xmi:id="_3VFr4n0-EeCgupXlFDV_aQ" name="getRenderCustomerSearchFound" isAbstract="true">
                   <ownedParameter xmi:id="_6gyL0H0-EeCgupXlFDV_aQ" name="return" direction="return">
-                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                   </ownedParameter>
                 </ownedOperation>
                 <ownedOperation xmi:id="_tlxs0oFCEeC0au1QwVWf1Q" name="getCustomer" isAbstract="true">
@@ -156,7 +156,7 @@
               <packagedElement xmi:type="uml:Interface" xmi:id="_9guHuH0-EeCgupXlFDV_aQ" name="CustomerSearchAuthenticationCO">
                 <ownedOperation xmi:id="_CxCx0n0_EeCgupXlFDV_aQ" name="getRenderCustomerSearchAuthentication" isAbstract="true">
                   <ownedParameter xmi:id="_Fg4cMH0_EeCgupXlFDV_aQ" name="return" direction="return">
-                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                   </ownedParameter>
                 </ownedOperation>
                 <ownedOperation xmi:id="_ia5GgobZEeCgzO61Ewoybw" name="getCustomerAuthenticated" isAbstract="true">
@@ -168,7 +168,7 @@
               <packagedElement xmi:type="uml:Interface" xmi:id="_NjlHUH0_EeCgupXlFDV_aQ" name="CustomerSearchJoinCO">
                 <ownedOperation xmi:id="_SBO-Yn0_EeCgupXlFDV_aQ" name="getRenderCustomerJoin" isAbstract="true">
                   <ownedParameter xmi:id="_TtkkYH0_EeCgupXlFDV_aQ" name="return" direction="return">
-                    <type xmi:type="uml:PrimitiveType" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                    <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                   </ownedParameter>
                 </ownedOperation>
                 <ownedOperation xmi:id="_XjEFQodxEeCgzO61Ewoybw" name="getCustomerJoined" isAbstract="true">
@@ -350,12 +350,6 @@
         <references xmi:type="ecore:EPackage" href="../domain.profile.uml#_K-aMobQ5EeC1SLrv8PgQ-A"/>
       </eAnnotations>
       <appliedProfile href="../domain.profile.uml#_bU2FALQ4EeC1SLrv8PgQ-A"/>
-    </profileApplication>
-    <profileApplication xmi:id="_ubfIsMThEeCYBJYY66CQSA">
-      <eAnnotations xmi:id="_ub7NkMThEeCYBJYY66CQSA" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_0MLQ8CPrEeC6cqnheF0QVw"/>
-      </eAnnotations>
-      <appliedProfile href="file:/C:/DEV/wss/swf_statemachine/swf_statemachine/swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
     </profileApplication>
     <profileApplication xmi:id="_R5c54H0iEeOMqfaGqAAiYA">
       <eAnnotations xmi:id="_R5c54X0iEeOMqfaGqAAiYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
