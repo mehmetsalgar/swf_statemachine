@@ -11,7 +11,9 @@
 	<build>
 		<plugins>
 			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-compiler-plugin</artifactId>
+			    <version>3.1</version>
 			    <configuration>
 			       <source>1.5</source>
 			       <target>1.5</target>
@@ -27,6 +29,7 @@
          		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 				</configuration>
@@ -51,12 +54,12 @@
 		<repository>
 			<id>fornax.repository</id>
 			<name>Fornax Repository</name>
-			<url>http://www.fornax-platform.org/m2/repository</url>
+			<url>http://www.fornax-platform.org/nexus/content/groups/public</url>
 		</repository>
 		<repository>
 			<id>fornax.repository snapshot</id>
 			<name>Fornax Repository</name>
-			<url>http://www.fornax-platform.org/m2/snapshots</url>
+			<url>http://www.fornax-platform.org/nexus/content/groups/public-snapshots</url>
 		</repository>
 		<repository>
 			<id>jboss</id>
@@ -85,6 +88,13 @@
 			<url>http://repository.springsource.com/maven/libraries/external</url>
 		</repository>
 	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>fornax.plugin.repository</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/nexus/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
 	
 	<dependencyManagement>
 		<dependencies>
@@ -151,6 +161,11 @@
 			<dependency>
 				<groupId>org.eclipse.emf.mwe</groupId>
 				<artifactId>emf-mwe-utils</artifactId>
+				<version>${m2t.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf.mwe</groupId>
+				<artifactId>emf-mwe-core</artifactId>
 				<version>${m2t.version}</version>
 			</dependency>
 

@@ -32,6 +32,7 @@
 			<plugin>
 				<groupId>org.fornax.toolsupport</groupId>
 				<artifactId>fornax-oaw-m2-plugin</artifactId>
+				<version>3.4.0</version>
 				<executions>
 					<execution>
 						<id>statemachine</id>
@@ -98,6 +99,11 @@
 		<dependency>
 			<groupId>org.eclipse.m2t.xpand</groupId>
 			<artifactId>m2t-xpand-xpand</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.mwe</groupId>
+			<artifactId>emf-mwe-core</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
