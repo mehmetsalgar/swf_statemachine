@@ -42,10 +42,5 @@ public class CometServiceLocatorMocker {
 				// TODO Auto-generated method stub
 				return false;
 			}});
-		CometServiceLocator.getInstance().setBroadcaster(broadcasterMock);
-	}
-
-	public static Broadcaster getMockObject() {
-		return broadcasterMock;
 	}
 }

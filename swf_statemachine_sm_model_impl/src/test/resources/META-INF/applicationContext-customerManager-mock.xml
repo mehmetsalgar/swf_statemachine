@@ -13,4 +13,7 @@
 		<constructor-arg
 			value="org.salgar.swf_statemachine.techdemo.manager.OrderManager" />
 	</bean>
+	<bean id="applicationContextContainer"
+		class="org.salgar.swf_statemachine.impl.context.ApplicationContextContainer"
+		scope="singleton" factory-method="getInstance"/>
 </beans>
