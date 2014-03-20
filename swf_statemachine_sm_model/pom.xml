@@ -20,16 +20,18 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<!-- ensure that the compile uses the same encoding as the file encoding 
 						of the *.java -->
 					<compilerArguments>
 						<encoding>utf8</encoding>
 					</compilerArguments>
+					<testExcludes>
+						<exclude>**/Driver*.java</exclude>
+					</testExcludes>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.fornax.toolsupport</groupId>
 				<artifactId>fornax-oaw-m2-plugin</artifactId>
@@ -56,7 +58,7 @@
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>add-source</goal>
-						</goals>
+						</goals>					
 						<configuration>
 							<sources>
 								<source>src/generated/java</source>
@@ -71,6 +73,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tests.to.skip>**/DriverMDATest.java</tests.to.skip>
 	</properties>
 
 	<dependencies>
@@ -192,6 +195,18 @@
 			<build>
 				<plugins>
 					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+							<!-- ensure that the compile uses the same encoding as the file encoding 
+								of the *.java -->
+							<compilerArguments>
+								<encoding>utf8</encoding>
+							</compilerArguments>
+						</configuration>
+					</plugin>
+					<plugin>
 						<groupId>org.fornax.toolsupport</groupId>
 						<artifactId>fornax-oaw-m2-plugin</artifactId>
 						<executions>
@@ -210,6 +225,10 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+		      <!-- Unsure how to match nothing -->
+		      <tests.to.skip>NOTHING</tests.to.skip>
+		    </properties>
 		</profile>
 
 	</profiles>

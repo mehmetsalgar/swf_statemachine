@@ -6,11 +6,13 @@ import org.salgar.swf_statemachine.enumeration.event.statemachine_2.STATEMACHINE
 import org.salgar.swf_statemachine.enumeration.state.STATEMACHINE_1_StateEnumerationImpl;
 import org.salgar.swf_statemachine.enumeration.state.STATEMACHINE_2_StateEnumerationImpl;
 import org.springframework.test.context.ContextConfiguration;
+import org.testng.annotations.Test;
 
 @ContextConfiguration(locations = { "/META-INF/scope.xml",
 		"/META-INF/reference_model/applicationContext-statemachine-reference_model.xml", 
 		"/META-INF/reference_model/applicationContext-statemachine-reference_model-guards.xml",
 		"/META-INF/reference_model/applicationContext-statemachine-reference_model-controlobjects.xml" })
+@Test( groups = "MDA")
 public class DriverMDATest extends DriverTest {
 	public DriverMDATest() {
 		this.EVENT1 = STATEMACHINE_1_EventEnumerationImpl.EVENT_1;

@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.config.Scope;
 
-public class SimpleMapScope implements Scope {
+public class  SimpleMapScope implements org.springframework.beans.factory.config.Scope {
 	private final Map<String, Object> objectMap = new HashMap<String , Object>();
-
-	public Object get(String name, ObjectFactory objectFactory) {
+	
+	/**public Object resolveContextualObject(String key) {
+		return null;
+	}*/
+	
+	public Object get(String name, ObjectFactory<?> objectFactory) {
 		Object object = objectMap.get(name);
 		
 	    if (null == object) {		
@@ -21,21 +24,22 @@ public class SimpleMapScope implements Scope {
 	}
 
 	public Object remove(String name) {
-		return this.objectMap.remove(name);
+		return null;
 	}
 
 	public void registerDestructionCallback(String name, Runnable callback) {
-		// TODO Auto-generated method stub
 
 	}
 
 	public String getConversationId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public Object resolveContextualObject(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 }

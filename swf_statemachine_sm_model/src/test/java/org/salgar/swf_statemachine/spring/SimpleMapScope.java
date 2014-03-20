@@ -9,7 +9,7 @@ import org.springframework.beans.factory.config.Scope;
 public class SimpleMapScope implements Scope {
 	private final Map<String, Object> objectMap = new HashMap<String , Object>();
 
-	public Object get(String name, ObjectFactory objectFactory) {
+	public Object get(String name, ObjectFactory<?> objectFactory) {
 		Object object = objectMap.get(name);
 		
 	    if (null == object) {		
@@ -30,6 +30,11 @@ public class SimpleMapScope implements Scope {
 	}
 
 	public String getConversationId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object resolveContextualObject(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
