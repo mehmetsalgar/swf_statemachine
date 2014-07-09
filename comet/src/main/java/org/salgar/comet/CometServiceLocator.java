@@ -36,7 +36,7 @@ public class CometServiceLocator {
 		return instance;
 	}
 	
-	public void pushMessage(String message, String flowId) {
-		this.pushContext.push("/customer_search_result_" + flowId, message);
+	public void pushMessage(String message, String flowId, String sessionId) {
+		this.pushContext.push("/customer_search_result_" + sessionId + "_" + flowId, message);
 	}
 }

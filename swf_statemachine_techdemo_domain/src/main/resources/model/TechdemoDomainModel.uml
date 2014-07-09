@@ -77,6 +77,9 @@
               <ownedAttribute xmi:id="_hqXW4poLEeObn8V4NOgFTA" name="flowId">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedAttribute>
+              <ownedAttribute xmi:id="_79K1MAdMEeS2e5CD2AD-gA" name="sessionId">
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+              </ownedAttribute>
             </packagedElement>
           </packagedElement>
         </packagedElement>

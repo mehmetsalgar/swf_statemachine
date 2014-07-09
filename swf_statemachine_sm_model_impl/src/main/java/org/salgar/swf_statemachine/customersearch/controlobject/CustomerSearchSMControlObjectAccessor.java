@@ -11,9 +11,10 @@ public class CustomerSearchSMControlObjectAccessor {
 
 	public static void processCustomerSearchRunningAction(
 			CustomerSearchSMControlObject controlObject, String customerNumber,
-			String flowId) {
+			String flowId, String sessionId) {
 		controlObject.customerNumberInternal = customerNumber;
 		controlObject.setFlowId(flowId);
+		controlObject.setSessionId(sessionId);
 		controlObject.getActualGuiState().renderCustomerSearchInput = false;
 		controlObject.getActualGuiState().renderCustomerSearchRunning = true;
 		controlObject.getActualGuiState().renderCustomerSearchFound = false;

@@ -265,6 +265,11 @@
               <element href="TechdemoDomainModel.uml#_hqXW4poLEeObn8V4NOgFTA"/>
             </semanticModel>
           </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_78ITYQdMEeS2e5CD2AD-gA" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_78ITYgdMEeS2e5CD2AD-gA" presentation="default">
+              <element href="TechdemoDomainModel.uml#_79K1MAdMEeS2e5CD2AD-gA"/>
+            </semanticModel>
+          </contained>
         </contained>
         <contained xsi:type="di:GraphNode" xmi:id="_nF9adYEmEeC0au1QwVWf1Q">
           <property xmi:id="_nF9adoEmEeC0au1QwVWf1Q" key="eStructuralFeatureID" value="47 50 "/>

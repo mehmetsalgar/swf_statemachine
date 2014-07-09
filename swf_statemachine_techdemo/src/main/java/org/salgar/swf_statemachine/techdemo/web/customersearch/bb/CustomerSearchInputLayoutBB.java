@@ -41,12 +41,13 @@ public class CustomerSearchInputLayoutBB {
 		event.setEventType(CustomerSearchSM_EventEnumerationImpl.onStartSearch);
 
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = new CustomerSearchStartEventPayload();
-		customerSearchStartEventPayload.setCustomerNumber(customerNumber);
+		customerSearchStartEventPayload.setCustomerNumber(customerNumber);		
 		FlowExecutionContext fec = (FlowExecutionContext) FacesContext.getCurrentInstance().getELContext()
 		.getELResolver().getValue(FacesContext.getCurrentInstance().getELContext(), null, "flowExecutionContext");
 		String flowId = (String) fec.getKey().toString();
 		customerSearchStartEventPayload.setFlowId(flowId);
-
+		String sessionId = ((javax.servlet.http.HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getId();
+		customerSearchStartEventPayload.setSessionId(sessionId);
 		//CustomerListener customerListener = new CustomerListener();
 		//customerListener.setStateMachine(stateMachine);
 		//customerSearchStartEventPayload.setCustomerListener(customerListener);

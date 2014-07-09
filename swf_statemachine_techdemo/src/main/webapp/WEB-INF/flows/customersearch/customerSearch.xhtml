@@ -36,7 +36,7 @@
 			<ui:include src="customerSearchJoin.xhtml" />
 			<ui:include src="customerSearchOrder.xhtml" />
 			<h:form id="customerSearchCustomerDetail_form">
-				<p:socket id="cometPush" channel="/customer_search_result_#{flowExecutionContext.key}" >
+				<p:socket id="cometPush" channel="/customer_search_result_#{externalContext.nativeRequest.session.id}_#{flowExecutionContext.key}" >
 					<p:ajax event="message" update="#{customerSearchBB.customerSearchJavaScriptRenderPanels}" />
 				</p:socket>							
 				<p:commandButton id="customerSearchViewCustomerDetail" value="Continue"

@@ -97,6 +97,9 @@
                 <ownedAttribute xmi:id="_YEutEpmBEeObn8V4NOgFTA" name="flowId" visibility="package">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedAttribute>
+                <ownedAttribute xmi:id="_FehkwgdPEeS2e5CD2AD-gA" name="sessionId" visibility="package">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
+                </ownedAttribute>
                 <interfaceRealization xmi:id="_tugWtH0_EeCgupXlFDV_aQ" name="InterfaceRealization1" supplier="_NpckMHyOEeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NpckMHyOEeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_ucZ-gH0_EeCgupXlFDV_aQ" name="InterfaceRealization2" supplier="_YJtf4H08EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_YJtf4H08EeCgupXlFDV_aQ"/>
                 <interfaceRealization xmi:id="_vF1WAH0_EeCgupXlFDV_aQ" name="InterfaceRealization3" supplier="_hJ3m4H0-EeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_hJ3m4H0-EeCgupXlFDV_aQ"/>
@@ -193,6 +196,16 @@
                     <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                   </ownedParameter>
                 </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_C53PoAdPEeS2e5CD2AD-gA" name="A_&lt;abstractCustomerSearchControlObject>_&lt;abstractCustomerSearchControlObject>" memberEnd="_C53PoQdPEeS2e5CD2AD-gA _C53PpAdPEeS2e5CD2AD-gA">
+                <ownedEnd xmi:id="_C53PoQdPEeS2e5CD2AD-gA" name="abstractCustomerSearchControlObject" type="_8TaQQHcNEeChHqmjAgGwRw" association="_C53PoAdPEeS2e5CD2AD-gA">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C53PogdPEeS2e5CD2AD-gA" value="1"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_C53PowdPEeS2e5CD2AD-gA" value="1"/>
+                </ownedEnd>
+                <ownedEnd xmi:id="_C53PpAdPEeS2e5CD2AD-gA" name="abstractCustomerSearchControlObject" type="_8TaQQHcNEeChHqmjAgGwRw" association="_C53PoAdPEeS2e5CD2AD-gA">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C53PpQdPEeS2e5CD2AD-gA" value="1"/>
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_C53PpgdPEeS2e5CD2AD-gA" value="1"/>
+                </ownedEnd>
               </packagedElement>
             </packagedElement>
             <packagedElement xmi:type="uml:StateMachine" xmi:id="_vsIb0H1REeCgupXlFDV_aQ" name="CustomerSearchSM" submachineState="_BWlu8k3XEeOE05lJ4YwKXQ">

@@ -26,7 +26,8 @@ public class CustomerSearchRunningAction implements Action, Serializable {
 				.processCustomerSearchRunningAction(
 						(CustomerSearchSMControlObject) customerSearchCO,
 						customerSearchStartEventPayload.getCustomerNumber(),
-						customerSearchStartEventPayload.getFlowId());
+						customerSearchStartEventPayload.getFlowId(),
+						customerSearchStartEventPayload.getSessionId());
 
 		Event findCustomerSmEvent = new Event();
 		findCustomerSmEvent

@@ -21,7 +21,6 @@ public class OrdersLoadedAction implements Action, Serializable {
 		CustomerSearchSMControlObjectAccessor.processOrdersLoadedAction(
 				controlObject, (List<Order>) event.getPayload());
 
-		CometServiceLocator.getInstance().pushMessage("orders found", controlObject.getFlowId());
+		CometServiceLocator.getInstance().pushMessage("orders found", controlObject.getFlowId(), controlObject.getSessionId());
 	}
-
 }

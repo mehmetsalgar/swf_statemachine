@@ -24,6 +24,7 @@ public class CustomerSearchSMControlObject extends
 		this.findOrdersSlaveSM = null;
 		this.findCustomerSlaveSM = null;
 		this.flowId = null;
+		this.sessionId = null;
 	}
 
 	CustomerSearchGuiState getCustomerSearchGuiState() {
