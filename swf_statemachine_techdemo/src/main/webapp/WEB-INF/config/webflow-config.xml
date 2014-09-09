@@ -4,7 +4,7 @@
 	xmlns:faces="http://www.springframework.org/schema/faces"
 	xmlns:flow="http://www.springframework.org/schema/webflow-config"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/faces http://www.springframework.org/schema/faces/spring-faces-2.0.xsd
+		http://www.springframework.org/schema/faces http://www.springframework.org/schema/faces/spring-faces-2.4.xsd
 		http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
 	
 	<faces:resources />
@@ -29,20 +29,10 @@
 
 	<!-- Configures the Spring Web Flow JSF integration -->
 	<faces:flow-builder-services id="facesFlowBuilderServices" />
-	<!--view-factory-creator="viewFactoryCreator" -->
-
-	<!-- Primefaces ViewFactory Creator -->
-	<!-- bean id="viewFactoryCreator" class="org.primefaces.integration.swf.ViewFactoryCreator" 
-		/ -->
+	
 
 	<!-- Installs a listener that creates and releases the FacesContext for 
 		each request. -->
 	<bean id="facesContextListener"
 		class="org.springframework.faces.webflow.FlowFacesContextLifecycleListener" />
-
-	<!-- Handles requests mapped to the Spring Web Flow system -->
-	<!-- bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowController"> 
-		<property name="flowExecutor" ref="flowExecutor" /> <property name="redirectHttp10Compatible" 
-		value="false" /> <property name="ajaxHandler"> <bean class="org.primefaces.integration.swf.PrimeFacesAjaxHandler" 
-		/> </property> </bean -->
 </beans>

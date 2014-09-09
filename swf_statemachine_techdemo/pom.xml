@@ -89,23 +89,25 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+        	</dependency>
 
 		<!-- SPRING -->
-		<!-- dependency> <groupId>org.springframework.webflow</groupId> <artifactId>spring-webflow</artifactId> 
-			<version>${spring-webflow.version}</version> </dependency -->
+		<dependency> 
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-webflow</artifactId> 
+			<version>${spring-webflow.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.webflow</groupId>
-			<artifactId>org.springframework.faces</artifactId>
+			<artifactId>spring-faces</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
-		<!-- dependency> <groupId>org.jboss.el</groupId> <artifactId>com.springsource.org.jboss.el</artifactId> 
-			<version>2.0.0.GA</version> </dependency -->
-		<!-- dependency> <groupId>org.jboss.el</groupId> <artifactId>jboss-el</artifactId> 
-			<version>2.0.2.CR1</version> <exclusions> <exclusion> <groupId>javax.el</groupId> 
-			<artifactId>el-api</artifactId> </exclusion> </exclusions> </dependency -->
 			
 		<!-- EL -->
 		<dependency>
@@ -125,15 +127,6 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- JSF -->
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-		</dependency>
 		
 		<!-- JSP -->
 		<dependency>
@@ -179,6 +172,5 @@
 		<cargo.wait>true</cargo.wait>
 		<installDir>${java.io.tmpdir}/cargo-installs</installDir>
 
-		<!--spring.version>3.0.4.RELEASE</spring.version-->
 	</properties>
 </project>

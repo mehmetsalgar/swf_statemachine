@@ -52,6 +52,11 @@
 	
 	<repositories>
 		<repository>
+			<id>central.repository</id>
+			<name>Fornax Repository</name>
+			<url>http://www.fornax-platform.org/nexus/content/groups/public</url>
+		</repository>		
+		<repository>
 			<id>fornax.repository</id>
 			<name>Fornax Repository</name>
 			<url>http://www.fornax-platform.org/nexus/content/groups/public</url>
@@ -194,15 +199,69 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>beans</artifactId>
+				<version>${spring.version}</version>			
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>binding</artifactId>
+				<version>${spring.version}</version>			
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			
+			
 			<!-- SPRING WEBFLOW -->
 			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>org.springframework.webflow</artifactId>
+				<version>${spring-webflow.version}</version>			
+			</dependency>
+			<dependency>
 				<groupId>org.springframework.webflow</groupId>
-				<artifactId>org.springframework.faces</artifactId>
+				<artifactId>spring-faces</artifactId>
 				<version>${spring-webflow.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.beans</artifactId>			
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.context</artifactId>			
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.context-support</artifactId>									
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.core</artifactId>		
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.web</artifactId>			
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>org.springframework.web.servlet</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework.webflow</groupId>
+						<artifactId>org.springframework.binding</artifactId>			
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework.webflow</groupId>
+						<artifactId>org.springframework.js</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework.webflow</groupId>
+						<artifactId>org.springframework.webflow</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			
 			<!-- PRIMEFACES -->
@@ -223,6 +282,11 @@
 				<artifactId>jsf-impl</artifactId>
 				<version>${faces.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.glassfish</groupId>
+				<artifactId>javax.faces</artifactId>
+				<version>${javax.faces.version}</version>
+        		</dependency>
 			
 			<!-- JSP -->
 			<dependency>
@@ -293,13 +357,15 @@
 		<commons-lang.version>2.5</commons-lang.version>
 		<m2t.version>0.7.2</m2t.version>
 		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
-		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>
-		<spring.version>3.0.4.RELEASE</spring.version>
+		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>		
 		<log4j.version>1.2.9</log4j.version>
 		<testng.version>5.9</testng.version>
 		<atmosphere.version>2.0.1</atmosphere.version>
 		<primefaces.version>4.0</primefaces.version>
-		<spring-webflow.version>2.2.1.RELEASE</spring-webflow.version>
+		<javax.faces.version>2.2.0</javax.faces.version>
+		<spring-webflow.version>2.4.1.RELEASE</spring-webflow.version>
+		<spring.version>4.0.6.RELEASE</spring.version>
+		<spring.faces.version>2.0.5.RELEASE</spring.faces.version>
 		<el.version>2.2</el.version>
 		<servlet.version>2.5</servlet.version>
 		<faces.version>2.0.3</faces.version>
