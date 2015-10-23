@@ -1,101 +1,101 @@
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Names»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Properties»
-«EXTENSION templates::extensions::SwfStatemachineExtensions»
+ÇEXTENSION org::fornax::cartridges::uml2::javabasic::m2t::NamesÈ
+ÇEXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÈ
+ÇEXTENSION org::fornax::cartridges::uml2::javabasic::m2t::PropertiesÈ
+ÇEXTENSION templates::extensions::SwfStatemachineExtensionsÈ
 
-«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Association::attribute FOR uml::Classifier»
-	«FOREACH AllAssociations().typeSelect(uml::Association) AS ass»
-		«LET ass.visibility AS assocationVisiblity»	
-			«FOREACH ass.ownedEnd.select(e|e.type.name!=name) AS a»
-				«IF getVisiblityName(assocationVisiblity) != 'public'»
-					«EXPAND field(assocationVisiblity) FOR a»
-				«ELSE»
-					«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::field FOR a»
-				«ENDIF»
-			«ENDFOREACH»
-		«ENDLET»		
-	«ENDFOREACH»		
-«ENDAROUND»
-
-
-«DEFINE field(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
-	«IF isNavigable()»
-	 	«IF getUpper() == -1»
-	 		«assocationVisiblity» «getPropertyType()» «name» = «getPropertyTypeImpl()»;
-	 	«ELSE»
-	 		«assocationVisiblity» «type.fqName()» «name» = null;
-	 	«ENDIF»
-	 «ENDIF»
-«ENDDEFINE»
+ÇAROUND org::fornax::cartridges::uml2::javabasic::m2t::Association::attribute FOR uml::ClassifierÈ
+	ÇFOREACH AllAssociations().typeSelect(uml::Association) AS assÈ
+		ÇLET ass.visibility AS assocationVisiblityÈ	
+			ÇFOREACH ass.ownedEnd.select(e|e.type.name!=name) AS aÈ
+				ÇIF getVisiblityName(assocationVisiblity) != 'public'È
+					ÇEXPAND field(assocationVisiblity) FOR aÈ
+				ÇELSEÈ
+					ÇEXPAND org::fornax::cartridges::uml2::javabasic::m2t::Association::field FOR aÈ
+				ÇENDIFÈ
+			ÇENDFOREACHÈ
+		ÇENDLETÈ		
+	ÇENDFOREACHÈ		
+ÇENDAROUNDÈ
 
 
-«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Association::accessors FOR uml::Classifier»
-	«FOREACH AllAssociations().typeSelect(uml::Association) AS ass»
-		«LET ass.visibility AS assocationVisiblity»
-			«FOREACH ass.ownedEnd.select(e|e.type.name!=name) AS a»
-				«EXPAND accessors(assocationVisiblity) FOR a»
-			«ENDFOREACH»
-		«ENDLET»		
-	«ENDFOREACH»
-«ENDAROUND»
+ÇDEFINE field(uml::VisibilityKind assocationVisiblity) FOR uml::PropertyÈ
+	ÇIF isNavigable()È
+	 	ÇIF getUpper() == -1È
+	 		ÇassocationVisiblityÈ ÇgetPropertyType()È ÇnameÈ = ÇgetPropertyTypeImpl()È;
+	 	ÇELSEÈ
+	 		ÇassocationVisiblityÈ Çtype.fqName()È ÇnameÈ = null;
+	 	ÇENDIFÈ
+	 ÇENDIFÈ
+ÇENDDEFINEÈ
 
-«DEFINE accessors(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
-	«IF isNavigable()»
-		«IF getUpper() == -1»
-			«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionGetter»
+
+ÇAROUND org::fornax::cartridges::uml2::javabasic::m2t::Association::accessors FOR uml::ClassifierÈ
+	ÇFOREACH AllAssociations().typeSelect(uml::Association) AS assÈ
+		ÇLET ass.visibility AS assocationVisiblityÈ
+			ÇFOREACH ass.ownedEnd.select(e|e.type.name!=name) AS aÈ
+				ÇEXPAND accessors(assocationVisiblity) FOR aÈ
+			ÇENDFOREACHÈ
+		ÇENDLETÈ		
+	ÇENDFOREACHÈ
+ÇENDAROUNDÈ
+
+ÇDEFINE accessors(uml::VisibilityKind assocationVisiblity) FOR uml::PropertyÈ
+	ÇIF isNavigable()È
+		ÇIF getUpper() == -1È
+			ÇEXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionGetterÈ
 			
-			«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionSetter»
+			ÇEXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionSetterÈ
 			
-			«IF getGenerateAdditionalCollectionMethods()»
-				«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionAdder»
+			ÇIF getGenerateAdditionalCollectionMethods()È
+				ÇEXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionAdderÈ
 				
-				«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionRemoveFrom»
+				ÇEXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionRemoveFromÈ
 				
-				«EXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionRemoveAll»
-			«ENDIF»
-		«ELSEIF getUpper() == 1»
-			«EXPAND associationGetter(assocationVisiblity)»
+				ÇEXPAND  org::fornax::cartridges::uml2::javabasic::m2t::Association::associationCollectionRemoveAllÈ
+			ÇENDIFÈ
+		ÇELSEIF getUpper() == 1È
+			ÇEXPAND associationGetter(assocationVisiblity)È
  		
- 			«EXPAND associationSetter(assocationVisiblity)»
-		«ENDIF»
-	«ENDIF»	
-«ENDDEFINE»
+ 			ÇEXPAND associationSetter(assocationVisiblity)È
+		ÇENDIFÈ
+	ÇENDIFÈ	
+ÇENDDEFINEÈ
 
-«DEFINE associationGetter(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
-	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationAssociationGetter(this) FOR association»
-	«assocationVisiblity» «type.fqName()» «toGetter()»(){
-		return «name»;
+ÇDEFINE associationGetter(uml::VisibilityKind assocationVisiblity) FOR uml::PropertyÈ
+	ÇEXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationAssociationGetter(this) FOR associationÈ
+	ÇassocationVisiblityÈ Çtype.fqName()È ÇtoGetter()È(){
+		return ÇnameÈ;
 	}
-«ENDDEFINE»
+ÇENDDEFINEÈ
 
-«DEFINE associationSetter(uml::VisibilityKind assocationVisiblity) FOR uml::Property»
-	«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationAssociationSetter(this) FOR association»
-	«assocationVisiblity» void «toSetter()»(«type.fqName()» «name»){
-		this.«name» = «name»;
+ÇDEFINE associationSetter(uml::VisibilityKind assocationVisiblity) FOR uml::PropertyÈ
+	ÇEXPAND org::fornax::cartridges::uml2::javabasic::m2t::Documentation::documentationAssociationSetter(this) FOR associationÈ
+	ÇassocationVisiblityÈ void ÇtoSetter()È(Çtype.fqName()È ÇnameÈ){
+		this.ÇnameÈ = ÇnameÈ;
 	}
-«ENDDEFINE»
+ÇENDDEFINEÈ
 
-«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToString FOR uml::Class»
-	«IF getUseOverriddenEqualsHashcodeToString()» 		
-		«EXPAND toString_Method»
-	«ENDIF»
-«ENDAROUND»
+ÇAROUND org::fornax::cartridges::uml2::javabasic::m2t::Class::overwriteHashcodeEqualsToString FOR uml::ClassÈ
+	ÇIF getUseOverriddenEqualsHashcodeToString()È 		
+		ÇEXPAND toString_MethodÈ
+	ÇENDIFÈ
+ÇENDAROUNDÈ
 
-«DEFINE toString_Method FOR uml::Class»
+ÇDEFINE toString_Method FOR uml::ClassÈ
 	/* (non-Javadoc) 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	«IF getJavaVersion() >= 5»@Override«ENDIF»
+	ÇIF getJavaVersion() >= 5È@OverrideÇENDIFÈ
 	public String toString() {
 		return org.apache.commons.lang.builder.ToStringBuilder.reflectionToString(this);
 	}
-«ENDDEFINE»
+ÇENDDEFINEÈ
 
-«AROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetter FOR uml::Property»
-	«IF isNavigable()»
-		«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getter»
-		«IF !isReadOnly»
-			«EXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::setter»
-		«ENDIF»
-	«ENDIF»
-«ENDAROUND»
+ÇAROUND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterSetter FOR uml::PropertyÈ
+	ÇIF isNavigable()È
+		ÇEXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::getterÈ
+		ÇIF !isReadOnlyÈ
+			ÇEXPAND org::fornax::cartridges::uml2::javabasic::m2t::Attribute::setterÈ
+		ÇENDIFÈ
+	ÇENDIFÈ
+ÇENDAROUNDÈ

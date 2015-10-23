@@ -35,9 +35,6 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<m2t.version>0.7.2</m2t.version>
-		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
-		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>
 	</properties>
 
 	<dependencies>		
@@ -48,7 +45,7 @@
 		</dependency>
 		
 		<!-- MWE -->
-		<dependency>
+		<!--dependency>
 			<groupId>org.eclipse.m2t.xpand</groupId>
 			<artifactId>m2t-xpand-xtend-util-stdlib</artifactId>
 			<scope>provided</scope>
@@ -57,42 +54,43 @@
 			<groupId>org.eclipse.m2t.xpand</groupId>
 			<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency-->
 		<dependency>
-			<groupId>org.eclipse.m2t.xpand</groupId>
-			<artifactId>m2t-xpand-xpand</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.mwe</groupId>
-			<artifactId>emf-mwe-utils</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>uml</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.mapping</groupId>
-			<artifactId>ecore2xml</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>common</artifactId>
+			<groupId>org.eclipse.xpand</groupId>
+			<artifactId>org.eclipse.xpand</artifactId>
+			<version>${m2t.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
-			<artifactId>common</artifactId>
+			<artifactId>org.eclipse.emf.mwe.utils</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>uml-resources</artifactId>
+  			<artifactId>org.eclipse.uml2.uml</artifactId>
+  			<scope>provided</scope>
+		</dependency>
+		<!--dependency>
+			<groupId>org.eclipse.emf.mapping</groupId>
+			<artifactId>ecore2xml</artifactId>
+			<scope>provided</scope>
+		</dependency-->
+		<dependency>
+			<groupId>org.eclipse.uml2</groupId>
+  			<artifactId>org.eclipse.uml2.common</artifactId>
+  			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+  			<artifactId>org.eclipse.emf.common</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!--dependency>
+			<groupId>org.eclipse.uml2</groupId>
+			<artifactId>uml-resources</artifactId>
+			<scope>provided</scope>
+		</dependency-->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>

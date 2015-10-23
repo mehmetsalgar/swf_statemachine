@@ -34,29 +34,69 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.m2t.xpand</groupId>
+		<!--dependency>
+			<groupId>org.eclipse.xpand</groupId>
 			<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
-			<version>0.7.2</version>
+			<version>${m2t.version}</version>
+			<scope>provided</scope>
+		</dependency-->
+		<dependency>
+			<groupId>org.eclipse.xpand</groupId>
+			<artifactId>org.eclipse.xpand</artifactId>
+			<version>${m2t.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.m2t.xpand</groupId>
-			<artifactId>m2t-xpand-xpand</artifactId>
-			<version>0.7.2</version>
+			<groupId>org.eclipse.emf</groupId>
+  			<artifactId>org.eclipse.emf.ecore</artifactId>
+  			<version>${eclipse.emf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+  			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+  			<version>${eclipse.emf.version}</version>
+  		</dependency>
+  		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+  			<artifactId>org.eclipse.emf.common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.uml2</groupId>
+  			<artifactId>org.eclipse.uml2.common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.uml2</groupId>
+  			<artifactId>org.eclipse.uml2.uml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtend.typesystem</groupId>
+			<artifactId>uml2</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe.utils</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xtext</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
 		</dependency>
 
 		<!-- FORNAX -->
-		<dependency>
+		<!--dependency>
 			<groupId>org.fornax.cartridges</groupId>
 			<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
 			<version>${fornax.javabasic.cartridge.version}</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency-->
 	</dependencies>
 </project>

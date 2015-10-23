@@ -17,23 +17,10 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-					<!-- ensure that the compile uses the same encoding as the file encoding 
-						of the *.java -->
-					<compilerArguments>
-						<encoding>utf8</encoding>
-					</compilerArguments>
-				</configuration>
-			</plugin>
-
-			<plugin>
+			<!--plugin>
 				<groupId>org.fornax.toolsupport</groupId>
 				<artifactId>fornax-oaw-m2-plugin</artifactId>
-				<version>3.4.0</version>
+				<version>3.5.1</version>
 				<executions>
 					<execution>
 						<id>ecore</id>
@@ -42,16 +29,159 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<workflowEngine>mwe</workflowEngine>
-							<workflowDescriptor>workflow.mwe</workflowDescriptor>
+							<workflowEngine>mwe2</workflowEngine>
+							<workflowDescriptor>src/main/resources/workflow.mwe2</workflowDescriptor>
+							<phase>generate-sources</phase>
+							<goals> <goal>run-workflow</goal> </goals>
 						</configuration>
 					</execution>
 				</executions>
+			</plugin-->
+			<plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <configuration>
+                    <pomDependencies>consider</pomDependencies>
+                </configuration>
+            </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includeProjectDependencies>false</includeProjectDependencies>
+					<includePluginDependencies>true</includePluginDependencies>
+					<cleanupDaemonThreads>false</cleanupDaemonThreads>
+                    <stopUnresponsiveDaemonThreads>true</stopUnresponsiveDaemonThreads>
+                    <classpathScope>compile</classpathScope>
+					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
+					<additionalClasspathElements>
+						<additionalClasspathElement>src/main/resources</additionalClasspathElement>
+					</additionalClasspathElements>
+					<arguments>
+						<argument>file://${project.basedir}/src/main/resources/workflow.mwe2</argument>
+						<argument>
+							-p
+						</argument>
+						<argument>
+							runtimeProject=${project.basedir}
+						</argument>
+					</arguments>
+				</configuration>
+				<dependencies>
+					<!--dependency>
+  						<groupId>org.eclipse.xtend.typesystem</groupId>
+  						<artifactId>uml2</artifactId>
+  						<version>2.0.0.v201406030414</version>
+					</dependency-->
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.xtext</artifactId>
+						<version>${xtext-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.xbase</artifactId>
+						<version>${xtext-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.equinox</groupId>
+						<artifactId>common</artifactId>
+						<version>${equinox.common.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.uml2</groupId>
+  						<artifactId>org.eclipse.uml2.uml</artifactId>
+  						<version>${eclipse.uml2.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.uml2</groupId>
+						<artifactId>org.eclipse.uml2.uml.resources</artifactId>
+						<version>${eclipse.uml2.resources.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.xpand</groupId>
+						<artifactId>org.eclipse.xpand</artifactId>
+						<version>${m2t.version}</version>
+					</dependency>
+					<dependency>
+  						<groupId>org.fornax.cartridges</groupId>
+  						<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
+						<version>${fornax.javabasic.cartridge.version}</version>
+						<exclusions>
+							<exclusion>
+							<groupId>org.eclipse.uml2.uml</groupId>
+							<artifactId>resources</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.eclipse.uml2</groupId>
+							<artifactId>uml</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.openarchitectureware</groupId>
+							<artifactId>oaw-uml2-adapter</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.openarchitectureware</groupId>
+							<artifactId>oaw-util-stdlib</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.hybridlabs</groupId>
+							<artifactId>hybridlabs-beautifier</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.eclipse.emf</groupId>
+							<artifactId>common</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.fornax.openarchitectureware</groupId>
+							<artifactId>oaw-uml2</artifactId>
+						</exclusion>
+						</exclusions>
+					</dependency>
+					<dependency>
+						<groupId>org.hybridlabs</groupId>
+  						<artifactId>hybridlabs-beautifier</artifactId>
+						<version>${version.hybridlabs-beautifier}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.jface</groupId>
+						<artifactId>text</artifactId>
+						<version>${eclipse.jfaces.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.salgar.swf_statemachine</groupId>
+						<artifactId>swf_statemachine_fornax_extension</artifactId>
+						<version>${project.version}</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.eclipse.xtext</groupId>
+								<artifactId>org.eclipse.xtext.xtext</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+					<dependency>
+						<groupId>commons-lang</groupId>
+						<artifactId>commons-lang</artifactId>
+						<version>${commons-lang.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
@@ -72,76 +202,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<m2t.version>0.7.2</m2t.version>
-		<fornax.javabasic.cartridge.version>2.1.0</fornax.javabasic.cartridge.version>
-		<fornax.spring.core.version>2.0.0</fornax.spring.core.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.salgar.swf_statemachine</groupId>
-			<artifactId>swf_statemachine_fornax_extension</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		<!-- MWE -->
-		<dependency>
-			<groupId>org.eclipse.m2t.xpand</groupId>
-			<artifactId>m2t-xpand-xtend-util-stdlib</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.m2t.xpand</groupId>
-			<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.m2t.xpand</groupId>
-			<artifactId>m2t-xpand-xpand</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.mwe</groupId>
-			<artifactId>emf-mwe-utils</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>uml</artifactId>
-			<scope>provided</scope>
-			<version>3.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.mapping</groupId>
-			<artifactId>ecore2xml</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>common</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>common</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>uml-resources</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- FORNAX -->
-		<dependency>
-			<groupId>org.fornax.cartridges</groupId>
-			<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.fornax.utilities</groupId>
-			<artifactId>fornax-utilities-formatter-xml</artifactId>
-			<scope>provided</scope>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
 		</dependency>
 	</dependencies>
 </project>

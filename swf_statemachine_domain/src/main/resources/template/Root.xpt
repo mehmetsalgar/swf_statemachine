@@ -2,6 +2,7 @@
 	«EXPAND Root FOREACH (List[uml::Package])ownedElement»
 «ENDDEFINE»
 
+/**
 * Creates all packages
 */
 «DEFINE Root FOR uml::Package»

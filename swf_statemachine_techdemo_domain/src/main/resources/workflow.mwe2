@@ -1,0 +1,81 @@
+module swf_statemachine_techdemo_domain
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+import org.eclipse.xpand2.*
+
+import org.salgar.swf_statemachine.uml2.model.ExtendedUML2Metamodel
+
+import org.salgar.swf_statemachine.uml2.Setup
+import org.eclipse.xtend.typesystem.uml2.*
+import org.eclipse.xtend.typesystem.uml2.UML2MetaModel
+import org.eclipse.xtend.typesystem.emf.XmiReader
+import org.eclipse.xtend.typesystem.uml2.profile.ProfilingExtensions.XmiReader
+import org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel
+import org.eclipse.emf.mwe.utils.Reader
+var targetDir = "src-gen"
+var fileEncoding = "Cp1252"
+var modelPath = "src/model"
+var projectName = "swf_statemachine_techdemmo_domain"
+var runtimeProject
+
+var list.set.property = 'order'
+var type_header_text = ""
+var annotation_source_key = ""
+var type_footer_text = ""
+var javabasic_entities = ""
+var classes_operation_implementation_strategy ="none"
+var javabasic_generateSerialVersionUID = "true"
+var use_overridden_equals_hashcode_toString= "true"
+var java_version = "5"
+var generate_additional_collection_methods = ""
+
+Workflow {
+	bean = org.eclipse.emf.mwe.utils.StandaloneSetup {
+		platformUri=".."
+		projectMapping = { projectName = "${projectName}" path = "${runtimeProject}" }
+		projectMapping = { projectName = "swf_statemachine_domain" path = "../swf_statemachine_domain" }
+		logResourceUriMap = false
+		scanClassPath = false
+	}
+	bean = org.eclipse.xtend.typesystem.uml2.Setup {
+ 		standardUML2Setup = true
+ 	}
+ 	bean = org.eclipse.xtend.typesystem.uml2.UML2MetaModel : umlMM { }
+ 	
+ 	bean = org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel : datatype {
+ 		profile = "platform:/resource/swf_statemachine_domain/src/main/resources/model/Datatype.profile.uml"
+ 	}
+ 	
+ 	bean = org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel : java {
+ 		profile = "platform:/resource/swf_statemachine_domain/src/main/resources/model/Java.profile.uml"
+ 	}
+ 	
+ 	component = org.eclipse.emf.mwe.utils.Reader {
+ 		uri = "platform:/resource/swf_statemachine_techdemmo_domain/src/main/resources/model/TechdemoDomainModel.uml"
+ 		modelSlot = "model"
+ 	}
+ 	
+ 	component = org.eclipse.xpand2.Generator {
+ 		metaModel = umlMM
+ 		metaModel = datatype
+ 		metaModel = java
+ 		globalVarDef = { name = "list_set_property" value = "'${list.set.property}'" }
+ 		globalVarDef = { name = "type_header_text" value = "''" }
+ 		globalVarDef = { name = "annotation_source_key" value = "''" }
+ 		globalVarDef = { name = "type_footer_text" value = "''" }
+ 		globalVarDef = { name = "javabasic_entities" value = "''" }
+ 		globalVarDef = { name = "classes_operation_implementation_strategy" value = "'${classes_operation_implementation_strategy}'" }
+ 		globalVarDef = { name = "javabasic_generateSerialVersionUID" value = "'${javabasic_generateSerialVersionUID}'" }
+ 		globalVarDef = { name = "use_overridden_equals_hashcode_toString" value = "'${use_overridden_equals_hashcode_toString}'" }
+ 		globalVarDef = { name = "java_version" value = "${java_version}" }
+ 		
+ 		fileEncoding = "ISO-8859-1"
+ 		outlet = { path = "${runtimeProject}/src/generated/java" postprocessor = org.eclipse.xpand2.output.JavaBeautifier {} }
+
+		advice = "templates::advices::javaBasicAssociationAdvices"
+		
+		expand = "template::Root::Root FOR model"
+ 	}
+}
