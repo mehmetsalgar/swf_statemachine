@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<parent>
-		<groupId>org.salgar.swf_statemachine</groupId>
-		<artifactId>swf_statemachine</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../swf_statemachine/pom.xml</relativePath>
-  	</parent>
-  	
-  	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.salgar.swf_statemachine</groupId>
-	<artifactId>comet</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<name>Spring WebFlow - State Machine - Comet</name>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <parent>
+    <groupId>org.salgar.swf_statemachine</groupId>
+    <artifactId>swf_statemachine</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../swf_statemachine/pom.xml</relativePath>
+  </parent>
 
-	<dependencies>
-		<!-- Atmosphere (Comet) -->
-		<dependency>
-			<groupId>org.atmosphere</groupId>
-			<artifactId>atmosphere-runtime</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<!-- Primefaces -->
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>			
-	</properties>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>comet</artifactId>
+  <name>Spring WebFlow - State Machine - Comet</name>
+
+  <dependencies>
+    <!-- Atmosphere (Comet) -->
+    <dependency>
+      <groupId>org.atmosphere</groupId>
+      <artifactId>atmosphere-runtime</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Primefaces -->
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 </project>

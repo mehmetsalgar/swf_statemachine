@@ -1,102 +1,88 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<groupId>org.salgar.swf_statemachine</groupId>
-		<artifactId>swf_statemachine</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../swf_statemachine/pom.xml</relativePath>
-  	</parent>
-  	
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.salgar.swf_statemachine</groupId>
-	<artifactId>swf_statemachine_fornax_extension</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.salgar.swf_statemachine</groupId>
+    <artifactId>swf_statemachine</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../swf_statemachine/pom.xml</relativePath>
+  </parent>
 
-	<name>Spring WebFlow - State Machine - Fornax Extensions</name>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>swf_statemachine_fornax_extension</artifactId>
+  <packaging>jar</packaging>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-					<!-- ensure that the compile uses the same encoding as the file encoding 
-						of the *.java -->
-					<compilerArguments>
-						<encoding>utf8</encoding>
-					</compilerArguments>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+  <name>Spring WebFlow - State Machine - Fornax Extensions</name>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+          <!-- ensure that the compile uses the same encoding as the file encoding
+            of the *.java -->
+          <compilerArguments>
+            <encoding>utf8</encoding>
+          </compilerArguments>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <configuration>
+          <pomDependencies>consider</pomDependencies>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-	<dependencies>
-		<!--dependency>
-			<groupId>org.eclipse.xpand</groupId>
-			<artifactId>m2t-xpand-xtend-typesystem-uml2</artifactId>
-			<version>${m2t.version}</version>
-			<scope>provided</scope>
-		</dependency-->
-		<dependency>
-			<groupId>org.eclipse.xpand</groupId>
-			<artifactId>org.eclipse.xpand</artifactId>
-			<version>${m2t.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-  			<artifactId>org.eclipse.emf.ecore</artifactId>
-  			<version>${eclipse.emf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-  			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-  			<version>${eclipse.emf.version}</version>
-  		</dependency>
-  		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-  			<artifactId>org.eclipse.emf.common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-  			<artifactId>org.eclipse.uml2.common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-  			<artifactId>org.eclipse.uml2.uml</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtend.typesystem</groupId>
-			<artifactId>uml2</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.mwe.utils</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xtext</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-		</dependency>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
-		<!-- FORNAX -->
-		<!--dependency>
-			<groupId>org.fornax.cartridges</groupId>
-			<artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
-			<version>${fornax.javabasic.cartridge.version}</version>
-			<scope>provided</scope>
-		</dependency-->
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.xpand</groupId>
+      <artifactId>org.eclipse.xpand</artifactId>
+      <version>${m2t.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>org.eclipse.emf.ecore</artifactId>
+      <version>${eclipse.emf.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+      <version>${eclipse.emf.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>org.eclipse.emf.common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.uml2</groupId>
+      <artifactId>org.eclipse.uml2.common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.uml2</groupId>
+      <artifactId>org.eclipse.uml2.uml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>org.eclipse.emf.mwe.utils</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.xtext</groupId>
+      <artifactId>org.eclipse.xtext.xtext</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+  </dependencies>
 </project>
