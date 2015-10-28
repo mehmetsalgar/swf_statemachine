@@ -61,7 +61,7 @@ Workflow {
  		modelSlot = "model"
  	}
  	
- 	 	component = org.eclipse.xpand2.Generator : enumerationGenerator {
+ 	component = org.eclipse.xpand2.Generator : enumerationGenerator {
  		metaModel = umlMM
  		metaModel = swf_statemachine
  		
