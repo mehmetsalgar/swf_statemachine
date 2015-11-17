@@ -30,28 +30,11 @@ public class CUSTOMERSEARCH_RUNNING_CUSTOMER_FOUND_CustomerFoundTransitionAction
 
                 StateMachine findOrdersSM = StateMachineFactories.getInstance().getFindOrdersSM();
 
-               //AbstractStateMachine findOrdersSM = (AbstractStateMachine) stateMachine
-               //         .findObjects(StateMachineEnumerationImpl.FindOrdersSM.name());
-
-
                 CustomerSearchSMControlObjectAccessor.processCustomerFoundAction(
                         controlObject, (Customer) context.getMessageHeader("customer"), findOrdersSM);
 
-                //CustomerSearchSMControlObjectAccessor.processCustomerFoundAction(
-                //        controlObject, (Customer) event.getPayload(), findOrdersSM);
-
-                //Event findOrdersSMStartEvent = new Event();
-                //findOrdersSMStartEvent
-                //        .setEventType(FindOrdersSM_EventEnumerationImpl.onOrderSearchRunning);
-                //findOrdersSMStartEvent.setPayload(controlObject.getCustomer()
-                //        .getCustomerNumber());
-                //findOrdersSMStartEvent.setSource(stateMachine);
-
                 Message<FindOrdersSM_EventEnumerationImpl> message = MessageBuilder.withPayload(FindOrdersSM_EventEnumerationImpl.onOrderSearchRunning).setHeader("customerNumber", controlObject.getCustomer()
                         .getCustomerNumber()).setHeader("masterStateMachine", context.getStateMachine()).build();
-
-                //findOrdersSM.resetStateMachine();
-                //findOrdersSM.dispatch(findOrdersSMStartEvent);
 
                 findOrdersSM.sendEvent(message);
 
