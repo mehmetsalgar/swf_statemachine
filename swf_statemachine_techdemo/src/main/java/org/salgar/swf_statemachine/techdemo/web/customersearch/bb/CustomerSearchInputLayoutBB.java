@@ -1,15 +1,17 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
-import javax.faces.context.FacesContext;
-
 import org.apache.log4j.Logger;
 import org.salgar.comet.CometServiceLocator;
-import org.salgar.statemachine.domain.Event;
-import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchInputCO;
+import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
 import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.statemachine.StateMachine;
 import org.springframework.webflow.execution.FlowExecutionContext;
+
+import javax.faces.context.FacesContext;
 
 public class CustomerSearchInputLayoutBB {
 	private static final Logger log = Logger
@@ -23,22 +25,18 @@ public class CustomerSearchInputLayoutBB {
 	private StateMachine stateMachine;
 
 	public boolean isCustomerSearchInputLayoutRendered() {
-		CustomerSearchInputCO customerSearchInputCO = (CustomerSearchInputCO) stateMachine
-				.getControlObject();
+		CustomerSearchInputCO customerSearchInputCO = CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine);
 		return customerSearchInputCO.getRenderCustomerSearchInput();
 	}
 
 	public String getCustomerSearchRenderPanels() {
-		CustomerSearchInputCO customerSearchInputCO = (CustomerSearchInputCO) stateMachine
-				.getControlObject();
+		CustomerSearchInputCO customerSearchInputCO = CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine);
 		return customerSearchInputCO.getCustomerSearchRenderPanels();
 	}
 
 	public void searchCustomer() {
 		log.info("We are searching customer!");
 		CometServiceLocator.getInstance();
-		Event event = new Event();
-		event.setEventType(CustomerSearchSM_EventEnumerationImpl.onStartSearch);
 
 		CustomerSearchStartEventPayload customerSearchStartEventPayload = new CustomerSearchStartEventPayload();
 		customerSearchStartEventPayload.setCustomerNumber(customerNumber);		
@@ -52,9 +50,11 @@ public class CustomerSearchInputLayoutBB {
 		//customerListener.setStateMachine(stateMachine);
 		//customerSearchStartEventPayload.setCustomerListener(customerListener);
 
-		event.setPayload(customerSearchStartEventPayload);
+		Message message = MessageBuilder.withPayload(CustomerSearchSM_EventEnumerationImpl.onStartSearch)
+				.setHeader("customerSearchStartEventPayload", customerSearchStartEventPayload)
+				.build();
 
-		stateMachine.handleEvent(event);
+		stateMachine.sendEvent(message);
 	}
 
 	public String getCustomerNumber() {

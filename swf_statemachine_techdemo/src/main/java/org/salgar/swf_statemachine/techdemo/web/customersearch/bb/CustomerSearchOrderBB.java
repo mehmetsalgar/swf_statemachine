@@ -1,27 +1,27 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
-import java.util.List;
-
-import org.salgar.statemachine.domain.StateMachine;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchOrderCO;
+import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
+import org.springframework.statemachine.StateMachine;
+
+import java.util.List;
 
 public class CustomerSearchOrderBB {
 	private StateMachine stateMachine;
 
 	@SuppressWarnings("unchecked")
 	public List<Order> getOrders() {
-		return ((CustomerSearchOrderCO) stateMachine.getControlObject())
+		return CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine)
 				.getCustomerOrders();
 	}
 
 	public boolean isCustomerSearchOrderPanelRendered() {
-		return ((CustomerSearchOrderCO) stateMachine.getControlObject())
+		return CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine)
 				.getRenderCustomerOrders();
 	}
 
 	public boolean isCustomerSearchOrderLoadingPanelRendered() {
-		return ((CustomerSearchOrderCO) stateMachine.getControlObject())
+		return CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine)
 				.getRenderCustomerOrderLoading();
 	}
 

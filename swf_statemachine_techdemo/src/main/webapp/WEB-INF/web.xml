@@ -23,15 +23,6 @@
 				/WEB-INF/config/webmvc-config.xml,
 				/WEB-INF/config/webflow-config.xml,
 				/WEB-INF/config/applicationContext-customersearch.xml,
-				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch.xml,
-				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch-guards.xml,
-				classpath:/META-INF/customersearch/applicationContext-statemachine-customersearch-controlobjects.xml,
-				classpath:/META-INF/findcustomer/applicationContext-statemachine-findcustomer.xml,
-				classpath:/META-INF/findcustomer/applicationContext-statemachine-findcustomer-guards.xml,
-				classpath:/META-INF/findcustomer/applicationContext-statemachine-findcustomer-controlobjects.xml,
-				classpath:/META-INF/findorders/applicationContext-statemachine-findorders.xml,
-				classpath:/META-INF/findorders/applicationContext-statemachine-findorders-guards.xml,
-				classpath:/META-INF/findorders/applicationContext-statemachine-findorders-controlobjects.xml
 				/WEB-INF/config/applicationContext-manager.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

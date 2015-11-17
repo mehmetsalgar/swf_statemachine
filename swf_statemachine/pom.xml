@@ -75,8 +75,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${compiler.plugin.version}</version>
           <configuration>
-            <source>1.5</source>
-            <target>1.5</target>
+            <source>1.6</source>
+            <target>1.6</target>
             <!-- ensure that the compile uses
            the same encoding as the file
            encoding of the *.java
@@ -259,7 +259,6 @@
     <module>../swf_statemachine_fornax_extension</module>
     <module>../swf_statemachine_domain</module>
     <module>../swf_statemachine_xpand</module>
-    <module>../swf_statemachine_impl</module>
     <module>../swf_statemachine_techdemo_domain</module>
     <module>../swf_statemachine_sm_model</module>
     <module>../swf_statemachine_sm_model_impl</module>
@@ -465,8 +464,38 @@
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-expression</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
         <artifactId>binding</artifactId>
         <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.statemachine</groupId>
+        <artifactId>spring-statemachine-core</artifactId>
+        <version>${spring.statemachine.version}</version>
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
@@ -626,12 +655,13 @@
     <version.hybridlabs-beautifier>1.1.9</version.hybridlabs-beautifier>
     <log4j.version>1.2.13</log4j.version>
     <testng.version>5.9</testng.version>
-    <atmosphere.version>2.0.1</atmosphere.version>
+    <atmosphere.version>2.0.3</atmosphere.version>
     <primefaces.version>4.0</primefaces.version>
     <javax.faces.version>2.2.0</javax.faces.version>
     <spring-webflow.version>2.4.1.RELEASE</spring-webflow.version>
-    <spring.version>4.0.6.RELEASE</spring.version>
+    <spring.version>4.1.8.RELEASE</spring.version>
     <spring.faces.version>2.0.5.RELEASE</spring.faces.version>
+    <spring.statemachine.version>1.0.0.RELEASE</spring.statemachine.version>
     <el.version>2.2</el.version>
     <servlet.version>2.5</servlet.version>
     <faces.version>2.0.3</faces.version>

@@ -1,20 +1,25 @@
 package org.salgar.swf_statemachine.customersearch.controlobject;
 
-import java.util.List;
-
-import org.salgar.statemachine.domain.StateMachine;
+import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.findorders.controlobject.FindOrdersSMControlObjectAccessor;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
+import org.springframework.statemachine.StateMachine;
+
+import java.util.List;
 
 public class CustomerSearchSMControlObjectAccessor {
+	public static AbstractCustomerSearchControlObject getControlObject(StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine) {
+		return (AbstractCustomerSearchControlObject) stateMachine.getExtendedState().getVariables().get(stateMachine.getState().getId().getStateMachineName() + "ControlObject");
+	}
 
 	public static void processCustomerSearchRunningAction(
 			CustomerSearchSMControlObject controlObject, String customerNumber,
-			String flowId, String sessionId) {
+			String flowId, String sessionId, Object findCustomerSM) {
 		controlObject.customerNumberInternal = customerNumber;
-		controlObject.setFlowId(flowId);
-		controlObject.setSessionId(sessionId);
+		controlObject.flowId = flowId;
+		controlObject.sessionId = sessionId;
 		controlObject.getActualGuiState().renderCustomerSearchInput = false;
 		controlObject.getActualGuiState().renderCustomerSearchRunning = true;
 		controlObject.getActualGuiState().renderCustomerSearchFound = false;
@@ -22,12 +27,14 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchJoin = false;
 		controlObject.getActualGuiState().renderCustomerSearchOrder = false;
 		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
+		controlObject.findCustomerSlaveSM = findCustomerSM;
+
 		controlObject.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearchRunning-panel_empty_layout,customerSearchFound-empty-panel,customerSearchAuthentication-empty-panel,customerSearchJoin-empty-panel,customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel,handlePuplishRemoteCommand";
 	}
 
 	public static void processCustomerFoundAction(
 			CustomerSearchSMControlObject controlObject, Customer customer,
-			StateMachine slaveFindOrdersSM) {
+			Object slaveFindOrdersSM) {
 
 		controlObject.customerInternal = customer;
 		controlObject.findOrdersSlaveSM = slaveFindOrdersSM;
@@ -68,7 +75,7 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.getActualGuiState().renderCustomerSearchOrder = true;
 		controlObject.getActualGuiState().renderCustomerSearchOrderLoading = false;
 		controlObject.customerOrdersInternal = FindOrdersSMControlObjectAccessor
-				.getOrders(controlObject.findOrdersSlaveSM.getControlObject());
+				.getControlObject((StateMachine) controlObject.findOrdersSlaveSM).getOrders();
 		controlObject.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearchOrderLoading-empty-panel,customerSearchOrder-empty-panel,handlePuplishRemoteCommand";
 	}
 
@@ -153,10 +160,5 @@ public class CustomerSearchSMControlObjectAccessor {
 		controlObject.customerSearchInputRenderPanels = "customerSearchCustomerDetail_form,customerSearchOrder-empty-panel,handlePuplishRemoteCommand";
 
 		controlObject.customerOrdersInternal = orders;
-	}
-
-	public static StateMachine deliverFindOrdersSlaveSM(
-			CustomerSearchSMControlObject controlObject) {
-		return controlObject.findOrdersSlaveSM;
 	}
 }

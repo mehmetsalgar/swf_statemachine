@@ -18,8 +18,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.6</source>
+          <target>1.6</target>
           <!-- ensure that the compile uses the same encoding as the file encoding
             of the *.java -->
           <compilerArguments>
@@ -53,6 +53,10 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.statemachine</groupId>
+      <artifactId>spring-statemachine-core</artifactId>
     </dependency>
 
     <!-- Atmosphere -->

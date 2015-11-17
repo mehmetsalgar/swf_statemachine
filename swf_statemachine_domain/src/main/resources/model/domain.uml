@@ -29,113 +29,6 @@
           <elementImport xmi:id="_u1gvxxjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
           </elementImport>
-          <packagedElement xmi:type="uml:Class" xmi:id="_Md5nYBjTEeCsVpV9YS54ZQ" name="Event">
-            <eAnnotations xmi:id="_0JocsCMOEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-              <details xmi:id="_0JocsSMOEeC6cqnheF0QVw" key="documentation" value="This object represents the known triggers to the State Machine, event name would be provided from the code generation process from the state machine diagrams based on the interface."/>
-            </eAnnotations>
-            <ownedAttribute xmi:id="_xHZosh5WEeCyGcoG_XXpug" name="payload" visibility="private">
-              <eAnnotations xmi:id="_IcvJgCMPEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-                <details xmi:id="_IcvJgSMPEeC6cqnheF0QVw" key="documentation" value="Payload that event carries most of the time is necessary to be able to evaluate the guard conditions and actions but there can be cases that is only there while state machine context must remembers these values during the lifecycle of the state machine."/>
-              </eAnnotations>
-              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
-            </ownedAttribute>
-            <ownedAttribute xmi:id="_W8mjkrOiEeC1SLrv8PgQ-A" name="source" visibility="private">
-              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
-            </ownedAttribute>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Class" xmi:id="_mvqrCBjTEeCsVpV9YS54ZQ" name="State">
-            <ownedAttribute xmi:id="_FnIucBjUEeCsVpV9YS54ZQ" name="subMachine" visibility="private" type="_DWb_YDUpEeCqYIzB5LsIFQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Interface" xmi:id="_DmEZABzOEeCcEfMaO8vqcQ" name="StateMachine" clientDependency="_abPTcB5OEeCcEfMaO8vqcQ">
-            <eAnnotations xmi:id="_wlh5QCMNEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-              <details xmi:id="_wlrDMCMNEeC6cqnheF0QVw" key="documentation" value="This interface represents the most basic functionality that a statemachine should achieve, which is handling events that are coming from the outside world and controlling their lifecycle, which are done with handleEvent and resetStateMachine methods...."/>
-            </eAnnotations>
-            <generalization xmi:id="_Ikq-0DUpEeCqYIzB5LsIFQ" general="_DWb_YDUpEeCqYIzB5LsIFQ"/>
-            <ownedOperation xmi:id="_TYIMQBy9EeCcEfMaO8vqcQ" name="handleEvent" isAbstract="true">
-              <eAnnotations xmi:id="_JVGxYCMOEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-                <details xmi:id="_JVGxYSMOEeC6cqnheF0QVw" key="documentation" value="This method should reset events from the outside world, check which actual state machine has, search the corresponding outgoing transitions in the system, with the help of the received event and guard conditions on the transitions...."/>
-              </eAnnotations>
-              <ownedParameter xmi:id="_9o-vgBzNEeCcEfMaO8vqcQ" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ">
-                <eAnnotations xmi:id="_o-zjACMOEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-                  <details xmi:id="_o-zjASMOEeC6cqnheF0QVw" key="documentation" value="Event parameter represent a valid event that is defined in a state machine diagram (Code generation system would provide an enumeration to define which events valid for state machine ). This event object would also contain a general payload object, which contain information that statemachine must know to be able to evaluate the guard conditions and actions."/>
-                </eAnnotations>
-              </ownedParameter>
-            </ownedOperation>
-            <ownedOperation xmi:id="_aAjpEhzOEeCcEfMaO8vqcQ" name="resetStateMachine" isAbstract="true">
-              <eAnnotations xmi:id="_Qn0KACMOEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-                <details xmi:id="_Qn0KASMOEeC6cqnheF0QVw" key="documentation" value="Controls the lifecycle of the statemachine, when the system newly initialized or must be brought to the intial state, this methods should be called."/>
-              </eAnnotations>
-            </ownedOperation>
-            <ownedOperation xmi:id="_ZYXiEnyREeCgupXlFDV_aQ" name="getControlObject" isAbstract="true">
-              <ownedParameter xmi:id="_coiSUHyREeCgupXlFDV_aQ" name="return" type="_5AToIHcKEeChHqmjAgGwRw" direction="return"/>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Class" xmi:id="_YFxtYB5NEeCcEfMaO8vqcQ" name="AbstractStateMachine" clientDependency="_pzNYcx5NEeCcEfMaO8vqcQ" isAbstract="true">
-            <eAnnotations xmi:id="_bJxQYCMPEeC6cqnheF0QVw" source="http://www.topcased.org/documentation">
-              <details xmi:id="_bJxQYSMPEeC6cqnheF0QVw" key="documentation" value="This class exists to contain to based data structures that every implementation might need, these structures are eventQueue while state machine serves the event on first in first out basis and during an event processed in the state machine, every other state machine should wait for this processing to complete.&#xD;&#xA;&#xD;&#xA;Also every state machine would contain an actual state and would also possess an unique name.&#xD;&#xA;&#xD;&#xA;State machine context must be also available to every state machine implementation while it is going to represent the information that what a state represents...."/>
-            </eAnnotations>
-            <ownedAttribute xmi:id="_k3N-ch_gEeC0UO6puhKrhA" name="eventQueue" visibility="protected">
-              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_dy8qcB_gEeC0UO6puhKrhA"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-kSbUCVLEeCnWLry8sML2A"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6i8FwCVLEeCnWLry8sML2A" value="1"/>
-            </ownedAttribute>
-            <ownedAttribute xmi:id="_5-U1wiPrEeC6cqnheF0QVw" name="inTransition" visibility="protected">
-              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CyTT4CVMEeCnWLry8sML2A"/>
-            </ownedAttribute>
-            <ownedAttribute xmi:id="_85K2QHvPEeCgupXlFDV_aQ" name="controlObjects">
-              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_NFfZMB_hEeC0UO6puhKrhA"/>
-            </ownedAttribute>
-            <interfaceRealization xmi:id="_pzNYcx5NEeCcEfMaO8vqcQ" name="InterfaceRealization1" supplier="_DmEZABzOEeCcEfMaO8vqcQ" client="_YFxtYB5NEeCcEfMaO8vqcQ" contract="_DmEZABzOEeCcEfMaO8vqcQ"/>
-            <ownedOperation xmi:id="_xdmJAjLMEeC0rvpjHV-vcA" name="dispatch" visibility="protected" isAbstract="true">
-              <ownedParameter xmi:id="_3gITMDLMEeC0rvpjHV-vcA" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ"/>
-              <ownedParameter xmi:id="_9Ho40DLNEeC0rvpjHV-vcA" name="return" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
-              </ownedParameter>
-            </ownedOperation>
-            <ownedOperation xmi:id="_Jg27cohFEeCAqeEFueg1Bw" name="findObjects" visibility="public" isAbstract="true">
-              <eAnnotations xmi:id="_E8rHIIhcEeCAqeEFueg1Bw" source="http://www.topcased.org/documentation">
-                <details xmi:id="_E8rHIYhcEeCAqeEFueg1Bw" key="documentation" value="This method is abstract implemented to give the chance implementing class to decide what is the object repository. In our case it is Spring Application Context but for another State Machine implementatio it can be Hashmap."/>
-              </eAnnotations>
-              <ownedParameter xmi:id="_OJZz4IhFEeCAqeEFueg1Bw" name="return" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
-              </ownedParameter>
-              <ownedParameter xmi:id="_XFgMMIhFEeCAqeEFueg1Bw" name="objectName">
-                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
-              </ownedParameter>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Dependency" xmi:id="_abPTcB5OEeCcEfMaO8vqcQ" name="Dependency1" supplier="_Md5nYBjTEeCsVpV9YS54ZQ" client="_DmEZABzOEeCcEfMaO8vqcQ"/>
-          <packagedElement xmi:type="uml:Association" xmi:id="_8jspsB5SEeCyGcoG_XXpug" name="A_&lt;abstractStateMachine>_&lt;state>" memberEnd="_8jspsR5SEeCyGcoG_XXpug _8jsptB5SEeCyGcoG_XXpug" navigableOwnedEnd="_8jsptB5SEeCyGcoG_XXpug">
-            <ownedEnd xmi:id="_8jspsR5SEeCyGcoG_XXpug" name="" visibility="protected" type="_YFxtYB5NEeCcEfMaO8vqcQ" association="_8jspsB5SEeCyGcoG_XXpug">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8jspsh5SEeCyGcoG_XXpug"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8jspsx5SEeCyGcoG_XXpug"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_8jsptB5SEeCyGcoG_XXpug" name="actualState" visibility="public" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_8jspsB5SEeCyGcoG_XXpug">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8jsptR5SEeCyGcoG_XXpug" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8jspth5SEeCyGcoG_XXpug" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_JBHMqh5TEeCyGcoG_XXpug" name="A_&lt;abstractStateMachine>_&lt;state>_2" memberEnd="_JBHMqx5TEeCyGcoG_XXpug _JBHMrh5TEeCyGcoG_XXpug" navigableOwnedEnd="_JBHMrh5TEeCyGcoG_XXpug">
-            <ownedEnd xmi:id="_JBHMqx5TEeCyGcoG_XXpug" name="" visibility="protected" type="_YFxtYB5NEeCcEfMaO8vqcQ" association="_JBHMqh5TEeCyGcoG_XXpug">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBHMrB5TEeCyGcoG_XXpug"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBHMrR5TEeCyGcoG_XXpug"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_JBHMrh5TEeCyGcoG_XXpug" name="startState" visibility="protected" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_JBHMqh5TEeCyGcoG_XXpug">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBHMrx5TEeCyGcoG_XXpug" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBHMsB5TEeCyGcoG_XXpug" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_Of6Fuh5VEeCyGcoG_XXpug" name="A_&lt;state>_&lt;transition>_2" memberEnd="_Of6Fux5VEeCyGcoG_XXpug _Of6Fvh5VEeCyGcoG_XXpug" navigableOwnedEnd="_Of6Fvh5VEeCyGcoG_XXpug">
-            <ownedEnd xmi:id="_Of6Fux5VEeCyGcoG_XXpug" name="" type="_mvqrCBjTEeCsVpV9YS54ZQ" isOrdered="true" isUnique="false" association="_Of6Fuh5VEeCyGcoG_XXpug">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Of6FvB5VEeCyGcoG_XXpug"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Of6FvR5VEeCyGcoG_XXpug"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_Of6Fvh5VEeCyGcoG_XXpug" name="outgoingTransitions" visibility="public" type="_uGyroDLUEeC0rvpjHV-vcA" isOrdered="true" isUnique="false" association="_Of6Fuh5VEeCyGcoG_XXpug">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Of6Fvx5VEeCyGcoG_XXpug" value="*"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Of6FwB5VEeCyGcoG_XXpug" value="1"/>
-            </ownedEnd>
-          </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_LS_WaB5YEeCyGcoG_XXpug" name="EventEnumeration">
             <ownedOperation xmi:id="_PmrZIh5YEeCyGcoG_XXpug" name="getStatemachineName">
               <ownedParameter xmi:id="_SUu60B5YEeCyGcoG_XXpug" name="return" type="_4FFo4B_dEeC0UO6puhKrhA" direction="return"/>
@@ -144,21 +37,6 @@
               <ownedParameter xmi:id="_j0AtwB5bEeCyGcoG_XXpug" name="return" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedParameter>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Interface" xmi:id="_1_YgsB8ZEeC10uzKgDT83Q" name="Action">
-            <ownedOperation xmi:id="_6I0l0h8aEeC10uzKgDT83Q" name="processAction">
-              <ownedParameter xmi:id="_tDyroDLWEeC0rvpjHV-vcA" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ"/>
-              <ownedParameter xmi:id="_zKWaMDLWEeC0rvpjHV-vcA" name="stateMachine" type="_YFxtYB5NEeCcEfMaO8vqcQ"/>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Interface" xmi:id="_9unAwB8aEeC10uzKgDT83Q" name="Guard">
-            <ownedOperation xmi:id="_AusGkh8bEeC10uzKgDT83Q" name="evaluateGuard">
-              <ownedParameter xmi:id="_3vo18DNoEeCt-46ebH5uWA" name="return" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
-              </ownedParameter>
-              <ownedParameter xmi:id="_xQ3mQDNpEeCt-46ebH5uWA" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ"/>
-              <ownedParameter xmi:id="_4YWmUDNpEeCt-46ebH5uWA" name="stateMachine" type="_YFxtYB5NEeCcEfMaO8vqcQ"/>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_IjSO0B8cEeC10uzKgDT83Q" name="StateEnumeration">
@@ -171,92 +49,12 @@
               <ownedParameter xmi:id="_BX5wwB8dEeC10uzKgDT83Q" name="return" type="_4FFo4B_dEeC0UO6puhKrhA" direction="return"/>
             </ownedOperation>
           </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_o-DRCx8cEeC10uzKgDT83Q" name="A_&lt;event>_&lt;eventEnumeration>" memberEnd="_o-DRDB8cEeC10uzKgDT83Q _o-DRDx8cEeC10uzKgDT83Q">
-            <ownedEnd xmi:id="_o-DRDB8cEeC10uzKgDT83Q" name="" type="_Md5nYBjTEeCsVpV9YS54ZQ" association="_o-DRCx8cEeC10uzKgDT83Q">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o-DRDR8cEeC10uzKgDT83Q"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o-DRDh8cEeC10uzKgDT83Q"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_o-DRDx8cEeC10uzKgDT83Q" name="eventName" type="_LS_WaB5YEeCyGcoG_XXpug" aggregation="composite" association="_o-DRCx8cEeC10uzKgDT83Q">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o-DREB8cEeC10uzKgDT83Q" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o-DRER8cEeC10uzKgDT83Q" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_Vwu1oB8eEeC10uzKgDT83Q" name="A_&lt;state>_&lt;stateEnumeration>" memberEnd="_Vwu1oR8eEeC10uzKgDT83Q _Vwu1pB8eEeC10uzKgDT83Q" navigableOwnedEnd="_Vwu1pB8eEeC10uzKgDT83Q">
-            <ownedEnd xmi:id="_Vwu1oR8eEeC10uzKgDT83Q" name="" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_Vwu1oB8eEeC10uzKgDT83Q">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Vwu1oh8eEeC10uzKgDT83Q" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Vwu1ox8eEeC10uzKgDT83Q" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_Vwu1pB8eEeC10uzKgDT83Q" name="name" type="_IjSO0B8cEeC10uzKgDT83Q" association="_Vwu1oB8eEeC10uzKgDT83Q">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Vwu1pR8eEeC10uzKgDT83Q" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Vwu1ph8eEeC10uzKgDT83Q" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_HOIocB_aEeC0UO6puhKrhA" name="A_&lt;state>_&lt;action>" memberEnd="_HOIocR_aEeC0UO6puhKrhA _HOIodB_aEeC0UO6puhKrhA" navigableOwnedEnd="_HOIodB_aEeC0UO6puhKrhA">
-            <ownedEnd xmi:id="_HOIocR_aEeC0UO6puhKrhA" name="" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_HOIocB_aEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HOIoch_aEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HOIocx_aEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_HOIodB_aEeC0UO6puhKrhA" name="entryAction" type="_1_YgsB8ZEeC10uzKgDT83Q" association="_HOIocB_aEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HOIodR_aEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HOIodh_aEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_YZ4iwB_aEeC0UO6puhKrhA" name="A_&lt;state>_&lt;action>_2" memberEnd="_YZ4iwR_aEeC0UO6puhKrhA _YZ4ixB_aEeC0UO6puhKrhA" navigableOwnedEnd="_YZ4ixB_aEeC0UO6puhKrhA">
-            <ownedEnd xmi:id="_YZ4iwR_aEeC0UO6puhKrhA" name="" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_YZ4iwB_aEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YZ4iwh_aEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YZ4iwx_aEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_YZ4ixB_aEeC0UO6puhKrhA" name="exitAction" type="_1_YgsB8ZEeC10uzKgDT83Q" association="_YZ4iwB_aEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YZ4ixR_aEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YZ4ixh_aEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_JBAM4B_dEeC0UO6puhKrhA" name="A_&lt;transition>_&lt;guard>" memberEnd="_JBAM4R_dEeC0UO6puhKrhA _JBAM5B_dEeC0UO6puhKrhA" navigableOwnedEnd="_JBAM5B_dEeC0UO6puhKrhA">
-            <ownedEnd xmi:id="_JBAM4R_dEeC0UO6puhKrhA" name="" type="_uGyroDLUEeC0rvpjHV-vcA" association="_JBAM4B_dEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBAM4h_dEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBAM4x_dEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_JBAM5B_dEeC0UO6puhKrhA" name="guard" type="_9unAwB8aEeC10uzKgDT83Q" association="_JBAM4B_dEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JBAM5R_dEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JBAM5h_dEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_MXJCQB_dEeC0UO6puhKrhA" name="A_&lt;transition>_&lt;action>" memberEnd="_MXJCQR_dEeC0UO6puhKrhA _MXJCRB_dEeC0UO6puhKrhA" navigableOwnedEnd="_MXJCRB_dEeC0UO6puhKrhA">
-            <ownedEnd xmi:id="_MXJCQR_dEeC0UO6puhKrhA" name="" type="_uGyroDLUEeC0rvpjHV-vcA" association="_MXJCQB_dEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MXJCQh_dEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MXJCQx_dEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_MXJCRB_dEeC0UO6puhKrhA" name="action" type="_1_YgsB8ZEeC10uzKgDT83Q" association="_MXJCQB_dEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MXJCRR_dEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MXJCRh_dEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_zLHCMB_dEeC0UO6puhKrhA" name="A_&lt;state>_&lt;transition>" memberEnd="_zLHCMR_dEeC0UO6puhKrhA _zLHCNB_dEeC0UO6puhKrhA" navigableOwnedEnd="_zLHCNB_dEeC0UO6puhKrhA">
-            <ownedEnd xmi:id="_zLHCMR_dEeC0UO6puhKrhA" name="" type="_mvqrCBjTEeCsVpV9YS54ZQ" isOrdered="true" isUnique="false" association="_zLHCMB_dEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zLHCMh_dEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zLHCMx_dEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_zLHCNB_dEeC0UO6puhKrhA" name="incomingTransitions" type="_uGyroDLUEeC0rvpjHV-vcA" isOrdered="true" isUnique="false" association="_zLHCMB_dEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zLHCNR_dEeC0UO6puhKrhA" value="*"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zLHCNh_dEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_4FFo4B_dEeC0UO6puhKrhA" name="StateMachineEnumeration">
             <ownedOperation xmi:id="_8LNJsh_dEeC0UO6puhKrhA" name="getStateMachineName">
               <ownedParameter xmi:id="_-Jk64B_dEeC0UO6puhKrhA" name="return" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedParameter>
             </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_Po_YEB_eEeC0UO6puhKrhA" name="A_&lt;abstractStateMachine>_&lt;stateMachineEnumeration>" memberEnd="_Po_YER_eEeC0UO6puhKrhA _Po_YFB_eEeC0UO6puhKrhA" navigableOwnedEnd="_Po_YFB_eEeC0UO6puhKrhA">
-            <ownedEnd xmi:id="_Po_YER_eEeC0UO6puhKrhA" name="" type="_YFxtYB5NEeCcEfMaO8vqcQ" association="_Po_YEB_eEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Po_YEh_eEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Po_YEx_eEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_Po_YFB_eEeC0UO6puhKrhA" name="name" type="_4FFo4B_dEeC0UO6puhKrhA" association="_Po_YEB_eEeC0UO6puhKrhA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Po_YFR_eEeC0UO6puhKrhA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Po_YFh_eEeC0UO6puhKrhA" value="1"/>
-            </ownedEnd>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_HWdZ2B_hEeC0UO6puhKrhA" name="StateMachineContext">
             <ownedOperation xmi:id="_TqUYIh_hEeC0UO6puhKrhA" name="getControlObjects">
@@ -268,77 +66,6 @@
               <ownedParameter xmi:id="_dAxKIB_hEeC0UO6puhKrhA" name="contolObjects">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_NFfZMB_hEeC0UO6puhKrhA"/>
               </ownedParameter>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_xsV3ADLJEeC0rvpjHV-vcA" name="A_&lt;event>_&lt;eventEnumeration>_2" memberEnd="_xsV3ATLJEeC0rvpjHV-vcA _xsV3BDLJEeC0rvpjHV-vcA" navigableOwnedEnd="_xsV3BDLJEeC0rvpjHV-vcA">
-            <ownedEnd xmi:id="_xsV3ATLJEeC0rvpjHV-vcA" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ" association="_xsV3ADLJEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xsV3AjLJEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xsV3AzLJEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_xsV3BDLJEeC0rvpjHV-vcA" name="eventType" type="_LS_WaB5YEeCyGcoG_XXpug" association="_xsV3ADLJEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xsV3BTLJEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xsV3BjLJEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_2PU12jLQEeC0rvpjHV-vcA" name="A_&lt;transition>_&lt;eventEnumeration>" memberEnd="_2PU12zLQEeC0rvpjHV-vcA _2PU13jLQEeC0rvpjHV-vcA" navigableOwnedEnd="_2PU13jLQEeC0rvpjHV-vcA">
-            <ownedEnd xmi:id="_2PU12zLQEeC0rvpjHV-vcA" name="transition" type="_uGyroDLUEeC0rvpjHV-vcA" association="_2PU12jLQEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2PU13DLQEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2PU13TLQEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_2PU13jLQEeC0rvpjHV-vcA" name="eventType" type="_LS_WaB5YEeCyGcoG_XXpug" association="_2PU12jLQEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2PU13zLQEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2PU14DLQEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Class" xmi:id="_uGyroDLUEeC0rvpjHV-vcA" name="Transition" isAbstract="true">
-            <ownedAttribute xmi:id="_eykJ0jNnEeCpTsAMBacTcg" name="name">
-              <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
-            </ownedAttribute>
-            <ownedOperation xmi:id="_FMk5EB8ZEeC10uzKgDT83Q" name="evaluateGuard" isAbstract="true">
-              <ownedParameter xmi:id="_g9ezYDLREeC0rvpjHV-vcA" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ"/>
-              <ownedParameter xmi:id="_s-g8UDLREeC0rvpjHV-vcA" name="stateMachine" type="_DmEZABzOEeCcEfMaO8vqcQ"/>
-              <ownedParameter xmi:id="_4q2AkDLREeC0rvpjHV-vcA" name="return" direction="return">
-                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
-              </ownedParameter>
-            </ownedOperation>
-            <ownedOperation xmi:id="_MtdQkB8ZEeC10uzKgDT83Q" name="processAction" isAbstract="true">
-              <ownedParameter xmi:id="__1V4YDLREeC0rvpjHV-vcA" name="event" type="_Md5nYBjTEeCsVpV9YS54ZQ"/>
-              <ownedParameter xmi:id="_IB_wwDLSEeC0rvpjHV-vcA" name="stateMachine" type="_DmEZABzOEeCcEfMaO8vqcQ"/>
-            </ownedOperation>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_PmIwSjLVEeC0rvpjHV-vcA" name="A_&lt;abstractStateMachine>_&lt;state>_3" memberEnd="_PmIwSzLVEeC0rvpjHV-vcA _PmIwTjLVEeC0rvpjHV-vcA" navigableOwnedEnd="_PmIwTjLVEeC0rvpjHV-vcA">
-            <ownedEnd xmi:id="_PmIwSzLVEeC0rvpjHV-vcA" name="abstractStateMachine" type="_YFxtYB5NEeCcEfMaO8vqcQ" association="_PmIwSjLVEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PmIwTDLVEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PmIwTTLVEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_PmIwTjLVEeC0rvpjHV-vcA" name="existingStates" type="_mvqrCBjTEeCsVpV9YS54ZQ" isOrdered="true" isUnique="false" association="_PmIwSjLVEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PmIwTzLVEeC0rvpjHV-vcA" value="*"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PmIwUDLVEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_Ysw9mjLVEeC0rvpjHV-vcA" name="A_&lt;transition>_&lt;state>" memberEnd="_Ysw9mzLVEeC0rvpjHV-vcA _Ysw9njLVEeC0rvpjHV-vcA" navigableOwnedEnd="_Ysw9njLVEeC0rvpjHV-vcA">
-            <ownedEnd xmi:id="_Ysw9mzLVEeC0rvpjHV-vcA" name="transition" type="_uGyroDLUEeC0rvpjHV-vcA" association="_Ysw9mjLVEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ysw9nDLVEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ysw9nTLVEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_Ysw9njLVEeC0rvpjHV-vcA" name="targetState" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_Ysw9mjLVEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ysw9nzLVEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ysw9oDLVEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Association" xmi:id="_GCZ6yjLWEeC0rvpjHV-vcA" name="A_&lt;transition>_&lt;state>_2" memberEnd="_GCZ6yzLWEeC0rvpjHV-vcA _GCZ6zjLWEeC0rvpjHV-vcA" navigableOwnedEnd="_GCZ6zjLWEeC0rvpjHV-vcA">
-            <ownedEnd xmi:id="_GCZ6yzLWEeC0rvpjHV-vcA" name="transition" type="_uGyroDLUEeC0rvpjHV-vcA" association="_GCZ6yjLWEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GCZ6zDLWEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GCZ6zTLWEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-            <ownedEnd xmi:id="_GCZ6zjLWEeC0rvpjHV-vcA" name="sourceState" type="_mvqrCBjTEeCsVpV9YS54ZQ" association="_GCZ6yjLWEeC0rvpjHV-vcA">
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GCZ6zzLWEeC0rvpjHV-vcA" value="1"/>
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GCZ60DLWEeC0rvpjHV-vcA" value="1"/>
-            </ownedEnd>
-          </packagedElement>
-          <packagedElement xmi:type="uml:Interface" xmi:id="_DWb_YDUpEeCqYIzB5LsIFQ" name="SubStateMachine">
-            <ownedOperation xmi:id="_zKLG0jRREeC5r7o7TRNCzw" name="giveActualState" isAbstract="true">
-              <ownedParameter xmi:id="_2gAaMDRREeC5r7o7TRNCzw" name="return" type="_mvqrCBjTEeCsVpV9YS54ZQ" direction="return"/>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_5AToIHcKEeChHqmjAgGwRw" name="ControlObject">

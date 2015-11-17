@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_GFhHYH-9EeCK4vYmII23UA" activeDiagram="_lahMUYEmEeC0au1QwVWf1Q">
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_GFhHYH-9EeCK4vYmII23UA" activeDiagram="_Lnqr4X--EeCK4vYmII23UA">
   <model href="TechdemoDomainModel.uml#_w8IxIM37EdqwVrslYOdUDA"/>
   <diagrams xmi:id="_GFhHYX-9EeCK4vYmII23UA" position="0,0" size="100,100" name="TechdemoDomainModel" viewport="0,0">
     <property xmi:id="_GFq4YH-9EeCK4vYmII23UA" key="pageFormatName" value="A4"/>
@@ -228,7 +228,7 @@
   </subdiagrams>
   <subdiagrams xmi:id="_lahMUIEmEeC0au1QwVWf1Q">
     <model href="TechdemoDomainModel.uml#_htcdoYEmEeC0au1QwVWf1Q"/>
-    <diagrams xmi:id="_lahMUYEmEeC0au1QwVWf1Q" position="0,0" size="100,100" name="event" viewport="0,0">
+    <diagrams xmi:id="_lahMUYEmEeC0au1QwVWf1Q" position="0,0" size="100,100" name="event" viewport="0,70">
       <property xmi:id="_la0HQIEmEeC0au1QwVWf1Q" key="pageFormatName" value="A4"/>
       <property xmi:id="_la0HQYEmEeC0au1QwVWf1Q" key="diagramWidth" value="840"/>
       <property xmi:id="_la0HQoEmEeC0au1QwVWf1Q" key="diagramHeight" value="1188"/>

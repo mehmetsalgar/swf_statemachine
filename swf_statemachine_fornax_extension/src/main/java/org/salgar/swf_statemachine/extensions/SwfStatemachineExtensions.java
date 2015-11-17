@@ -6,4 +6,11 @@ public class SwfStatemachineExtensions {
 	public static String getVisiblityName(VisibilityKind visibilityKind) {
 		return visibilityKind.getLiteral();
 	}
+	public static String removeSM(String smToRemove) {
+		if(smToRemove != null) {
+			return smToRemove.replace("SM", "");
+		}
+		return smToRemove;
+	}
+
 }

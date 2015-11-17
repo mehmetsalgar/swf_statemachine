@@ -1,7 +1,8 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
-import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchInputCO;
+import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.springframework.statemachine.StateMachine;
 
 public class CustomerSearchBB {
 	private StateMachine stateMachine;
@@ -11,15 +12,13 @@ public class CustomerSearchBB {
 	}
 
 	public String getCustomerSearchRenderPanels() {
-		CustomerSearchInputCO customerSearchInputCO = (CustomerSearchInputCO) stateMachine
-				.getControlObject();
+		CustomerSearchInputCO customerSearchInputCO = CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine);
 
 		return customerSearchInputCO.getCustomerSearchRenderPanels();
 	}
 
 	public String getCustomerSearchJavaScriptRenderPanels() {
-		CustomerSearchInputCO customerSearchInputCO = (CustomerSearchInputCO) stateMachine
-				.getControlObject();
+		CustomerSearchInputCO customerSearchInputCO = CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine);
 		String renderPanels = customerSearchInputCO
 				.getCustomerSearchRenderPanels();
 

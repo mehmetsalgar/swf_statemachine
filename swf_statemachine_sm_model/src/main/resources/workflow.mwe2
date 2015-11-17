@@ -82,17 +82,7 @@ Workflow {
 		
 		expand = "template::stateMachineEnumeration::Root FOR model"
  	}
- 	
- 	component = org.eclipse.xpand2.Generator : springGenerator {
- 		metaModel = umlMM
- 		metaModel = swf_statemachine
- 		
- 		fileEncoding = "ISO-8859-1"
- 		outlet = { path = "${runtimeProject}/src/generated/resources"  postprocessor = org.salgar.m2t.xml.XmlBeautifier {} }
-		
-		expand = "template::stateMachineSpring::Spring FOR model"
- 	}
- 
+
  	component = org.eclipse.xpand2.Generator : javaGenerator {
  		metaModel = umlMM
  		metaModel = datatype
@@ -106,12 +96,24 @@ Workflow {
  		globalVarDef = { name = "javabasic_generateSerialVersionUID" value = "'${javabasic_generateSerialVersionUID}'" }
  		globalVarDef = { name = "use_overridden_equals_hashcode_toString" value = "'${use_overridden_equals_hashcode_toString}'" }
  		globalVarDef = { name = "java_version" value = "${java_version}" }
- 		
+
  		fileEncoding = "ISO-8859-1"
  		outlet = { path = "${runtimeProject}/src/generated/java" postprocessor = org.eclipse.xpand2.output.JavaBeautifier {} }
 
 		advice = "templates::advices::javaBasicAssociationAdvices"
-		
+
 		expand = "template::Root::Root FOR model"
  	}
+
+ 	component = org.eclipse.xpand2.Generator : ssmGenerator {
+ 		metaModel = umlMM
+ 		metaModel = swf_statemachine
+
+ 		fileEncoding = "ISO-8859-1"
+ 		outlet = { path = "${runtimeProject}/src/generated/java" postprocessor = org.eclipse.xpand2.output.JavaBeautifier {} }
+
+		expand = "template::stateMachineSSM::Root FOR model"
+ 	}
+
+
 }

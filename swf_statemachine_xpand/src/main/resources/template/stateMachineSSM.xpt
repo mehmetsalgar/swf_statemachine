@@ -1,0 +1,284 @@
+«IMPORT uml»
+
+«EXTENSION utility»
+«EXTENSION templates::extensions::SwfStatemachineExtensions»
+
+«DEFINE Root FOR uml::Model»
+    «FOREACH allOwnedElements().typeSelect(uml::StateMachine) AS stateMachine»
+        «IF stateMachine.getAppliedStereotype("swf_statemachine::SwfStateMachine")!= null»
+            «EXPAND StateMachines(stateMachine)»
+            «EXPAND ActionContainer(stateMachine)»
+            «EXPAND GuardContainer(stateMachine)»
+            «EXPAND ControlObjectLocator(stateMachine)»
+        «ENDIF»
+    «ENDFOREACH»;
+«ENDDEFINE»
+
+«DEFINE StateMachines(uml::StateMachine sm) FOR uml::Model»
+    «FILE "org/salgar/swf_statemachine/ssm/configuration/" + sm.name + "Configuration.java"»
+            package org.salgar.swf_statemachine.ssm.configuration;
+
+
+            import org.salgar.statemachine.domain.ControlObject;
+            import org.salgar.swf_statemachine.«removeSM(sm.name).toLowerCase()».controlobject.Abstract«removeSM(sm.name)»ControlObject;
+            import org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()».«sm.name»_EventEnumerationImpl;
+            import org.salgar.swf_statemachine.enumeration.state.«sm.name»_StateEnumerationImpl;
+            import org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«sm.name»ActionContainer;
+            import org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«sm.name»GuardContainer;
+            import org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«sm.name»ControlObjectLocator;
+
+            import org.springframework.beans.factory.annotation.Autowired;
+            import org.springframework.context.annotation.Configuration;
+            import org.springframework.context.annotation.Bean;
+            import org.springframework.messaging.Message;
+            import org.springframework.statemachine.config.EnableStateMachine;
+            import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
+            import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
+            import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
+            import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
+            import org.springframework.statemachine.StateContext;
+            import org.springframework.statemachine.action.Action;
+            import org.springframework.statemachine.listener.StateMachineListener;
+            import org.springframework.statemachine.listener.StateMachineListenerAdapter;
+            import org.springframework.statemachine.state.State;
+
+            import java.util.EnumSet;
+
+            import org.apache.log4j.Logger;
+
+            @Configuration
+            @EnableStateMachine(name="«sm.name»")
+            public class «sm.name»Configuration extends EnumStateMachineConfigurerAdapter<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> {
+                private static final Logger LOG = Logger.getLogger(«sm.name»Configuration.class);
+
+                @Autowired
+                private «sm.name»ActionContainer «sm.name.toFirstLower()»ActionContainer;
+
+                @Autowired
+                private «sm.name»GuardContainer «sm.name.toFirstLower()»GuardContainer;
+
+                @Autowired
+                private «sm.name»ControlObjectLocator controlObjectLocator;
+
+                @Override
+                public void configure(StateMachineConfigurationConfigurer<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl>config)
+                        throws Exception {
+                    config
+                        .withConfiguration()
+                            .autoStartup(true)
+                            .listener(listener());
+                }
+
+                @Override
+                public void configure(StateMachineStateConfigurer<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> states) throws Exception {
+                    states.withStates().initial(«sm.name»_StateEnumerationImpl.«findIntialState(sm.allOwnedElements().typeSelect(uml::Pseudostate)).name», initialState«sm.name»Action())
+                            .states(EnumSet.allOf(«sm.name»_StateEnumerationImpl.class));
+                }
+
+                @Override
+                public void configure(StateMachineTransitionConfigurer<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> transitions) throws Exception {
+                		transitions
+                        «FOREACH sm.allOwnedElements().typeSelect(uml::State).getOutgoings() AS transition SEPARATOR '.and()'»
+                            //STATE - «transition.source.name»
+                            .withExternal()
+                            .source(«sm.name»_StateEnumerationImpl.«transition.source.name»)
+                            .target(«sm.name»_StateEnumerationImpl.«transition.target.name»)
+                                .event(«sm.name»_EventEnumerationImpl.«transition.trigger.first().name»)
+                                «IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+                                    «IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"GuardImplementation") != null»
+                                        .guard(«sm.name.toFirstLower()»GuardContainer.get«transition.source.name»___«transition.target.name»_«transition.name»_guard().«transition.source.name»_«transition.target.name»_«transition.name»_guard())
+                                        «EXPAND GuardImpl(sm, transition)»
+                                    «ENDIF»
+                                «ENDIF»
+                                «IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+                                    «IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"ActionImplementation") != null»
+                                        .action(«sm.name.toFirstLower()»ActionContainer.get«transition.source.name»___«transition.target.name»_«transition.name»_action().«transition.source.name»_«transition.target.name»_«transition.name»_action())
+                                        «EXPAND ActionImpl(sm, transition)»
+                                    «ENDIF»
+                                «ENDIF»
+                		«ENDFOREACH»;
+                }
+
+                public StateMachineListener<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> listener() {
+                    return new StateMachineListenerAdapter<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl>() {
+                        @Override
+                        public void stateChanged(State<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> from, State<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> to) {
+                            LOG.info("State change to " + to.getId());
+                        }
+
+                        @Override
+                        public void eventNotAccepted(Message<«sm.name»_EventEnumerationImpl> event) {
+                            LOG.warn("The event " + event.toString() + " is not accepted!" );
+                        }
+                    };
+                }
+
+                @Bean
+                public Action<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> initialState«sm.name»Action() {
+                    return new Action<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl>() {
+                        @Override
+                        public void execute(StateContext<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> context) {
+                            Abstract«removeSM(sm.name)»ControlObject controlObject = controlObjectLocator.getControlObject();
+                            ((ControlObject)controlObject).resetStateMachine();
+                            context.getExtendedState().getVariables().put("«sm.name»ControlObject", controlObject);
+                        }
+                    };
+                }
+            }
+        «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GuardImpl(uml::StateMachine sm, uml::Transition transition) FOR uml::Model»
+    «FILE "org/salgar/swf_statemachine/ssm/configuration/" + sm.name.toLowerCase() + "/" + transition.source.name.toLowerCase() + "/guard/" +  transition.source.name + "___" + transition.target.name + "_" + transition.name + "_guard" + ".java"»
+        package org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«transition.source.name.toLowerCase()».guard;
+
+        import org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()».«sm.name»_EventEnumerationImpl;
+        import org.salgar.swf_statemachine.enumeration.state.«sm.name»_StateEnumerationImpl;
+
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.context.annotation.Configuration;
+        import org.springframework.context.annotation.Bean;
+        import org.springframework.statemachine.StateContext;
+        import org.springframework.statemachine.guard.Guard;
+
+
+        @Configuration
+        public class «transition.source.name»___«transition.target.name»_«transition.name»_guard {
+            @Autowired(required = false)
+            private I«transition.source.name»_«transition.target.name»_«transition.name»Guard realImplementation;
+
+            @Bean
+            public Guard<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> «transition.source.name»_«transition.target.name»_«transition.name»_guard() {
+                return new Guard<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl>() {
+
+                    @Override
+                    public boolean evaluate(StateContext<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> context) {
+                        if(realImplementation != null) {
+                            return realImplementation.evaluate(context);
+                        }
+                        return false;
+                    }
+                };
+            }
+            public interface I«transition.source.name»_«transition.target.name»_«transition.name»Guard {
+                boolean evaluate(StateContext<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> context);
+            }
+        }
+    «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE ActionImpl(uml::StateMachine sm, uml::Transition transition) FOR uml::Model»
+    «FILE "org/salgar/swf_statemachine/ssm/configuration/" + sm.name.toLowerCase() + "/" + transition.source.name.toLowerCase() + "/action/" +  transition.source.name + "___" + transition.target.name + "_" + transition.name + "_action" + ".java"»
+        package org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«transition.source.name.toLowerCase()».action;
+
+        import org.salgar.swf_statemachine.enumeration.event.«sm.name.toLowerCase()».«sm.name»_EventEnumerationImpl;
+        import org.salgar.swf_statemachine.enumeration.state.«sm.name»_StateEnumerationImpl;
+
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.context.annotation.Configuration;
+        import org.springframework.context.annotation.Bean;
+        import org.springframework.statemachine.StateContext;
+        import org.springframework.statemachine.action.Action;
+
+        import org.apache.log4j.Logger;
+
+        @Configuration
+        public class «transition.source.name»___«transition.target.name»_«transition.name»_action {
+            private static final Logger LOG = Logger.getLogger(«transition.source.name»___«transition.target.name»_«transition.name»_action.class);
+
+            @Autowired(required = false)
+            private I«transition.source.name»_«transition.target.name»_«transition.name»Action realImplementation;
+
+            @Bean
+            public Action<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> «transition.source.name»_«transition.target.name»_«transition.name»_action() {
+                return new Action<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl>() {
+
+                    @Override
+                    public void execute(StateContext<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> context) {
+                        if (realImplementation != null) {
+                            realImplementation.execute(context);
+                        } else {
+                            LOG.warn("In the UML Model for this Action the Steorotype defines an implementation but Spring could not find a concrete implementation class!");
+                        }
+                    }
+                };
+            }
+            public interface I«transition.source.name»_«transition.target.name»_«transition.name»Action {
+                void execute(StateContext<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> context);
+            }
+        }
+    «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE ActionContainer(uml::StateMachine sm) FOR uml::Model»
+    «FILE "org/salgar/swf_statemachine/ssm/configuration/" + sm.name.toLowerCase() + "/" +  sm.name + "ActionContainer.java"»
+        package org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()»;
+
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.context.annotation.Configuration;
+
+        @Configuration
+        public class «sm.name»ActionContainer {
+            «FOREACH sm.allOwnedElements().typeSelect(uml::State) AS state»
+                «FOREACH state.getOutgoings() AS transition»
+                    «IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+                        «IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"ActionImplementation") != null»
+                            @Autowired
+                            private org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«state.name.toLowerCase()».action.«transition.source.name»___«transition.target.name»_«transition.name»_action «transition.source.name.toLowerCase()»___«transition.target.name»_«transition.name»_action;
+
+                            public org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«state.name.toLowerCase()».action.«transition.source.name»___«transition.target.name»_«transition.name»_action get«transition.source.name»___«transition.target.name»_«transition.name»_action() {
+                                return «transition.source.name.toLowerCase()»___«transition.target.name»_«transition.name»_action;
+                            }
+                        «ENDIF»
+                    «ENDIF»
+                «ENDFOREACH»
+            «ENDFOREACH»
+        }
+    «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GuardContainer(uml::StateMachine sm) FOR uml::Model»
+    «FILE "org/salgar/swf_statemachine/ssm/configuration/" + sm.name.toLowerCase() + "/" +  sm.name + "GuardContainer.java"»
+        package org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()»;
+
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.context.annotation.Configuration;
+
+        @Configuration
+        public class «sm.name»GuardContainer {
+            «FOREACH sm.allOwnedElements().typeSelect(uml::State) AS state»
+                «FOREACH state.getOutgoings() AS transition»
+                    «IF transition.getAppliedStereotype("swf_statemachine::SwfTransition")!= null»
+                        «IF transition.getValue(transition.getAppliedStereotype("swf_statemachine::SwfTransition"),"GuardImplementation") != null»
+                            @Autowired
+                            private org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«state.name.toLowerCase()».guard.«transition.source.name»___«transition.target.name»_«transition.name»_guard «transition.source.name.toLowerCase()»___«transition.target.name»_«transition.name»_guard;
+
+                            public org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()».«state.name.toLowerCase()».guard.«transition.source.name»___«transition.target.name»_«transition.name»_guard get«transition.source.name»___«transition.target.name»_«transition.name»_guard() {
+                                return «transition.source.name.toLowerCase()»___«transition.target.name»_«transition.name»_guard;
+                            }
+                        «ENDIF»
+                    «ENDIF»
+                «ENDFOREACH»
+            «ENDFOREACH»
+        }
+    «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE ControlObjectLocator(uml::StateMachine sm) FOR uml::Model»
+    «FILE "org/salgar/swf_statemachine/ssm/configuration/" + sm.name.toLowerCase() + "/" +  sm.name + "ControlObjectLocator.java"»
+        package org.salgar.swf_statemachine.ssm.configuration.«sm.name.toLowerCase()»;
+
+        import org.salgar.swf_statemachine.«removeSM(sm.name).toLowerCase()».controlobject.Abstract«removeSM(sm.name)»ControlObject;
+        import org.springframework.beans.factory.annotation.Lookup;
+        import org.springframework.stereotype.Component;
+
+        @Component
+        public class «sm.name»ControlObjectLocator {
+
+            @Lookup
+            public Abstract«removeSM(sm.name)»ControlObject getControlObject() {
+                return null;
+            }
+        }
+    «ENDFILE»
+«ENDDEFINE»

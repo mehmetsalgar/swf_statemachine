@@ -73,31 +73,31 @@
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                   <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mXMeEHyTEeCgupXlFDV_aQ" value="1"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_oHOTMn-yEeCK4vYmII23UA" name="customerSearchInputRenderPanels " visibility="package">
+                <ownedAttribute xmi:id="_oHOTMn-yEeCK4vYmII23UA" name="customerSearchInputRenderPanels " visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_qLNTIoExEeC0au1QwVWf1Q" name="customerInternal" visibility="package">
+                <ownedAttribute xmi:id="_qLNTIoExEeC0au1QwVWf1Q" name="customerInternal" visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../techdemo-domain.profile.uml#_uPcxYIFBEeC0au1QwVWf1Q"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_DlPgoobcEeCgzO61Ewoybw" name="customerAuthenticatedInternal" visibility="package">
+                <ownedAttribute xmi:id="_DlPgoobcEeCgzO61Ewoybw" name="customerAuthenticatedInternal" visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_eP6-0odxEeCgzO61Ewoybw" name="customerJoinedInternal" visibility="package">
+                <ownedAttribute xmi:id="_eP6-0odxEeCgzO61Ewoybw" name="customerJoinedInternal" visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_VnK60r6cEeCrausYBI7eyw" name="customerOrdersInternal" visibility="package">
+                <ownedAttribute xmi:id="_VnK60r6cEeCrausYBI7eyw" name="customerOrdersInternal" visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_rVudwBpgEeCBg6wrhx5k5Q"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_mS7tAsS8EeCYBJYY66CQSA" name="findOrdersSlaveSM" visibility="package">
-                  <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
+                <ownedAttribute xmi:id="_mS7tAsS8EeCYBJYY66CQSA" name="findOrdersSlaveSM" visibility="package" isReadOnly="true">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_laFS4h-WEeOAm6oIIyMDNw" name="findCustomerSlaveSM" visibility="package">
-                  <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
+                <ownedAttribute xmi:id="_laFS4h-WEeOAm6oIIyMDNw" name="findCustomerSlaveSM" visibility="package" isReadOnly="true">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_YEutEpmBEeObn8V4NOgFTA" name="flowId" visibility="package">
+                <ownedAttribute xmi:id="_YEutEpmBEeObn8V4NOgFTA" name="flowId" visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedAttribute>
-                <ownedAttribute xmi:id="_FehkwgdPEeS2e5CD2AD-gA" name="sessionId" visibility="package">
+                <ownedAttribute xmi:id="_FehkwgdPEeS2e5CD2AD-gA" name="sessionId" visibility="package" isReadOnly="true">
                   <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedAttribute>
                 <interfaceRealization xmi:id="_tugWtH0_EeCgupXlFDV_aQ" name="InterfaceRealization1" supplier="_NpckMHyOEeCgupXlFDV_aQ" client="_8TaQQHcNEeChHqmjAgGwRw" contract="_NpckMHyOEeCgupXlFDV_aQ"/>
@@ -316,7 +316,7 @@
             <packagedElement xmi:type="uml:Package" xmi:id="_CPALwLOlEeC1SLrv8PgQ-A" name="controlobject">
               <packagedElement xmi:type="uml:Class" xmi:id="_IcawSLOlEeC1SLrv8PgQ-A" name="AbstractFindCustomerControlObject" isAbstract="true">
                 <ownedAttribute xmi:id="_XDfHUrOlEeC1SLrv8PgQ-A" name="masterStateMachine" visibility="package" isReadOnly="true">
-                  <type xmi:type="uml:PrimitiveType" href="../domain.profile.uml#_c6emELQ4EeC1SLrv8PgQ-A"/>
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
                 </ownedAttribute>
               </packagedElement>
             </packagedElement>
@@ -342,6 +342,18 @@
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_jtMLsE3XEeOE05lJ4YwKXQ" name="Event"/>
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_va_PkE3XEeOE05lJ4YwKXQ" name="TIMEOUT_ERROR"/>
             <packagedElement xmi:type="uml:SignalEvent" xmi:id="_2wqcoE3XEeOE05lJ4YwKXQ" name="SERVICE_NOT_AVAILABLE_ERROR"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_wZLWUIRkEeW20bc7vs7weQ" name="findorders">
+            <packagedElement xmi:type="uml:Package" xmi:id="_4GGlwIRkEeW20bc7vs7weQ" name="controlobject">
+              <packagedElement xmi:type="uml:Class" xmi:id="_yuYrcIRqEeW20bc7vs7weQ" name="AbstractFindOrdersControlObject" isAbstract="true">
+                <ownedAttribute xmi:id="_dHGIAIRsEeW20bc7vs7weQ" name="masterStateMachine" visibility="package" isReadOnly="true">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_kl9Q0IRtEeW20bc7vs7weQ" name="orders" visibility="package" isReadOnly="true">
+                  <type xmi:type="uml:PrimitiveType" href="../../../../../swf_statemachine_domain/src/main/resources/model/Java.profile.uml#_rVudwBpgEeCBg6wrhx5k5Q"/>
+                </ownedAttribute>
+              </packagedElement>
+            </packagedElement>
           </packagedElement>
         </packagedElement>
       </packagedElement>

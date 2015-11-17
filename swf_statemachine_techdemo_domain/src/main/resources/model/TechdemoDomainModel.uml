@@ -38,7 +38,7 @@
             </packagedElement>
             <packagedElement xmi:type="uml:Class" xmi:id="_mUYTMH_LEeC3BvKE9rGHVg" name="AbstractAsynchroneListener" clientDependency="_paDDo3_LEeC3BvKE9rGHVg" isAbstract="true">
               <ownedAttribute xmi:id="_11iCAn_NEeC3BvKE9rGHVg" name="stateMachine">
-                <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
+                <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
               </ownedAttribute>
               <interfaceRealization xmi:id="_paDDo3_LEeC3BvKE9rGHVg" name="InterfaceRealization1" supplier="_MU1T6H--EeCK4vYmII23UA" client="_mUYTMH_LEeC3BvKE9rGHVg" contract="_MU1T6H--EeCK4vYmII23UA"/>
             </packagedElement>
@@ -53,7 +53,7 @@
                   <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedParameter>
                 <ownedParameter xmi:id="_tP414bOWEeC1SLrv8PgQ-A" name="stateMachine">
-                  <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
+                  <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
                 </ownedParameter>
               </ownedOperation>
             </packagedElement>
@@ -63,7 +63,7 @@
                   <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
                 </ownedParameter>
                 <ownedParameter xmi:id="_PeZNEMMuEeCYBJYY66CQSA" name="stateMachine">
-                  <type xmi:type="uml:PrimitiveType" href="domain.profile.uml#_TC0RAH_NEeC3BvKE9rGHVg"/>
+                  <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_7qUN0B5WEeCyGcoG_XXpug"/>
                 </ownedParameter>
               </ownedOperation>
             </packagedElement>

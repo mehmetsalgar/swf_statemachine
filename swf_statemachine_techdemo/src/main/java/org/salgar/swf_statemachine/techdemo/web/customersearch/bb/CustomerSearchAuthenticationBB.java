@@ -1,27 +1,27 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
-import org.salgar.statemachine.domain.Event;
-import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchAuthenticationCO;
+import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
 import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.statemachine.StateMachine;
 
 public class CustomerSearchAuthenticationBB {
 	private StateMachine stateMachine;
 	private boolean customerAuthenticated;
 
 	public boolean isCustomerSearchAuthenticationPanelRendered() {
-		CustomerSearchAuthenticationCO customerSearchAuthenticationCO = (CustomerSearchAuthenticationCO) stateMachine
-				.getControlObject();
+		CustomerSearchAuthenticationCO customerSearchAuthenticationCO = CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine);
 		return customerSearchAuthenticationCO
 				.getRenderCustomerSearchAuthentication();
 	}
 
 	public void customerGivesAuthentication() {
-		Event event = new Event();
-		event.setEventType(CustomerSearchSM_EventEnumerationImpl.onCustomerAuthenticatedClicked);
-		event.setPayload(customerAuthenticated);
+		Message message = MessageBuilder.withPayload(CustomerSearchSM_EventEnumerationImpl.onCustomerAuthenticatedClicked)
+				.setHeader("authenticated", customerAuthenticated).build();
 		
-		stateMachine.handleEvent(event);
+		stateMachine.sendEvent(message);
 	}
 
 	public void setStateMachine(StateMachine stateMachine) {
@@ -29,8 +29,8 @@ public class CustomerSearchAuthenticationBB {
 	}
 
 	public boolean isCustomerAuthenticated() {
-		CustomerSearchAuthenticationCO customerSearchAuthenticationCO = (CustomerSearchAuthenticationCO) stateMachine
-				.getControlObject();
+		CustomerSearchAuthenticationCO customerSearchAuthenticationCO = CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine);
+
 		return customerSearchAuthenticationCO.getCustomerAuthenticated();
 	}
 

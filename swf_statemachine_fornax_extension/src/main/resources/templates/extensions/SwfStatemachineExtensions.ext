@@ -1,2 +1,5 @@
 String getVisiblityName(uml::VisibilityKind visibilityKind) : 
 	JAVA org.salgar.swf_statemachine.extensions.SwfStatemachineExtensions.getVisiblityName(org.eclipse.uml2.uml.VisibilityKind);
+
+String removeSM(String smToRemove) :
+	JAVA org.salgar.swf_statemachine.extensions.SwfStatemachineExtensions.removeSM(java.lang.String);

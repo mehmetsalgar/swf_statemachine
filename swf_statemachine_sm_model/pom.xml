@@ -206,11 +206,6 @@
     <!-- SWF STATEMACHINE -->
     <dependency>
       <groupId>org.salgar.swf_statemachine</groupId>
-      <artifactId>swf_statemachine_impl</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.salgar.swf_statemachine</groupId>
       <artifactId>swf_statemachine_techdemo_domain</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -224,7 +219,15 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.statemachine</groupId>
+      <artifactId>spring-statemachine-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+      <version>1.2.7.RELEASE</version>
     </dependency>
 
     <!-- TEST -->
@@ -233,6 +236,8 @@
       <artifactId>spring-test</artifactId>
       <scope>provided</scope>
     </dependency>
+
+
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>

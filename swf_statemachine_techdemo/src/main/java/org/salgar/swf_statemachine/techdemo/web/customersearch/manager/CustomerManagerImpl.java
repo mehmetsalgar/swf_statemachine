@@ -1,22 +1,23 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.manager;
 
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.apache.log4j.Logger;
-import org.salgar.statemachine.domain.Event;
-import org.salgar.statemachine.domain.StateMachine;
 import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.statemachine.StateMachine;
+
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CustomerManagerImpl implements CustomerManager {
 	private static final Logger log = Logger
 			.getLogger(CustomerManagerImpl.class);
 
 	public void findCustomer(final String customerNumber,
-			final StateMachine stateMachine) {
+			final Object stateMachine) {
 
 		ExecutorService executorService = Executors.newScheduledThreadPool(5);
 
@@ -35,13 +36,10 @@ public class CustomerManagerImpl implements CustomerManager {
 				customer.setCustomerNumber(customerNumber);
 				customer.setFirstName("Dirk");
 				customer.setLastName("Pitt");
+
+				Message<FindCustomerSM_EventEnumerationImpl> message = MessageBuilder.withPayload(FindCustomerSM_EventEnumerationImpl.onCustomerFound).setHeader("customer", customer).build();
 				
-				
-				Event customerFoundEvent = new Event();
-				customerFoundEvent.setEventType(FindCustomerSM_EventEnumerationImpl.onCustomerFound);
-				customerFoundEvent.setPayload(customer);
-				
-				stateMachine.handleEvent(customerFoundEvent);
+				((StateMachine)stateMachine).sendEvent(message);
 			}
 		});
 

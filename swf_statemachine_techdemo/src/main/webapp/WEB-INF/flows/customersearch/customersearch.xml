@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
         
     <on-start>
-    	<evaluate expression="CustomerSearchSM.resetStateMachine()"/>
+    	<evaluate expression="stateMachineContainer.startStateMachine()"/>
     </on-start>
 	<view-state id="customerSearch">
 		<transition on="onStartCustomerSearch" history="invalidate">

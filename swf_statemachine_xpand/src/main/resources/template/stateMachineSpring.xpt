@@ -137,7 +137,7 @@
 	
 	<!-- TRANSITIONS -->
 	«FOREACH sm.allOwnedElements().typeSelect(uml::Transition) AS transition»
-		«EXPAND TvppTransition(transition, this, localName) FOR transition.source»
+		«EXPAND Transitions(transition, this, localName) FOR transition.source»
 	«ENDFOREACH»
 «ENDDEFINE»
 
@@ -149,10 +149,10 @@
 	<ref bean="«localName».transition_«transition.source.name»_«transition.target.name»" />	
 «ENDDEFINE»
 
-«DEFINE TvppTransition(uml::Transition transition, uml::StateMachine statemachine, String localName) FOR uml::Pseudostate»
+«DEFINE Transitions(uml::Transition transition, uml::StateMachine statemachine, String localName) FOR uml::Pseudostate»
 «ENDDEFINE»
 	
-«DEFINE TvppTransition(uml::Transition transition, uml::StateMachine sm, String localName) FOR uml::State»
+«DEFINE Transitions(uml::Transition transition, uml::StateMachine sm, String localName) FOR uml::State»
 		<!-- TRANSITION - «transition.name» -->
 		<bean name="«localName».transition_«transition.source.name»_«transition.target.name»"
 			class="org.salgar.swf_statemachine.impl.transition.TransitionImpl">

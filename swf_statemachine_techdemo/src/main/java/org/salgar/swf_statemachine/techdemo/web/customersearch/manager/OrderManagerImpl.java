@@ -1,5 +1,13 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.manager;
 
+import org.apache.log4j.Logger;
+import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.techdemo.domain.Order;
+import org.salgar.swf_statemachine.techdemo.manager.OrderManager;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.statemachine.StateMachine;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,18 +15,11 @@ import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.apache.log4j.Logger;
-import org.salgar.statemachine.domain.Event;
-import org.salgar.statemachine.domain.StateMachine;
-import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.techdemo.domain.Order;
-import org.salgar.swf_statemachine.techdemo.manager.OrderManager;
-
 public class OrderManagerImpl implements OrderManager {
 	private static final Logger log = Logger.getLogger(OrderManagerImpl.class);
 
 	public void findOrders(final String customerNumber,
-			final StateMachine stateMachine) {
+			final Object stateMachine) {
 		ExecutorService executorService = Executors.newScheduledThreadPool(5);
 
 		executorService.submit(new Runnable() {
@@ -58,12 +59,9 @@ public class OrderManagerImpl implements OrderManager {
 
 				orders.add(order3);
 
-				Event ordersFoundEvent = new Event();
-				ordersFoundEvent
-						.setEventType(FindOrdersSM_EventEnumerationImpl.onOrdersFound);
-				ordersFoundEvent.setPayload(orders);
+				Message<FindOrdersSM_EventEnumerationImpl> message = MessageBuilder.withPayload(FindOrdersSM_EventEnumerationImpl.onOrdersFound).setHeader("orders", orders).build();
 
-				stateMachine.handleEvent(ordersFoundEvent);
+				((StateMachine) stateMachine).sendEvent(message);
 			}
 		});
 

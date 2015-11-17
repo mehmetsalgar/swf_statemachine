@@ -1,12 +1,15 @@
 package org.salgar.swf_statemachine.customersearch.controlobject;
 
-import java.util.List;
-
 import org.salgar.statemachine.domain.ControlObject;
 import org.salgar.swf_statemachine.customersearch.guistate.CustomerSearchGuiState;
-import org.salgar.swf_statemachine.customersearch.controlobject.AbstractCustomerSearchControlObject;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
+@Scope("prototype")
 public class CustomerSearchSMControlObject extends
 		AbstractCustomerSearchControlObject implements ControlObject {
 
