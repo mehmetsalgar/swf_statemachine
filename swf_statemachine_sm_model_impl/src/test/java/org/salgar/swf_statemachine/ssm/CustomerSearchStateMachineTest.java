@@ -3,7 +3,6 @@ package org.salgar.swf_statemachine.ssm;
 import junit.framework.Assert;
 import org.apache.log4j.Logger;
 import org.easymock.EasyMock;
-import org.salgar.comet.CometServiceLocatorMocker;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
 import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
@@ -11,13 +10,12 @@ import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSe
 import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.factory.StateMachineFactories;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
 import org.salgar.swf_statemachine.techdemo.manager.OrderManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -41,20 +39,21 @@ public class CustomerSearchStateMachineTest extends
 	private static final Logger log = Logger
 			.getLogger(CustomerSearchStateMachineTest.class);
 
-	@Autowired
-	@Qualifier("CustomerSearchSM")
-	private StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine;
-
 	@Test
 	public void initialisation() {
+		StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getCustomerSearchSMFactory().getStateMachine();
+		stateMachine.start();
 		Assert.assertNotNull(stateMachine);
 		Assert.assertEquals(StateMachineEnumerationImpl.CustomerSearchSM
 				.getStateMachineName(), stateMachine.getState().getId().getStateMachineName().getStateMachineName());
 	}
 
-	@Test(dependsOnMethods = { "initialisation" }, enabled = false)
+	@Test(dependsOnMethods = { "initialisation" }, enabled = true)
 	public void startSearch() {
-		CometServiceLocatorMocker.mock();
+		StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getCustomerSearchSMFactory().getStateMachine();
+		stateMachine.start();
+
+		//Broadcaster br = CometServiceLocatorMocker.mock();
 		//Broadcaster broadCasterMock = CometServiceLocatorMocker.getMockObject();
 		String customerNumber = "987654321";
 
@@ -138,10 +137,12 @@ public class CustomerSearchStateMachineTest extends
 				.getBean("orderManager");
 		orderManager.findOrders(anyObject(String.class), anyObject(Object.class));
 		EasyMock.replay(orderManager);
+		//EasyMock.replay(br);
 
 		findCustomerSM.sendEvent(messageOnCustomerFound);
 
 		EasyMock.verify(orderManager);
+		//EasyMock.verify(br);
 
 		Assert.assertEquals(
 				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
@@ -398,11 +399,18 @@ public class CustomerSearchStateMachineTest extends
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerJoinedInternal());
 		Assert.assertNotNull(
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerOrdersInternal());
+
+		EasyMock.reset(customerManager);
+		EasyMock.reset(orderManager);
+		//EasyMock.reset(br);
 	}
 
-	@Test(dependsOnMethods = { "initialisation" }, enabled = false)
+	@Test(dependsOnMethods = { "initialisation" }, enabled = true)
 	public void testCustomerAuthenticationRemoval() {
-		CometServiceLocatorMocker.mock();
+		StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getCustomerSearchSMFactory().getStateMachine();
+		stateMachine.start();
+
+		//Broadcaster br = CometServiceLocatorMocker.mock();
 		//Broadcaster broadCasterMock = CometServiceLocatorMocker.getMockObject();
 		String customerNumber = "987654321";
 
@@ -487,10 +495,12 @@ public class CustomerSearchStateMachineTest extends
 				.getBean("orderManager");
 		orderManager.findOrders(anyObject(String.class), anyObject(Object.class));
 		EasyMock.replay(orderManager);
+		//EasyMock.replay(br);
 
-		findCustomerSM.sendEvent(messageOnCustomerFound);
+				findCustomerSM.sendEvent(messageOnCustomerFound);
 
 		EasyMock.verify(orderManager);
+		//EasyMock.verify(br);
 
 		Assert.assertEquals(
 				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
@@ -559,11 +569,16 @@ public class CustomerSearchStateMachineTest extends
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getRenderCustomerOrderLoading());
 		Assert.assertEquals(Boolean.FALSE,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerAuthenticatedInternal());
+
+		EasyMock.reset(customerManager);
+		EasyMock.reset(orderManager);
 	}
 
 	@Test(dependsOnMethods = { "initialisation" }, enabled = true)
 	public void testAuthenticationRemovalAtOrderRemoval() {
-		CometServiceLocatorMocker.mock();
+		StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getCustomerSearchSMFactory().getStateMachine();
+		stateMachine.start();
+		//Broadcaster br = CometServiceLocatorMocker.mock();
 		//Broadcaster broadCasterMock = CometServiceLocatorMocker.getMockObject();
 		String customerNumber = "987654321";
 
@@ -648,10 +663,12 @@ public class CustomerSearchStateMachineTest extends
 				.getBean("orderManager");
 		orderManager.findOrders(anyObject(String.class), anyObject(Object.class));
 		EasyMock.replay(orderManager);
+		//EasyMock.replay(br);
 
 		findCustomerSM.sendEvent(messageOnCustomerFound);
 
 		EasyMock.verify(orderManager);
+		//EasyMock.verify(br);
 
 		Assert.assertEquals(
 				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
@@ -744,5 +761,8 @@ public class CustomerSearchStateMachineTest extends
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getRenderCustomerOrderLoading());
 		Assert.assertEquals(Boolean.FALSE,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerAuthenticatedInternal());
+
+		EasyMock.reset(customerManager);
+		EasyMock.reset(orderManager);
 	}
 }

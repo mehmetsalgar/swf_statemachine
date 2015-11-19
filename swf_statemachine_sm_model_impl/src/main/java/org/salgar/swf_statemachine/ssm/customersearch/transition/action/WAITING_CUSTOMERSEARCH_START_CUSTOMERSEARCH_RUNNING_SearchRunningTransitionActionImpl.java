@@ -30,7 +30,8 @@ public class WAITING_CUSTOMERSEARCH_START_CUSTOMERSEARCH_RUNNING_SearchRunningTr
 
                 CustomerSearchStartEventPayload customerSearchStartEventPayload = (CustomerSearchStartEventPayload) context.getMessageHeaders().get("customerSearchStartEventPayload");
 
-                StateMachine<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getFindCustomerSM();
+                StateMachine<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getFindCustomerSMFactory().getStateMachine();
+                stateMachine.start();
 
                 //We have to one specific Slave Maschine that is referenced from this Master State MAchine
                 //for this reason we have to keep a reference to it.

@@ -659,9 +659,9 @@
     <primefaces.version>4.0</primefaces.version>
     <javax.faces.version>2.2.0</javax.faces.version>
     <spring-webflow.version>2.4.1.RELEASE</spring-webflow.version>
-    <spring.version>4.1.8.RELEASE</spring.version>
+    <spring.version>4.2.2.RELEASE</spring.version>
     <spring.faces.version>2.0.5.RELEASE</spring.faces.version>
-    <spring.statemachine.version>1.0.0.RELEASE</spring.statemachine.version>
+    <spring.statemachine.version>1.0.1.RELEASE</spring.statemachine.version>
     <el.version>2.2</el.version>
     <servlet.version>2.5</servlet.version>
     <faces.version>2.0.3</faces.version>

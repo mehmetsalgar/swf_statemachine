@@ -31,7 +31,7 @@
             import org.springframework.context.annotation.Configuration;
             import org.springframework.context.annotation.Bean;
             import org.springframework.messaging.Message;
-            import org.springframework.statemachine.config.EnableStateMachine;
+            import org.springframework.statemachine.config.EnableStateMachineFactory;
             import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
             import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
             import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
@@ -47,7 +47,7 @@
             import org.apache.log4j.Logger;
 
             @Configuration
-            @EnableStateMachine(name="«sm.name»")
+            @EnableStateMachineFactory(name="«sm.name»")
             public class «sm.name»Configuration extends EnumStateMachineConfigurerAdapter<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> {
                 private static final Logger LOG = Logger.getLogger(«sm.name»Configuration.class);
 
@@ -65,7 +65,6 @@
                         throws Exception {
                     config
                         .withConfiguration()
-                            .autoStartup(true)
                             .listener(listener());
                 }
 

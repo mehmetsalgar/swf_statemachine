@@ -28,7 +28,8 @@ public class CUSTOMERSEARCH_RUNNING_CUSTOMER_FOUND_CustomerFoundTransitionAction
             public void execute(StateContext<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> context) {
                 CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) CustomerSearchSMControlObjectAccessor.getControlObject(context.getStateMachine());
 
-                StateMachine findOrdersSM = StateMachineFactories.getInstance().getFindOrdersSM();
+                StateMachine findOrdersSM = StateMachineFactories.getInstance().getFindOrdersSMFactory().getStateMachine();
+                findOrdersSM.start();
 
                 CustomerSearchSMControlObjectAccessor.processCustomerFoundAction(
                         controlObject, (Customer) context.getMessageHeader("customer"), findOrdersSM);

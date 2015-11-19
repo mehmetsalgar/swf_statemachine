@@ -1,20 +1,22 @@
 package org.salgar.comet;
 
+import org.atmosphere.cpr.AtmosphereResource;
+import org.atmosphere.cpr.Broadcaster;
+import org.easymock.EasyMock;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.atmosphere.cpr.Broadcaster;
-import org.easymock.EasyMock;
-import static org.easymock.EasyMock.*;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.expect;
 
 public class CometServiceLocatorMocker {
-	private static final Broadcaster broadcasterMock = EasyMock
-			.createMock(Broadcaster.class);
-
-	public static void mock() {
-		expect(broadcasterMock.broadcast(anyObject())).andReturn(new Future<Object>(){
+	public static Broadcaster mock() {
+		Broadcaster broadcasterMock = EasyMock
+				.createMock(Broadcaster.class);
+		expect(broadcasterMock.broadcast(anyObject(), anyObject(AtmosphereResource.class))).andReturn(new Future<Object>() {
 
 			public boolean cancel(boolean arg0) {
 				// TODO Auto-generated method stub
@@ -41,6 +43,9 @@ public class CometServiceLocatorMocker {
 			public boolean isDone() {
 				// TODO Auto-generated method stub
 				return false;
-			}});
+			}
+		}).times(2);
+
+		return broadcasterMock;
 	}
 }

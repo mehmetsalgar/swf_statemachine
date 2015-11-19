@@ -9,7 +9,7 @@ import org.salgar.swf_statemachine.enumeration.state.FindOrdersSM_StateEnumerati
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.statemachine.StateMachine;
+import org.springframework.statemachine.config.StateMachineFactory;
 
 /**
  * Created by salgar on 11/4/15.
@@ -20,15 +20,15 @@ public class StateMachineFactories {
 
     @Autowired
     @Qualifier("CustomerSearchSM")
-    private StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine;
+    private StateMachineFactory<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine;
 
     @Autowired
     @Qualifier("FindCustomerSM")
-    private StateMachine<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> findCustomerSM;
+    private StateMachineFactory<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> findCustomerSM;
 
     @Autowired
     @Qualifier("FindOrdersSM")
-    private StateMachine<FindOrdersSM_StateEnumerationImpl, FindOrdersSM_EventEnumerationImpl> findOrdersSM;
+    private StateMachineFactory<FindOrdersSM_StateEnumerationImpl, FindOrdersSM_EventEnumerationImpl> findOrdersSM;
 
     public StateMachineFactories() {
         if(INSTANCE == null) {
@@ -40,15 +40,15 @@ public class StateMachineFactories {
         return INSTANCE;
     }
 
-    public StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> getCustomerSearchSM() {
+    public StateMachineFactory<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> getCustomerSearchSMFactory() {
         return stateMachine;
     }
 
-    public StateMachine<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> getFindCustomerSM() {
+    public StateMachineFactory<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> getFindCustomerSMFactory() {
         return findCustomerSM;
     }
 
-    public StateMachine<FindOrdersSM_StateEnumerationImpl, FindOrdersSM_EventEnumerationImpl> getFindOrdersSM() {
+    public StateMachineFactory<FindOrdersSM_StateEnumerationImpl, FindOrdersSM_EventEnumerationImpl> getFindOrdersSMFactory() {
         return findOrdersSM;
     }
 }
