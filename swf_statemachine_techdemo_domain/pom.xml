@@ -168,9 +168,9 @@
             </exclusions>
           </dependency>
           <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>${commons-lang.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -191,6 +191,11 @@
       <groupId>org.salgar.swf_statemachine</groupId>
       <artifactId>swf_statemachine_domain</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.4</version>
     </dependency>
   </dependencies>
 </project>

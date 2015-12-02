@@ -81,6 +81,21 @@
             <classifier>repackaged</classifier>
           </dependency>
           <dependency>
+            <groupId>org.salgar.swf_statemachine</groupId>
+            <artifactId>swf_statemachine_fornax_extension</artifactId>
+            <version>${project.version}</version>
+            <exclusions>
+              <exclusion>
+                <groupId>org.eclipse.xtext</groupId>
+                <artifactId>org.eclipse.xtext.xtext</artifactId>
+              </exclusion>
+              <exclusion>
+                <groupId>org.eclipse.core</groupId>
+                <artifactId>runtime</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+          <dependency>
             <groupId>org.fornax.cartridges</groupId>
             <artifactId>fornax-cartridges-uml2-javabasic-generator</artifactId>
             <version>${fornax.javabasic.cartridge.version}</version>
@@ -112,17 +127,6 @@
               <exclusion>
                 <groupId>org.fornax.openarchitectureware</groupId>
                 <artifactId>oaw-uml2</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
-          <dependency>
-            <groupId>org.salgar.swf_statemachine</groupId>
-            <artifactId>swf_statemachine_fornax_extension</artifactId>
-            <version>${project.version}</version>
-            <exclusions>
-              <exclusion>
-                <groupId>org.eclipse.xtext</groupId>
-                <artifactId>org.eclipse.xtext.xtext</artifactId>
               </exclusion>
             </exclusions>
           </dependency>
@@ -160,8 +164,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.4</version>
     </dependency>
   </dependencies>
 </project>

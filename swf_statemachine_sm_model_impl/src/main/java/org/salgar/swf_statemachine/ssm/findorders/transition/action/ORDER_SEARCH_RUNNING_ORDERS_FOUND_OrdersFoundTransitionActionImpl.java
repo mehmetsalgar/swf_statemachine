@@ -1,12 +1,12 @@
 package org.salgar.swf_statemachine.ssm.findorders.transition.action;
 
-import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.FindOrdersSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.findorders.configuration.order_search_running.action.ORDER_SEARCH_RUNNING___ORDERS_FOUND_OrdersFound_ProcessOrdersFound_action;
 import org.salgar.swf_statemachine.findorders.controlobject.FindOrdersSMControlObject;
 import org.salgar.swf_statemachine.findorders.controlobject.FindOrdersSMControlObjectAccessor;
-import org.salgar.swf_statemachine.ssm.configuration.findorderssm.order_search_running.action.ORDER_SEARCH_RUNNING___ORDERS_FOUND_OrdersFoundTransition_action;
+import org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.findorders.enumeration.state.FindOrdersSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,8 +23,8 @@ import java.util.List;
 @Configuration
 public class ORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFoundTransitionActionImpl {
     @Bean
-    public ORDER_SEARCH_RUNNING___ORDERS_FOUND_OrdersFoundTransition_action.IORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFoundTransitionAction getORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFoundTransitionActionImpl() {
-        return new ORDER_SEARCH_RUNNING___ORDERS_FOUND_OrdersFoundTransition_action.IORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFoundTransitionAction() {
+    public ORDER_SEARCH_RUNNING___ORDERS_FOUND_OrdersFound_ProcessOrdersFound_action.IORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFound_ProcessOrdersFoundAction getORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFoundTransitionActionImpl() {
+        return new ORDER_SEARCH_RUNNING___ORDERS_FOUND_OrdersFound_ProcessOrdersFound_action.IORDER_SEARCH_RUNNING_ORDERS_FOUND_OrdersFound_ProcessOrdersFoundAction() {
 
             @Override
             public void execute(StateContext<FindOrdersSM_StateEnumerationImpl, FindOrdersSM_EventEnumerationImpl> context) {

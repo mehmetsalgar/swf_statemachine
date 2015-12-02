@@ -29,6 +29,8 @@ List[Trigger] giveTriggers(Transition transition) : JAVA org.salgar.swf_statemac
 
 List[Trigger] giveTransitionWithTrigger(List[Transition] transitions) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.giveTransitionWithTrigger(java.util.List);
 
+List[Model] giveModel(StateMachine sm) : JAVA org.salgar.swf_statemachine.utility.UtilityHelper.giveModel(org.eclipse.uml2.uml.StateMachine);
+
 getter(Property this) : 
 	"get"+name.toFirstUpper();
 

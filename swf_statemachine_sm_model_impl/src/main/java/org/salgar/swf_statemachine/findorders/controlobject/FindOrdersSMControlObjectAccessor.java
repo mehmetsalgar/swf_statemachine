@@ -1,8 +1,8 @@
 package org.salgar.swf_statemachine.findorders.controlobject;
 
 import org.salgar.statemachine.domain.ControlObject;
-import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.FindOrdersSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.findorders.enumeration.state.FindOrdersSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
 import org.springframework.statemachine.StateMachine;
 
@@ -15,7 +15,7 @@ public class FindOrdersSMControlObjectAccessor {
 	}
 	
 	public static List<Order> getOrders(ControlObject controlObject) {
-		return ((FindOrdersSMControlObject) controlObject).orders;
+		return ((FindOrdersSMControlObject) controlObject).getOrders();
 	}
 
 	public static AbstractFindOrdersControlObject getControlObject(StateMachine<FindOrdersSM_StateEnumerationImpl, FindOrdersSM_EventEnumerationImpl> stateMachine) {
@@ -23,6 +23,6 @@ public class FindOrdersSMControlObjectAccessor {
 	}
 
 	public static void processOrdersFound(AbstractFindOrdersControlObject contolObject, List<Order> orders) {
-		contolObject.orders = orders;
+		contolObject.orders= orders;
 	}
 }

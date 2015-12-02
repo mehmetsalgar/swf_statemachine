@@ -151,6 +151,45 @@
             </exclusions>
           </dependency>
           <dependency>
+            <groupId>org.eclipse.uml2</groupId>
+            <artifactId>common</artifactId>
+            <version>${eclipse.uml2.common.version}</version>
+            <exclusions>
+              <exclusion>
+                <groupId>org.eclipse.emf</groupId>
+                <artifactId>ecore</artifactId>
+              </exclusion>
+              <exclusion>
+                <groupId>org.eclipse.emf.ecore</groupId>
+                <artifactId>xmi</artifactId>
+              </exclusion>
+              <exclusion>
+                <groupId>org.eclipse.emf.mapping</groupId>
+                <artifactId>ecore2xml</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+          <dependency>
+            <groupId>org.eclipse.uml2</groupId>
+            <artifactId>uml</artifactId>
+            <version>${eclipse.uml2.version}</version>
+            <exclusions>
+              <exclusion>
+                <groupId>org.eclipse.emf</groupId>
+                <artifactId>ecore</artifactId>
+              </exclusion>
+              <exclusion>
+                <groupId>org.eclipse.emf.ecore</groupId>
+                <artifactId>xmi</artifactId>
+              </exclusion>
+              <exclusion>
+                <groupId>org.eclipse.emf.mapping</groupId>
+                <artifactId>ecore2xml</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+
+          <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
@@ -213,6 +252,42 @@
       <groupId>org.salgar.swf_statemachine</groupId>
       <artifactId>swf_statemachine_domain</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.uml2</groupId>
+      <artifactId>common</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.emf</groupId>
+          <artifactId>ecore</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.ecore</groupId>
+          <artifactId>xmi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.mapping</groupId>
+          <artifactId>ecore2xml</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.uml2</groupId>
+      <artifactId>uml</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.emf</groupId>
+          <artifactId>ecore</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.ecore</groupId>
+          <artifactId>xmi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.mapping</groupId>
+          <artifactId>ecore2xml</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- SPRING -->

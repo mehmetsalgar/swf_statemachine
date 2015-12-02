@@ -1,17 +1,12 @@
 package org.salgar.swf_statemachine.utility;
 
+import org.apache.log4j.Logger;
+import org.eclipse.uml2.uml.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
-import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Pseudostate;
-import org.eclipse.uml2.uml.State;
-import org.eclipse.uml2.uml.StateMachine;
-import org.eclipse.uml2.uml.Transition;
-import org.eclipse.uml2.uml.Trigger;
 
 public class UtilityHelper {
 	private static final Logger log = Logger.getLogger(UtilityHelper.class);
@@ -51,7 +46,7 @@ public class UtilityHelper {
 		for (State state : map.values()) {
 			result.add(state);
 		}
-		
+
 		return result;
 	}
 
@@ -298,5 +293,9 @@ public class UtilityHelper {
 		}
 
 		return new ArrayList<Trigger>(result.values());
+	}
+
+	public static Model giveModel(StateMachine sm) {
+		return sm.getModel();
 	}
 }

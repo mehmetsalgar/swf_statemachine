@@ -5,11 +5,10 @@ import org.apache.log4j.Logger;
 import org.easymock.EasyMock;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
-import org.salgar.swf_statemachine.enumeration.StateMachineEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.event.findorderssm.FindOrdersSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.findcustomer.enumeration.event.FindCustomerSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.ssm.factory.StateMachineFactories;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
@@ -29,6 +28,9 @@ import java.util.Date;
 import java.util.List;
 
 import static org.easymock.EasyMock.anyObject;
+import static org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl.*;
+import static org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl.*;
+import static org.salgar.techdemomodel.enumeration.StateMachineEnumerationImpl.CustomerSearchSM;
 
 @ContextConfiguration(locations = {
 		"/META-INF/scope.xml",
@@ -44,7 +46,7 @@ public class CustomerSearchStateMachineTest extends
 		StateMachine<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> stateMachine = StateMachineFactories.getInstance().getCustomerSearchSMFactory().getStateMachine();
 		stateMachine.start();
 		Assert.assertNotNull(stateMachine);
-		Assert.assertEquals(StateMachineEnumerationImpl.CustomerSearchSM
+		Assert.assertEquals(CustomerSearchSM
 				.getStateMachineName(), stateMachine.getState().getId().getStateMachineName().getStateMachineName());
 	}
 
@@ -58,11 +60,11 @@ public class CustomerSearchStateMachineTest extends
 		String customerNumber = "987654321";
 
 		Assert.assertNotNull(stateMachine);
-		Assert.assertEquals(StateMachineEnumerationImpl.CustomerSearchSM
+		Assert.assertEquals(CustomerSearchSM
 				.getStateMachineName(), stateMachine.getState().getId().getStateMachineName().getStateMachineName());
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.WAITING_CUSTOMERSEARCH_START.getStateName(),
+				WAITING_CUSTOMERSEARCH_START.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(Boolean.TRUE,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getRenderCustomerSearchInput());
@@ -100,7 +102,7 @@ public class CustomerSearchStateMachineTest extends
 		EasyMock.verify(customerManager);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMERSEARCH_RUNNING.getStateName(),
+				CUSTOMERSEARCH_RUNNING.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -145,7 +147,7 @@ public class CustomerSearchStateMachineTest extends
 		//EasyMock.verify(br);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
+				CUSTOMER_FOUND.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -170,7 +172,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageOnCustomerAuthenticated);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_AUTHENTICATED.getStateName(),
+				CUSTOMER_AUTHENTICATED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -192,7 +194,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(CustomerSearchSM_EventEnumerationImpl.onCustomerJoinedClicked);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.ORDERS_LOADING.getStateName(),
+				ORDERS_LOADING.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -216,7 +218,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(CustomerSearchSM_EventEnumerationImpl.onCustomerJoinedClicked);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_AUTHENTICATED.getStateName(),
+				CUSTOMER_AUTHENTICATED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -240,7 +242,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(CustomerSearchSM_EventEnumerationImpl.onCustomerJoinedClicked);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.ORDERS_LOADING.getStateName(),
+				ORDERS_LOADING.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -287,12 +289,12 @@ public class CustomerSearchStateMachineTest extends
 
 		orders.add(order3);
 
-		Message<FindOrdersSM_EventEnumerationImpl> messageonOrdersFound = MessageBuilder.withPayload(FindOrdersSM_EventEnumerationImpl.onOrdersFound).setHeader("orders", orders).build();
+		Message<FindOrdersSM_EventEnumerationImpl> messageonOrdersFound = MessageBuilder.withPayload(onOrdersFound).setHeader("orders", orders).build();
 
 		((StateMachine)CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getFindOrdersSlaveSM()).sendEvent(messageonOrdersFound);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_JOINED.getStateName(),
+				CUSTOMER_JOINED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -318,7 +320,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(CustomerSearchSM_EventEnumerationImpl.onCustomerAuthenticatedClicked);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
+				CUSTOMER_FOUND.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -348,7 +350,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageOnCustomerAuthenticatedClicked);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_AUTHENTICATED.getStateName(),
+				CUSTOMER_AUTHENTICATED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -377,7 +379,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageCustomerJoined);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_JOINED.getStateName(),
+				CUSTOMER_JOINED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -416,11 +418,11 @@ public class CustomerSearchStateMachineTest extends
 
 		CustomerSearchSMControlObject customerSearchSMControlObject = new CustomerSearchSMControlObject();
 		Assert.assertNotNull(stateMachine);
-		Assert.assertEquals(StateMachineEnumerationImpl.CustomerSearchSM
+		Assert.assertEquals(CustomerSearchSM
 				.getStateMachineName(), stateMachine.getState().getId().getStateMachineName().getStateMachineName());
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.WAITING_CUSTOMERSEARCH_START.getStateName(),
+				WAITING_CUSTOMERSEARCH_START.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(Boolean.TRUE,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getRenderCustomerSearchInput());
@@ -458,7 +460,7 @@ public class CustomerSearchStateMachineTest extends
 		EasyMock.verify(customerManager);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMERSEARCH_RUNNING.getStateName(),
+				CUSTOMERSEARCH_RUNNING.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -503,7 +505,7 @@ public class CustomerSearchStateMachineTest extends
 		//EasyMock.verify(br);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
+				CUSTOMER_FOUND.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -527,7 +529,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageOnCustomerAuthenticated);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_AUTHENTICATED.getStateName(),
+				CUSTOMER_AUTHENTICATED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -549,7 +551,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageOnCustomerAuthenticated);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
+				CUSTOMER_FOUND.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -584,11 +586,11 @@ public class CustomerSearchStateMachineTest extends
 
 		CustomerSearchSMControlObject customerSearchSMControlObject = new CustomerSearchSMControlObject();
 		Assert.assertNotNull(stateMachine);
-		Assert.assertEquals(StateMachineEnumerationImpl.CustomerSearchSM
+		Assert.assertEquals(CustomerSearchSM
 				.getStateMachineName(), stateMachine.getState().getId().getStateMachineName().getStateMachineName());
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.WAITING_CUSTOMERSEARCH_START.getStateName(),
+				WAITING_CUSTOMERSEARCH_START.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(Boolean.TRUE,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getRenderCustomerSearchInput());
@@ -626,7 +628,7 @@ public class CustomerSearchStateMachineTest extends
 		EasyMock.verify(customerManager);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMERSEARCH_RUNNING.getStateName(),
+				CUSTOMERSEARCH_RUNNING.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -671,7 +673,7 @@ public class CustomerSearchStateMachineTest extends
 		//EasyMock.verify(br);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
+				CUSTOMER_FOUND.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -695,7 +697,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageOnCustomerAuthenticated);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_AUTHENTICATED.getStateName(),
+				CUSTOMER_AUTHENTICATED.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -717,7 +719,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(CustomerSearchSM_EventEnumerationImpl.onCustomerJoinedClicked);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.ORDERS_LOADING.getStateName(),
+				ORDERS_LOADING.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());
@@ -741,7 +743,7 @@ public class CustomerSearchStateMachineTest extends
 		stateMachine.sendEvent(messageOnCustomerAuthenticated);
 
 		Assert.assertEquals(
-				CustomerSearchSM_StateEnumerationImpl.CUSTOMER_FOUND.getStateName(),
+				CUSTOMER_FOUND.getStateName(),
 				stateMachine.getState().getId().getStateName());
 		Assert.assertEquals(customerNumber,
 				CustomerSearchSMControlObjectAccessor.getControlObject(stateMachine).getCustomerNumber());

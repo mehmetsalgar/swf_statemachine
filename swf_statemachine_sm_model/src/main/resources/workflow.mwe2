@@ -39,9 +39,10 @@ Workflow {
 		logResourceUriMap = false
 		scanClassPath = false
 	}
-	bean = org.eclipse.xtend.typesystem.uml2.Setup {
- 		standardUML2Setup = true
+	bean = org.salgar.swf_statemachine.uml2.Setup {
+		standardUML2Setup = true
  	}
+
  	bean = org.eclipse.xtend.typesystem.uml2.UML2MetaModel : umlMM { }
 
  	bean = org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel : swf_statemachine {
@@ -57,7 +58,7 @@ Workflow {
  	}
  	
  	component = org.eclipse.emf.mwe.utils.Reader {
- 		uri = "platform:/resource/swf_statemachine_sm_model/src/main/resources/model/TechdemoModel.uml"
+ 		uri = "platform:/resource/swf_statemachine_sm_model/src/main/resources/model/swf_sm_model.uml"
  		modelSlot = "model"
  	}
  	
@@ -105,15 +106,13 @@ Workflow {
 		expand = "template::Root::Root FOR model"
  	}
 
- 	component = org.eclipse.xpand2.Generator : ssmGenerator {
- 		metaModel = umlMM
- 		metaModel = swf_statemachine
+ 	component = org.eclipse.xpand2.Generator : papyrusGenerator {
+     		metaModel = umlMM
+     		metaModel = swf_statemachine
 
- 		fileEncoding = "ISO-8859-1"
- 		outlet = { path = "${runtimeProject}/src/generated/java" postprocessor = org.eclipse.xpand2.output.JavaBeautifier {} }
+     		fileEncoding = "ISO-8859-1"
+     		outlet = { path = "${runtimeProject}/src/generated/java" postprocessor = org.eclipse.xpand2.output.JavaBeautifier {} }
 
-		expand = "template::stateMachineSSM::Root FOR model"
- 	}
-
-
+    		expand = "template::papyrusSSM::Root FOR model"
+     	}
 }

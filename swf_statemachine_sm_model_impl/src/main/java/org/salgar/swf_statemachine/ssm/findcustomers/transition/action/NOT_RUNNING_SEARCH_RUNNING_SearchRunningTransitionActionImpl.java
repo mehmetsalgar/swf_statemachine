@@ -1,10 +1,10 @@
 package org.salgar.swf_statemachine.ssm.findcustomers.transition.action;
 
 import org.salgar.statemachine.domain.ControlObject;
-import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.FindCustomerSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.findcustomer.configuration.not_running.action.NOT_RUNNING___SEARCH_RUNNING_SearchStarting_ProcessSearchStart_action;
 import org.salgar.swf_statemachine.findcustomer.controlobject.FindCustomerSMControlObjectAccessor;
-import org.salgar.swf_statemachine.ssm.configuration.findcustomersm.not_running.action.NOT_RUNNING___SEARCH_RUNNING_SearchRunningTransition_action;
+import org.salgar.swf_statemachine.findcustomer.enumeration.event.FindCustomerSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.findcustomer.enumeration.state.FindCustomerSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.manager.CustomerManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,8 +23,8 @@ public class NOT_RUNNING_SEARCH_RUNNING_SearchRunningTransitionActionImpl {
     private Object customerManager;
 
     @Bean
-    public NOT_RUNNING___SEARCH_RUNNING_SearchRunningTransition_action.INOT_RUNNING_SEARCH_RUNNING_SearchRunningTransitionAction getNOT_RUNNING_SEARCH_RUNNING_SearchRunningTransitionAction() {
-        return new NOT_RUNNING___SEARCH_RUNNING_SearchRunningTransition_action.INOT_RUNNING_SEARCH_RUNNING_SearchRunningTransitionAction() {
+    public NOT_RUNNING___SEARCH_RUNNING_SearchStarting_ProcessSearchStart_action.INOT_RUNNING_SEARCH_RUNNING_SearchStarting_ProcessSearchStartAction getNOT_RUNNING_SEARCH_RUNNING_SearchRunningTransitionAction() {
+        return new NOT_RUNNING___SEARCH_RUNNING_SearchStarting_ProcessSearchStart_action.INOT_RUNNING_SEARCH_RUNNING_SearchStarting_ProcessSearchStartAction() {
 
             @Override public void execute(StateContext<FindCustomerSM_StateEnumerationImpl, FindCustomerSM_EventEnumerationImpl> context) {
                 String customerNumber = (String) context.getMessageHeaders().get("customerNumber");

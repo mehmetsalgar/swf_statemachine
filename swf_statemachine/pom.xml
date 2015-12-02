@@ -254,7 +254,6 @@
   </build>
 
   <modules>
-    <module>../swf_statemachine_eclipse_dependencies</module>
     <module>../comet</module>
     <module>../swf_statemachine_fornax_extension</module>
     <module>../swf_statemachine_domain</module>
@@ -321,12 +320,23 @@
       <layout>p2</layout>
     </repository>
     <repository>
+      <id>3_4.repo.eclipse.org</id>
+      <name>Project Repository - Releases</name>
+      <url>http://download.eclipse.org/eclipse/updates/3.4</url>
+      <layout>p2</layout>
+    </repository>
+    <repository>
       <id>xtext</id>
       <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
       <layout>p2</layout>
     </repository>
   </repositories>
   <pluginRepositories>
+    <pluginRepository>
+      <id>maven.central.plugin.repository</id>
+      <name>Maven Central</name>
+      <url>http://repo1.maven.org/maven2/</url>
+    </pluginRepository>
     <pluginRepository>
       <id>itemis.repository.plugin.release</id>
       <name>Itemis Repository</name>
@@ -343,7 +353,7 @@
     <dependencies>
       <dependency>
         <groupId>org.eclipse.uml2</groupId>
-        <artifactId>org.eclipse.uml2.uml</artifactId>
+        <artifactId>uml</artifactId>
         <version>${eclipse.uml2.version}</version>
       </dependency>
       <dependency>
@@ -353,17 +363,17 @@
       </dependency>
       <dependency>
         <groupId>org.eclipse.uml2</groupId>
-        <artifactId>org.eclipse.uml2.uml.resources</artifactId>
+        <artifactId>resources</artifactId>
         <version>${eclipse.uml2.version}</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse.emf.mapping</groupId>
-        <artifactId>ecore2xml</artifactId>
-        <version>${eclipse.emf.mapping.version}</version>
+        <artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
+        <version>2.8.0-v20150123-0452</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse.uml2</groupId>
-        <artifactId>org.eclipse.uml2.common</artifactId>
+        <artifactId>common</artifactId>
         <version>${eclipse.uml2.common.version}</version>
       </dependency>
       <dependency>
@@ -639,16 +649,15 @@
   </dependencies>
 
   <properties>
-    <eclipse.uml2.version>3.1.0.v201006071150</eclipse.uml2.version>
-    <eclipse.uml2.resources.version>3.1.0.v201005031530</eclipse.uml2.resources.version>
-    <eclipse.emf.mapping.version>2.5.0</eclipse.emf.mapping.version>
-    <eclipse.uml2.common.version>1.5.0.v201005031530</eclipse.uml2.common.version>
+    <eclipse.uml2.version>5.0.0-v20140602-0749</eclipse.uml2.version>
+    <eclipse.uml2.resources.version>5.0.0-v20140602-0749</eclipse.uml2.resources.version>
+    <eclipse.uml2.common.version>2.0.0-v20140602-0749</eclipse.uml2.common.version>
     <eclipse.emf.version>2.11.0-v20150123-0347</eclipse.emf.version>
     <eclipse.jfaces.version>3.3.0-v20070606-0010</eclipse.jfaces.version>
     <commons-lang.version>2.5</commons-lang.version>
     <commons-cli.version>1.3</commons-cli.version>
     <m2t.version>2.0.0</m2t.version>
-    <emf.mwe.version>1.3.5</emf.mwe.version>
+    <emf.mwe.version>1.3.12</emf.mwe.version>
     <fornax.plugin.version>3.5.1</fornax.plugin.version>
     <fornax.javabasic.cartridge.version>2.1.3</fornax.javabasic.cartridge.version>
     <fornax.spring.core.version>2.0.0</fornax.spring.core.version>
@@ -675,4 +684,21 @@
     <lifecycle-mapping.plugin.version>1.0.0</lifecycle-mapping.plugin.version>
     <compiler.plugin.version>3.2</compiler.plugin.version>
   </properties>
+
+  <profiles>
+    <profile>
+      <id>full-build</id>
+      <modules>
+        <module>../swf_statemachine_eclipse_dependencies</module>
+        <module>../comet</module>
+        <module>../swf_statemachine_fornax_extension</module>
+        <module>../swf_statemachine_domain</module>
+        <module>../swf_statemachine_xpand</module>
+        <module>../swf_statemachine_techdemo_domain</module>
+        <module>../swf_statemachine_sm_model</module>
+        <module>../swf_statemachine_sm_model_impl</module>
+        <module>../swf_statemachine_techdemo</module>
+      </modules>
+    </profile>
+  </profiles>
 </project>	

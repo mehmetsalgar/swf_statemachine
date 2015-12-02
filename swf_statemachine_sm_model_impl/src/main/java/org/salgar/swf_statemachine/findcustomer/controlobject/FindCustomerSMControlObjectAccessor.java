@@ -1,8 +1,8 @@
 package org.salgar.swf_statemachine.findcustomer.controlobject;
 
 import org.salgar.statemachine.domain.ControlObject;
-import org.salgar.swf_statemachine.enumeration.event.findcustomersm.FindCustomerSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.FindCustomerSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.findcustomer.enumeration.event.FindCustomerSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.findcustomer.enumeration.state.FindCustomerSM_StateEnumerationImpl;
 import org.springframework.statemachine.StateMachine;
 
 public class FindCustomerSMControlObjectAccessor {

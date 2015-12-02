@@ -1,10 +1,10 @@
 package org.salgar.swf_statemachine.ssm.customersearch.transition.action;
 
+import org.salgar.swf_statemachine.customersearch.configuration.customer_authenticated.action.CUSTOMER_AUTHENTICATED___CUSTOMER_FOUND_CustomerAuthenticationRemoved_ProcessCustomerAuthenticationRemoved_action;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
 import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
-import org.salgar.swf_statemachine.enumeration.event.customersearchsm.CustomerSearchSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
-import org.salgar.swf_statemachine.ssm.configuration.customersearchsm.customer_authenticated.action.CUSTOMER_AUTHENTICATED___CUSTOMER_FOUND_CustomerAuthenticationRemovedTransition_action;
+import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.StateContext;
@@ -15,8 +15,8 @@ import org.springframework.statemachine.StateContext;
 @Configuration
 public class CUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemovedTransitionActionImpl {
     @Bean
-    public CUSTOMER_AUTHENTICATED___CUSTOMER_FOUND_CustomerAuthenticationRemovedTransition_action.ICUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemovedTransitionAction getCUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemovedTransitionAction() {
-        return new CUSTOMER_AUTHENTICATED___CUSTOMER_FOUND_CustomerAuthenticationRemovedTransition_action.ICUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemovedTransitionAction() {
+    public CUSTOMER_AUTHENTICATED___CUSTOMER_FOUND_CustomerAuthenticationRemoved_ProcessCustomerAuthenticationRemoved_action.ICUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemoved_ProcessCustomerAuthenticationRemovedAction getCUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemovedTransitionAction() {
+        return new CUSTOMER_AUTHENTICATED___CUSTOMER_FOUND_CustomerAuthenticationRemoved_ProcessCustomerAuthenticationRemoved_action.ICUSTOMER_AUTHENTICATED_CUSTOMER_FOUND_CustomerAuthenticationRemoved_ProcessCustomerAuthenticationRemovedAction() {
             @Override
             public void execute(StateContext<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> context) {
                 CustomerSearchSMControlObject controlObject = (CustomerSearchSMControlObject) CustomerSearchSMControlObjectAccessor.getControlObject(context.getStateMachine());

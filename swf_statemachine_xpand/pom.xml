@@ -56,13 +56,39 @@
     </dependency>
     <dependency>
       <groupId>org.eclipse.uml2</groupId>
-      <artifactId>org.eclipse.uml2.uml</artifactId>
-      <scope>provided</scope>
+      <artifactId>common</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.emf</groupId>
+          <artifactId>ecore</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.ecore</groupId>
+          <artifactId>xmi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.mapping</groupId>
+          <artifactId>ecore2xml</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.eclipse.uml2</groupId>
-      <artifactId>org.eclipse.uml2.common</artifactId>
-      <scope>provided</scope>
+      <artifactId>uml</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.emf</groupId>
+          <artifactId>ecore</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.ecore</groupId>
+          <artifactId>xmi</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.eclipse.emf.mapping</groupId>
+          <artifactId>ecore2xml</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.eclipse.emf</groupId>

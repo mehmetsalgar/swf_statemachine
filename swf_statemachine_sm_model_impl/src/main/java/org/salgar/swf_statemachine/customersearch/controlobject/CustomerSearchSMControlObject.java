@@ -40,7 +40,7 @@ public class CustomerSearchSMControlObject extends
 
 	@Override
 	public Boolean getRenderCustomerSearchInput() {
-		return actualGuiState.renderCustomerSearchInput;
+		return actualGuiState.getRenderCustomerSearchInput();
 	}
 
 	@Override
