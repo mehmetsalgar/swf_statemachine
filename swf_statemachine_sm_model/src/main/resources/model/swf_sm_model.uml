@@ -33,7 +33,7 @@
               <transition xmi:type="uml:Transition" xmi:id="_uYcxwJdJEeWV2KHeAYEmQQ" name="OrdersLoading" guard="_ok1RsJdnEeWV2KHeAYEmQQ" source="_UaFyUJdJEeWV2KHeAYEmQQ" target="_qzakwJdJEeWV2KHeAYEmQQ">
                 <ownedRule xmi:type="uml:Constraint" xmi:id="_ok1RsJdnEeWV2KHeAYEmQQ" name="isOrderSearchRunning"/>
                 <effect xmi:type="uml:Activity" xmi:id="_ZvJ-QJdkEeWV2KHeAYEmQQ" name="ProcessLoadingOrders"/>
-                <trigger xmi:type="uml:Trigger" xmi:id="_bp66cJdnEeWV2KHeAYEmQQ" name="onCustomerAuthenticatedClicked" visibility="public"/>
+                <trigger xmi:type="uml:Trigger" xmi:id="_bp66cJdnEeWV2KHeAYEmQQ" name="onCustomerJoinedClicked" visibility="public"/>
               </transition>
               <transition xmi:type="uml:Transition" xmi:id="_u29SsJdJEeWV2KHeAYEmQQ" name="OrdersLoaded" source="_qzakwJdJEeWV2KHeAYEmQQ" target="_iIFzYJdJEeWV2KHeAYEmQQ">
                 <effect xmi:type="uml:Activity" xmi:id="_fKC-wJgWEeWns_T_KyBPKQ" name="ProcessOrdersLoaded"/>
@@ -202,25 +202,25 @@
           <packagedElement xmi:type="uml:Package" xmi:id="_GlCXEJhGEeWns_T_KyBPKQ" name="guistate">
             <packagedElement xmi:type="uml:Class" xmi:id="_K68nYJhGEeWns_T_KyBPKQ" name="CustomerSearchGuiState">
               <ownedAttribute xmi:type="uml:Property" xmi:id="_gmwzkJhGEeWns_T_KyBPKQ" name="renderCustomerSearchInput" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
               <ownedAttribute xmi:type="uml:Property" xmi:id="_o79j8JhGEeWns_T_KyBPKQ" name="renderCustomerSearchRunning" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
               <ownedAttribute xmi:type="uml:Property" xmi:id="_vNCgcJhGEeWns_T_KyBPKQ" name="renderCustomerSearchFound" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
               <ownedAttribute xmi:type="uml:Property" xmi:id="_zV5MMJhGEeWns_T_KyBPKQ" name="renderCustomerSearchAuthentication" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
               <ownedAttribute xmi:type="uml:Property" xmi:id="_4aiKwJhGEeWns_T_KyBPKQ" name="renderCustomerSearchJoin" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
               <ownedAttribute xmi:type="uml:Property" xmi:id="_88ONQJhGEeWns_T_KyBPKQ" name="renderCustomerSearchOrder" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
               <ownedAttribute xmi:type="uml:Property" xmi:id="_AqeAoJhHEeWns_T_KyBPKQ" name="renderCustomerSearchOrderLoading" visibility="private">
-                <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_u5BVQCPrEeC6cqnheF0QVw"/>
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
               </ownedAttribute>
             </packagedElement>
           </packagedElement>
