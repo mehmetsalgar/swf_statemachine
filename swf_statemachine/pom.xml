@@ -254,7 +254,6 @@
   </build>
 
   <modules>
-    <module>../swf_statemachine_eclipse_dependencies</module>
     <module>../comet</module>
     <module>../swf_statemachine_fornax_extension</module>
     <module>../swf_statemachine_domain</module>
@@ -262,7 +261,6 @@
     <module>../swf_statemachine_techdemo_domain</module>
     <module>../swf_statemachine_sm_model</module>
     <module>../swf_statemachine_sm_model_impl</module>
-    <!--module>../swf_statemachine_webflow_customisation</module-->
     <module>../swf_statemachine_techdemo</module>
   </modules>
 
@@ -675,4 +673,21 @@
     <lifecycle-mapping.plugin.version>1.0.0</lifecycle-mapping.plugin.version>
     <compiler.plugin.version>3.2</compiler.plugin.version>
   </properties>
+
+  <profiles>
+    <profile>
+      <id>full-build</id>
+      <modules>
+        <module>../swf_statemachine_eclipse_dependencies</module>
+        <module>../comet</module>
+        <module>../swf_statemachine_fornax_extension</module>
+        <module>../swf_statemachine_domain</module>
+        <module>../swf_statemachine_xpand</module>
+        <module>../swf_statemachine_techdemo_domain</module>
+        <module>../swf_statemachine_sm_model</module>
+        <module>../swf_statemachine_sm_model_impl</module>
+        <module>../swf_statemachine_techdemo</module>
+      </modules>
+    </profile>
+  </profiles>
 </project>	

@@ -160,7 +160,7 @@
                 };
             }
             public interface I«transition.source.name»_«transition.target.name»_«transition.name»Guard {
-                boolean evaluate(StateContext<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> context);
+                boolean evaluate(StateContext<«sm.name»_StateEnumerationImpl, «sm.name»_EventEnumerationImpl> context);
             }
         }
     «ENDFILE»
