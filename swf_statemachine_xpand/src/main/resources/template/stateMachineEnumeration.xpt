@@ -66,9 +66,6 @@
 		public enum «this.name»_StateEnumerationImpl implements StateEnumeration {
 		«FOREACH this.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
 			«state.name»("«state.name.toLowerCase()»", StateMachineEnumerationImpl.«this.name»)
-			«IF state.submachine != null»
-				,«EXPAND SubStateMachineStateEnumeration(this, state.submachine)»
-			«ENDIF»			
 		«ENDFOREACH»;		
 	
 		private String stateName;
@@ -111,6 +108,15 @@
 		«ENDFOREACH»
 «ENDDEFINE»
 
+«DEFINE SubStateMachineEventEnumeration(uml::StateMachine sm, uml::StateMachine sub_sm) FOR uml::StateMachine»
+	 «FOREACH giveTransitionWithTrigger(sub_sm.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','»
+			«trigger.name»("«trigger.name.toLowerCase()»", StateMachineEnumerationImpl.«sm.name»)
+			«IF state.submachine != null»
+				«EXPAND SubStateMachineEventEnumeration(sm, state.submachine)»
+			«ENDIF»
+		«ENDFOREACH»
+«ENDDEFINE»
+
 «DEFINE EventEnumeration FOR uml::StateMachine»
 	«FILE getFQNPackagePath() + "/enumeration/event/" + this.name +"_EventEnumerationImpl.java"»
 		package «getFQNPackageName()».enumeration.event;
@@ -122,6 +128,11 @@
 		public enum «this.name»_EventEnumerationImpl implements EventEnumeration {
 			«FOREACH giveTransitionWithTrigger(this.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','»
 				«trigger.name»("«trigger.name.toLowerCase()»", StateMachineEnumerationImpl.«this.name»)
+			«ENDFOREACH»
+			«FOREACH this.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
+				«IF state.submachine != null»
+					,«EXPAND SubStateMachineEventEnumeration(this, state.submachine)»
+				«ENDIF»
 			«ENDFOREACH»;
 			
 			private String eventName;

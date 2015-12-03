@@ -10,7 +10,7 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_AJiM8JUJEeWV2KHeAYEmQQ" name="salgar">
       <packagedElement xmi:type="uml:Package" xmi:id="_bsGGoJgVEeWns_T_KyBPKQ" name="swf_statemachine">
         <packagedElement xmi:type="uml:Package" xmi:id="_D2XEAJUJEeWV2KHeAYEmQQ" name="customersearch">
-          <packagedElement xmi:type="uml:StateMachine" xmi:id="_ICefIJUJEeWV2KHeAYEmQQ" name="CustomerSearchSM">
+          <packagedElement xmi:type="uml:StateMachine" xmi:id="_ICefIJUJEeWV2KHeAYEmQQ" name="CustomerSearchSM" submachineState="_s9B-oJmkEeWns_T_KyBPKQ">
             <region xmi:type="uml:Region" xmi:id="_JTtdgJUJEeWV2KHeAYEmQQ" name="Region1">
               <transition xmi:type="uml:Transition" xmi:id="_7cq_wJUJEeWV2KHeAYEmQQ" name="SearchRunning" source="_bCYesJUJEeWV2KHeAYEmQQ" target="_p8258JUJEeWV2KHeAYEmQQ">
                 <effect xmi:type="uml:Activity" xmi:id="_WSXKcJdoEeWV2KHeAYEmQQ" name="ProcessSearchStart"/>
@@ -302,6 +302,27 @@
                 <type xmi:type="uml:PrimitiveType" href="../Java.profile.uml#_rVudwBpgEeCBg6wrhx5k5Q"/>
               </ownedAttribute>
             </packagedElement>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_XAyw0JmkEeWns_T_KyBPKQ" name="techdemo">
+          <packagedElement xmi:type="uml:StateMachine" xmi:id="_j9uhUJmkEeWns_T_KyBPKQ" name="TechDemoSM">
+            <region xmi:type="uml:Region" xmi:id="_lFrn4JmkEeWns_T_KyBPKQ" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_u9rLQJmlEeWns_T_KyBPKQ" source="_rbX-oJmkEeWns_T_KyBPKQ" target="_s9B-oJmkEeWns_T_KyBPKQ"/>
+              <transition xmi:type="uml:Transition" xmi:id="_vmMj0JmlEeWns_T_KyBPKQ" name="WorkflowEnded" source="_s9B-oJmkEeWns_T_KyBPKQ" target="_sESjUJmlEeWns_T_KyBPKQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_2O7LUJmlEeWns_T_KyBPKQ" name="onEnd"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_DC4mAJmmEeWns_T_KyBPKQ" name="Timeout" source="_s9B-oJmkEeWns_T_KyBPKQ" target="_4WxooJmlEeWns_T_KyBPKQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_JQh0AJmmEeWns_T_KyBPKQ" name="onTimeout"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_DtKSEJmmEeWns_T_KyBPKQ" name="ServiceNotAvailable" source="_s9B-oJmkEeWns_T_KyBPKQ" target="__q5WgJmlEeWns_T_KyBPKQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_PkTfMJmmEeWns_T_KyBPKQ" name="onServiceNotAvailable"/>
+              </transition>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_rbX-oJmkEeWns_T_KyBPKQ" name="Start"/>
+              <subvertex xmi:type="uml:State" xmi:id="_s9B-oJmkEeWns_T_KyBPKQ" name="CUSTOMERSEARCH_RUNNING" visibility="public" submachine="_ICefIJUJEeWV2KHeAYEmQQ"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_sESjUJmlEeWns_T_KyBPKQ" name="End"/>
+              <subvertex xmi:type="uml:State" xmi:id="_4WxooJmlEeWns_T_KyBPKQ" name="TIMEOUT"/>
+              <subvertex xmi:type="uml:State" xmi:id="__q5WgJmlEeWns_T_KyBPKQ" name="SERVICE_NOT_AVAILABLE"/>
+            </region>
           </packagedElement>
         </packagedElement>
       </packagedElement>
