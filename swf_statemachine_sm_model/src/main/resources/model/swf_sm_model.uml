@@ -324,6 +324,9 @@
               <subvertex xmi:type="uml:State" xmi:id="__q5WgJmlEeWns_T_KyBPKQ" name="SERVICE_NOT_AVAILABLE"/>
             </region>
           </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_uMvTMJnJEeWns_T_KyBPKQ" name="controlobject">
+            <packagedElement xmi:type="uml:Class" xmi:id="_7b-UoJnJEeWns_T_KyBPKQ" name="AbstractTechDemoControlObject" isAbstract="true"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>

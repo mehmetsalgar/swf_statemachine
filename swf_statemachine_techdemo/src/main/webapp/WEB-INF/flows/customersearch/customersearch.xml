@@ -18,5 +18,4 @@
 			<evaluate expression="customerSearchJoinBB.customerJoined()"></evaluate>
 		</transition>		
 	</view-state>
-	<on
 </flow>

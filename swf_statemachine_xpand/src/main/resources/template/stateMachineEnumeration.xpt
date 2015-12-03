@@ -1,24 +1,24 @@
-«IMPORT uml»
+Â«IMPORT umlÂ»
 
-«EXTENSION utility»
-«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::Helper»
+Â«EXTENSION utilityÂ»
+Â«EXTENSION org::fornax::cartridges::uml2::javabasic::m2t::HelperÂ»
 
-«DEFINE Root FOR uml::Model»
-	«EXPAND BuildStateMachineEnumeration»
-	«EXPAND Root FOREACH (List[uml::Package])ownedElement»
-«ENDDEFINE»
+Â«DEFINE Root FOR uml::ModelÂ»
+	Â«EXPAND BuildStateMachineEnumerationÂ»
+	Â«EXPAND Root FOREACH (List[uml::Package])ownedElementÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE BuildStateMachineEnumeration FOR uml::Model»
-	«FILE "org/salgar/" + this.name.toLowerCase() + "/enumeration/StateMachineEnumerationImpl.java"»
-			package org.salgar.«this.name.toLowerCase()».enumeration;
+Â«DEFINE BuildStateMachineEnumeration FOR uml::ModelÂ»
+	Â«FILE "org/salgar/" + this.name.toLowerCase() + "/enumeration/StateMachineEnumerationImpl.java"Â»
+			package org.salgar.Â«this.name.toLowerCase()Â».enumeration;
 
 			import org.salgar.statemachine.domain.StateMachineEnumeration;
 
 			public enum StateMachineEnumerationImpl implements
 			StateMachineEnumeration {
-			«FOREACH allOwnedElements().typeSelect(uml::StateMachine) AS stateMachine SEPARATOR ','»
-				«stateMachine.name»("«stateMachine.name»")
-			«ENDFOREACH»;
+			Â«FOREACH allOwnedElements().typeSelect(uml::StateMachine) AS stateMachine SEPARATOR ','Â»
+				Â«stateMachine.nameÂ»("Â«stateMachine.nameÂ»")
+			Â«ENDFOREACHÂ»;
 
 			private String name;
 
@@ -35,43 +35,43 @@
 				return this.name;
 			}
 		 }
-	«ENDFILE»
+	Â«ENDFILEÂ»
 
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE Root FOR uml::Package»
-	«EXPAND Root FOREACH ownedType.typeSelect(uml::StateMachine)»
-	«EXPAND Root FOREACH nestedPackage»
-«ENDDEFINE»
+Â«DEFINE Root FOR uml::PackageÂ»
+	Â«EXPAND Root FOREACH ownedType.typeSelect(uml::StateMachine)Â»
+	Â«EXPAND Root FOREACH nestedPackageÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE Root FOR uml::PackageImport»
-«ENDDEFINE»
+Â«DEFINE Root FOR uml::PackageImportÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE Root FOR uml::ProfileApplication»
-«ENDDEFINE»
+Â«DEFINE Root FOR uml::ProfileApplicationÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE Root FOR uml::StateMachine»
-	«EXPAND StateEnumeration»
-    «EXPAND EventEnumeration»
-«ENDDEFINE»
+Â«DEFINE Root FOR uml::StateMachineÂ»
+	Â«EXPAND StateEnumerationÂ»
+    Â«EXPAND EventEnumerationÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE StateEnumeration FOR uml::StateMachine»
-	«FILE getFQNPackagePath() + "/enumeration/state/" + this.name + "_StateEnumerationImpl.java"»
-		package «getFQNPackageName()».enumeration.state;
+Â«DEFINE StateEnumeration FOR uml::StateMachineÂ»
+	Â«FILE getFQNPackagePath() + "/enumeration/state/" + this.name + "_StateEnumerationImpl.java"Â»
+		package Â«getFQNPackageName()Â».enumeration.state;
 		
 		import org.salgar.statemachine.domain.StateEnumeration;
 		import org.salgar.statemachine.domain.StateMachineEnumeration;
-		import org.salgar.«giveModel(this).name.toLowerCase()».enumeration.StateMachineEnumerationImpl;
+		import org.salgar.Â«giveModel(this).name.toLowerCase()Â».enumeration.StateMachineEnumerationImpl;
 				
-		public enum «this.name»_StateEnumerationImpl implements StateEnumeration {
-		«FOREACH this.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
-			«state.name»("«state.name.toLowerCase()»", StateMachineEnumerationImpl.«this.name»)
-		«ENDFOREACH»;		
+		public enum Â«this.nameÂ»_StateEnumerationImpl implements StateEnumeration {
+		Â«FOREACH this.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','Â»
+			Â«state.nameÂ»("Â«state.name.toLowerCase()Â»", StateMachineEnumerationImpl.Â«this.nameÂ»)
+		Â«ENDFOREACHÂ»;		
 	
 		private String stateName;
 		private StateMachineEnumeration stateMachineEnumeration;
 	
-		«this.name»_StateEnumerationImpl(String stateName,
+		Â«this.nameÂ»_StateEnumerationImpl(String stateName,
 				StateMachineEnumeration stateMachineEnumeration) {
 			this.stateName = stateName;
 			this.stateMachineEnumeration = stateMachineEnumeration;
@@ -96,49 +96,49 @@
 			return sb.toString();
 		}
 	}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE SubStateMachineStateEnumeration(uml::StateMachine sm, uml::StateMachine sub_sm) FOR uml::StateMachine»
-	«FOREACH sub_sm.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
-			«state.name»("«state.name.toLowerCase()»", StateMachineEnumerationImpl.«this.name»)
-			«IF state.submachine != null»
-				«EXPAND SubStateMachineStateEnumeration(sm, state.submachine)»
-			«ENDIF»
-		«ENDFOREACH»
-«ENDDEFINE»
+Â«DEFINE SubStateMachineStateEnumeration(uml::StateMachine sm, uml::StateMachine sub_sm) FOR uml::StateMachineÂ»
+	Â«FOREACH sub_sm.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','Â»
+			Â«state.nameÂ»("Â«state.name.toLowerCase()Â»", StateMachineEnumerationImpl.Â«this.nameÂ»)
+			Â«IF state.submachine != nullÂ»
+				Â«EXPAND SubStateMachineStateEnumeration(sm, state.submachine)Â»
+			Â«ENDIFÂ»
+		Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE SubStateMachineEventEnumeration(uml::StateMachine sm, uml::StateMachine sub_sm) FOR uml::StateMachine»
-	 «FOREACH giveTransitionWithTrigger(sub_sm.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','»
-			«trigger.name»("«trigger.name.toLowerCase()»", StateMachineEnumerationImpl.«sm.name»)
-			«IF state.submachine != null»
-				«EXPAND SubStateMachineEventEnumeration(sm, state.submachine)»
-			«ENDIF»
-		«ENDFOREACH»
-«ENDDEFINE»
+Â«DEFINE SubStateMachineEventEnumeration(uml::StateMachine sm) FOR uml::StateMachineÂ»
+	Â«FOREACH sm.allOwnedElements().typeSelect(uml::State) AS stateÂ»
+		Â«IF state.submachine != nullÂ»
+		,
+	 		Â«FOREACH giveTransitionWithTrigger(state.submachine.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','Â»
+				Â«trigger.nameÂ»("Â«trigger.name.toLowerCase()Â»", StateMachineEnumerationImpl.Â«sm.nameÂ»)
+			Â«ENDFOREACHÂ»
+			Â«EXPAND SubStateMachineEventEnumeration(state.submachine)Â»
+		Â«ENDIFÂ»
+	Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE EventEnumeration FOR uml::StateMachine»
-	«FILE getFQNPackagePath() + "/enumeration/event/" + this.name +"_EventEnumerationImpl.java"»
-		package «getFQNPackageName()».enumeration.event;
+Â«DEFINE EventEnumeration FOR uml::StateMachineÂ»
+	Â«FILE getFQNPackagePath() + "/enumeration/event/" + this.name +"_EventEnumerationImpl.java"Â»
+		package Â«getFQNPackageName()Â».enumeration.event;
 
 		import org.salgar.statemachine.domain.EventEnumeration;
 		import org.salgar.statemachine.domain.StateMachineEnumeration;
-		import org.salgar.«giveModel(this).name.toLowerCase()».enumeration.StateMachineEnumerationImpl;
+		import org.salgar.Â«giveModel(this).name.toLowerCase()Â».enumeration.StateMachineEnumerationImpl;
 		
-		public enum «this.name»_EventEnumerationImpl implements EventEnumeration {
-			«FOREACH giveTransitionWithTrigger(this.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','»
-				«trigger.name»("«trigger.name.toLowerCase()»", StateMachineEnumerationImpl.«this.name»)
-			«ENDFOREACH»
-			«FOREACH this.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
-				«IF state.submachine != null»
-					,«EXPAND SubStateMachineEventEnumeration(this, state.submachine)»
-				«ENDIF»
-			«ENDFOREACH»;
+		public enum Â«this.nameÂ»_EventEnumerationImpl implements EventEnumeration {
+			Â«FOREACH giveTransitionWithTrigger(this.allOwnedElements().typeSelect(uml::Transition)) AS trigger SEPARATOR ','Â»
+				Â«trigger.nameÂ»("Â«trigger.name.toLowerCase()Â»", StateMachineEnumerationImpl.Â«this.nameÂ»)
+			Â«ENDFOREACHÂ»
+			Â«EXPAND SubStateMachineEventEnumeration(this)Â»
+			;
 			
 			private String eventName;
 			private StateMachineEnumeration stateMachineEnumeration;
 		
-			«this.name»_EventEnumerationImpl(String eventName,
+			Â«this.nameÂ»_EventEnumerationImpl(String eventName,
 					StateMachineEnumeration stateMachineEnumeration) {
 				this.eventName = eventName;
 				this.stateMachineEnumeration = stateMachineEnumeration;
@@ -162,5 +162,5 @@
 				return sb.toString();
 			}
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
