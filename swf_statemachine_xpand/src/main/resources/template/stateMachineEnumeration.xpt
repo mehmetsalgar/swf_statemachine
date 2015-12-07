@@ -65,6 +65,13 @@
 				
 		public enum «this.name»_StateEnumerationImpl implements StateEnumeration {
 		«FOREACH this.allOwnedElements().typeSelect(uml::State) AS state SEPARATOR ','»
+			«IF (state.ownedComment != null) && (!state.ownedComment.isEmpty)»
+				/**
+				«FOREACH state.ownedComment AS commment»
+					«commment.body»
+				«ENDFOREACH»
+				*/
+			«ENDIF»
 			«state.name»("«state.name.toLowerCase()»", StateMachineEnumerationImpl.«this.name»)
 		«ENDFOREACH»;		
 	

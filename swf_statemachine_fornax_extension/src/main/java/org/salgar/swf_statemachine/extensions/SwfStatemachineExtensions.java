@@ -12,5 +12,4 @@ public class SwfStatemachineExtensions {
 		}
 		return smToRemove;
 	}
-
 }

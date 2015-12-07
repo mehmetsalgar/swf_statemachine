@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="DomainModel">
   <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="domain"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_DjLIEhjTEeCsVpV9YS54ZQ" name="org">
     <packagedElement xmi:type="uml:Package" xmi:id="_EqZ14hjTEeCsVpV9YS54ZQ" name="salgar">
       <packagedElement xmi:type="uml:Package" xmi:id="_GjjI0hjTEeCsVpV9YS54ZQ" name="statemachine">
         <packagedElement xmi:type="uml:Package" xmi:id="_KfO7QhjTEeCsVpV9YS54ZQ" name="domain">
-          <elementImport xmi:id="_u1gvwBjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvwBjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvwRjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvwRjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvwhjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvwhjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvwxjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvwxjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvxBjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvxBjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvxRjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvxRjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvxhjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvxhjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
           </elementImport>
-          <elementImport xmi:id="_u1gvxxjeEeCsVpV9YS54ZQ">
+          <elementImport xmi:type="uml:ElementImport" xmi:id="_u1gvxxjeEeCsVpV9YS54ZQ">
             <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
           </elementImport>
           <packagedElement xmi:type="uml:Interface" xmi:id="_LS_WaB5YEeCyGcoG_XXpug" name="EventEnumeration">
-            <ownedOperation xmi:id="_PmrZIh5YEeCyGcoG_XXpug" name="getStatemachineName">
-              <ownedParameter xmi:id="_SUu60B5YEeCyGcoG_XXpug" name="return" type="_4FFo4B_dEeC0UO6puhKrhA" direction="return"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_PmrZIh5YEeCyGcoG_XXpug" name="getStatemachineName">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SUu60B5YEeCyGcoG_XXpug" name="return" type="_4FFo4B_dEeC0UO6puhKrhA" direction="return"/>
             </ownedOperation>
-            <ownedOperation xmi:id="_eSF9Uh5bEeCyGcoG_XXpug" name="getEventName">
-              <ownedParameter xmi:id="_j0AtwB5bEeCyGcoG_XXpug" name="return" direction="return">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_eSF9Uh5bEeCyGcoG_XXpug" name="getEventName">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_j0AtwB5bEeCyGcoG_XXpug" name="return" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_IjSO0B8cEeC10uzKgDT83Q" name="StateEnumeration">
-            <ownedOperation xmi:id="_gw6Qch8cEeC10uzKgDT83Q" name="getStateName">
-              <ownedParameter xmi:id="_iqzxUB8cEeC10uzKgDT83Q" name="return" direction="return">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_gw6Qch8cEeC10uzKgDT83Q" name="getStateName">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_iqzxUB8cEeC10uzKgDT83Q" name="return" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedParameter>
             </ownedOperation>
-            <ownedOperation xmi:id="__ev2wh8cEeC10uzKgDT83Q" name="getStateMachineName">
-              <ownedParameter xmi:id="_BX5wwB8dEeC10uzKgDT83Q" name="return" type="_4FFo4B_dEeC0UO6puhKrhA" direction="return"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="__ev2wh8cEeC10uzKgDT83Q" name="getStateMachineName">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_BX5wwB8dEeC10uzKgDT83Q" name="return" type="_4FFo4B_dEeC0UO6puhKrhA" direction="return"/>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_4FFo4B_dEeC0UO6puhKrhA" name="StateMachineEnumeration">
-            <ownedOperation xmi:id="_8LNJsh_dEeC0UO6puhKrhA" name="getStateMachineName">
-              <ownedParameter xmi:id="_-Jk64B_dEeC0UO6puhKrhA" name="return" direction="return">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_8LNJsh_dEeC0UO6puhKrhA" name="getStateMachineName">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_-Jk64B_dEeC0UO6puhKrhA" name="return" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_h64JQB5YEeCyGcoG_XXpug"/>
               </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_HWdZ2B_hEeC0UO6puhKrhA" name="StateMachineContext">
-            <ownedOperation xmi:id="_TqUYIh_hEeC0UO6puhKrhA" name="getControlObjects">
-              <ownedParameter xmi:id="_WX7N4B_hEeC0UO6puhKrhA" name="return" direction="return">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_TqUYIh_hEeC0UO6puhKrhA" name="getControlObjects">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_WX7N4B_hEeC0UO6puhKrhA" name="return" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_NFfZMB_hEeC0UO6puhKrhA"/>
               </ownedParameter>
             </ownedOperation>
-            <ownedOperation xmi:id="_Zwvj0h_hEeC0UO6puhKrhA" name="setControlObjects">
-              <ownedParameter xmi:id="_dAxKIB_hEeC0UO6puhKrhA" name="contolObjects">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_Zwvj0h_hEeC0UO6puhKrhA" name="setControlObjects">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_dAxKIB_hEeC0UO6puhKrhA" name="contolObjects">
                 <type xmi:type="uml:PrimitiveType" href="Java.profile.uml#_NFfZMB_hEeC0UO6puhKrhA"/>
               </ownedParameter>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Interface" xmi:id="_5AToIHcKEeChHqmjAgGwRw" name="ControlObject">
-            <ownedOperation xmi:id="_C6VoUncLEeChHqmjAgGwRw" name="resetStateMachine" isAbstract="true"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_C6VoUncLEeChHqmjAgGwRw" name="resetStateMachine" isAbstract="true"/>
           </packagedElement>
-          <profileApplication xmi:id="_F8u8IBpiEeCBg6wrhx5k5Q">
-            <eAnnotations xmi:id="_F8u8IRpiEeCBg6wrhx5k5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
-              <references xmi:type="ecore:EPackage" href="Java.profile.uml#_QboOkB_hEeC0UO6puhKrhA"/>
+          <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_F8u8IBpiEeCBg6wrhx5k5Q">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_F8u8IRpiEeCBg6wrhx5k5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <references xmi:type="ecore:EPackage" href="Java.profile.uml#_0MLQ8CPrEeC6cqnheF0QVw"/>
             </eAnnotations>
-            <appliedProfile href="Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
+            <appliedProfile xmi:type="uml:Profile" href="Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
           </profileApplication>
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <profileApplication xmi:id="_8OvV4CL-EeC6cqnheF0QVw">
-      <eAnnotations xmi:id="_8Px3sCL-EeC6cqnheF0QVw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="Java.profile.uml#_QboOkB_hEeC0UO6puhKrhA"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_8OvV4CL-EeC6cqnheF0QVw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8Px3sCL-EeC6cqnheF0QVw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Java.profile.uml#_0MLQ8CPrEeC6cqnheF0QVw"/>
       </eAnnotations>
-      <appliedProfile href="Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
+      <appliedProfile xmi:type="uml:Profile" href="Java.profile.uml#_ZbDS0RpeEeCBg6wrhx5k5Q"/>
     </profileApplication>
   </packagedElement>
 </uml:Model>

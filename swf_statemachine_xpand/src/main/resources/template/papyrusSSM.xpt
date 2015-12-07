@@ -57,6 +57,13 @@
 
 		import org.apache.log4j.Logger;
 
+        «IF (this.ownedComment != null) && (!this.ownedComment.isEmpty)»
+        /**
+            «FOREACH this.ownedComment AS comment»
+                «comment.body»
+            «ENDFOREACH»
+        */
+        «ENDIF»
 		@Configuration
 		@EnableStateMachineFactory(name="«this.name»")
 		public class «this.name»Configuration extends EnumStateMachineConfigurerAdapter<«this.name»_StateEnumerationImpl, «this.name»_EventEnumerationImpl> {
@@ -90,6 +97,13 @@
 				transitions
 				«FOREACH this.allOwnedElements().typeSelect(uml::State).getOutgoings() AS transition SEPARATOR '.and()'»
 					//STATE - «transition.source.name»
+					«IF (transition.ownedComment != null) && (!transition.ownedComment.isEmpty)»
+					/**
+					    «FOREACH transition.ownedComment AS comment»
+                            «comment.body»
+                        «ENDFOREACH»
+					*/
+					«ENDIF»
 					.withExternal()
 					.source(«this.name»_StateEnumerationImpl.«transition.source.name»)
 					.target(«this.name»_StateEnumerationImpl.«transition.target.name»)

@@ -38,9 +38,9 @@ Workflow {
 		logResourceUriMap = false
 		scanClassPath = false
 	}
-	bean = org.eclipse.xtend.typesystem.uml2.Setup {
- 		standardUML2Setup = true
- 	}
+	bean = org.salgar.swf_statemachine.uml2.Setup {
+		standardUML2Setup = true
+	}
  	bean = org.eclipse.xtend.typesystem.uml2.UML2MetaModel : umlMM { }
  	
  	bean = org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel : datatype {
