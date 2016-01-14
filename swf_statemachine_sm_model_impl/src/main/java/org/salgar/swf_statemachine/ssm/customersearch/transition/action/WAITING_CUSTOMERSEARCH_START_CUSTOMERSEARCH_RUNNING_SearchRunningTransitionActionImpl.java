@@ -1,14 +1,14 @@
 package org.salgar.swf_statemachine.ssm.customersearch.transition.action;
 
-import org.salgar.swf_statemachine.customersearch.configuration.waiting_customersearch_start.action.WAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStart_action;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchCO;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
-import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
-import org.salgar.swf_statemachine.findcustomer.enumeration.event.FindCustomerSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.findcustomer.enumeration.state.FindCustomerSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.configuration.waiting_customersearch_start.action.WAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStart_action;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchCO;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObject;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.ssm.factory.StateMachineFactories;
+import org.salgar.swf_statemachine.ssm.findcustomersm.enumeration.event.FindCustomerSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.findcustomersm.enumeration.state.FindCustomerSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,8 +23,8 @@ import org.springframework.statemachine.StateMachine;
 @Configuration
 public class WAITING_CUSTOMERSEARCH_START_CUSTOMERSEARCH_RUNNING_SearchRunningTransitionActionImpl {
     @Bean
-    public WAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStart_action.IWAITING_CUSTOMERSEARCH_START_CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStartAction getWAITING_CUSTOMERSEARCH_START_CUSTOMERSEARCH_RUNNING_SearchRunningTransitionAction() {
-        return new WAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStart_action.IWAITING_CUSTOMERSEARCH_START_CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStartAction() {
+    public WAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStart_action.IWAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStartAction getWAITING_CUSTOMERSEARCH_START_CUSTOMERSEARCH_RUNNING_SearchRunningTransitionAction() {
+        return new WAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStart_action.IWAITING_CUSTOMERSEARCH_START___CUSTOMERSEARCH_RUNNING_SearchRunning_ProcessSearchStartAction() {
             @Override public void execute(StateContext<CustomerSearchSM_StateEnumerationImpl, CustomerSearchSM_EventEnumerationImpl> context) {
                 CustomerSearchCO customerSearchCO = CustomerSearchSMControlObjectAccessor.getControlObject(context.getStateMachine());
 

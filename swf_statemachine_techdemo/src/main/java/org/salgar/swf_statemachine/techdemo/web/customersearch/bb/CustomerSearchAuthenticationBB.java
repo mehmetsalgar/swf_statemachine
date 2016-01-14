@@ -1,8 +1,8 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchAuthenticationCO;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
-import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchAuthenticationCO;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;

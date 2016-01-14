@@ -1,7 +1,7 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.container;
 
-import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.ssm.factory.StateMachineFactories;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.statemachine.StateMachine;

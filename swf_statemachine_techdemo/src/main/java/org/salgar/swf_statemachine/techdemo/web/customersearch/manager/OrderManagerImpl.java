@@ -1,7 +1,7 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.manager;
 
 import org.apache.log4j.Logger;
-import org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.findorderssm.enumeration.event.FindOrdersSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
 import org.salgar.swf_statemachine.techdemo.manager.OrderManager;
 import org.springframework.messaging.Message;

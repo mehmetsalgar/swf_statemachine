@@ -49,24 +49,6 @@
           </environments>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.eclipse.xtend</groupId>
-        <artifactId>xtend-maven-plugin</artifactId>
-        <configuration>
-          <encoding>UTF-8</encoding>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <!-- need to prefix by basedir to generate to currently built module -->
-              <outputDirectory>${basedir}/xtend-gen</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>
@@ -75,8 +57,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${compiler.plugin.version}</version>
           <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
+            <source>1.7</source>
+            <target>1.7</target>
             <!-- ensure that the compile uses
            the same encoding as the file
            encoding of the *.java
@@ -136,10 +118,22 @@
           <version>${tycho.plugin.version}</version>
         </plugin>
         <plugin>
-          <groupId>org.eclipse.xtend</groupId>
-          <artifactId>xtend-maven-plugin</artifactId>
-          <version>${xtext-version}</version>
-        </plugin>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>xtend-maven-plugin</artifactId>
+			<version>${xtext-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outputDirectory>${project.basedir}/src/main/xtend-gen</outputDirectory>
+					<testOutputDirectory>${project.basedir}/src/test/xtend-gen</testOutputDirectory>
+				</configuration>
+		</plugin>
         <plugin>
           <groupId>org.fornax.toolsupport</groupId>
           <artifactId>fornax-oaw-m2-plugin</artifactId>
@@ -257,9 +251,13 @@
     <module>../comet</module>
     <module>../swf_statemachine_fornax_extension</module>
     <module>../swf_statemachine_domain</module>
-    <module>../swf_statemachine_xpand</module>
+    <module>../swf_statemachine_domain_specific_language</module>
+    <module>../swf_statemachine_domain_specific_language_generator</module>
+    <module>../swf_statemachine_domain_specific_language_model</module>
+    <module>../swf_statemachine_domain_specific_language_creator</module>
+    <!--module>../swf_statemachine_xpand</module-->
     <module>../swf_statemachine_techdemo_domain</module>
-    <module>../swf_statemachine_sm_model</module>
+    <!--module>../swf_statemachine_sm_model</module-->
     <module>../swf_statemachine_sm_model_impl</module>
     <!--module>../swf_statemachine_webflow_customisation</module-->
     <module>../swf_statemachine_techdemo</module>
@@ -366,7 +364,7 @@
         <artifactId>resources</artifactId>
         <version>${eclipse.uml2.version}</version>
       </dependency>
-      <dependency>
+      <!--dependency>
         <groupId>org.eclipse.emf.mapping</groupId>
         <artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
         <version>2.8.0-v20150123-0452</version>
@@ -390,7 +388,7 @@
         <groupId>org.eclipse.emf</groupId>
         <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
         <version>${eclipse.emf.version}</version>
-      </dependency>
+      </dependency-->
       <dependency>
         <groupId>commons-cli</groupId>
         <artifactId>commons-cli</artifactId>
@@ -417,7 +415,7 @@
         <artifactId>org.eclipse.xpand</artifactId>
         <version>${m2t.version}</version>
       </dependency>
-      <dependency>
+      <!--dependency>
         <groupId>org.eclipse.emf</groupId>
         <artifactId>org.eclipse.emf.mwe.utils</artifactId>
         <version>${emf.mwe.version}</version>
@@ -426,7 +424,7 @@
         <groupId>org.eclipse.emf</groupId>
         <artifactId>org.eclipse.emf.mwe.core</artifactId>
         <version>${emf.mwe.version}</version>
-      </dependency>
+      </dependency-->
       <dependency>
         <groupId>org.eclipse.xtext</groupId>
         <artifactId>org.eclipse.xtext.xtext</artifactId>
@@ -690,10 +688,11 @@
     <jsp.version>2.1</jsp.version>
     <jstl.version>1.1.2</jstl.version>
     <tycho.plugin.version>0.23.0</tycho.plugin.version>
-    <xtext-version>2.8.4</xtext-version>
+    <xtext-version>2.9.1</xtext-version>
     <equinox.common.version>3.6.200-v20130402-1505</equinox.common.version>
     <exec.plugin.version>1.4.0</exec.plugin.version>
     <build_helper.plugin.version>1.9.1</build_helper.plugin.version>
+    <maven-assembly-plugin.version>2.5.5</maven-assembly-plugin.version>
     <lifecycle-mapping.plugin.version>1.0.0</lifecycle-mapping.plugin.version>
     <compiler.plugin.version>3.2</compiler.plugin.version>
     <easymock.version>3.0</easymock.version>
@@ -707,9 +706,13 @@
         <module>../comet</module>
         <module>../swf_statemachine_fornax_extension</module>
         <module>../swf_statemachine_domain</module>
-        <module>../swf_statemachine_xpand</module>
+        <module>../swf_statemachine_domain_specific_language</module>
+    	<module>../swf_statemachine_domain_specific_language_generator</module>
+   		<module>../swf_statemachine_domain_specific_language_model</module>
+    	<module>../swf_statemachine_domain_specific_language_creator</module>
+        <!--module>../swf_statemachine_xpand</module-->
         <module>../swf_statemachine_techdemo_domain</module>
-        <module>../swf_statemachine_sm_model</module>
+        <!--module>../swf_statemachine_sm_model</module-->
         <module>../swf_statemachine_sm_model_impl</module>
         <module>../swf_statemachine_techdemo</module>
       </modules>

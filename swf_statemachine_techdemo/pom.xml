@@ -51,7 +51,7 @@
     <!-- SWF STATEMACHINE -->
     <dependency>
       <groupId>org.salgar.swf_statemachine</groupId>
-      <artifactId>swf_statemachine_sm_model</artifactId>
+      <artifactId>swf_statemachine_domain_specific_language_creator</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

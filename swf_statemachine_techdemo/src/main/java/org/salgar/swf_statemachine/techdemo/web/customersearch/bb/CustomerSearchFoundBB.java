@@ -1,7 +1,7 @@
 package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchFoundCO;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchFoundCO;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObjectAccessor;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.springframework.statemachine.StateMachine;
 

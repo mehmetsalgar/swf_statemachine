@@ -2,9 +2,9 @@ package org.salgar.swf_statemachine.techdemo.web.customersearch.bb;
 
 import org.apache.log4j.Logger;
 import org.salgar.comet.CometServiceLocator;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchInputCO;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
-import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchInputCO;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;

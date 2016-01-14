@@ -3,13 +3,13 @@ package org.salgar.swf_statemachine.ssm;
 import junit.framework.Assert;
 import org.apache.log4j.Logger;
 import org.easymock.EasyMock;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObject;
-import org.salgar.swf_statemachine.customersearch.controlobject.CustomerSearchSMControlObjectAccessor;
-import org.salgar.swf_statemachine.customersearch.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
-import org.salgar.swf_statemachine.findcustomer.enumeration.event.FindCustomerSM_EventEnumerationImpl;
-import org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObject;
+import org.salgar.swf_statemachine.ssm.customersearchsm.controlobject.CustomerSearchSMControlObjectAccessor;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.event.CustomerSearchSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.state.CustomerSearchSM_StateEnumerationImpl;
 import org.salgar.swf_statemachine.ssm.factory.StateMachineFactories;
+import org.salgar.swf_statemachine.ssm.findcustomersm.enumeration.event.FindCustomerSM_EventEnumerationImpl;
+import org.salgar.swf_statemachine.ssm.findorderssm.enumeration.event.FindOrdersSM_EventEnumerationImpl;
 import org.salgar.swf_statemachine.techdemo.domain.Customer;
 import org.salgar.swf_statemachine.techdemo.domain.Order;
 import org.salgar.swf_statemachine.techdemo.event.CustomerSearchStartEventPayload;
@@ -28,9 +28,9 @@ import java.util.Date;
 import java.util.List;
 
 import static org.easymock.EasyMock.anyObject;
-import static org.salgar.swf_statemachine.customersearch.enumeration.state.CustomerSearchSM_StateEnumerationImpl.*;
-import static org.salgar.swf_statemachine.findorders.enumeration.event.FindOrdersSM_EventEnumerationImpl.*;
-import static org.salgar.techdemomodel.enumeration.StateMachineEnumerationImpl.CustomerSearchSM;
+import static org.salgar.swf_statemachine.ssm.customersearchsm.enumeration.state.CustomerSearchSM_StateEnumerationImpl.*;
+import static org.salgar.swf_statemachine.ssm.enumeration.StateMachineEnumerationImpl.CustomerSearchSM;
+import static org.salgar.swf_statemachine.ssm.findorderssm.enumeration.event.FindOrdersSM_EventEnumerationImpl.onOrdersFound;
 
 @ContextConfiguration(locations = {
 		"/META-INF/scope.xml",

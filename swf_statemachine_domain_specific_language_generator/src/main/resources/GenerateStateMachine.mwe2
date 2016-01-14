@@ -1,0 +1,33 @@
+module org.salgar.swf_statemachine.xtext.GenerateStateMachine
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.xtext.generator.*
+import org.eclipse.xtext.xtext.generator.model.project.*
+
+var rootPath = ".."
+
+Workflow {
+		bean = org.salgar.swf_statemachine.xtext.StateMachineDslStandaloneSetup : languageStandaloneSetup {
+
+		}
+
+	    component =  org.salgar.swf_statemachine.xtext.reader.reader.SwfReader {
+        		useJavaClassPath = true
+        		uriFilter = org.eclipse.xtext.mwe.NameBasedFilter {
+        			extension = 'ssm'
+        		}
+
+        		register = languageStandaloneSetup
+        		loadResource = {
+        			slot = "modelSlot"
+        		}
+        }
+
+        component = org.eclipse.xtext.generator.GeneratorComponent {
+            slot = "modelSlot"
+            register = languageStandaloneSetup
+            outlet = {
+                path = "${rootPath}/src/generated/java"
+            }
+        }
+}

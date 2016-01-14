@@ -18,8 +18,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.7</source>
+          <target>1.7</target>
           <!-- ensure that the compile uses the same encoding as the file encoding
             of the *.java -->
           <compilerArguments>
@@ -34,14 +34,24 @@
     <!-- SWF STATEMACHINE -->
     <dependency>
       <groupId>org.salgar.swf_statemachine</groupId>
-      <artifactId>swf_statemachine_domain</artifactId>
+      <artifactId>swf_statemachine_domain_specific_language_creator</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.salgar.swf_statemachine</groupId>
-      <artifactId>swf_statemachine_sm_model</artifactId>
+      <artifactId>swf_statemachine_techdemo_domain</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.salgar.swf_statemachine</groupId>
+      <artifactId>swf_statemachine_domain</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <!--dependency>
+      <groupId>org.salgar.swf_statemachine</groupId>
+      <artifactId>swf_statemachine_sm_model</artifactId>
+      <version>${project.version}</version>
+    </dependency-->
     <dependency>
       <groupId>org.salgar.swf_statemachine</groupId>
       <artifactId>comet</artifactId>

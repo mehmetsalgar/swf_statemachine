@@ -1,0 +1,201 @@
+package org.salgar.swf_statemachine.ssm {
+    statemachine CustomerSearchSM initialState WAITING_CUSTOMERSEARCH_START
+        control-object {
+            attribute customerNumberInternal type=java.lang.String
+            attribute flowId type=java.lang.String
+            attribute sessionId type=java.lang.String
+            attribute customerSearchInputRenderPanels type=java.lang.String
+            attribute customerAuthenticatedInternal type=java.lang.Boolean
+            attribute customerJoinedInternal type=java.lang.Boolean
+            attribute customerInternal type="org.salgar.swf_statemachine.techdemo.domain.Customer"
+            attribute customerOrdersInternal type=java.util.List
+            attribute actualGuiState type="org.salgar.swf_statemachine.ssm.customersearchsm.guistate.CustomerSearchGuiState"
+            attribute findCustomerSlaveSM type="org.springframework.statemachine.StateMachine"
+            attribute findOrdersSlaveSM type="org.springframework.statemachine.StateMachine"
+        }
+        events {
+            event onStartSearch
+            event onCustomerFound
+            event onCustomerAuthenticatedClicked
+            event onCustomerJoinedClicked
+            event onOrdersLoaded
+        }
+        states {
+            state WAITING_CUSTOMERSEARCH_START {
+                transition SearchRunning => CUSTOMERSEARCH_RUNNING {
+                    trigger {
+                        onStartSearch
+                    }
+                    action {
+                        ProcessSearchStart
+                    }
+                }
+            }
+            state CUSTOMERSEARCH_RUNNING {
+                transition CustomerFound => CUSTOMER_FOUND {
+                    trigger {
+                        onCustomerFound
+                    }
+                    action {
+                        ProcessCustomerFound
+                    }
+                }
+            }
+            state CUSTOMER_FOUND {
+                transition CustomerFound => CUSTOMER_AUTHENTICATED {
+                    trigger {
+                        onCustomerAuthenticatedClicked
+                    }
+                    action {
+                        ProcessCustomerFound
+                    }
+                }
+            }
+            state CUSTOMER_AUTHENTICATED {
+                transition CustomerJoined => CUSTOMER_JOINED {
+                    trigger {
+                        onCustomerJoinedClicked
+                    }
+                    guard {
+                        isOrdersFound
+                    }
+                    action {
+                        ProcessOrdersFoundCustomerJoined
+                    }
+                }
+                transition OrdersLoading => ORDERS_LOADING {
+                    trigger {
+                        onCustomerJoinedClicked
+                    }
+                    guard {
+                        isOrderSearchRunning
+                    }
+                    action {
+                        ProcessLoadingOrders
+                    }
+                }
+                transition CustomerAuthenticationRemoved => CUSTOMER_FOUND {
+                    trigger {
+                        onCustomerAuthenticatedClicked
+                    }
+                    action {
+                        ProcessCustomerAuthenticationRemoved
+                    }
+                }
+            }
+            state CUSTOMER_JOINED {
+                transition CustomerAuthenticationRemovedFromJoined => CUSTOMER_FOUND {
+                    trigger {
+                        onCustomerAuthenticatedClicked
+                    }
+                    action {
+                        ProcessCustomerAuthenticationRemoved
+                    }
+                }
+                transition CustomerJoinedClicked => CUSTOMER_AUTHENTICATED {
+                    trigger {
+                        onCustomerJoinedClicked
+                    }
+                    action {
+                        ProcessCustomerJoinRemoved
+                    }
+                }
+            }
+            state ORDERS_LOADING {
+                transition OrdersLoaded => CUSTOMER_JOINED {
+                    trigger {
+                        onOrdersLoaded
+                    }
+                    action {
+                        ProcessOrdersLoaded
+                    }
+                }
+                transition CustomerAuthenticationFromOrdersLoadingRemoved => CUSTOMER_FOUND {
+                    trigger {
+                        onCustomerAuthenticatedClicked
+                    }
+                    action {
+                        ProcessCustomerJoinRemoved
+                    }
+                }
+                transition CustomerJoinRemoved => CUSTOMER_AUTHENTICATED {
+                    trigger {
+                        onCustomerJoinedClicked
+                    }
+                    action {
+                        ProcessCustomerJoinRemoved
+                    }
+                }
+
+            }
+        }
+    statemachine FindCustomerSM initialState NOT_RUNNING
+        control-object {
+            attribute customerNumber type=java.lang.String
+            attribute masterStateMachine type="org.springframework.statemachine.StateMachine"
+        }
+        events {
+            event onStartSearch
+            event onCustomerFound
+        }
+        states {
+            state NOT_RUNNING {
+                transition SearchStarting => SEARCH_RUNNING {
+                    trigger {
+                        onStartSearch
+                    }
+                    action {
+                        ProcessSearchStart
+                    }
+                }
+            }
+            state SEARCH_RUNNING {
+                transition CustomerFound => CUSTOMER_FOUND {
+                    trigger {
+                        onCustomerFound
+                    }
+                    action {
+                        ProcessCustomerFound
+                    }
+                }
+            }
+            state CUSTOMER_FOUND {
+
+            }
+        }
+    statemachine FindOrdersSM initialState NOT_RUNNING
+        control-object {
+            attribute customerNumber type=java.lang.String
+            attribute masterStateMachine type="org.springframework.statemachine.StateMachine"
+            attribute orders type=java.util.List
+        }
+        events {
+            event onOrderSearchRunning
+            event onOrdersFound
+        }
+        states {
+            state NOT_RUNNING {
+                transition OrderSearchRunning => ORDER_SEARCH_RUNNING {
+                    trigger {
+                        onOrderSearchRunning
+                    }
+                    action {
+                        ProcessOrdersSearchStart
+                    }
+                }
+            }
+            state ORDER_SEARCH_RUNNING {
+                transition OrdersFound => ORDERS_FOUND {
+                    trigger {
+                        onOrdersFound
+                    }
+                    action {
+                        ProcessOrdersFound
+                    }
+                }
+            }
+            state ORDERS_FOUND {
+
+            }
+        }
+}

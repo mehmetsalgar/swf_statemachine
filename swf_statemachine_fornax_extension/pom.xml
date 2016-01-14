@@ -52,18 +52,22 @@
     <dependency>
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.ecore</artifactId>
+      <version>${eclipse.emf.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+      <version>${eclipse.emf.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.common</artifactId>
+      <version>${eclipse.emf.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.uml2</groupId>
       <artifactId>common</artifactId>
+      <version>${eclipse.uml2.common.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.eclipse.emf</groupId>
