@@ -32,13 +32,6 @@ class StateMachineDslGenerator extends AbstractGenerator {
 	@Inject extension IQualifiedNameProvider
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
-
-
 		fsa.generateFile(resource.getAllContents.findFirst(object | object instanceof PackageDeclaration).fullyQualifiedName.toString("/") + "/enumeration/StateMachineEnumerationImpl.java",
 			resource.allContents.toIterable.filter(StateMachine).complileStateMachineEnumeration(resource.getAllContents.findFirst(object | object instanceof PackageDeclaration) as PackageDeclaration))
 

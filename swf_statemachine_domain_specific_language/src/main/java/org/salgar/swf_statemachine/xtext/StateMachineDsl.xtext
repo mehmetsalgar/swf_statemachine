@@ -3,12 +3,14 @@ grammar org.salgar.swf_statemachine.xtext.StateMachineDsl with org.eclipse.xtext
 generate stateMachineDsl "http://www.salgar.org/swf_statemachine/xtext/StateMachineDsl"
 
 Model:
-	(elements+=Base)*;
+	(elements+=Base)*
+;
 
 PackageDeclaration:
 	'package' name = QualifiedName '{'
 		(elements += Base)*
-	'}';
+	'}'
+;
 
 StateMachine:
 	'statemachine' name=ID  'initialState' initialState = [State]
@@ -24,13 +26,15 @@ StateMachine:
 Base: PackageDeclaration | StateMachine;
 
 QualifiedName:
-	ID ('.' ID)*;
+	ID ('.' ID)*
+;
 
 State:
 	'state' name=ID
 	'{'
 		(transitions += Transition)*
-	'}';
+	'}'
+;
 
 Transition:
 	'transition' name=ID
@@ -39,16 +43,20 @@ Transition:
 		('trigger' '{' trigger = [Event] '}')
 		('guard' '{' guard = Guard '}')?
 		('action' '{' action = Action '}')?
-	'}';
+	'}'
+;
 
 Event:
-	'event' name=ID;
+	'event' name=ID
+;
 
 Guard: {Guard}
-	name=ID;
+	name=ID
+;
 
 Action: {Action}
-	name=ID;
+	name=ID
+;
 
 ControlObject:
 	'{'
@@ -64,11 +72,14 @@ ControlObjectAttribute:
 	)
 ;
 
-AttributeBase: ObjectType | SimpleType;
+AttributeBase: ObjectType | SimpleType
+;
 
-SimpleType: type=InternalType;
+SimpleType: type=InternalType
+;
 
-ObjectType: type=STRING;
+ObjectType: type=STRING
+;
 
 enum InternalType:
 	NONE = 'NONE' | BOOLEAN = 'java.lang.Boolean' | INTEGER = 'java.lang.Integer' | LONG = 'java.lang.Long' | FLOAT = 'java.lang.Float' | DECIMAL = 'java.lang.Decimal' |

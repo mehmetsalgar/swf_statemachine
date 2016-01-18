@@ -90,13 +90,13 @@
         <configuration>
           <filesets combine.children="append">
             <fileset>
-              <directory>${proj.basedir}/src/generated/java/</directory>
+              <directory>${project.basedir}/src/generated/java/</directory>
               <includes>
                 <include>**/*</include>
               </includes>
             </fileset>
             <fileset>
-              <directory>${proj.basedir}/src/generated/resources/</directory>
+              <directory>${project.basedir}/src/generated/resources/</directory>
               <includes>
                 <include>**/*</include>
               </includes>
@@ -157,17 +157,14 @@
     <dependency>
       <groupId>org.springframework.statemachine</groupId>
       <artifactId>spring-statemachine-core</artifactId>
-      <version>${spring.statemachine.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>${commons-lang3.version}</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>${log4j.version}</version>
     </dependency>
   </dependencies>
 </project>
