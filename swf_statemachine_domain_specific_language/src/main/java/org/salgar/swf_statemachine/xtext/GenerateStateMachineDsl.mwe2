@@ -7,8 +7,6 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 var rootPath = "../"
 
 Workflow {
-
-
 	bean =  StandardLanguage : languageSetup {
 		name = "org.salgar.swf_statemachine.xtext.StateMachineDsl"
 		fileExtensions = "ssm"
@@ -38,6 +36,4 @@ Workflow {
 		}
 		language = languageSetup
 	}
-
-
 }

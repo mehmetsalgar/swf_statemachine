@@ -26,7 +26,6 @@ public class SwfReader extends Reader {
             for (String entry : tmp) {
                 addPath(entry);
             }
-
         }
     }
 
