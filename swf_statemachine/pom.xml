@@ -123,22 +123,22 @@
           <version>${tycho.plugin.version}</version>
         </plugin>
         <plugin>
-			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>xtend-maven-plugin</artifactId>
-			<version>${xtext-version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<outputDirectory>${project.basedir}/src/main/xtend-gen</outputDirectory>
-					<testOutputDirectory>${project.basedir}/src/test/xtend-gen</testOutputDirectory>
-				</configuration>
-		</plugin>
+          <groupId>org.eclipse.xtend</groupId>
+          <artifactId>xtend-maven-plugin</artifactId>
+          <version>${xtext-version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>testCompile</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <outputDirectory>${project.basedir}/src/main/xtend-gen</outputDirectory>
+            <testOutputDirectory>${project.basedir}/src/test/xtend-gen</testOutputDirectory>
+          </configuration>
+        </plugin>
         <plugin>
           <groupId>org.fornax.toolsupport</groupId>
           <artifactId>fornax-oaw-m2-plugin</artifactId>
@@ -733,9 +733,9 @@
         <module>../swf_statemachine_fornax_extension</module>
         <module>../swf_statemachine_domain</module>
         <module>../swf_statemachine_domain_specific_language</module>
-    	<module>../swf_statemachine_domain_specific_language_generator</module>
-   		<module>../swf_statemachine_domain_specific_language_model</module>
-    	<module>../swf_statemachine_domain_specific_language_creator</module>
+        <module>../swf_statemachine_domain_specific_language_generator</module>
+        <module>../swf_statemachine_domain_specific_language_model</module>
+        <module>../swf_statemachine_domain_specific_language_creator</module>
         <!--module>../swf_statemachine_xpand</module-->
         <module>../swf_statemachine_techdemo_domain</module>
         <!--module>../swf_statemachine_sm_model</module-->
